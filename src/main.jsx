@@ -14,7 +14,6 @@ createRoot(document.getElementById("root")).render(
           <Route path="/" element={<App />}>
             <Route index element={<LoginPage />} />
           </Route>
-          <App />
         </Routes>
       </DataProviders>
     </BrowserRouter>
