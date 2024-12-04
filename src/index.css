@@ -8,12 +8,21 @@
     body {
         @apply bg-figma-dark-blue min-h-screen
     }
+    input {
+      /* @apply bg-figma-semi-dark-blue border-0 border-b-[0.0625rem] border-figma-greyish-blue p-0 ps-[1rem] focus:border-0 figma-body-s align-top pb-[1.12rem]  focus:ring-0  */
+    }
+}
+
+@layer components {
+  .input-login-style {
+   @apply bg-figma-semi-dark-blue border-0 border-b-[0.0625rem] border-figma-greyish-blue p-0 ps-[1rem] focus:border-0 figma-body-s align-top pb-[1.12rem]  focus:ring-0 
+  }
 }
 
 :root {
   --Pure-White: #ffffff;
 }
-.figma-heading-large {
+.figma-heading-l {
   font-family: Outfit;
   font-size: 2rem;
   font-weight: 300;
