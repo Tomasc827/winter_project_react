@@ -9,7 +9,20 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "figma-red": "#FC4747",
+        "figma-dark-blue": "#10141E",
+        "figma-greyish-blue": "#5A698F",
+        "figma-semi-dark-blue": "#161D2F",
+        "figma-white": "#FFFFFF"
+      },
+      screens: {
+        "phone": "375px",
+        "tablet": "768px",
+        "desktop": "1440px"
+      }
+    },
   },
   plugins: [daisyui,formsPlugin],
 }

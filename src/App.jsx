@@ -6,6 +6,7 @@ function App() {
 
   return (
     <>
+    <p className='figma-error-red'>Lorem ipsum dolor sit amet</p>
     <Outlet/>
     </>
   )
