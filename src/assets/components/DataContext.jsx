@@ -11,6 +11,7 @@ const [movies, setMovies] = useState([])
   const [error,setError] = useState("")
   const [processing, setProcessing] = useState(false)
   const [success, setSuccess] = useState("")
+  const [currentUser,setCurrentUser] = useState({})
   const navigate = useNavigate()
   const encodedPassword = (password) => {
     return btoa(password)
@@ -23,7 +24,7 @@ const [movies, setMovies] = useState([])
         {
           /*this is where you put what you want to export */
           movies, setMovies,
-          users,setUsers,error, setError, navigate,success,setSuccess,encodedPassword, processing,setProcessing
+          users,setUsers,error, setError, navigate,success,setSuccess,encodedPassword, processing,setProcessing,currentUser,setCurrentUser
         }
       }
     >

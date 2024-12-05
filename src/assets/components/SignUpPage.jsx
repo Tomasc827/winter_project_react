@@ -14,11 +14,11 @@ const SignUpPage = () => {
   const calculatePasswordStrength = (password) => {
     let strength = 0;
 
-    if (password.length >= 8) strength += 25;
-    if (/[a-z]/.test(password)) strength += 25;
-    if (/[A-Z]/.test(password)) strength += 25;
-    if (/[0-9]/.test(password)) strength += 25;
-    if (/[!@#$%^&*()_+{}\[\]:;"'<>,.?/\\|`~\-]/.test(password)) strength += 25;
+    if (password.length >= 8) strength += 20;
+    if (/[a-z]/.test(password)) strength += 20;
+    if (/[A-Z]/.test(password)) strength += 20;
+    if (/[0-9]/.test(password)) strength += 20;
+    if (/[!@#$%^&*()_+{}\[\]:;"'<>,.?/\\|`~\-]/.test(password)) strength += 20;
     if (strength === 125) strength = 100;
     setPasswordStrength(strength);
   };
@@ -122,7 +122,7 @@ const SignUpPage = () => {
                 <div className="mb-2">
                   <div className="h-2 w-full bg-figma-white rounded-full">
                     <div
-                      className={`h-full rounded-full 
+                      className={`h-full rounded-full  
                                 ${
                                   passwordStrength === 0
                                     ? "bg-figma-red"
