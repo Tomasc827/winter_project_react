@@ -12,6 +12,7 @@ import BookmarkPage from "./assets/components/BookmarkPage.jsx";
 import SignUpPage from "./assets/components/SignUpPage.jsx";
 import NotFound from "./assets/components/NotFound.jsx";
 
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>

@@ -1,17 +1,18 @@
 import { Outlet } from 'react-router'
 import './App.css'
-import Logo from './assets/components/formatted_svg/Logo'
+import NavBar from "./assets/components/NavBar.jsx";
 
 function App() {
-
-
   return (
     <>
-    <p className='figma-error-red'>Lorem ipsum dolor sit amet</p>
-    <Logo/>
-    <Outlet/>
+    
+      <div className="justify-self-center">
+        <NavBar />
+      </div>
+
+      <Outlet />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
