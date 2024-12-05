@@ -487,9 +487,22 @@
   ],
   "users": [
     {
-      "id": "7c38",
-      "email": "something@email.com",
-      "password": "Something9!"
+      "id": "dcca",
+      "email": "q@a.com",
+      "password": "U29tZXRoaW5nOSE=",
+      "avatar": "../img/avatar.jpg"
+    },
+    {
+      "id": "2d34",
+      "email": "qq@a.com",
+      "password": "U29tZXRoaW5nOSE=",
+      "avatar": "../img/avatar.jpg"
+    },
+    {
+      "id": "3b29",
+      "email": "q@a1.com",
+      "password": "U29tZXRoaW5nOSE=",
+      "avatar": "../img/avatar.jpg"
     }
   ]
 }
