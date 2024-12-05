@@ -6,6 +6,7 @@ import { useState } from "react";
 import { postData } from "../helpers/post";
 import SignUpSuccess from "./SignUpSuccess";
 
+
 const SignUpPage = () => {
   const { setUsers, setError, navigate, setSuccess, encodedPassword,error,success} = useData();
   const [passwordStrength, setPasswordStrength] = useState(0);
@@ -185,7 +186,7 @@ const SignUpPage = () => {
             </button>
             <p className="figma-body-m text-figma-white tablet:ps-[3.81rem] phone:ps-[2.19rem]">
               Already have an account?
-              <span className="ps-[0.5rem] text-figma-red">Login</span>
+              <span className="ps-[0.5rem] text-figma-red cursor-pointer" onClick={() => navigate("/login")}>Login</span>
             </p>
           </form>
         </div>
