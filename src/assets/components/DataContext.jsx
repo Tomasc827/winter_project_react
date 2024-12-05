@@ -9,6 +9,7 @@ export const DataProviders = ({ children }) => {
   const [error,setError] = useState("")
   const [processing, setProcessing] = useState(false)
   const [success, setSuccess] = useState("")
+  const [currentUser,setCurrentUser] = useState({})
   const navigate = useNavigate()
   const encodedPassword = (password) => {
     return btoa(password)
@@ -19,7 +20,7 @@ export const DataProviders = ({ children }) => {
     <DataContext.Provider
       value={
         {
-          users,setUsers,error, setError, navigate,success,setSuccess,encodedPassword, processing,setProcessing
+          users,setUsers,error, setError, navigate,success,setSuccess,encodedPassword, processing,setProcessing,currentUser,setCurrentUser
         }
       }
     >
