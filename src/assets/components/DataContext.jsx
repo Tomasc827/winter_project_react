@@ -1,15 +1,16 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 const DataContext = createContext();
 
 export const DataProviders = ({ children }) => {
   //use state, variables, other functions are typed here to be turned into props
-
+const [movies, setMovies] = useState([])
   return (
     <DataContext.Provider
       value={
         {
           /*this is where you put what you want to export */
+          movies, setMovies
         }
       }
     >
