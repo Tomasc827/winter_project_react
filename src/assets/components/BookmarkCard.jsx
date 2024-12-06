@@ -7,8 +7,17 @@ const BookmarkCard = (props) => {
   }
   return (
     <div>
-      <div className="relative">
-        <img className="rounded-lg" src={props.thumbnail} alt="" />
+      <div className="relative group">
+        <img
+          className="rounded-lg group-hover:blur-sm"
+          src={props.thumbnail}
+          alt=""
+        />
+        <img
+          className="absolute hidden pointer-events-none group-hover:block top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[30%]  "
+          src="src/assets/svg/icon-play.svg"
+          alt=""
+        />
         <BookmarkButton
           media_id={props.media_id}
           isBookmarked={props.isBookmarked}
