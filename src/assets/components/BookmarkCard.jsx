@@ -1,5 +1,10 @@
 import BookmarkButton from "./BookmarkButton";
 const BookmarkCard = (props) => {
+  let categoryIcon = "src/assets/svg/icon-category-tv.svg";
+
+  if (props.category == "Movie") {
+    categoryIcon = "src/assets/svg/icon-category-movie.svg";
+  }
   return (
     <div>
       <div className="relative">
@@ -11,8 +16,10 @@ const BookmarkCard = (props) => {
       </div>
       <div className="mt-2">
         <p className="figma-body-s">
-          <span>{props.year} · </span> <span>{props.category} · </span>{" "}
-          <span>{props.rating}</span>
+          <span>{props.year} · </span>
+          <img className="inline" src={categoryIcon} alt="" />
+          <span> {props.category} ·</span>
+          <span> {props.rating}</span>
         </p>
         <h1 className="figma-heading-xs">{props.title}</h1>
       </div>
