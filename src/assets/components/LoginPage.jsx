@@ -47,7 +47,7 @@ const LoginPage = () => {
             <h2 className="figma-heading-l text-white pb-[2.5rem]">Login</h2>
             <div className="relative">
               <input
-                className={`tablet:w-[21rem] h-[2.3125rem] phone:w-[17.4375rem] input-login-style mb-[1.5rem] text-white figma-body-m focus:border-b-2 caret-figma-red autofill:transition-colors autofill:duration-[5000000ms]  ${
+                className={`tablet:w-[21rem] h-[2.3125rem] phone:w-[17.4375rem] input-login-style mb-[1.5rem] text-white figma-body-m focus:border-b-2 caret-figma-red ${
                   errors.email
                     ? "focus:border-figma-red border-figma-red"
                     : "focus:border-figma-white"
