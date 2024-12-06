@@ -79,3 +79,11 @@ line-height: 1.2;
 color: #FC4747;
 }
 
+#myInput:-webkit-autofill {
+  background-color: #161D2F !important;
+  color: #161D2F !important;
+}
+
+#myInput:-webkit-autofill::placeholder {
+  color: #161D2F !important;
+}
