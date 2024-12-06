@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import BookmarkCard from "./BookmarkCard";
+import MediaCard from "./MediaCard";
 import axios from "axios";
 const BookmarkPage = () => {
   const [data, setData] = useState([]);
 
   const createBookmarkCard = (media) => {
-    // BookmarkCard takes up a lot of space, that's why we have this function
+    // MediaCard takes up a lot of space, that's why we have this function
     return (
-      <BookmarkCard
+      <MediaCard
         thumbnail={media.thumbnail.regular.large.slice(3)}
         title={media.title}
         year={media.year}

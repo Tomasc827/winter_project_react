@@ -1,5 +1,5 @@
 import BookmarkButton from "./BookmarkButton";
-const BookmarkCard = (props) => {
+const MediaCard = (props) => {
   let categoryIcon = "src/assets/svg/icon-category-tv.svg";
 
   if (props.category == "Movie") {
@@ -36,4 +36,4 @@ const BookmarkCard = (props) => {
   );
 };
 
-export default BookmarkCard;
+export default MediaCard;
