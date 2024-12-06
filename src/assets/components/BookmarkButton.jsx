@@ -1,19 +1,14 @@
+import axios from "axios";
 const BookmarkButton = (props) => {
   const bookmarkMedia = () => {
     const setBookmark = async () => {
       try {
-        const response = await fetch(
+        const response = await axios.patch(
           `http://localhost:5000/content/${props.media_id}`,
           {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ isBookmarked: !props.isBookmarked }),
+            isBookmarked: !props.isBookmarked,
           }
         );
-        if (response.ok) {
-        }
       } catch (error) {
         throw new Error(error.message);
       }

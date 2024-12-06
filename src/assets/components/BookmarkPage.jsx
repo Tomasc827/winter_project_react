@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import BookmarkCard from "./BookmarkCard";
+import axios from "axios";
 const BookmarkPage = () => {
   const [data, setData] = useState([]);
 
@@ -22,10 +23,9 @@ const BookmarkPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/content");
-        const converted = await response.json();
-        if (response.ok) {
-          setData(converted);
+        const response = await axios.get("http://localhost:5000/content");
+        if (response.status == 200) {
+          setData(response.data);
         }
       } catch (error) {
         throw new Error(error.message);
