@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router'
 import './App.css'
+import Trending from  './assets/components/Trending.jsx'
 import Logo from './assets/components/formatted_svg/Logo'
 
 function App() {
@@ -7,8 +8,7 @@ function App() {
 
   return (
     <>
-    <p className='figma-error-red'>Lorem ipsum dolor sit amet</p>
-    <Logo/>
+    <Trending/>
     <Outlet/>
     </>
   )
