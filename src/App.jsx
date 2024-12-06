@@ -9,7 +9,6 @@ function App() {
       <div className="justify-self-center">
         <NavBar />
       </div>
-
       <Outlet />
     </>
   );
