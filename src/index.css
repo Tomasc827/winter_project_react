@@ -13,7 +13,7 @@
 
 @layer components {
   .input-login-style {
-   @apply bg-figma-semi-dark-blue border-0 border-b-[0.0625rem] border-figma-greyish-blue p-0 ps-[1rem] focus:border-0 figma-body-s align-top pb-[1.12rem]  focus:ring-0 
+   @apply bg-figma-semi-dark-blue border-0 border-b-[0.0625rem] border-figma-greyish-blue p-0 ps-[1rem] focus:border-0 figma-body-s align-top pb-[1.12rem]  focus:ring-0 autofill:transition-colors autofill:duration-[999999999s]
   }
 }
 
@@ -77,13 +77,4 @@ font-style: normal;
 font-weight: 300;
 line-height: 1.2;
 color: #FC4747;
-}
-
-#myInput:-webkit-autofill {
-  background-color: #161D2F !important;
-  color: #161D2F !important;
-}
-
-#myInput:-webkit-autofill::placeholder {
-  color: #161D2F !important;
 }
