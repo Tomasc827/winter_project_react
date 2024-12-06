@@ -46,7 +46,7 @@ const BookmarkPage = () => {
       </div>
 
       <h1 className="figma-heading-large pt-10">Bookmarked TV Series</h1>
-      <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 gap-4 mt-10">
+      <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 gap-4 pt-10">
         {data.map((media, index) => {
           if (media.isBookmarked && media.category == "TV Series") {
             return createBookmarkCard(media);
