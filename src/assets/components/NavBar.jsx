@@ -1,4 +1,4 @@
-import {Link} from "react-router";
+////import {Link} from "react-router";
 import IconNavHome from "../svg/icon-nav-home.svg";
 import IconNavMovies from "../svg/icon-nav-movies.svg";
 import IconNavTVSeries from "../svg/icon-nav-tv-series.svg";
@@ -7,36 +7,46 @@ import Logo from "../svg/logo.svg";
 import Favicon from "../svg/favicon-32x32.png";
 ////import ImageAvatar from "../svg/image-avatar.png";
 ///import Homepage from "./assets/components/Homepage.jsx";
-
+////////////////////////////////////////////December6 Below
+import { NavLink } from "react-router";
 
 const NavBar = () => {
   return (
-    <nav className="navbar btn">
-      <div><img src={Logo} alt="Logo" /></div>
-      <div>
-        <Link to="/" className="nav-link btn btn-ghost">
-          <img src={IconNavHome} alt="Home" />
-        </Link>
+    <nav className="Navbar flex flex-col">
+      <span className="NavTopSection btn btn-ghost">
+        <img className="LogoIcon" src={Logo} alt="Logo" />
+      </span>
+
+      <div className="NavMiddleSection">
+        <div>
+          <NavLink to="/" className="NavLinkButton btn btn-ghost">
+            <img className="HomeIcon" src={IconNavHome} alt="Home" />
+          </NavLink>
+        </div>
+
+        <div>
+          <NavLink to="/movies" className="NavLinkButton btn btn-ghost">
+            <img className="MovieIcon" src={IconNavMovies} alt="Movies" />
+          </NavLink>
+        </div>
+
+        <div>
+          <NavLink to="/tvseries" className="NavLinkButton btn btn-ghost">
+            <img className="TVSeriesIcon" src={IconNavTVSeries} alt="TV Series" />
+          </NavLink>
+        </div>
+
+        <div>
+          <NavLink to="/bookmarked" className="NavLinkButton btn btn-ghost">
+            <img className="BookmarkedShowsIcon" src={IconNavBookmark} alt="Bookmarked Shows" />
+          </NavLink>
+        </div>
       </div>
-      <div>
-        <Link to="/movies" className="nav-link btn btn-ghost">
-          <img src={IconNavMovies} alt="Movies" />
-        </Link>
-      </div>
-      <div>
-        <Link to="/tvseries" className="nav-link btn btn-ghost">
-          <img src={IconNavTVSeries} alt="TV Series" />
-        </Link>
-      </div>
-      <div>
-        <Link to="/bookmarked" className="nav-link btn btn-ghost">
-          <img src={IconNavBookmark} alt="Bookmarked Shows" />
-        </Link>
-      </div>
-      <div>
-        <Link to="/login" className="nav-link btn btn-ghost">
-          <img src={Favicon} alt="favicon-32x32" />
-        </Link>
+
+      <div className="NavBottomSection">
+        <NavLink to="/login" className="NavLinkButton btn btn-ghost">
+          <img className="LogInIcon" src={Favicon} alt="favicon-32x32" />
+        </NavLink>
       </div>
     </nav>
   );
