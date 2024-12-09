@@ -25,14 +25,6 @@ const MediaCard = (props) => {
             />
             <p className="mr-8 text-white font-semibold">Play</p>
           </div>
-          {/* <img
-            className="absolute top-1/2 left-4 transform -translate-y-1/2 w-[30%]"
-            src="src/assets/svg/icon-play.svg"
-            alt=""
-          />
-          <p className="absolute top-1/2 left-[50%] transform -translate-y-1/2 text-white text-2xl font-semibold">
-            Play
-          </p> */}
         </div>
 
         <BookmarkButton
