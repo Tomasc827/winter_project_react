@@ -21,7 +21,7 @@ const SearchBar = (props) => {
       />
       <input
         type="text"
-        className="grow bg-transparent border-0 focus:ring-0 text-2xl w-full"
+        className="grow bg-transparent border-0 focus:shadow-[0_1px_0_0] focus:shadow-figma-greyish-blue focus:ring-0 text-2xl w-full"
         placeholder={props.placeholder}
         onChange={inputHandler}
       />
