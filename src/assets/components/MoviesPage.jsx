@@ -3,9 +3,11 @@ import { useData } from "./DataContext";
 import IconCategoryMovie from "./formatted_svg/IconCategoryMovie";
 import IconBookmarkEmpty from "./formatted_svg/IconBookmarkEmpty";
 import IconSearch from "./formatted_svg/IconSearch";
+import IconPlay from "./formatted_svg/IconPlay";
 
 const MoviesPage = () => {
   const { movies, setMovies } = useData();
+
   useEffect(() => {
     fetch("http://localhost:5000/content")
       .then((response) => response.json())
@@ -27,11 +29,12 @@ const MoviesPage = () => {
           <input
             type="text"
             placeholder="Search for movies"
-            className="figma-heading-m p-0 bg-transparent flex-1 border-0 focus:border-0 focus:border-b-[0.06rem] focus:ring-0 focus:border-figma-greyish-blue
+            className="figma-heading-m p-0 bg-transparent border-0 focus:shadow-[0_1px_0_0] focus:shadow-figma-greyish-blue focus:ring-0 focus:border-figma-greyish-blue
             phone:text-base phone:h-5
             tablet:h-[1.875rem]
             desktop:h-[1.875rem]
             caret-figma-red
+            w-[30.25rem]
             "
           />
         </div>
@@ -63,21 +66,38 @@ const MoviesPage = () => {
                 desktop:w-[17.5rem] desktop:h-[14.125rem]
                 "
               >
-                <picture>
-                  <source
-                    media="(min-width: 1440px)"
-                    srcSet={movie.thumbnail.regular.large}
-                  />
-                  <source
-                    media="(min-width: 768px)"
-                    srcSet={movie.thumbnail.regular.medium}
-                  />
-                  <img
-                    src={movie.thumbnail.regular.small}
-                    alt={movie.title}
-                    className="w-full rounded-lg"
-                  />
-                </picture>
+                <div className="group relative">
+                  <picture>
+                    <source
+                      media="(min-width: 1440px)"
+                      srcSet={movie.thumbnail.regular.large}
+                    />
+                    <source
+                      media="(min-width: 768px)"
+                      srcSet={movie.thumbnail.regular.medium}
+                    />
+                    <img
+                      src={movie.thumbnail.regular.small}
+                      alt={movie.title}
+                      className="w-full rounded-lg"
+                    />
+                  </picture>
+
+                  <div
+                    className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem]
+               tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg
+               "
+                  >
+                    <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem]">
+                      <span className="py-[0.56rem]">
+                        <IconPlay />
+                      </span>
+                      <span className="figma-heading-xs pt-[0.75rem] pb-[0.81rem]">
+                        Play
+                      </span>
+                    </button>
+                  </div>
+                </div>
 
                 <div
                   className="absolute
