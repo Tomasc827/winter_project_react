@@ -1,11 +1,13 @@
 import { Outlet } from 'react-router'
 import './App.css'
+import Navbar from './assets/components/Navbar'
 
 function App() {
 
 
   return (
     <>
+    <Navbar/>
     <Outlet/>
     </>
   )

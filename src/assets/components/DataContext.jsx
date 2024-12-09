@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 const DataContext = createContext();
@@ -10,23 +10,49 @@ export const DataProviders = ({ children }) => {
   const [error,setError] = useState("")
   const [processing, setProcessing] = useState(false)
   const [success, setSuccess] = useState("")
-  const [currentUser,setCurrentUser] = useState({})
+  const [currentUser,setCurrentUser] = useState(() => {
+    const savedUser = localStorage.getItem("currentUser")
+    return savedUser ? JSON.parse(savedUser) : {}
+  })
   const navigate = useNavigate()
   const encodedPassword = (password) => {
     return btoa(password)
+     // End of signup/login page
   }
-  // End of signup/login page
+       //Navbar exports
+       const [avatar,setAvatar] = useState(() => {
+        const savedAvatar = localStorage.getItem("avatar")
+        return savedAvatar || null
+       })
+       //End of Navbar
+       //Global exports
+       useEffect(() => {
+        if (Object.keys(currentUser).length > 0) {
+          localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        }
+      }, [currentUser]);
 
-  // Movies page
+      useEffect(() => {
+        if (avatar) {
+          localStorage.setItem("avatar",avatar)
+        }
+      },[avatar])
+
+      const logout = () => {
+        setCurrentUser({})
+        setAvatar({});
+        localStorage.removeItem("currentUser")
+        localStorage.removeItem("avatar")
+        navigate("/")
+      }
+        // Movies page
 const [movies, setMovies] = useState([])
 
   return (
     <DataContext.Provider
       value={
         {
-          /*this is where you put what you want to export */
-
-          users,setUsers,error, setError, navigate,success,setSuccess,encodedPassword, processing,setProcessing,currentUser,setCurrentUser, movies, setMovies
+          users,setUsers,error, setError, navigate,success,setSuccess,encodedPassword, processing,setProcessing,currentUser,setCurrentUser, avatar, setAvatar, logout,movies,setMovies
         }
       }
     >

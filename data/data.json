@@ -496,25 +496,53 @@
       "id": "2d34",
       "email": "qq@a.com",
       "password": "U29tZXRoaW5nOSE=",
+<<<<<<< HEAD
       "avatar": "../img/avatar.jpg"
+=======
+      "avatar": "/img/avatar.jpg"
+>>>>>>> 2aed1a0 (initial commit)
     },
     {
       "id": "3b29",
       "email": "q@a1.com",
       "password": "U29tZXRoaW5nOSE=",
+<<<<<<< HEAD
       "avatar": "../img/avatar.jpg"
+=======
+      "avatar": "/img/avatar.jpg"
+>>>>>>> 2aed1a0 (initial commit)
     },
     {
       "id": "88ca",
       "email": "something@email.com",
       "password": "U29tZXRoaW5nOSE=",
+<<<<<<< HEAD
       "avatar": "../img/avatar.jpg"
+=======
+      "avatar": "/avatar.jpg"
+>>>>>>> 2aed1a0 (initial commit)
     },
     {
       "id": "36dc",
       "email": "Something9@some.com",
       "password": "U29tZXRoaW5nOSE=",
+<<<<<<< HEAD
       "avatar": "../img/avatar.jpg"
+=======
+      "avatar": "/img/avatar.jpg"
+    },
+    {
+      "id": "0021",
+      "email": "something@email1.com",
+      "password": "U29tZXRoaW5nOSE=",
+      "avatar": "/avatar.jpg"
+    },
+    {
+      "id": "dcda",
+      "email": "something2@email.com",
+      "password": "U29tZXRoaW5nOSE=",
+      "avatar": "/img/avatar.jpg"
+>>>>>>> 2aed1a0 (initial commit)
     }
   ]
 }

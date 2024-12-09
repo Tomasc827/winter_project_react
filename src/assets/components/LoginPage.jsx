@@ -6,7 +6,7 @@ import SignUpSuccess from "./SignUpSuccess";
 import { loginUser } from "../helpers/getUser";
 
 const LoginPage = () => {
-  const { setError, navigate, setSuccess, error, processing, setCurrentUser } =
+  const { setError, navigate, setSuccess, error, processing, setCurrentUser,setAvatar } =
     useData();
 
   const {
@@ -20,10 +20,12 @@ const LoginPage = () => {
 
     try {
       const user = await loginUser(data);
+      console.log("User data from login:", user)
       setCurrentUser(user);
+      setAvatar(user.avatar)
       setSuccess("Login successful");
       setTimeout(() => {
-        navigate("/homepage");
+        navigate("/");
         setSuccess("");
       }, 2500);
     } catch (error) {
@@ -58,14 +60,16 @@ const LoginPage = () => {
                 {...register("email", {
                   required: "Can't be empty",
                   pattern: {
-                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    value:
+                      /^[a-zA-Z0-9%+-]+(\.[a-zA-Z0-9%+-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,100}$/,
+
                     message: "Invalid email format",
                   },
                 })}
               ></input>
 
               {errors && (
-                <p className="figma-error-red absolute z-50 right-[1.06rem] inline top-[0.13rem] ">
+                <p className="figma-error-red absolute z-50 right-[1.06rem] inline top-[1rem] ">
                   {errors.email?.message}
                 </p>
               )}
@@ -84,24 +88,17 @@ const LoginPage = () => {
                   required: "Can't be empty",
                   pattern: {
                     value:
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?/\\|`~\-]).{8,}$/,
-                    message:
-                      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special symbol",
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?/\\|`~\-]).{8,50}$/,
                   },
                 })}
               ></input>
               {errors.password?.type === "required" && (
-                <p className="figma-error-red absolute z-50 right-[1.06rem] inline top-[0.13rem]">
+                <p className="figma-error-red absolute z-50 right-[1.06rem] inline top-[1rem]">
                   {errors.password.message}
                 </p>
               )}
             </div>
             <div className="relative">
-              {errors.password?.type === "pattern" && (
-                <p className="figma-error-red mb-[1rem] z-50 right-[1.06rem]  top-[0.13rem] tablet:w-[21rem] h-[2.3125rem] phone:w-[17.4375rem] ">
-                  {errors.password.message}
-                </p>
-              )}
             </div>
             <button
               className="bg-figma-red text-figma-white tablet:w-[21rem] h-[3rem] phone:w-[17.4375rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"

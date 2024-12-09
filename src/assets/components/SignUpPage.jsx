@@ -6,9 +6,17 @@ import { useState } from "react";
 import { postData } from "../helpers/post";
 import SignUpSuccess from "./SignUpSuccess";
 
-
 const SignUpPage = () => {
-  const { setUsers, setError, navigate, setSuccess, encodedPassword,error,success} = useData();
+  const {
+    setUsers,
+    setError,
+    navigate,
+    setSuccess,
+    encodedPassword,
+    error,
+    success,
+    setAvatar
+  } = useData();
   const [passwordStrength, setPasswordStrength] = useState(0);
 
   const calculatePasswordStrength = (password) => {
@@ -37,17 +45,19 @@ const SignUpPage = () => {
       const { confirmPassword, ...userData } = data;
       const encodedData = {
         ...userData,
-        password: encodedPassword(userData.password)
-      }
-      const response = await postData({...encodedData,
-        avatar: "../img/avatar.jpg" 
+        password: encodedPassword(userData.password),
+      };
+      const response = await postData({
+        ...encodedData,
+        avatar: "/avatar.jpg",
       });
       setUsers(response);
+      setAvatar(response.avatar)
       setSuccess("You have been successfully registered");
       reset();
       setTimeout(() => {
         navigate("/login");
-        setSuccess("")
+        setSuccess("");
       }, 2500);
     } catch (error) {
       setError(error.message);
@@ -60,7 +70,7 @@ const SignUpPage = () => {
   return (
     <>
       <ErrorServer />
-      <SignUpSuccess/>
+      <SignUpSuccess />
       <div className="desktop:pt-[4.9rem] desktop:pb-[12.81rem] desktop:min-w-[90rem] tablet:pt-[5.5rem] tablet:pb-[26.25rem] tablet:px-[11.5rem] phone:pt-[3rem] phone:pb-[7.19rem] phone:px-[1.5rem]">
         <div className="flex justify-center desktop:mb-[5.19rem] tablet:pb-[4.53rem] phone:pb-[3.65rem]">
           <Logo />
@@ -81,18 +91,18 @@ const SignUpPage = () => {
                 placeholder="Email address"
                 type="text"
                 id="email"
-              
                 {...register("email", {
                   required: "Can't be empty",
                   pattern: {
-                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                    value:
+                      /^[a-zA-Z0-9%+-]+(\.[a-zA-Z0-9%+-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,100}$/,
                     message: "Invalid email format",
                   },
                 })}
               ></input>
 
               {errors && (
-                <p className="figma-error-red absolute z-50 right-[1.06rem] inline top-[0.13rem] ">
+                <p className="figma-error-red absolute z-50 right-[1.06rem] inline top-[1rem] ">
                   {errors.email?.message}
                 </p>
               )}
@@ -111,9 +121,9 @@ const SignUpPage = () => {
                   required: "Can't be empty",
                   pattern: {
                     value:
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?/\\|`~\-]).{8,}$/,
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?/\\|`~\-]).{8,50}$/,
                     message:
-                      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special symbol",
+                      "Password must contain at least one uppercase letter, one lowercase letter, one number,one special symbol and be at least 8 characters long",
                   },
                   onChange: (e) => calculatePasswordStrength(e.target.value),
                 })}
@@ -141,7 +151,7 @@ const SignUpPage = () => {
                 </div>
               )}
               {errors.password?.type === "required" && (
-                <p className="figma-error-red absolute z-50 right-[1.06rem] inline top-[0.13rem]">
+                <p className="figma-error-red absolute z-50 right-[1.06rem] inline top-[1rem]">
                   {errors.password.message}
                 </p>
               )}
@@ -152,13 +162,14 @@ const SignUpPage = () => {
                   errors.confirmPassword
                     ? "focus:border-figma-red border-figma-red"
                     : "focus:border-figma-white"
-                }`} 
-              
+                }`}
                 placeholder="Confirm password"
                 type="password"
                 id="confirmPassword"
                 {...register("confirmPassword", {
                   required: "Can't be empty",
+                  pattern:
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?/\\|`~\-]).{8,50}$/,
                   validate: (value) => {
                     if (value !== watch("password")) {
                       return "Passwords must match";
@@ -167,12 +178,12 @@ const SignUpPage = () => {
                 })}
               ></input>
               {errors.confirmPassword && (
-                <p className="figma-error-red absolute z-50 right-[1.06rem] inline top-[0.13rem]">
+                <p className="figma-error-red absolute z-50 right-[1.06rem] inline top-[1rem]">
                   {errors.confirmPassword.message}
                 </p>
               )}
               {errors.password?.type === "pattern" && (
-                <p className="figma-error-red mb-[1rem] z-50 right-[1.06rem]  top-[0.13rem] tablet:w-[21rem] h-[2.3125rem] phone:w-[17.4375rem] ">
+                <p className="figma-error-red mb-[1rem] z-50 right-[1.06rem]  top-[1rem] tablet:w-[21rem] h-[2.3125rem] phone:w-[17.4375rem] ">
                   {errors.password.message}
                 </p>
               )}
@@ -187,7 +198,12 @@ const SignUpPage = () => {
             </button>
             <p className="figma-body-m text-figma-white tablet:ps-[3.81rem] phone:ps-[2.19rem]">
               Already have an account?
-              <span className="ps-[0.5rem] text-figma-red cursor-pointer" onClick={() => navigate("/login")}>Login</span>
+              <span
+                className="ps-[0.5rem] text-figma-red cursor-pointer"
+                onClick={() => navigate("/login")}
+              >
+                Login
+              </span>
             </p>
           </form>
         </div>
