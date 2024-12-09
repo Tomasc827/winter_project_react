@@ -34,7 +34,9 @@ const MoviesPage = () => {
             tablet:h-[1.875rem]
             desktop:h-[1.875rem]
             caret-figma-red
-            w-[30.25rem]
+            desktop:w-[30.25rem]
+            tablet:w-[20rem]
+            phone:w-[15rem]
             "
           />
         </div>
