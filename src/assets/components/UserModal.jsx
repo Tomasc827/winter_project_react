@@ -1,34 +1,109 @@
-import { useForm } from "react-hook-form";
 import { useData } from "./DataContext";
-import { loginUser } from "../helpers/getUser";
+import { putData } from "../helpers/update";
+import { useEffect, useState } from "react";
+import EmailInput from "./inputs/EmailInput";
+import AvatarInput from "./inputs/AvatarInput";
+import CurrentPasswordInput from "./inputs/CurrentPasswordInput";
+import NewPasswordInput from "./inputs/NewPasswordInput";
+import UpdateConfirmPassword from "./inputs/UpdateConfirmPassword";
+import { useForm } from "react-hook-form";
 
 const UserModal = () => {
-  const {logout, setError, navigate, setSuccess, error, processing, setCurrentUser,setAvatar } =
-    useData();
+  const {
+    currentUser,
+    setSuccess,
+    setCurrentUser,
+    setUserModal,
+    logout,
+    avatar,
+    setError,
+    navigate,
+    error,
+    processing,
+    setAvatar,
+    encodedPassword
+  } = useData();
 
   const {
     register,
     formState: { errors },
     handleSubmit,
+    watch,
+    setValue,
+    reset
   } = useForm();
 
-  const onSubmit = async (data) => {
-    if (error || processing) return;
+ const[passwordError, setPasswordError] = useState("")
 
-    try {
-      const user = await loginUser(data);
-      console.log("User data from login:", user)
-      setCurrentUser(user);
-      setAvatar(user.avatar)
-      setSuccess("Login successful");
+  const verifyCurrentPassword = (currentPassword) => {
+    const encodedCurrentPassword = encodedPassword(currentPassword)
+    return currentUser.password === encodedCurrentPassword
+  }
+
+const onSubmit = async (data) => {
+  if (error || processing) return;
+
+  try {
+    
+    if (!verifyCurrentPassword(data.currentPassword)) {
+      setPasswordError("Current password is incorrect");
       setTimeout(() => {
-        navigate("/");
+        setPasswordError("");
+      }, 3000);
+      return;
+    }
+
+    if (data.newPassword !== data.confirmPassword) {
+      setPasswordError("New passwords don't match");
+      setTimeout(() => {
+        setPasswordError("");
+      }, 3000);
+      return;
+    }
+
+    const updateData = {
+      email: data.email,
+      avatar: data.avatar
+    };
+
+    if (data.newPassword) {
+      updateData.password = encodedPassword(data.newPassword);
+    }
+
+    
+    const updatedUser = await putData(currentUser.id, updateData);
+
+    if (updatedUser) {
+      setCurrentUser(updatedUser);
+      if (updatedUser.avatar) {
+        setAvatar(updatedUser.avatar)
+      }
+      setSuccess("Your details have been successfully updated");
+      setUserModal(false);
+      setTimeout(() => {
         setSuccess("");
       }, 2500);
-    } catch (error) {
-      setError(error.message);
+    } else {
+      throw new Error('No data received from update');
     }
-  };
+
+  } catch (error) {
+    console.error('Error in onSubmit:', error);
+    setError(error.message || 'Failed to update user');
+    setTimeout(() => {
+      setError("");
+    }, 3000);
+  }
+};
+
+  useEffect(() => {
+    if (currentUser) {
+      const { avatar, email } = currentUser;
+      reset()
+      setValue("email", email);
+      setValue("avatar", avatar);
+    }
+  }, [currentUser]);
 
   return (
     <>
@@ -38,68 +113,35 @@ const UserModal = () => {
             className="tablet:min-w-[25rem] tablet:min-h-[23.3125rem]  bg-figma-semi-dark-blue rounded-[1.25rem] tablet:p-[2rem] phone:p-[1.5rem] phone:flex phone:flex-col phone:min-w-[20.4375rem] phone:min-h-[22.8125rem]"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <h2 className="figma-heading-l text-white pb-[2.5rem]">Update</h2>
-            <div className="relative">
-              <input
-                className={`tablet:w-[21rem] h-[2.3125rem] phone:w-[17.4375rem] input-login-style mb-[1.5rem] text-white figma-body-m focus:border-b-2 caret-figma-red ${
-                  errors.email
-                    ? "focus:border-figma-red border-figma-red"
-                    : "focus:border-figma-white"
-                }`}
-                placeholder="Email address"
-                type="text"
-                id="email"
-                {...register("email", {
-                  required: "Can't be empty",
-                  pattern: {
-                    value:
-                      /^[a-zA-Z0-9%+-]+(\.[a-zA-Z0-9%+-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,100}$/,
-
-                    message: "Invalid email format",
-                  },
-                })}
-              ></input>
-
-              {errors && (
-                <p className="figma-error-red absolute z-50 right-[1.06rem] inline top-[1rem] ">
-                  {errors.email?.message}
-                </p>
-              )}
+            {" "}
+            <div className="flex justify-between">
+              <h2 className="figma-heading-l text-white pb-[2.5rem]">Update</h2>
+              <img
+                src={avatar}
+                alt="profile"
+                className="w-[2.5rem] h-[2.5rem] rounded-[2.5rem] border border-figma-white"
+              ></img>
             </div>
-            <div className="relative">
-              <input
-                className={`tablet:w-[21rem] h-[2.3125rem] phone:w-[17.4375rem] input-login-style mb-[2.5rem] text-white figma-body-m focus:border-b-2 caret-figma-red  ${
-                  errors.password
-                    ? "focus:border-figma-red border-figma-red"
-                    : "focus:border-figma-white"
-                }`}
-                placeholder="Password"
-                type="password"
-                id="password"
-                {...register("password", {
-                  required: "Can't be empty",
-                  pattern: {
-                    value:
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?/\\|`~\-]).{8,50}$/,
-                  },
-                })}
-              ></input>
-              {errors.password?.type === "required" && (
-                <p className="figma-error-red absolute z-50 right-[1.06rem] inline top-[1rem]">
-                  {errors.password.message}
-                </p>
-              )}
-            </div>
-            <div className="relative">
-            </div>
+            <EmailInput register={register} errors={errors}/>
+            <AvatarInput register={register} errors={errors}/>
+            <CurrentPasswordInput register={register} errors={errors}/>
+            <NewPasswordInput register={register} errors={errors}/>
+            <UpdateConfirmPassword register={register} errors={errors} watch={watch}/>
+            <div className="relative"></div>
             <button
               className="bg-figma-red text-figma-white tablet:w-[21rem] h-[3rem] phone:w-[17.4375rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
               type="submit"
-              value="submit"
+            >
+              Update
+            </button>
+            <button
+              className="bg-figma-red text-figma-white tablet:w-[21rem] h-[3rem] phone:w-[17.4375rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
               onClick={() => logout()}
+              type="button"
             >
               Logout
             </button>
+            
             <p className="figma-body-m text-figma-white  tablet:ps-[3.75rem] phone:ps-[2.19rem]">
               Don't have an account?
               <span

@@ -513,14 +513,19 @@
 >>>>>>> 2aed1a0 (initial commit)
     },
     {
-      "id": "88ca",
       "email": "something@email.com",
+<<<<<<< HEAD
       "password": "U29tZXRoaW5nOSE=",
 <<<<<<< HEAD
       "avatar": "../img/avatar.jpg"
 =======
       "avatar": "/avatar.jpg"
 >>>>>>> 2aed1a0 (initial commit)
+=======
+      "avatar": "https://replicate.delivery/pbxt/JF3foGR90vm9BXSEXNaYkaeVKHYbJPinmpbMFvRtlDpH4MMk/out-0-1.png",
+      "password": "U29tZXRoaW5nMTEh",
+      "id": "88ca"
+>>>>>>> 9e5b70c (update modal functional, need tweaking)
     },
     {
       "id": "36dc",
@@ -542,7 +547,16 @@
       "email": "something2@email.com",
       "password": "U29tZXRoaW5nOSE=",
       "avatar": "/img/avatar.jpg"
+<<<<<<< HEAD
 >>>>>>> 2aed1a0 (initial commit)
+=======
+    },
+    {
+      "id": "39d4",
+      "email": "new@someone.com",
+      "password": "U29tZXRoaW5nOSE=",
+      "avatar": "/avatar.jpg"
+>>>>>>> 9e5b70c (update modal functional, need tweaking)
     }
   ]
 }
