@@ -21,7 +21,7 @@ const SearchBar = (props) => {
       />
       <input
         type="text"
-        className="grow bg-transparent border-0 focus:ring-0 text-2xl"
+        className="grow bg-transparent border-0 focus:ring-0 text-2xl w-full"
         placeholder={props.placeholder}
         onChange={inputHandler}
       />
