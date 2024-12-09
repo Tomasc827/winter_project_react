@@ -15,7 +15,7 @@ const MediaCard = (props) => {
           alt=""
         />
 
-        <div className="absolute hidden pointer-events-none group-hover:block duration-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[30%] h-[20%]">
+        <div className="absolute hidden pointer-events-none group-hover:block duration-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-16">
           <div className="opacity-25 absolute rounded-full bg-white w-full h-full"></div>
           <div className="flex flex-row h-full justify-between justify-items-center text-center items-center">
             <img
@@ -23,7 +23,7 @@ const MediaCard = (props) => {
               src="src/assets/svg/icon-play.svg"
               alt=""
             />
-            <p className="mr-[30%] text-white font-semibold">Play</p>
+            <p className="mr-8 text-white font-semibold">Play</p>
           </div>
           {/* <img
             className="absolute top-1/2 left-4 transform -translate-y-1/2 w-[30%]"
@@ -43,7 +43,11 @@ const MediaCard = (props) => {
       <div className="mt-2">
         <p className="figma-body-s">
           <span>{props.year} · </span>
-          <img className="inline" src={categoryIcon} alt="" />
+          <img
+            className="inline"
+            src={categoryIcon}
+            alt=""
+          />
           <span> {props.category} ·</span>
           <span> {props.rating}</span>
         </p>
