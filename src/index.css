@@ -6,7 +6,7 @@
 
 @layer base {
     body {
-        @apply bg-figma-dark-blue min-h-screen
+        @apply bg-figma-dark-blue min-h-screen z-0
     }
 
 }
