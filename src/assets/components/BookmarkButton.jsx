@@ -21,7 +21,7 @@ const BookmarkButton = (props) => {
       className="btn btn-circle opacity-50 absolute top-1 right-1 text-center desktop:w-16 desktop:h-16 tablet:w-16 tablet:h-16"
     >
       <img
-        className="absolute opacity-100 desktop:w-6 desktop:h-6 tablet:w-6 tablet:h-6"
+        className="absolute opacity-100 desktop:w-8 desktop:h-8 tablet:w-8 tablet:h-8 phone:w-6 phone:h-6"
         src={
           props.isBookmarked
             ? "src/assets/svg/icon-bookmark-full.svg"
