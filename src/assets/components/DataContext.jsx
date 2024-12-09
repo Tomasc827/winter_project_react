@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import defaultImage from "../img/favicon-32x32.png";
 
 const DataContext = createContext();
 
@@ -19,10 +20,12 @@ export const DataProviders = ({ children }) => {
      // End of signup/login page
   }
        //Navbar exports
+       const [userModal,setUserModal] = useState(false)
        const [avatar,setAvatar] = useState(() => {
         const savedAvatar = localStorage.getItem("avatar")
         return savedAvatar || null
        })
+       const [loginModal, setLoginModal] = useState(false)
        //End of Navbar
        //Global exports
        useEffect(() => {
@@ -38,18 +41,25 @@ export const DataProviders = ({ children }) => {
       },[avatar])
 
       const logout = () => {
+        
+        console.log("Logging out...");
+        console.log("Current User Before Logout:", currentUser);
         setCurrentUser({})
-        setAvatar({});
+        setAvatar(defaultImage);
+        console.log("Clearing localStorage...");
         localStorage.removeItem("currentUser")
-        localStorage.removeItem("avatar")
-        navigate("/")
+        localStorage.removeItem("avatar");
+        console.log("LocalStorage After Removal:", localStorage.getItem("currentUser"), localStorage.getItem("avatar"));
+        navigate("/login")
+        setUserModal(false);
+        setLoginModal(false);
       }
 
   return (
     <DataContext.Provider
       value={
         {
-          users,setUsers,error, setError, navigate,success,setSuccess,encodedPassword, processing,setProcessing,currentUser,setCurrentUser, avatar, setAvatar, logout
+          users,setUsers,error, setError, navigate,success,setSuccess,encodedPassword, processing,setProcessing,currentUser,setCurrentUser, avatar, setAvatar, logout,loginModal,setLoginModal, userModal,setUserModal
         }
       }
     >
