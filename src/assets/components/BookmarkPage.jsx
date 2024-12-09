@@ -1,8 +1,13 @@
-import { useEffect, useState } from "react";
-import MediaCard from "./MediaCard";
 import axios from "axios";
+
+import { useEffect, useState } from "react";
+
+import MediaCard from "./MediaCard";
+import SearchBar from "./SearchBar";
+
 const BookmarkPage = () => {
   const [data, setData] = useState([]);
+  const [searchData, setSearchData] = useState([]);
 
   const createBookmarkCard = (media) => {
     // MediaCard takes up a lot of space, that's why we have this function
@@ -16,29 +21,39 @@ const BookmarkPage = () => {
         key={media.id}
         media_id={media.id}
         isBookmarked={media.isBookmarked}
+        reloadData={fetchData}
       />
     );
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/content");
-        if (response.status == 200) {
-          setData(response.data);
-        }
-      } catch (error) {
-        throw new Error(error.message);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/content");
+      if (response.status == 200) {
+        setData(response.data);
+        setSearchData(response.data);
       }
-    };
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
+
+  useEffect(() => {
     fetchData();
-  }, [data]);
+  }, []);
   return (
     <div className="w-fit p-12">
-      <h1 className="figma-heading-large">Bookmarked Movies</h1>
+      <SearchBar
+        placeholder="Search for bookmarked shows"
+        icon="src/assets/svg/icon-search.svg"
+        data={data}
+        setSearchData={setSearchData}
+      />
+
+      <h1 className="figma-heading-large pt-10">Bookmarked Movies</h1>
 
       <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 gap-4 pt-10">
-        {data.map((media, index) => {
+        {searchData.map((media, index) => {
           if (media.isBookmarked && media.category == "Movie") {
             return createBookmarkCard(media);
           }
@@ -47,7 +62,7 @@ const BookmarkPage = () => {
 
       <h1 className="figma-heading-large pt-10">Bookmarked TV Series</h1>
       <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 gap-4 pt-10">
-        {data.map((media, index) => {
+        {searchData.map((media, index) => {
           if (media.isBookmarked && media.category == "TV Series") {
             return createBookmarkCard(media);
           }

@@ -9,6 +9,7 @@ const BookmarkButton = (props) => {
             isBookmarked: !props.isBookmarked,
           }
         );
+        props.reloadData();
       } catch (error) {
         throw new Error(error.message);
       }
@@ -27,7 +28,7 @@ const BookmarkButton = (props) => {
             ? "src/assets/svg/icon-bookmark-full.svg"
             : "src/assets/svg/icon-bookmark-empty.svg"
         }
-        alt=""
+        alt="Bookmark icon"
       />
     </button>
   );

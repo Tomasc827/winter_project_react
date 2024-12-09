@@ -12,7 +12,7 @@ const MediaCard = (props) => {
         <img
           className="rounded-lg group-hover:blur-sm duration-500 "
           src={props.thumbnail}
-          alt=""
+          alt="Media thumbnail"
         />
 
         <div className="absolute hidden pointer-events-none group-hover:block duration-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-14">
@@ -21,7 +21,7 @@ const MediaCard = (props) => {
             <img
               className="w-[30%] ml-3"
               src="src/assets/svg/icon-play.svg"
-              alt=""
+              alt="Media play icon"
             />
             <p className="mr-8 text-white font-semibold">Play</p>
           </div>
@@ -30,6 +30,7 @@ const MediaCard = (props) => {
         <BookmarkButton
           media_id={props.media_id}
           isBookmarked={props.isBookmarked}
+          reloadData={props.reloadData}
         />
       </div>
       <div className="mt-2">
@@ -38,7 +39,7 @@ const MediaCard = (props) => {
           <img
             className="inline"
             src={categoryIcon}
-            alt=""
+            alt="Media category icon"
           />
           <span> {props.category} ·</span>
           <span> {props.rating}</span>
