@@ -62,7 +62,7 @@ const SignUpPage = () => {
       <ErrorServer />
       <SignUpSuccess />
       <div className="desktop:pt-[4.9rem] desktop:pb-[12.81rem] desktop:min-w-[90rem] tablet:pt-[5.5rem] tablet:pb-[26.25rem] tablet:px-[11.5rem] phone:pt-[3rem] phone:pb-[7.19rem] phone:px-[1.5rem]">
-        <div className="flex justify-center desktop:mb-[5.19rem] tablet:pb-[4.53rem] phone:pb-[3.65rem]">
+        <div className="flex justify-center desktop:mb-[5.19rem] tablet:mb-[4.53rem] phone:mb-[3.65rem]">
           <Logo />
         </div>
         <div className="phone:flex phone:justify-center">
@@ -70,7 +70,7 @@ const SignUpPage = () => {
             className="tablet:min-w-[25rem] tablet:min-h-[26.125rem]  bg-figma-semi-dark-blue rounded-[1.25rem] tablet:p-[2rem] phone:p-[1.5rem] phone:flex phone:flex-col phone:min-w-[20.4375rem] phone:min-h-[26.25rem]"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <h2 className="figma-heading-l text-white pb-[2.5rem]">Sign up</h2>
+            <h2 className="figma-heading-l text-white pb-[2.5rem]">Sign Up</h2>
             <EmailInput register={register} errors={errors} />
             <StrengthPassword register={register} errors={errors} />
             <ConfirmPasswordSignup
