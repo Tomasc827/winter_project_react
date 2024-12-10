@@ -28,7 +28,7 @@ const MoviesPage = () => {
 
   return (
     <>
-      <div className="text-figma-white phone:px-4 tablet:px-6 desktop:pr-9 desktop:pl-[10.25rem] pt-10 pb-4">
+      <div className="text-figma-white phone:px-4 tablet:px-6 desktop:pr-9 desktop:pl-[10.25rem] pb-4 desktop:pt-10 tablet:pt-32 phone:pt-24">
         <SearchBar
           placeholder="Search for movies"
           icon="src/assets/svg/icon-search.svg"
