@@ -1,48 +1,38 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useData } from "./DataContext";
 import IconCategoryMovie from "./formatted_svg/IconCategoryMovie";
 import IconBookmarkEmpty from "./formatted_svg/IconBookmarkEmpty";
 import IconSearch from "./formatted_svg/IconSearch";
 import IconPlay from "./formatted_svg/IconPlay";
 
+import SearchBar from "./SearchBar";
+
 const MoviesPage = () => {
   const { movies, setMovies } = useData();
+  const [searchMovies, setSearchMovies] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:5000/content")
       .then((response) => response.json())
-      .then((data) => setMovies(data))
+      .then((data) => {
+        setMovies(data);
+        setSearchMovies(data);
+      })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   return (
     <>
-      <div className="text-figma-white phone:px-4 tablet:px-6 desktop:pr-9 desktop:pl-[10.25rem] pb-4">
-        <div
-          className="flex items-center
-        phone:pb-[1.5rem] phone:pt-[5rem] phone:gap-4
-        tablet:pb-8 tablet:pt-32 tablet:gap-6
-        desktop:pb-8 desktop:pt-16 desktop:gap-6
-        "
-        >
-          <IconSearch />
-          <input
-            type="text"
-            placeholder="Search for movies"
-            className="figma-heading-m p-0 bg-transparent border-0 focus:shadow-[0_1px_0_0] focus:shadow-figma-greyish-blue focus:ring-0 focus:border-figma-greyish-blue
-            phone:text-base phone:h-5
-            tablet:h-[1.875rem]
-            desktop:h-[1.875rem]
-            caret-figma-red
-            desktop:w-[30.25rem]
-            tablet:w-[20rem]
-            phone:w-[15rem]
-            "
-          />
-        </div>
+      <div className="text-figma-white phone:px-4 tablet:px-6 desktop:pr-9 desktop:pl-[10.25rem] pt-10 pb-4">
+        <SearchBar
+          placeholder="Search for movies"
+          icon="src/assets/svg/icon-search.svg"
+          data={movies}
+          setSearchData={setSearchMovies}
+        />
 
         <h1
-          className="figma-heading-l phone:text-xl phone:font-normal
+          className="figma-heading-l phone:text-xl pt-10 phone:font-normal
         pb-[1.5rem]
         desktop:pb-8
         "
@@ -57,7 +47,7 @@ const MoviesPage = () => {
         desktop:grid-cols-4 desktop:gap-y-8 desktop:gap-x-10
         "
         >
-          {movies
+          {searchMovies
             .filter((movie) => movie.category === "Movie")
             .map((movie) => (
               <div
