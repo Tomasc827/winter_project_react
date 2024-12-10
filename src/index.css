@@ -78,3 +78,17 @@ font-weight: 300;
 line-height: 1.2;
 color: #FC4747;
 }
+
+.hover-path {
+  transition: fill 0.3s ease;
+}
+
+
+.navlink:hover .hover-path {
+  fill: red; 
+}
+
+
+.navlink .hover-path {
+  fill: #5A698F;  
+}

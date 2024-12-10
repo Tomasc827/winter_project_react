@@ -1,13 +1,10 @@
 import { useForm } from "react-hook-form";
-import { useData } from "./DataContext";
-import Logo from "./formatted_svg/Logo";
-import ErrorServer from "./messages/ErrorServer";
-import SignUpSuccess from "./messages/SignUpSuccess";
-import { loginUser } from "../helpers/getUser";
-import EmailInput from "./inputs/EmailInput";
-import LoginPasswordInput from "./inputs/LoginPasswordInput";
+import { useData } from "../DataContext";
+import { loginUser } from "../../helpers/getUser";
+import EmailInput from "../inputs/EmailInput";
+import LoginPasswordInput from "../inputs/LoginPasswordInput";
 
-const LoginPage = () => {
+const LoginModal = () => {
   const {
     setError,
     navigate,
@@ -29,6 +26,7 @@ const LoginPage = () => {
 
     try {
       const user = await loginUser(data);
+      console.log("User data from login:", user);
       setCurrentUser(user);
       setAvatar(user.avatar);
       setSuccess("Login successful");
@@ -43,12 +41,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <ErrorServer />
-      <SignUpSuccess />
-      <div className="desktop:pt-[4.9rem] desktop:pb-[15.62rem] desktop:min-w-[90rem] tablet:pt-[5rem] tablet:pb-[29.56rem] tablet:px-[11.5rem] phone:pt-[3rem] phone:pb-[7.19rem] phone:px-[1.5rem]">
-        <div className="flex justify-center desktop:mb-[5.19rem] tablet:pb-[4.53rem] phone:pb-[3.65rem]">
-          <Logo />
-        </div>
+      <div className="">
         <div className="phone:flex phone:justify-center">
           <form
             className="tablet:min-w-[25rem] tablet:min-h-[23.3125rem]  bg-figma-semi-dark-blue rounded-[1.25rem] tablet:p-[2rem] phone:p-[1.5rem] phone:flex phone:flex-col phone:min-w-[20.4375rem] phone:min-h-[22.8125rem]"
@@ -81,4 +74,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default LoginModal;
