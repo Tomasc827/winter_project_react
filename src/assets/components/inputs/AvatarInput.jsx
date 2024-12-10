@@ -1,12 +1,10 @@
-import { useData } from "../DataContext";
-
 const AvatarInput = ({register, errors}) => {
 
     return ( 
         <div className="relative">
         <input
           className={`tablet:w-[21rem] h-[2.3125rem] phone:w-[17.4375rem] input-login-style mb-[1.5rem] text-white figma-body-m focus:border-b-2 caret-figma-red ${
-            errors.email
+            errors.avatar
               ? "focus:border-figma-red border-figma-red"
               : "focus:border-figma-white"
           }`}
@@ -16,16 +14,22 @@ const AvatarInput = ({register, errors}) => {
           {...register("avatar", {
             pattern: {
               value:
-                /^https?:\/\/(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?\.(?:jpg|jpeg|png|gif|bmp)$/,
+                /^https?:\/\/(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?\.(?:jpg|jpeg|png|gif|bmp).{0,254}$/,
 
               message: "Invalid url format",
+            },
+            validate: (value) => {
+              if (value === "") return true;  
+              return value.match(/^https?:\/\/(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?\.(?:jpg|jpeg|png|gif|bmp).{0,254}$/)
+                ? true
+                : "Invalid url format";
             },
           })}
         ></input>
 
         {errors && (
           <p className="figma-error-red absolute z-50 right-[1.06rem] inline top-[1rem] ">
-            {errors.email?.message}
+            {errors.avatar?.message}
           </p>
         )}
       </div>

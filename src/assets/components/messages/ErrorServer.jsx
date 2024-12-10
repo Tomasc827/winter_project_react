@@ -1,4 +1,4 @@
-import { useData } from "./DataContext";
+import { useData } from "../DataContext";
 import { useState, useEffect } from "react";
 
 const ErrorServer = () => {
