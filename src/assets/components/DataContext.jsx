@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 const DataContext = createContext();
 
 export const DataProviders = ({ children }) => {
+
   // All of these are exported to signup/login pages
   const [users,setUsers] = useState([])
   const [error,setError] = useState("")
@@ -16,11 +17,16 @@ export const DataProviders = ({ children }) => {
   }
   // End of signup/login page
 
+  // Movies page
+const [movies, setMovies] = useState([])
+
   return (
     <DataContext.Provider
       value={
         {
-          users,setUsers,error, setError, navigate,success,setSuccess,encodedPassword, processing,setProcessing,currentUser,setCurrentUser
+          /*this is where you put what you want to export */
+
+          users,setUsers,error, setError, navigate,success,setSuccess,encodedPassword, processing,setProcessing,currentUser,setCurrentUser, movies, setMovies
         }
       }
     >
