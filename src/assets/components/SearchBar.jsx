@@ -22,13 +22,11 @@ const SearchBar = (props) => {
   };
 
   return (
-    <label
-      className="flex items-center
+    <label className="flex items-center
     phone:pb-[1.5rem] phone:pt-[5rem] phone:gap-4
     tablet:pb-8 tablet:pt-32 tablet:gap-6
     desktop:pb-8 desktop:pt-16 desktop:gap-6
-    "
-    >
+    ">
       <img src={props.icon} alt="Search bar icon" />
       <input
         type="text"
