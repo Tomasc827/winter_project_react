@@ -54,7 +54,7 @@ const MoviesPage = () => {
             .map((movie) => (
               <div
                 key={movie.id}
-                className="relative rounded-lg overflow-hidden shadow-lg
+                className="relative rounded-lg overflow-hidden
                 phone:w-[10.25rem] phone:h-[9.625rem]
                 tablet:w-[13.75rem] tablet:h-[12rem]
                 desktop:w-[17.5rem] desktop:h-[14.125rem]
