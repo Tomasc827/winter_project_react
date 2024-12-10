@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { useData } from "./DataContext";
 import IconCategoryMovie from "./formatted_svg/IconCategoryMovie";
-import IconBookmarkEmpty from "./formatted_svg/IconBookmarkEmpty";
-import IconSearch from "./formatted_svg/IconSearch";
 import IconPlay from "./formatted_svg/IconPlay";
-
 import SearchBar from "./SearchBar";
 import BookmarkButton from "./BookmarkButton";
 
@@ -28,7 +25,7 @@ const MoviesPage = () => {
 
   return (
     <>
-      <div className="text-figma-white phone:px-4 tablet:px-6 desktop:pr-9 desktop:pl-[10.25rem] pb-4 desktop:pt-10 tablet:pt-32 phone:pt-24">
+      <div className="text-figma-white phone:px-4 tablet:px-6 desktop:pr-9 desktop:pl-[10.25rem] pb-4">
         <SearchBar
           placeholder="Search for movies"
           icon="src/assets/svg/icon-search.svg"
@@ -37,7 +34,7 @@ const MoviesPage = () => {
         />
 
         <h1
-          className="figma-heading-l phone:text-xl pt-10 phone:font-normal
+          className="figma-heading-l phone:text-xl phone:font-normal
         pb-[1.5rem]
         desktop:pb-8
         "
