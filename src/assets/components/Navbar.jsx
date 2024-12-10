@@ -91,7 +91,7 @@ const Navbar = () => {
             {screen >= 768 ? <Logo /> : <LogoMobile />}
           </div>
           <div className="desktop:w-[1.25rem] desktop:h-[12.5rem] desktop:ps-0 desktop:pt-0 tablet:ps-0 desktop:mb-[34.5rem] tablet:w-[10.8075] tablet:h-[1.25rem] tablet:pt-[1.69rem] tablet:pb-[1.56rem] tablet:pe-[14.07rem] phone:ps-[5rem] phone:py-[1.25rem] phone:pe-[5.03rem]">
-            {screen > 1440 ? (
+            {screen >= 1440 ? (
               <NavbarSvg />
             ) : screen >= 768 ? (
               <NavbarHorizontal />
