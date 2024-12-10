@@ -485,36 +485,5 @@
       "id": "1f2b"
     }
   ],
-  "users": [
-    {
-      "id": "dcca",
-      "email": "q@a.com",
-      "password": "U29tZXRoaW5nOSE=",
-      "avatar": "../img/avatar.jpg"
-    },
-    {
-      "id": "2d34",
-      "email": "qq@a.com",
-      "password": "U29tZXRoaW5nOSE=",
-      "avatar": "../img/avatar.jpg"
-    },
-    {
-      "id": "3b29",
-      "email": "q@a1.com",
-      "password": "U29tZXRoaW5nOSE=",
-      "avatar": "../img/avatar.jpg"
-    },
-    {
-      "id": "88ca",
-      "email": "something@email.com",
-      "password": "U29tZXRoaW5nOSE=",
-      "avatar": "../img/avatar.jpg"
-    },
-    {
-      "id": "36dc",
-      "email": "Something9@some.com",
-      "password": "U29tZXRoaW5nOSE=",
-      "avatar": "../img/avatar.jpg"
-    }
-  ]
+  "users": []
 }
