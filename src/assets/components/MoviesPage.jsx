@@ -6,12 +6,13 @@ import IconSearch from "./formatted_svg/IconSearch";
 import IconPlay from "./formatted_svg/IconPlay";
 
 import SearchBar from "./SearchBar";
+import BookmarkButton from "./BookmarkButton";
 
 const MoviesPage = () => {
   const { movies, setMovies } = useData();
   const [searchMovies, setSearchMovies] = useState([]);
 
-  useEffect(() => {
+  const fetchData = () => {
     fetch("http://localhost:5000/content")
       .then((response) => response.json())
       .then((data) => {
@@ -19,6 +20,10 @@ const MoviesPage = () => {
         setSearchMovies(data);
       })
       .catch((error) => console.error("Error fetching data:", error));
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   return (
@@ -91,17 +96,11 @@ const MoviesPage = () => {
                   </div>
                 </div>
 
-                <div
-                  className="absolute
-                w-8 h-8
-                top-2 right-2
-                tablet:top-4 tablet:right-4
-                desktop:top-4 desktop:right-4
-                flex items-center justify-center
-                bg-[#10131d] bg-opacity-50 rounded-full"
-                >
-                  <IconBookmarkEmpty />
-                </div>
+                <BookmarkButton
+                  media_id={movie.id}
+                  isBookmarked={movie.isBookmarked}
+                  reloadData={fetchData}
+                />
 
                 <div
                   className="flex flex-col gap-[0.31rem] pt-2 bg-gradient-to-t to-transparent rounded-b-lg
