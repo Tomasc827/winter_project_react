@@ -25,7 +25,7 @@ const MoviesPage = () => {
 
   return (
     <>
-      <div className="text-figma-white phone:px-4 tablet:px-6 desktop:pr-9 desktop:pl-[10.25rem] pb-4">
+      <div className="text-figma-white phone:px-4 tablet:px-6 desktop:pr-9 desktop:pl-[10.25rem] pb-[3.5rem]">
         <SearchBar
           placeholder="Search for movies"
           icon="src/assets/svg/icon-search.svg"
@@ -34,9 +34,12 @@ const MoviesPage = () => {
         />
 
         <h1
-          className="figma-heading-l phone:text-xl phone:font-normal
-        pb-[1.5rem]
-        desktop:pb-8
+          className="figma-heading-l
+          desktop:text-[2rem] tablet:text-[2rem] phone:text-[1.25rem]
+          pb-[1.5rem]
+          phone:pb-[1.5rem]
+          tablet:pb-[1.5rem]
+          desktop:pb-[2.38rem]
         "
         >
           Movies
@@ -100,25 +103,57 @@ const MoviesPage = () => {
                 />
 
                 <div
-                  className="flex flex-col gap-[0.31rem] pt-2 bg-gradient-to-t to-transparent rounded-b-lg
+                  className="flex flex-col gap-[0.3125rem] desktop:gap-[0.3125rem] tablet:gap-[0.3125rem] phone:gap-[0.25rem] pt-2 bg-gradient-to-t to-transparent rounded-b-lg
                 "
                 >
                   <div
-                    className="figma-body-s flex items-center phone:gap-2 phone:text-[0.6875rem] phone:h-3.5 tablet:h-4 desktop:h-4
+                    className="figma-body-s dekstop:text-[0.8125rem] tablet:text-[0.8125rem] flex items-center gap-2 desktop:gap-2 tablet:gap-2 phone:gap-[0.38rem] phone:text-[0.6875rem] phone:h-3.5 tablet:h-4 desktop:h-4
                   "
                   >
                     <span>{movie.year}</span>
-                    <div className="w-0.5 h-0.5 bg-white rounded-full"></div>
-                    <div className="flex items-center gap-[0.38rem]">
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="3"
+                        height="3"
+                        viewBox="0 0 3 3"
+                        fill="none"
+                      >
+                        <circle
+                          opacity="0.5"
+                          cx="1.5"
+                          cy="1.5"
+                          r="1.5"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                    <div className="flex items-center gap-[0.38rem] desktop:gap-[0.38rem] tablet:gap-[0.38rem] phone:gap-[0.25rem]">
                       <IconCategoryMovie />
                       <span>{movie.category}</span>
                     </div>
-                    <div className="w-0.5 h-0.5 bg-white rounded-full"></div>
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="3"
+                        height="3"
+                        viewBox="0 0 3 3"
+                        fill="none"
+                      >
+                        <circle
+                          opacity="0.5"
+                          cx="1.5"
+                          cy="1.5"
+                          r="1.5"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
                     <span>{movie.rating}</span>
                   </div>
 
                   <div
-                    className="figma-heading-xs phone:text-sm phone:font-normal phone:h-[1.125rem]
+                    className="figma-heading-xs dekstop:text-[1.125rem] tablet:text-[1.125rem] phone:text-[0.875rem] phone:h-[1.125rem]
                   tablet:h-[1.4375rem] desktop:h-[1.4375rem]"
                   >
                     {movie.title}
