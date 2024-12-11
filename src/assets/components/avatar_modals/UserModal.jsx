@@ -1,5 +1,5 @@
 import { useData } from "../DataContext";
-import { putData } from "../../helpers/update";
+import { patchData } from "../../helpers/update";
 import { useEffect, useState } from "react";
 import EmailInput from "../inputs/EmailInput";
 import AvatarInput from "../inputs/AvatarInput";
@@ -53,7 +53,7 @@ const UserModal = () => {
         throw new Error("This email is already in use")
     }
   }
-      const updatedUser = await putData(currentUser.id, updateData);
+      const updatedUser = await patchData(currentUser.id, updateData);
 
       if (updatedUser) {
         setCurrentUser(updatedUser);
@@ -81,7 +81,7 @@ const UserModal = () => {
 
   const onSubmitPassword = async (data) => {
     if (error) return;
-
+  
     try {
       if (!verifyCurrentPassword(data.currentPassword)) {
         setError("Current password is incorrect");
@@ -90,7 +90,7 @@ const UserModal = () => {
         }, 3000);
         return;
       }
-
+  
       if (data.newPassword === data.currentPassword) {
         setError("New password cannot be the same as current password");
         setTimeout(() => {
@@ -98,17 +98,32 @@ const UserModal = () => {
         }, 3000);
         return;
       }
-
+  
       if (data.newPassword) {
         data.password = encodedPassword(data.newPassword);
       }
 
-      await putData(currentUser.id, { password: data.password });
-      setSuccess("Password updated successfully");
-      setPasswordModal(false);
-      setTimeout(() => {
-        setSuccess("");
-      }, 2500);
+  
+      const updatedUser = await patchData(currentUser.id, { password: data.password });
+  
+      if (updatedUser) {
+        setCurrentUser((prevUser) => ({
+          ...prevUser,
+          password: updatedUser.password,
+        }));
+  
+        setSuccess("Password updated successfully");
+        setValue("newPassword", "");
+        setValue("currentPassword", "");
+        setValue("confirmPassword", "");
+        setPasswordModal(false);
+  
+        setTimeout(() => {
+          setSuccess("");
+        }, 2500);
+      } else {
+        throw new Error("Failed to update password");
+      }
     } catch (error) {
       setError(error.message || "Failed to update password");
       setTimeout(() => {
@@ -116,6 +131,7 @@ const UserModal = () => {
       }, 3000);
     }
   };
+  
 
   useEffect(() => {
     if (currentUser) {
