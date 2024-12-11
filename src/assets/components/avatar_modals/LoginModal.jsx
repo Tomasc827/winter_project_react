@@ -36,6 +36,7 @@ const LoginModal = () => {
       setTimeout(() => {
         navigate("/");
         setSuccess("");
+        setLoginModal(false)
       }, 2500);
     } catch (error) {
       setError(error.message);
@@ -51,7 +52,7 @@ const LoginModal = () => {
             onSubmit={handleSubmit(onSubmit)}
           > <div className="flex justify-between">
             <h2 className="figma-heading-l text-white pb-[2.5rem]">Login</h2>
-            <button className="block mb-10" onClick={() => setLoginModal(false)}><CloseModalSVG /></button>
+            <button className="block mb-10" type="button" onClick={() => setLoginModal(false)}><CloseModalSVG /></button>
             </div>
             <EmailInput register={register} errors={errors} />
             <LoginPasswordInput register={register} errors={errors} />

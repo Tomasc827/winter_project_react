@@ -46,7 +46,7 @@ const LoginPage = () => {
       <ErrorServer />
       <SignUpSuccess />
       <div className="desktop:pt-[4.9rem] desktop:pb-[15.62rem] desktop:min-w-[90rem] tablet:pt-[5rem] tablet:pb-[29.56rem] tablet:px-[11.5rem] phone:pt-[3rem] phone:pb-[7.19rem] phone:px-[1.5rem]">
-        <div className="flex justify-center desktop:mb-[5.19rem] tablet:pb-[4.53rem] phone:pb-[3.65rem]">
+        <div className="flex justify-center desktop:mb-[5.19rem] tablet:mb-[4.53rem] phone:mb-[3.65rem]">
           <Logo />
         </div>
         <div className="phone:flex phone:justify-center">
@@ -65,13 +65,13 @@ const LoginPage = () => {
             >
               Login to your account
             </button>
-            <p className="figma-body-m text-figma-white  tablet:ps-[3.75rem] phone:ps-[2.19rem]">
+            <p className="figma-body-m text-figma-white  tablet:ps-[3.75rem] phone:ps-[2rem]">
               Don't have an account?
               <span
                 className="ps-[0.5rem] text-figma-red cursor-pointer"
                 onClick={() => navigate("/signup")}
               >
-                Sign up
+                Sign Up
               </span>
             </p>
           </form>

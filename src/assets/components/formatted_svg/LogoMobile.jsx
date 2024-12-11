@@ -1,14 +1,18 @@
 const LogoMobile = () => {
-    return (
-      <svg width="25" height="20" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="m26.463.408 3.2 6.4h-4.8l-3.2-6.4h-3.2l3.2 6.4h-4.8l-3.2-6.4h-3.2l3.2 6.4h-4.8l-3.2-6.4h-1.6a3.186 3.186 0 0 0-3.184 3.2l-.016 19.2a3.2 3.2 0 0 0 3.2 3.2h25.6a3.2 3.2 0 0 0 3.2-3.2V.408h-6.4Z"
-          fill="#FC4747"
-          
-        />
-      </svg>
-    );
-  };
-  
-  export default LogoMobile;
-  
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="25"
+      height="20"
+      viewBox="0 0 25 20"
+      fill="none"
+    >
+      <path
+        d="M20 0L22.5 5H18.75L16.25 0H13.75L16.25 5H12.5L10 0H7.5L10 5H6.25L3.75 0H2.5C1.11875 0 0.0125 1.11875 0.0125 2.5L0 17.5C0 18.8813 1.11875 20 2.5 20H22.5C23.8813 20 25 18.8813 25 17.5V0H20Z"
+        fill="#FC4747"
+      />
+    </svg>
+  );
+};
+
+export default LogoMobile;
