@@ -17,6 +17,12 @@
   }
 }
 
+input::-webkit-input-placeholder {
+  color:#ffffff;
+ opacity: 0.5;
+}
+
+
 :root {
   --Pure-White: #ffffff;
 }
