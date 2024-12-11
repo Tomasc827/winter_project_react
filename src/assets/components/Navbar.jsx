@@ -6,11 +6,10 @@ import NavbarHorizontal from "./formatted_svg/NavbarHorizontal";
 import { useEffect, useState } from "react";
 import NavbarMobile from "./formatted_svg/NavbarMobile";
 import LogoMobile from "./formatted_svg/LogoMobile";
-import LoginPage from "./LoginPage";
-import LoginModal from "./LoginModal";
-import UserModal from "./UserModal";
-import SignUpSuccess from "./SignUpSuccess";
-import ErrorServer from "./ErrorServer";
+import LoginModal from "./avatar_modals/LoginModal";
+import UserModal from "./avatar_modals/UserModal";
+import SignUpSuccess from "./messages/SignUpSuccess";
+import ErrorServer from "./messages/ErrorServer";
 
 const Navbar = () => {
   const [screen, setScreen] = useState(window.innerWidth);
@@ -76,7 +75,7 @@ const Navbar = () => {
           </div>
         )}
         <div
-          className={`fixed bg-figma-semi-dark-blue desktop:top-[2rem] desktop:left-[2rem] desktop:w-[6rem] desktop:h-[60rem] tablet:w-[44.9375rem] tablet:h-[4.5rem] tablet:rounded-[0.625rem] desktop:rounded-[1.25rem] flex desktop:flex-col tablet:left-[1.56rem] tablet:right-[1.5rem] tablet:top-[1.44rem] phone:w-[23.4375rem] phone:h-[3.5rem]
+          className={`fixed z-30 bg-figma-semi-dark-blue desktop:top-[2rem] desktop:left-[2rem] desktop:w-[6rem] desktop:h-[60rem] tablet:w-[44.9375rem] tablet:h-[4.5rem] tablet:rounded-[0.625rem] desktop:rounded-[1.25rem] flex desktop:flex-col tablet:left-[1.56rem] tablet:right-[1.5rem] tablet:top-[1.44rem] phone:w-[23.4375rem] phone:h-[3.5rem]
                     ${
                       isTablet
                         ? "tablet:left-[50%] tablet:transform tablet:-translate-x-[50%]"
