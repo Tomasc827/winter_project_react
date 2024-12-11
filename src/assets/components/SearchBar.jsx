@@ -66,9 +66,7 @@ const SearchBar = (props) => {
             tablet:text-[1.5rem]
             phone:h-5
             tablet:h-[1.875rem]
-            tablet:text-2xl
             desktop:h-[1.875rem]
-            desktop:text-2xl
             caret-figma-red
             desktop:w-[30.25rem]
             tablet:w-[20rem]
