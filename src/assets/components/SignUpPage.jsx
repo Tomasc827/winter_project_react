@@ -79,7 +79,7 @@ const SignUpPage = () => {
               watch={watch}
             />
             <button
-              className="bg-figma-red text-figma-white tablet:w-[21rem] h-[3rem] phone:w-[17.4375rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
+              className="bg-figma-red phone: text-figma-white tablet:w-[21rem] h-[3rem] phone:w-[17.4375rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
               type="submit"
               value="submit"
               disabled={error !== "" || success !== ""}
