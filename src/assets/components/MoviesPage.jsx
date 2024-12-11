@@ -6,8 +6,18 @@ import SearchBar from "./SearchBar";
 import BookmarkButton from "./BookmarkButton";
 
 const MoviesPage = () => {
-  const { movies, setMovies } = useData();
+  const { movies, setMovies, setError, setLoginModal, currentUser } = useData();
   const [searchMovies, setSearchMovies] = useState([]);
+
+  const onButtonClick = () => {
+    if (!currentUser || !currentUser.id) {
+      setLoginModal(true)
+      setError("You must be logged in to watch")
+      setTimeout(() => {
+        setError("")
+      },3000)
+    }
+  }
 
   const fetchData = () => {
     fetch("http://localhost:5000/content")
@@ -88,7 +98,7 @@ const MoviesPage = () => {
                tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg
                "
                   >
-                    <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem]">
+                    <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem]" type="button" onClick={onButtonClick}>
                       <span className="py-[0.56rem]">
                         <IconPlay />
                       </span>
