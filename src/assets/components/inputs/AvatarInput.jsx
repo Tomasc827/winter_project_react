@@ -14,13 +14,13 @@ const AvatarInput = ({register, errors}) => {
           {...register("avatar", {
             pattern: {
               value:
-                /^https?:\/\/(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?\.(?:jpg|jpeg|png|gif|bmp).{0,254}$/,
+                /^(?=.{1,2048}$)https?:\/\/.*\.(?:jpg|jpeg|png|gif|bmp|webp|svg|avif)(?:\?.*)?$/i,
 
               message: "Invalid url format",
             },
             validate: (value) => {
               if (value === "") return true;  
-              return value.match(/^https?:\/\/(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?\.(?:jpg|jpeg|png|gif|bmp).{0,254}$/)
+              return value.match(/^(?=.{1,2048}$)https?:\/\/.*\.(?:jpg|jpeg|png|gif|bmp|webp|svg|avif)(?:\?.*)?$/i)
                 ? true
                 : "Invalid url format";
             },

@@ -11,7 +11,7 @@ const ConfirmPasswordSignup = ({register,errors,watch}) => {
               ? "focus:border-figma-red border-figma-red"
               : "focus:border-figma-white"
           }`}
-          placeholder="Confirm password"
+          placeholder="Repeat password"
           type="password"
           id="confirmPassword"
           {...register("confirmPassword", {

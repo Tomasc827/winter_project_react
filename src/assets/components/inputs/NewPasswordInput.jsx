@@ -19,11 +19,12 @@ const NewPasswordInput = ({register, errors}) => {
                 },
               })}
             />
-            {errors.newPassword && (
+            {errors.newPassword?.type === "required" && (
               <p className="figma-error-red absolute z-50 right-[1.06rem] inline top-[1rem]">
                 {errors.newPassword.message}
               </p>
             )}
+
         </div>
     );
 }

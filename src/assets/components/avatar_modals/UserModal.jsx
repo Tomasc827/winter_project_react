@@ -7,6 +7,8 @@ import CurrentPasswordInput from "../inputs/CurrentPasswordInput";
 import NewPasswordInput from "../inputs/NewPasswordInput";
 import UpdateConfirmPassword from "../inputs/UpdateConfirmPassword";
 import { useForm } from "react-hook-form";
+import {getAllData} from "../../helpers/get"
+import CloseModalSVG from "../formatted_svg/CloseModalSVG";
 
 const UserModal = () => {
   const {
@@ -16,6 +18,7 @@ const UserModal = () => {
     setUserModal,
     logout,
     setError,
+    error,
     setAvatar,
     encodedPassword,
   } = useData();
@@ -29,7 +32,6 @@ const UserModal = () => {
     watch
   } = useForm();
 
-  const [passwordError, setPasswordError] = useState("");
   const [passwordModal, setPasswordModal] = useState(false);
 
   const verifyCurrentPassword = (currentPassword) => {
@@ -44,7 +46,13 @@ const UserModal = () => {
         email: data.email,
         avatar: data.avatar || "/avatar.jpg",
       };
+      const existingUsers = await getAllData();
+      if(data.email !== currentUser.email) {
 
+    if(existingUsers.some(user => user.email === data.email)) {
+        throw new Error("This email is already in use")
+    }
+  }
       const updatedUser = await putData(currentUser.id, updateData);
 
       if (updatedUser) {
@@ -72,21 +80,21 @@ const UserModal = () => {
   };
 
   const onSubmitPassword = async (data) => {
-    if (passwordError) return;
+    if (error) return;
 
     try {
       if (!verifyCurrentPassword(data.currentPassword)) {
-        setPasswordError("Current password is incorrect");
+        setError("Current password is incorrect");
         setTimeout(() => {
-          setPasswordError("");
+          setError("");
         }, 3000);
         return;
       }
 
-      if (data.newPassword !== data.confirmPassword) {
-        setPasswordError("New passwords don't match");
+      if (data.newPassword === data.currentPassword) {
+        setError("New password cannot be the same as current password");
         setTimeout(() => {
-          setPasswordError("");
+          setError("");
         }, 3000);
         return;
       }
@@ -125,16 +133,20 @@ const UserModal = () => {
             <form
               className=""
               onSubmit={handleSubmit(onSubmit)}
-            >
+            > 
               <div className="flex justify-between">
+                
                 <h2 className="figma-heading-l text-white pb-[2.5rem]">Update</h2>
                 <img
                   src={currentUser?.avatar || "/avatar.jpg"}
                   alt="profile"
-                  className="w-[2.5rem] h-[2.5rem] rounded-[2.5rem] border border-figma-white"
+                  className="w-[2.5rem] h-[2.5rem] me-[1.5rem] rounded-full border border-figma-white "
                 />
+                <button className="block mb-9" type="button" onClick={() => setUserModal(false)}><CloseModalSVG /></button>
               </div>
+              <p className="figma-body-s pb-[0.3rem]">Current email address:</p>
               <EmailInput register={register} errors={errors} />
+              <p className="figma-body-s pb-[0.3rem]">Current avatar url:</p>
               <AvatarInput register={register} errors={errors} />
               <button
                 className="bg-figma-red text-figma-white tablet:w-[21rem] h-[3rem] phone:w-[17.4375rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
