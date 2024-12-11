@@ -40,7 +40,6 @@ const MoviesPage = () => {
           className="figma-heading-l
           desktop:text-[2rem] tablet:text-[2rem] phone:text-[1.25rem]
           pb-[1.5rem]
-          pt-[1.5rem]
           phone:pb-[1.5rem]
           tablet:pb-[1.5rem]
           desktop:pb-[2.38rem]
