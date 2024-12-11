@@ -53,7 +53,7 @@ const BookmarkPage = () => {
         setSearchData={setSearchData}
       />
 
-      <h1 className="figma-heading-l pt-10">Bookmarked Movies</h1>
+      <h1 className="figma-heading-l pt-6">Bookmarked Movies</h1>
 
       <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 gap-10 pt-10">
         {searchData.map((media, index) => {
