@@ -55,6 +55,9 @@ const logout = () => {
         // Movies page
 const [movies, setMovies] = useState([])
 
+        // TV Series page
+const [series, setSeries] = useState([])
+
   return (
     <DataContext.Provider
       value={
@@ -77,7 +80,7 @@ const [movies, setMovies] = useState([])
         loginModal,
         setLoginModal,
         userModal,
-        setUserModal,movies,setMovies
+        setUserModal,movies,setMovies, series, setSeries
         }
       }
     >
