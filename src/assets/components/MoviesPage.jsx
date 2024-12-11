@@ -6,18 +6,8 @@ import SearchBar from "./SearchBar";
 import BookmarkButton from "./BookmarkButton";
 
 const MoviesPage = () => {
-  const { movies, setMovies, setError, setLoginModal, currentUser } = useData();
+  const { movies, setMovies, onButtonClick } = useData();
   const [searchMovies, setSearchMovies] = useState([]);
-
-  const onButtonClick = () => {
-    if (!currentUser || !currentUser.id) {
-      setLoginModal(true)
-      setError("You must be logged in to watch")
-      setTimeout(() => {
-        setError("")
-      },3000)
-    }
-  }
 
   const fetchData = () => {
     fetch("http://localhost:5000/content")
