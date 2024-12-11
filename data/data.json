@@ -16,7 +16,7 @@
       "year": 2019,
       "category": "Movie",
       "rating": "PG",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": true,
       "id": "41f8"
     },
@@ -36,7 +36,7 @@
       "year": 2021,
       "category": "Movie",
       "rating": "PG",
-      "isBookmarked": true,
+      "isBookmarked": false,
       "isTrending": true,
       "id": "ddd9"
     },

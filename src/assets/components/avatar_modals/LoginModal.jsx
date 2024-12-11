@@ -34,7 +34,6 @@ const LoginModal = () => {
       setAvatar(user.avatar);
       setSuccess("Login successful");
       setTimeout(() => {
-        navigate("/");
         setSuccess("");
         setLoginModal(false)
       }, 2500);
