@@ -2,13 +2,23 @@ import axios from "axios";
 import IconBookmarkFull from "./formatted_svg/IconBookmarkFull";
 import IconBookmarkEmpty from "./formatted_svg/IconBookmarkEmpty";
 import { useState } from "react";
+import { useData } from "./DataContext";
 
 const BookmarkButton = (props) => {
   const [isHovered, setIsHovered] = useState(false);
-
+  const {currentUser, setLoginModal, setError} = useData()
   const bookmarkMedia = () => {
     const setBookmark = async () => {
       try {
+            if (!currentUser || !currentUser.id) {
+              setLoginModal(true)
+              setError("You must be registered to continue")
+              setTimeout(() => {
+                setError("")
+              },3000)
+              return;
+            }
+
         const response = await axios.patch(
           `http://localhost:5000/content/${props.media_id}`,
           {
