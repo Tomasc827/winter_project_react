@@ -6,18 +6,12 @@ import { useData } from "./DataContext";
 
 const BookmarkButton = (props) => {
   const [isHovered, setIsHovered] = useState(false);
-  const {currentUser, setLoginModal, setError} = useData()
+  const {currentUser} = useData()
+
   const bookmarkMedia = () => {
     const setBookmark = async () => {
       try {
-            if (!currentUser || !currentUser.id) {
-              setLoginModal(true)
-              setError("You must be registered to continue")
-              setTimeout(() => {
-                setError("")
-              },3000)
-              return;
-            }
+
 
         const response = await axios.patch(
           `http://localhost:5000/content/${props.media_id}`,
@@ -33,7 +27,8 @@ const BookmarkButton = (props) => {
     setBookmark();
   };
   return (
-    <button
+    <>
+   {!currentUser || !currentUser.id ? null : <button
       onClick={bookmarkMedia}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -60,12 +55,13 @@ const BookmarkButton = (props) => {
             strokeWidth="1.5"
           />
         </svg>
-      ) : props.isBookmarked ? (
+      ) : props.isBookmarked? (
         <IconBookmarkFull />
       ) : (
         <IconBookmarkEmpty />
       )}
-    </button>
+    </button> }
+    </>
   );
 };
 
