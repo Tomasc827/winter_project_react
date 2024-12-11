@@ -30,8 +30,11 @@ const BookmarkPage = () => {
     try {
       const response = await axios.get("http://localhost:5000/content");
       if (response.status == 200) {
-        setData(response.data);
-        setSearchData(response.data);
+        const filter = response.data.filter((media) => {
+          return media.isBookmarked;
+        });
+        setData(filter);
+        setSearchData(filter);
       }
     } catch (error) {
       throw new Error(error.message);
@@ -50,20 +53,20 @@ const BookmarkPage = () => {
         setSearchData={setSearchData}
       />
 
-      <h1 className="figma-heading-l pt-10">Bookmarked Movies</h1>
+      <h1 className="figma-heading-l pt-6">Bookmarked Movies</h1>
 
-      <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 gap-4 pt-10">
+      <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 gap-10 pt-10">
         {searchData.map((media, index) => {
-          if (media.isBookmarked && media.category == "Movie") {
+          if (media.category == "Movie") {
             return createBookmarkCard(media);
           }
         })}
       </div>
 
       <h1 className="figma-heading-l pt-10">Bookmarked TV Series</h1>
-      <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 gap-4 pt-10">
+      <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 gap-10 pt-10">
         {searchData.map((media, index) => {
-          if (media.isBookmarked && media.category == "TV Series") {
+          if (media.category == "TV Series") {
             return createBookmarkCard(media);
           }
         })}
