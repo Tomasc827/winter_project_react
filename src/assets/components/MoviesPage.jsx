@@ -34,13 +34,16 @@ const MoviesPage = () => {
           icon="src/assets/svg/icon-search.svg"
           data={movies}
           setSearchData={setSearchMovies}
+          switchViews={false} //  switch between different views when searching
+          hideList={["heading1"]} // hide specific elements when searching [this only matters if switchViews is false]
+          unhideList={["padding1"]}
         />
 
         <h1
+          id="heading1"
           className="figma-heading-l
           desktop:text-[2rem] tablet:text-[2rem] phone:text-[1.25rem]
           pb-[1.5rem]
-          pt-[1.5rem]
           phone:pb-[1.5rem]
           tablet:pb-[1.5rem]
           desktop:pb-[2.38rem]
@@ -50,10 +53,19 @@ const MoviesPage = () => {
         </h1>
 
         <div
+          id="padding1"
+          className="hidden desktop:text-[2rem] tablet:text-[2rem] phone:text-[1.25rem]
+          pb-[1.5rem]
+          phone:pb-[1.5rem]
+          tablet:pb-[1.5rem]
+          desktop:pb-[2.38rem]"
+        ></div>
+
+        <div
           className="grid grid-cols-2 justify-center
         phone:grid-cols-2 phone:gap-y-[1rem] phone:gap-x-[0.94rem]
         tablet:grid-cols-3 tablet:gap-y-6 tablet:gap-x-[1.81rem]
-        desktop:grid-cols-4 desktop:gap-y-8 desktop:gap-x-10
+        desktop:grid-cols-4 desktop:gap-y-8 desktop:gap-x-10 
         "
         >
           {searchMovies
