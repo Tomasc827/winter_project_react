@@ -10,10 +10,12 @@ const MediaCard = (props) => {
     <div>
       <div className="relative group ">
         <img
-          className="rounded-lg group-hover:blur-sm duration-500 "
+          className="rounded-lg"
           src={props.thumbnail}
           alt="Media thumbnail"
         />
+
+        <div className="absolute rounded-lg bg-black left-0 top-0 w-full h-full opacity-0 group-hover:opacity-50 duration-500"></div>
 
         <div className="absolute hidden pointer-events-none group-hover:block duration-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-14">
           <div className="opacity-25 absolute rounded-full bg-white w-full h-full"></div>
@@ -34,17 +36,19 @@ const MediaCard = (props) => {
         />
       </div>
       <div className="mt-2">
-        <p className="figma-body-s">
-          <span>{props.year} · </span>
+        <div className="flex items-center gap-2 figma-body-s">
+          <span>{props.year}</span>
+          <span>·</span>
           <img
             className="inline"
             src={categoryIcon}
             alt="Media category icon"
           />
-          <span> {props.category} ·</span>
+          <span> {props.category}</span>
+          <span>·</span>
           <span> {props.rating}</span>
-        </p>
-        <h1 className="figma-heading-xs">{props.title}</h1>
+        </div>
+        <h1 className="figma-heading-xs pt-1">{props.title}</h1>
       </div>
     </div>
   );

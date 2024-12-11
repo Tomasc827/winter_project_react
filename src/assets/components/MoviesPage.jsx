@@ -13,8 +13,11 @@ const MoviesPage = () => {
     fetch("http://localhost:5000/content")
       .then((response) => response.json())
       .then((data) => {
-        setMovies(data);
-        setSearchMovies(data);
+        const filter = data.filter((media) => {
+          return media.category == "Movie";
+        });
+        setMovies(filter);
+        setSearchMovies(filter);
       })
       .catch((error) => console.error("Error fetching data:", error));
   };
@@ -37,6 +40,7 @@ const MoviesPage = () => {
           className="figma-heading-l
           desktop:text-[2rem] tablet:text-[2rem] phone:text-[1.25rem]
           pb-[1.5rem]
+          pt-[1.5rem]
           phone:pb-[1.5rem]
           tablet:pb-[1.5rem]
           desktop:pb-[2.38rem]
