@@ -33,7 +33,7 @@ const StrengthPassword = ({register,errors,}) => {
               value:
                 /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;"'<>,.?/\\|`~\-]).{8,50}$/,
               message:
-                "Password must contain at least one uppercase letter, one lowercase letter, one number,one special symbol and be at least 8 characters long",
+                "Password must contain at least one uppercase letter, one lowercase letter, one number,one special symbol and be from 8 to 50 characters long",
             },
             onChange: (e) => calculatePasswordStrength(e.target.value),
           })}
