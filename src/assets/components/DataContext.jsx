@@ -45,15 +45,16 @@ export const DataProviders = ({ children }) => {
 
   // Log Out function
 
-  const logout = () => {
+  const logout = async ()  => {
     setCurrentUser({});
     setAvatar(defaultImage);
     localStorage.removeItem("currentUser");
     localStorage.removeItem("avatar");
     setUserModal(false);
     setLoginModal(false);
+    await Promise.resolve()
+    navigate("/")
     setSuccess("Successfully logged out");
-    navigate("/");
     setTimeout(() => {
       setSuccess("");
     }, 2000);

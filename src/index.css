@@ -98,3 +98,12 @@ color: #FC4747;
 .navlink .hover-path {
   fill: #5A698F;  
 }
+
+.disappear-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
+}
+
+.disappear-scrollbar::-webkit-scrollbar {
+  display: none; 
+}

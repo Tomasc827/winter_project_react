@@ -12,6 +12,7 @@ import BookmarkPage from "./assets/components/BookmarkPage.jsx";
 import SignUpPage from "./assets/components/SignUpPage.jsx";
 import NotFound from "./assets/components/NotFound.jsx";
 import ProtectedRoute from "./assets/components/ProtectedRoute.jsx";
+import Forbidden from "./assets/components/Forbidden.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -34,6 +35,7 @@ createRoot(document.getElementById("root")).render(
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/forbidden" element={<Forbidden />} />
         </Routes>
       </DataProviders>
     </BrowserRouter>

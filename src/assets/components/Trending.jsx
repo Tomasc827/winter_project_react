@@ -1,23 +1,64 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from "react";
 import BookmarkButton from "./BookmarkButton";
+import { useData } from "./DataContext";
 
 const TrendingMoviesCarousel = () => {
   const [movies, setMovies] = useState([]);
+  const { onButtonClick } = useData();
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const response = await fetch('data/data.json');
-      const data = await response.json();
-      setMovies(data.content.filter(movie => movie.isTrending));
+      try {
+        const response = await fetch("http://localhost:5000/content");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setMovies(data.filter((movie) => movie.isTrending));
+      } catch (error) {
+        console.error("Error fetching trending movies:", error);
+      }
     };
 
     fetchMovies();
   }, []);
 
+  // scrollbar on drag, hope it works
+
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const scrollRef = useRef(null);
+
+  const startDragging = (e) => {
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const stopDragging = () => {
+    setIsDragging(false);
+  };
+
+  const onDrag = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 2; //multiply by 2 for faster scroll
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+
   const fetchData = async () => {
-    const response = await fetch('data/data.json');
-    const data = await response.json();
-    setMovies(data.content.filter(movie => movie.isTrending));
+    try {
+      const response = await fetch("http://localhost:5000/content");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      setMovies(data.filter((movie) => movie.isTrending));
+    } catch (error) {
+      console.error("Error fetching trending movies:", error);
+    }
   };
 
   const renderCategoryIcon = (category) => {
@@ -46,75 +87,108 @@ const TrendingMoviesCarousel = () => {
   };
 
   return (
-    <div className="text-figma-white">
-      <h1 className="figma-heading-l
+    <div id="trending1" className="text-figma-white">
+      <h1
+        id="trendingheading"
+        className="figma-heading-l
           desktop:text-[2rem] tablet:text-[2rem] phone:text-[1.25rem]
           pb-[1.5rem]
           phone:pb-[1.5rem]
           tablet:pb-[1.5rem]
-          desktop:pb-[2rem]
-          pt-[1.5rem]
-          desktop:pt-[2.5rem]
-          tablet:pt-[2.44rem]
-          mobile:pt-[1.5rem]
-          ">Trending</h1>
-      <div className="flex space-x-4">
-        {movies.map((movie, index) => (
-          <div key={index} className="inline-block">
-            <div className="relative flex-shrink-0 group">
-              <picture className="w-full h-full object-cover rounded-lg group-hover:opacity-25 transition-opacity duration-300">
-                <source media="(min-width: 1440px)" srcSet={movie.thumbnail.trending.large} />
-                <source media="(min-width: 768px)" srcSet={movie.thumbnail.trending.medium} />
-                <img
-                  src={movie.thumbnail.trending.small}
-                  alt={movie.title}
-                  className="w-[15rem] h-[8.75rem] phone:block tablet:hidden desktop:hidden rounded-lg" 
-                />
-                <img
-                  src={movie.thumbnail.trending.small}
-                  alt={movie.title}
-                  className="w-full h-auto tablet:block desktop:block phone:hidden rounded-lg"
-                />
-              </picture>
-
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div
-                  style={{
-                    width: "7.3125rem",
-                    height: "3rem",
-                    borderRadius: "1.78125rem",
-                    background: "rgba(255, 255, 255, 0.25)",
-                  }}
-                  className="flex items-center justify-center"
-                >
-                  <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 0C6.713 0 0 6.713 0 15c0 8.288 6.713 15 15 15 8.288 0 15-6.712 15-15 0-8.287-6.712-15-15-15Zm-3 21V8l9 6.5-9 6.5Z" fill="#FFF" />
-                  </svg>
-                  <span className="text-white ml-2">Play</span>
-                  <BookmarkButton
-                    media_id={movie.id}
-                    isBookmarked={movie.isBookmarked}
-                    reloadData={fetchData}
+          desktop:pb-[1.56rem]
+          
+          "
+      >
+        Trending
+      </h1>
+      <div
+        id="trending2"
+        ref={scrollRef}
+        onMouseDown={startDragging}
+        onMouseUp={stopDragging}
+        onMouseLeave={stopDragging}
+        onMouseMove={onDrag}
+        style={{
+          scrollBehavior: 'smooth'
+        }}
+        className="flex w-full h-full cursor-grab active:cursor-grabbing overflow-x-auto disappear-scrollbar select-none"
+      >
+        <div className="flex phone:gap-x-[1rem] tablet:gap-x-[2.5rem] flex-nowrap w-full h-full ">
+          {movies.map((movie, index) => (
+            <div key={index} className="inline-block">
+              <div className="relative group">
+                <picture className="object-cover rounded-lg group-hover:opacity-25 transition-opacity duration-300">
+                  <source
+                    media="(min-width: 1440px)"
+                    srcSet={movie.thumbnail.trending.large}
                   />
-                </div>
-              </div>
+                  <source
+                    media="(min-width: 768px)"
+                    srcSet={movie.thumbnail.trending.medium}
+                  />
+                  <img
+                    src={movie.thumbnail.trending.small}
+                    alt={movie.title}
+                    className="phone:min-w-[15rem] h-[8.75rem] phone:block tablet:hidden desktop:hidden rounded-lg object-cover"
+                  />
+                  <img
+                    src={movie.thumbnail.trending.small}
+                    alt={movie.title}
+                    className="desktop:min-w-[29.375rem] desktop:min-h-[14.375rem]
+                  tablet:min-w-[29.375rem] tablet:h-[14.375rem] tablet:block desktop:block phone:hidden rounded-lg object-cover"
+                  />
+                </picture>
 
-              <div className="absolute bottom-0 left-0 right-0 bg-opacity-50 text-figma-white p-4 rounded-b-lg">
-                <div className=" text-sm space-x-2 figma-body-s dekstop:text-[0.8125rem] tablet:text-[0.8125rem] flex items-center gap-2 desktop:gap-2 tablet:gap-2 phone:gap-[0.38rem] phone:text-[0.6875rem] phone:h-3.5 tablet:h-4 desktop:h-4">
-                  <span>{movie.year}</span>
-                  <span className="flex items-center space-x-1">
-                    {renderCategoryIcon(movie.category)}
-                    <span>{movie.category}</span>
-                  </span>
-                  <span>{movie.rating}</span>
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div
+                    style={{
+                      width: "7.3125rem",
+                      height: "3rem",
+                      borderRadius: "1.78125rem",
+                      background: "rgba(255, 255, 255, 0.25)",
+                    }}
+                    className="flex items-center justify-center cursor-pointer select-none"
+                    onClick={onButtonClick}
+                  >
+                    <svg
+                      width="30"
+                      height="30"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15 0C6.713 0 0 6.713 0 15c0 8.288 6.713 15 15 15 8.288 0 15-6.712 15-15 0-8.287-6.712-15-15-15Zm-3 21V8l9 6.5-9 6.5Z"
+                        fill="#FFF"
+                      />
+                    </svg>
+                    <span className="text-white ml-2">Play</span>
+                  </div>
                 </div>
-                <h3 className="figma-heading-xs dekstop:text-[1.125rem] tablet:text-[1.125rem]
+                <BookmarkButton
+                  media_id={movie.id}
+                  isBookmarked={movie.isBookmarked}
+                  reloadData={fetchData}
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-opacity-50 text-figma-white p-4 rounded-b-lg">
+                  <div className=" text-sm space-x-2 figma-body-s dekstop:text-[0.8125rem] tablet:text-[0.8125rem] flex items-center gap-2 desktop:gap-2 tablet:gap-2 phone:gap-[0.38rem] phone:text-[0.6875rem] phone:h-3.5 tablet:h-4 desktop:h-4">
+                    <span>{movie.year}</span>
+                    <span className="flex items-center space-x-1">
+                      {renderCategoryIcon(movie.category)}
+                      <span>{movie.category}</span>
+                    </span>
+                    <span>{movie.rating}</span>
+                  </div>
+                  <h3
+                    className="figma-heading-xs dekstop:text-[1.125rem] tablet:text-[1.125rem]
                   phone:text-[0.875rem] phone:h-[1.125rem]
-                  tablet:h-[1.4375rem] desktop:h-[1.4375rem] text-figma-w">{movie.title}</h3>
+                  tablet:h-[1.4375rem] desktop:h-[1.4375rem] text-figma-w"
+                  >
+                    {movie.title}
+                  </h3>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

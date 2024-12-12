@@ -9,8 +9,8 @@ const MoviesPage = () => {
   const { movies, setMovies, onButtonClick } = useData();
   const [searchMovies, setSearchMovies] = useState([]);
 
-  const fetchData = () => {
-    fetch("http://localhost:5000/content")
+  const fetchData = async () => {
+    await fetch("http://localhost:5000/content")
       .then((response) => response.json())
       .then((data) => {
         const filter = data.filter((media) => {
