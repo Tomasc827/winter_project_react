@@ -59,7 +59,10 @@ const Navbar = () => {
             className="fixed bg-black bg-opacity-50 z-50 inset-0 flex justify-center items-center"
             onClick={() => closeModal()}
           >
-            <div onClick={(e) => e.stopPropagation()}>
+            <div onClick={(e) => e.stopPropagation()}
+                      className={`rounded-lg shadow-lg transform transition-all duration-700 ease-in-out ${
+                        loginModal ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+                      }`}>
               <LoginModal />
             </div>
           </div>

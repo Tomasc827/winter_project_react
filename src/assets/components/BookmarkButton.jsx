@@ -2,13 +2,17 @@ import axios from "axios";
 import IconBookmarkFull from "./formatted_svg/IconBookmarkFull";
 import IconBookmarkEmpty from "./formatted_svg/IconBookmarkEmpty";
 import { useState } from "react";
+import { useData } from "./DataContext";
 
 const BookmarkButton = (props) => {
   const [isHovered, setIsHovered] = useState(false);
+  const {currentUser} = useData()
 
   const bookmarkMedia = () => {
     const setBookmark = async () => {
       try {
+
+
         const response = await axios.patch(
           `http://localhost:5000/content/${props.media_id}`,
           {
@@ -23,7 +27,8 @@ const BookmarkButton = (props) => {
     setBookmark();
   };
   return (
-    <button
+    <>
+   {!currentUser || !currentUser.id ? null : <button
       onClick={bookmarkMedia}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -50,12 +55,13 @@ const BookmarkButton = (props) => {
             strokeWidth="1.5"
           />
         </svg>
-      ) : props.isBookmarked ? (
+      ) : props.isBookmarked? (
         <IconBookmarkFull />
       ) : (
         <IconBookmarkEmpty />
       )}
-    </button>
+    </button> }
+    </>
   );
 };
 
