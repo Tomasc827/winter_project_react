@@ -74,9 +74,9 @@ const MoviesPage = () => {
               <div
                 key={movie.id}
                 className="relative rounded-lg overflow-hidden
-                phone:w-[10.25rem] phone:h-[9.625rem]
-                tablet:w-[13.75rem] tablet:h-[12rem]
-                desktop:w-[17.5rem] desktop:h-[14.125rem]
+                phone:w-[100%] phone:h-[100%]
+                tablet:w-[100%] tablet:h-[100%]
+                desktop:w-[100%] desktop:h-[100%]
                 "
               >
                 <div className="group relative">
@@ -84,15 +84,18 @@ const MoviesPage = () => {
                     <source
                       media="(min-width: 1440px)"
                       srcSet={movie.thumbnail.regular.large}
+                      className="w-[100%] h-[100%]"
                     />
                     <source
                       media="(min-width: 768px)"
                       srcSet={movie.thumbnail.regular.medium}
+                      className="w-[100%] h-[100%]"
                     />
                     <img
                       src={movie.thumbnail.regular.small}
                       alt={movie.title}
-                      className="w-full rounded-lg"
+                      className="w-full rounded-lg h-[100%]"
+
                     />
                   </picture>
 
@@ -123,7 +126,7 @@ const MoviesPage = () => {
                 "
                 >
                   <div
-                    className="figma-body-s dekstop:text-[0.8125rem] tablet:text-[0.8125rem] flex items-center gap-2 desktop:gap-2 tablet:gap-2 phone:gap-[0.38rem] phone:text-[0.6875rem] phone:h-3.5 tablet:h-4 desktop:h-4
+                    className="figma-body-s dekstop:text-[0.8125rem] tablet:text-[0.8125rem] flex items-center gap-2 desktop:gap-2 tablet:gap-2 phone:gap-[0.38rem] phone:text-[0.6875rem] phone:h-3.5 tablet:h-4 desktop:h-4 
                   "
                   >
                     <span>{movie.year}</span>
