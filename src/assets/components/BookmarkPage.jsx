@@ -57,7 +57,7 @@ const BookmarkPage = () => {
       <div id="defaultview">
         <h1 className="figma-heading-l">Bookmarked Movies</h1>
 
-        <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 gap-10 pt-10">
+        <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-10 tablet:gap-[1.8125rem] phone:gap-[0.9375rem] pt-10">
           {searchData.map((media, index) => {
             if (media.category == "Movie") {
               return createBookmarkCard(media);
@@ -67,7 +67,7 @@ const BookmarkPage = () => {
 
         <h1 className="figma-heading-l pt-10">Bookmarked TV Series</h1>
 
-        <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 gap-10 pt-10">
+        <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-10 tablet:gap-[1.8125rem] phone:gap-[0.9375rem] pt-10">
           {searchData.map((media, index) => {
             if (media.category == "TV Series") {
               return createBookmarkCard(media);
@@ -76,7 +76,7 @@ const BookmarkPage = () => {
         </div>
       </div>
       <div id="searchview" className="hidden">
-        <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 gap-10 pt-10">
+        <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-10 tablet:gap-[1.8125rem] phone:gap-[0.9375rem] pt-10">
           {searchData.map((media, index) => {
             return createBookmarkCard(media);
           })}
