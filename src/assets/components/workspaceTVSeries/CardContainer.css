@@ -1,0 +1,58 @@
+.tv-series-container {
+  background-color: #11141e;
+  color: #fff;
+  font-family: "Outfit", sans-serif;
+  text-align: left;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.tv-series-title {
+  font-family: "Outfit", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  margin: 1.8% 0 20px 9%;
+  transition: all 0s ease-in-out;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-left: 9%;
+  transition: all 0s ease-in-out;
+}
+
+@media (max-width: 1440px) {
+  .card-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 550px;
+    margin: 5% 0 0 10px;
+  }
+
+  .tv-series-title {
+    font-size: 28px;
+    margin: 1% 0 0 1%;
+  }
+}
+
+@media (max-width: 769px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 5cm;
+    margin: 2% 0 0 16%;
+  }
+
+  .tv-series-title {
+    font-size: 21px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.312px;
+    margin: 0 0 0 20%
+  }
+}

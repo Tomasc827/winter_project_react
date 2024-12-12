@@ -1,0 +1,224 @@
+.show-card {
+  width: 280px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #11141e;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.show-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px #000e3a;
+  background-color: #1b2130;
+}
+
+.show-card-image {
+  width: 280px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+}
+
+.show-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.show-card:hover .show-card-img {
+  transform: scale(1.1);
+}
+
+.play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 10px;
+}
+
+.show-card:hover .play-overlay {
+  opacity: 1;
+}
+
+.play-button {
+  width: 100px;
+  height: 38px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: rgba(255, 255, 255, 0.164);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.play-button:hover {
+  background-color: rgba(255, 255, 255, 0.164);
+  transform: scale(1.1);
+}
+
+.play-icon {
+  width: 30px;
+  height: 30px;
+  background: url("./play-icon.png") no-repeat center center;
+  background-size: contain;
+  margin-right: 8px;
+}
+
+.play-text {
+  font-family: "Outfit", sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.show-card-content {
+  padding: 10px;
+  text-align: left;
+  color: #11141e;
+}
+
+.show-card-title {
+  font-size: 1rem;
+  margin: 0 0 5px;
+  color: #fff;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.show-card-details {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin: 0;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.show-card-bookmark {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 10;
+}
+
+.show-card-bookmark img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.show-card-bookmark:hover img {
+  content: url("./bookmarkhover.png");
+}
+
+.show-card-bookmark.active img {
+  transform: scale(1.2);
+}
+
+@media (max-width: 1440px) {
+  .show-card {
+    max-width: 230px;
+    max-height: auto;
+    align-items: center;
+  }
+
+  .show-card-image {
+    max-width: 220px;
+    max-height: 130px;
+  }
+
+  .show-card-image img {
+    max-width: 220px;
+    max-height: auto;
+  }
+
+  .show-card-bookmark {
+    top: 10px;
+    right: 10px;
+  }
+
+  .show-card-content {
+    margin: 0;
+    padding: 10px;
+    text-align: left;
+    color: #11141e;
+  }
+}
+
+@media (max-width: 750px) {
+  
+  .show-card {
+    width: 181px;
+    height: auto;
+    margin: 0 0 0 13%;
+  }
+
+  .show-card-image {
+    width: 110%;
+    height: 110px;
+    overflow: hidden;
+    border-radius: 8px;
+    align-items: center;
+  }
+
+  .show-card-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .show-card-bookmark {
+    top: 8px;
+    right: 8px;
+  }
+
+  .show-card-bookmark img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .show-card-content {
+    margin-top: 2mm;
+    padding: 0;
+  }
+
+  .show-card-title {
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+    margin-top: 2mm;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .show-card-details {
+    height: 14px;
+  }
+}
