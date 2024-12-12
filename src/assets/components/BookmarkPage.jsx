@@ -55,9 +55,23 @@ const BookmarkPage = () => {
       />
 
       <div id="defaultview">
-        <h1 className="figma-heading-l">Bookmarked Movies</h1>
+        <h1
+          className={
+            searchData.filter((media) => media.category == "Movie").length <= 0
+              ? "hidden"
+              : "figma-heading-l"
+          }
+        >
+          Bookmarked Movies
+        </h1>
 
-        <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-10 tablet:gap-[1.8125rem] phone:gap-[0.9375rem] pt-10">
+        <div
+          className={
+            searchData.filter((media) => media.category == "Movie").length <= 0
+              ? "hidden"
+              : "grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-10 tablet:gap-[1.8125rem] phone:gap-[0.9375rem] pt-10 pb-10"
+          }
+        >
           {searchData.map((media, index) => {
             if (media.category == "Movie") {
               return createBookmarkCard(media);
@@ -65,9 +79,25 @@ const BookmarkPage = () => {
           })}
         </div>
 
-        <h1 className="figma-heading-l pt-10">Bookmarked TV Series</h1>
+        <h1
+          className={
+            searchData.filter((media) => media.category == "TV Series")
+              .length <= 0
+              ? "hidden"
+              : "figma-heading-l"
+          }
+        >
+          Bookmarked TV Series
+        </h1>
 
-        <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-10 tablet:gap-[1.8125rem] phone:gap-[0.9375rem] pt-10">
+        <div
+          className={
+            searchData.filter((media) => media.category == "TV Series")
+              .length <= 0
+              ? "hidden"
+              : "grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-10 tablet:gap-[1.8125rem] phone:gap-[0.9375rem] pt-10 pb-10"
+          }
+        >
           {searchData.map((media, index) => {
             if (media.category == "TV Series") {
               return createBookmarkCard(media);
