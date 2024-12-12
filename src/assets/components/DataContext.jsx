@@ -53,10 +53,9 @@ export const DataProviders = ({ children }) => {
     setUserModal(false);
     setLoginModal(false);
     setSuccess("Successfully logged out");
-    navigate("/")
+    navigate("/");
     setTimeout(() => {
       setSuccess("");
-      
     }, 2000);
   };
 
@@ -85,6 +84,9 @@ export const DataProviders = ({ children }) => {
   // Movies page
   const [movies, setMovies] = useState([]);
 
+  // TV Series page
+  const [series, setSeries] = useState([]);
+
   return (
     <DataContext.Provider
       value={{
@@ -111,6 +113,8 @@ export const DataProviders = ({ children }) => {
         setMovies,
         onButtonClick,
         onBookmarkClick,
+        series,
+        setSeries,
       }}
     >
       {children}
