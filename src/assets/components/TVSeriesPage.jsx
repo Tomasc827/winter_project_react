@@ -45,7 +45,7 @@ const TVSeriesPage  = () => {
           desktop:pb-[2.38rem]
         "
         >
-          TV series
+          TV Series
         </h1>
 
         <div
@@ -61,9 +61,9 @@ const TVSeriesPage  = () => {
               <div
                 key={serie.id}
                 className="relative rounded-lg overflow-hidden
-                phone:w-[10.25rem] phone:h-[9.625rem]
-                tablet:w-[13.75rem] tablet:h-[12rem]
-                desktop:w-[17.5rem] desktop:h-[14.125rem]
+                 phone:w-[100%] phone:h-[100%]
+                tablet:w-[100%] tablet:h-[100%]
+                desktop:w-[100%] desktop:h-[100%]
                 "
               >
                 <div className="group relative">
@@ -71,15 +71,17 @@ const TVSeriesPage  = () => {
                     <source
                       media="(min-width: 1440px)"
                       srcSet={serie.thumbnail.regular.large}
+                      className="w-[100%] h-[100%]"
                     />
                     <source
                       media="(min-width: 768px)"
                       srcSet={serie.thumbnail.regular.medium}
+                      className="w-[100%] h-[100%]"
                     />
                     <img
                       src={serie.thumbnail.regular.small}
                       alt={serie.title}
-                      className="w-full rounded-lg"
+                      className="w-full rounded-lg h-[100%]"
                     />
                   </picture>
 
