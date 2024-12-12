@@ -5,7 +5,7 @@ import IconPlay from "./formatted_svg/IconPlay";
 import SearchBar from "./SearchBar";
 import BookmarkButton from "./BookmarkButton";
 
-const TVSeriesPage  = () => {
+const TVSeriesPage = () => {
   const { series, setSeries } = useData();
   const [searchSeries, setSearchSeries] = useState([]);
 
@@ -34,9 +34,13 @@ const TVSeriesPage  = () => {
           icon="src/assets/svg/icon-search.svg"
           data={series}
           setSearchData={setSearchSeries}
+          switchViews={false} //  switch between different views when searching
+          hideList={["heading1"]} // hide specific elements when searching [this only matters if switchViews is false]
+          unhideList={["padding1"]}
         />
 
         <h1
+          id="heading1"
           className="figma-heading-l
           desktop:text-[2rem] tablet:text-[2rem] phone:text-[1.25rem]
           pb-[1.5rem]
@@ -47,6 +51,15 @@ const TVSeriesPage  = () => {
         >
           TV Series
         </h1>
+
+        <div
+          id="padding1"
+          className="hidden desktop:text-[2rem] tablet:text-[2rem] phone:text-[1.25rem]
+          pb-[1.5rem]
+          phone:pb-[1.5rem]
+          tablet:pb-[1.5rem]
+          desktop:pb-[2.38rem]"
+        ></div>
 
         <div
           className="grid grid-cols-2 justify-center
@@ -172,4 +185,4 @@ const TVSeriesPage  = () => {
   );
 };
 
-export default TVSeriesPage ;
+export default TVSeriesPage;
