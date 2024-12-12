@@ -55,6 +55,7 @@ export const DataProviders = ({ children }) => {
     setSuccess("Successfully logged out");
     setTimeout(() => {
       setSuccess("");
+      
     }, 2000);
   };
 

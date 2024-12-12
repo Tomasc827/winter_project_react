@@ -73,7 +73,7 @@ const NavbarHorizontal = () => {
           </g>
         ) : (
           <NavLink
-            to={!currentUser || !currentUser.id ? "/bookmarked" : ""}
+            to="/bookmarked"
             style={({ isActive, isPending }) => ({
               fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",
             })}

@@ -497,6 +497,12 @@
       "email": "something2@email.com",
       "password": "U29tZXRoaW5nMSE=",
       "avatar": "/avatar.jpg"
+    },
+    {
+      "id": "c2d0",
+      "email": "something3@email.com",
+      "password": "U29tZXRoaW5nOSE=",
+      "avatar": "/avatar.jpg"
     }
   ]
 }
