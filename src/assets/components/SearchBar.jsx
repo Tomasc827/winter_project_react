@@ -1,10 +1,12 @@
 const SearchBar = (props) => {
+  const defaultView = document.querySelector("#defaultview");
+  const searchView = document.querySelector("#searchview");
+  const resultMessage = document.querySelector("#resultmessage");
+
   const inputHandler = (e) => {
     const lowerCase = e.target.value.toLowerCase();
 
     if (lowerCase == "") {
-      document.querySelector("#resultmessage").innerText = "";
-      props.setSearchData(props.data);
     } else {
       const filteredData = props.data.filter((media) => {
         return (
@@ -15,6 +17,22 @@ const SearchBar = (props) => {
         );
       });
 
+      if (searchView != null && defaultView != null && props.switchViews) {
+        defaultView.style.display = "none";
+        searchView.style.display = "block";
+      } else if (props.switchViews == false) {
+        if (props.hideList != null) {
+          props.hideList.map((element) => {
+            document.getElementById(element).style.display = "none";
+          });
+        }
+        if (props.unhideList != null) {
+          props.unhideList.map((element) => {
+            document.getElementById(element).style.display = "block";
+          });
+        }
+      }
+
       let resultword = "results";
 
       if (filteredData.length == 1) {
@@ -23,7 +41,7 @@ const SearchBar = (props) => {
 
       console.log(filteredData);
 
-      document.querySelector("#resultmessage").innerText =
+      resultMessage.innerText =
         "Found " +
         String(filteredData.length) +
         " " +
@@ -39,8 +57,24 @@ const SearchBar = (props) => {
     const lowerCase = e.target.value.toLowerCase();
 
     if (lowerCase == "") {
-      document.querySelector("#resultmessage").innerText = "";
+      resultMessage.innerText = "";
       props.setSearchData(props.data);
+
+      if (searchView != null && defaultView != null && props.switchViews) {
+        searchView.style.display = "none";
+        defaultView.style.display = "block";
+      } else if (props.switchViews == false) {
+        if (props.hideList != null) {
+          props.hideList.map((element) => {
+            document.getElementById(element).style.display = "block";
+          });
+        }
+        if (props.unhideList != null) {
+          props.unhideList.map((element) => {
+            document.getElementById(element).style.display = "none";
+          });
+        }
+      }
     }
   };
 
