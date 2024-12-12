@@ -29,12 +29,10 @@ const LoginModal = () => {
 
     try {
       const user = await loginUser(data);
-      console.log("User data from login:", user);
       setCurrentUser(user);
       setAvatar(user.avatar);
       setSuccess("Login successful");
       setTimeout(() => {
-        navigate("/");
         setSuccess("");
         setLoginModal(false)
       }, 2500);
