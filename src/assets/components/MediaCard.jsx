@@ -37,16 +37,16 @@ const MediaCard = (props) => {
       </div>
       <div className="mt-2">
         <div className="flex items-center gap-2 figma-body-s">
-          <span>{props.year}</span>
-          <span>·</span>
+          <span className="opacity-75">{props.year}</span>
+          <span className="opacity-75">·</span>
           <img
-            className="inline"
+            className="inline opacity-75"
             src={categoryIcon}
             alt="Media category icon"
           />
-          <span> {props.category}</span>
-          <span>·</span>
-          <span> {props.rating}</span>
+          <span className="opacity-75"> {props.category}</span>
+          <span className="opacity-75">·</span>
+          <span className="opacity-75"> {props.rating}</span>
         </div>
         <h1 className="figma-heading-xs pt-1">{props.title}</h1>
       </div>

@@ -45,7 +45,7 @@ const BookmarkPage = () => {
     fetchData();
   }, []);
   return (
-    <div className="w-fit pb-12 desktop:pl-40 desktop:pr-[2rem] tablet:px-12 phone:px-12">
+    <div className="w-fit pb-12 desktop:pl-40 desktop:pr-[2rem] tablet:px-12 phone:px-12 text-figma-white">
       <SearchBar
         placeholder="Search for bookmarked shows"
         icon="src/assets/svg/icon-search.svg"
