@@ -53,6 +53,7 @@ export const DataProviders = ({ children }) => {
     setUserModal(false);
     setLoginModal(false);
     setSuccess("Successfully logged out");
+    navigate("/")
     setTimeout(() => {
       setSuccess("");
       
