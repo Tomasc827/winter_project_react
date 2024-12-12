@@ -5,7 +5,6 @@ import defaultImage from "../img/favicon-32x32.png";
 const DataContext = createContext();
 
 export const DataProviders = ({ children }) => {
-
   // All of these are exported to signup/login pages
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
@@ -46,38 +45,48 @@ export const DataProviders = ({ children }) => {
 
   // Log Out function
 
-const logout = () => {
-  setCurrentUser({});
-  setAvatar(defaultImage);
-  localStorage.removeItem("currentUser");
-  localStorage.removeItem("avatar");
-  setUserModal(false);
-  setLoginModal(false);
-  setSuccess("Successfully logged out")
-  setTimeout(() => {
-    setSuccess("")
-  },2000)
-};
+  const logout = () => {
+    setCurrentUser({});
+    setAvatar(defaultImage);
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("avatar");
+    setUserModal(false);
+    setLoginModal(false);
+    setSuccess("Successfully logged out");
+    setTimeout(() => {
+      setSuccess("");
+    }, 2000);
+  };
 
   // On click of play button in case not logged in
-const onButtonClick = () => {
-  if (!currentUser || !currentUser.id) {
-    setLoginModal(true)
-    setError("You must be logged in to watch")
-    setTimeout(() => {
-      setError("")
-    },3000)
-  }
-}
+  const onButtonClick = () => {
+    if (!currentUser || !currentUser.id) {
+      setLoginModal(true);
+      setError("You must be logged in to watch");
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+    }
+  };
+  // On click function that checks if there is a current user and allows them to access bookmark page
 
-        // Movies page
-const [movies, setMovies] = useState([])
+  const onBookmarkClick = () => {
+    if (!currentUser || !currentUser.id) {
+      setLoginModal(true);
+      setError("You have to log in to view the bookmark page");
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+    }
+  };
+
+  // Movies page
+  const [movies, setMovies] = useState([]);
 
   return (
     <DataContext.Provider
-      value={
-        {
-          users,
+      value={{
+        users,
         setUsers,
         error,
         setError,
@@ -95,10 +104,12 @@ const [movies, setMovies] = useState([])
         loginModal,
         setLoginModal,
         userModal,
-        setUserModal,movies,setMovies,
+        setUserModal,
+        movies,
+        setMovies,
         onButtonClick,
-        }
-      }
+        onBookmarkClick,
+      }}
     >
       {children}
     </DataContext.Provider>

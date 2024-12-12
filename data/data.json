@@ -160,7 +160,7 @@
       "year": 2019,
       "category": "Movie",
       "rating": "E",
-      "isBookmarked": true,
+      "isBookmarked": false,
       "isTrending": false,
       "id": "4195"
     },
@@ -489,7 +489,7 @@
     {
       "id": "fc57",
       "email": "something@email.com",
-      "password": "U29tZXRoaW5nMTEh",
+      "password": "U29tZXRoaW5nOSE=",
       "avatar": "https://gratisography.com/wp-content/uploads/2024/10/gratisography-cool-cat-800x525.jpg"
     },
     {
