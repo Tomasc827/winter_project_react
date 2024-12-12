@@ -76,7 +76,7 @@ const MoviesPage = () => {
                 className="relative rounded-lg overflow-hidden
                 phone:w-[100%] phone:h-[100%]
                 tablet:w-[100%] tablet:h-[100%]
-                desktop:w-[100%] desktop:h-[100%]
+                desktop:w-[100%] desktop:max-w-[50rem]  desktop:h-[100%]
                 "
               >
                 <div className="group relative">
@@ -84,7 +84,7 @@ const MoviesPage = () => {
                     <source
                       media="(min-width: 1440px)"
                       srcSet={movie.thumbnail.regular.large}
-                      className="w-[100%] h-[100%]"
+                      className="w-[100%] h-[100%] max-w-[50rem]"
                     />
                     <source
                       media="(min-width: 768px)"
@@ -100,11 +100,12 @@ const MoviesPage = () => {
                   </picture>
 
                   <div
-                    className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem]
+                    className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem] flex justify-center items-center
                tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg
                "
+               onClick={onButtonClick}
                   >
-                    <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem]" type="button" onClick={onButtonClick}>
+                    <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem]" type="button">
                       <span className="py-[0.56rem]">
                         <IconPlay />
                       </span>

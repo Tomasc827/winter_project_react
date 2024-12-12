@@ -6,7 +6,7 @@ import SearchBar from "./SearchBar";
 import BookmarkButton from "./BookmarkButton";
 
 const TVSeriesPage = () => {
-  const { series, setSeries } = useData();
+  const { series, setSeries,onButtonClick } = useData();
   const [searchSeries, setSearchSeries] = useState([]);
 
   const fetchData = () => {
@@ -76,7 +76,7 @@ const TVSeriesPage = () => {
                 className="relative rounded-lg overflow-hidden
                  phone:w-[100%] phone:h-[100%]
                 tablet:w-[100%] tablet:h-[100%]
-                desktop:w-[100%] desktop:h-[100%]
+                desktop:w-[100%] desktop:h-[100%] desktop:max-w-[50rem]
                 "
               >
                 <div className="group relative">
@@ -84,7 +84,7 @@ const TVSeriesPage = () => {
                     <source
                       media="(min-width: 1440px)"
                       srcSet={serie.thumbnail.regular.large}
-                      className="w-[100%] h-[100%]"
+                      className="w-[100%] h-[100%] max-w-[50rem]"
                     />
                     <source
                       media="(min-width: 768px)"
@@ -100,8 +100,8 @@ const TVSeriesPage = () => {
 
                   <div
                     className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem]
-               tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg
-               "
+               tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg flex justify-center items-center
+               " onClick={onButtonClick}
                   >
                     <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem]">
                       <span className="py-[0.56rem]">
