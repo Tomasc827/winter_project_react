@@ -11,6 +11,7 @@ import TVSeriesPage from "./assets/components/TVSeriesPage.jsx";
 import BookmarkPage from "./assets/components/BookmarkPage.jsx";
 import SignUpPage from "./assets/components/SignUpPage.jsx";
 import NotFound from "./assets/components/NotFound.jsx";
+import ProtectedRoute from "./assets/components/ProtectedRoute.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -21,7 +22,14 @@ createRoot(document.getElementById("root")).render(
             <Route index element={<Homepage />} />
             <Route path="/movies" element={<MoviesPage />} />
             <Route path="/tvseries" element={<TVSeriesPage />} />
-            <Route path="/bookmarked" element={<BookmarkPage />} />
+            <Route
+              path="/bookmarked"
+              element={
+                <ProtectedRoute>
+                  <BookmarkPage />
+                </ProtectedRoute>
+              }
+            />
           </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
