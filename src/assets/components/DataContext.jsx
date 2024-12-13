@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate} from "react-router";
 import defaultImage from "../img/favicon-32x32.png";
 
 const DataContext = createContext();
@@ -60,16 +60,50 @@ export const DataProviders = ({ children }) => {
     }, 2000);
   };
 
-  // On click of play button in case not logged in
-  const onButtonClick = () => {
-    if (!currentUser || !currentUser.id) {
-      setLoginModal(true);
-      setError("You must be logged in to watch");
-      setTimeout(() => {
-        setError("");
-      }, 3000);
-    }
+  // Homepage Exports 
+
+  const [content,setContent] = useState([]);
+  const [searchContent, setSearchContent] = useState([]);
+
+  const fetchData = async () => {
+    await fetch("http://localhost:5000/content")
+      .then((response) => response.json())
+      .then((data) => {
+        const filter = data.filter((media) => {
+          return media.category === "Movie" || media.category === "TV Series";
+        });
+        setContent(filter);
+        setSearchContent(filter);
+      });
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+
+  const findShowById = (id) =>{
+    return content?.find((single) => single.id.toString() === id.toString())
+  }
+
+  // On click of play button in case not logged in
+ const location = useLocation()
+
+ const onButtonClick = (showId) => {
+  if (!currentUser || !currentUser.id) {
+    setLoginModal(true);
+    setError("You must be logged in to watch");
+    setTimeout(() => {
+      setError("");
+    }, 3000);
+  } else {
+    if (location.pathname === '/') {
+      navigate(`/description/${showId}`);
+    } else {
+      navigate(`${location.pathname}/description/${showId}`);
+    }
+  }
+};
   // On click function that checks if there is a current user and allows them to access bookmark page
 
   const onBookmarkClick = () => {
@@ -116,6 +150,12 @@ export const DataProviders = ({ children }) => {
         onBookmarkClick,
         series,
         setSeries,
+        content,
+        setContent,
+        findShowById,
+        fetchData,
+        searchContent,
+        setSearchContent
       }}
     >
       {children}

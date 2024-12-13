@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Trending from "./Trending";
 import BookmarkButton from "./BookmarkButton";
 import IconPlay from "./formatted_svg/IconPlay";
@@ -6,27 +6,12 @@ import IconCategoryMovie from "./formatted_svg/IconCategoryMovie";
 import IconCategoryTV from "./formatted_svg/IconCategoryTV";
 import SearchBar from "./SearchBar";
 import { useData } from "./DataContext";
+import Description from "./cards/Description";
+import { Outlet } from "react-router";
 
 const Homepage = () => {
-  const [items, setItems] = useState([]);
-  const { onButtonClick,currentUser } = useData();
-  const [searchContent, setSearchContent] = useState([]);
+  const { onButtonClick,currentUser,content,searchContent,setSearchContent,fetchData } = useData();
 
-  const fetchData = async () => {
-    await fetch("http://localhost:5000/content")
-      .then((response) => response.json())
-      .then((data) => {
-        const filter = data.filter((media) => {
-          return media.category === "Movie" || media.category === "TV Series";
-        });
-        setItems(filter);
-        setSearchContent(filter);
-      });
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const [bookmarkedItems, setBookmarkedItems] = useState(new Set());
 
@@ -72,12 +57,13 @@ const Homepage = () => {
       <SearchBar
         placeholder="Search for movies or TV series"
         icon="src/assets/svg/icon-search.svg"
-        data={items}
+        data={content}
         setSearchData={setSearchContent}
         switchViews={false}
         hideList={["heading5", "trendingheading", "trending1", "trending2"]}
         unhideList={["padding1"]}
       />
+      {/* <Description/> */}
       <Trending />
       <div className="text-figma-white phone:pr-4 tablet:pr-6 desktop:pr-9">
         <h1
@@ -105,7 +91,7 @@ const Homepage = () => {
           desktop:pb-[2.38rem]"
         ></div>
 
-        {items.length === 0 ? (
+        {content.length === 0 ? (
           <p className="text-center text-gray-500">Loading data...</p>
         ) : searchContent.length === 0 ? (
           ""
@@ -151,7 +137,7 @@ const Homepage = () => {
                     <div
                       className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem]
                tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg flex justify-center items-center"
-                      onClick={onButtonClick}
+                      onClick={() => onButtonClick(item.id)}
                     >
                       <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem]">
                         <span className="py-[0.56rem]">
@@ -229,7 +215,9 @@ const Homepage = () => {
           </ul>
         )}
       </div>
+      <Outlet/>
     </div>
+
   );
 };
 

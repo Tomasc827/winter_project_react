@@ -16,6 +16,7 @@
       "year": 2019,
       "category": "Movie",
       "rating": "PG",
+      "description": " A group of astronauts embarks on a daring mission to explore a distant planet, but they soon uncover a dark secret that threatens humanity's future. As their journey takes unexpected turns, they must battle isolation, alien environments, and a powerful enemy. Tensions rise among the crew, testing their trust and survival instincts. Will they make it back home before it's too late?",
       "isBookmarked": true,
       "isTrending": true,
       "id": "41f8"
@@ -36,6 +37,7 @@
       "year": 2021,
       "category": "Movie",
       "rating": "PG",
+      "description": "A group of eccentric mechanics creates outlandish custom cars for their clients, but their adventures take a chaotic turn when they unknowingly become embroiled in an international heist. As they race against time to clear their names, they use their inventive skills to outwit the criminals. Along the way, they discover unexpected allies and uncover a conspiracy. It's a fast-paced ride of laughter and danger.",
       "isBookmarked": true,
       "isTrending": true,
       "id": "ddd9"
@@ -56,6 +58,7 @@
       "year": 2019,
       "category": "TV Series",
       "rating": "E",
+      "description": "In a quest for lost civilizations, an archaeologist and her team explore ancient ruins hidden deep within uncharted jungles. They must survive perilous obstacles and rival treasure hunters as they uncover secrets that could change history. Along the way, they discover that some cities were never meant to be found. A thrilling exploration of human ambition, mystery, and survival.",
       "isBookmarked": true,
       "isTrending": true,
       "id": "2cd5"
@@ -76,6 +79,7 @@
       "year": 2021,
       "category": "Movie",
       "rating": "18+",
+      "description": "Set against the backdrop of a pivotal year, this film follows the intertwined lives of several people as they navigate the social, political, and cultural shifts of the late '90s. The characters confront personal challenges, societal changes, and global tensions. As the year progresses, they are forced to reconcile their dreams with the reality of a rapidly changing world. A nostalgic yet insightful journey through a transformative time.",
       "isBookmarked": false,
       "isTrending": true,
       "id": "77ce"
@@ -96,6 +100,7 @@
       "year": 2018,
       "category": "TV Series",
       "rating": "PG",
+      "description": "When a crew aboard a lunar station receives a distress signal from a mysterious object on the far side of the moon, they set out to investigate. They encounter inexplicable phenomena and face an unknown force that threatens their survival. As they race against time to understand the forces at play, they must make impossible decisions to ensure their return. A chilling sci-fi thriller about isolation, mystery, and cosmic danger.",
       "isBookmarked": false,
       "isTrending": true,
       "id": "5f4e"
@@ -112,6 +117,7 @@
       "year": 2019,
       "category": "Movie",
       "rating": "E",
+      "description": "In a vast, untamed wilderness, a group of explorers embarks on a journey to chart the uncharted territories. They must contend with wild animals, harsh climates, and internal conflicts. But as they venture deeper, they uncover a secret that could reshape the future of the land. A gripping tale of discovery, adventure, and the cost of ambition.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "099d"
@@ -128,6 +134,7 @@
       "year": 2019,
       "category": "TV Series",
       "rating": "PG",
+      "description": "A young woman stumbles upon a centuries-old diary, revealing the hidden story of a forgotten love affair. As she uncovers more pages, she becomes captivated by the passion and tragedy of the couple’s journey. The past begins to intersect with her present, leading to a deeper understanding of her own life. A moving tale of love, loss, and fate across generations.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "2f6c"
@@ -144,6 +151,7 @@
       "year": 2017,
       "category": "Movie",
       "rating": "18+",
+      "description": "Set in a future where Earth's ecosystems have been ravaged by human activity, a small group of survivors discovers an untouched sanctuary. They must protect it from those who wish to exploit it, while grappling with their own survival. As tensions rise, they begin to realize that humanity’s future depends on preserving the last remnants of nature. A story of hope, conflict, and the fight for the planet’s future.",
       "isBookmarked": true,
       "isTrending": false,
       "id": "4b45"
@@ -160,6 +168,7 @@
       "year": 2019,
       "category": "Movie",
       "rating": "E",
+      "description": "A daring exploration team ventures into a mythical region that was once thought to be the edge of the world. But what they discover beyond the known territories will test their limits and push them into uncharted danger. As they uncover secrets hidden from history, they are forced to confront the truth about their mission. A thrilling, high-stakes adventure into the unknown.",
       "isBookmarked": true,
       "isTrending": false,
       "id": "4195"
@@ -176,6 +185,7 @@
       "year": 2016,
       "category": "TV Series",
       "rating": "PG",
+      "description":"In a remote village, a group of hunters are tasked with tracking down a dangerous predator terrorizing the locals. As they delve deeper into the wilderness, they discover that the true enemy is not the beast they are hunting, but something far more terrifying. Suspense and tension build as the hunters’ motives are questioned. A dark and gripping thriller of survival and betrayal.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "f522"
@@ -192,6 +202,7 @@
       "year": 2016,
       "category": "TV Series",
       "rating": "18+",
+      "description": "Follows the intense world of competitive motorsports, showcasing the lives of professional drivers, mechanics, and team owners. Each episode dives into the high-stakes races, the politics behind the scenes, and the personal sacrifices of the athletes. Fast cars, fierce rivalries, and adrenaline-fueled drama fuel this action-packed series. It's a high-octane ride full of twists, speed, and excitement.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "9506"
@@ -208,6 +219,7 @@
       "year": 2017,
       "category": "Movie",
       "rating": "E",
+      "description": "A sequel to the hit film, 'Same Answer', where the protagonist must once again confront a series of tough choices that challenge his beliefs and decisions. This time, the stakes are higher, and the consequences of his actions affect more lives. As he grapples with the truth, old alliances and enemies resurface. A thrilling continuation of morality, redemption, and personal growth.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "cd68"
@@ -224,6 +236,7 @@
       "year": 2016,
       "category": "TV Series",
       "rating": "PG",
+      "description": "In a post-apocalyptic world, a group of survivors discovers an underground network of tunnels leading to a forgotten civilization. They must navigate this dangerous new world, facing deadly creatures and the shadows of the past. As they uncover hidden truths, they are forced to confront the dark history of their own society. A haunting tale of survival and secrets beneath the surface.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "71c1"
@@ -240,6 +253,7 @@
       "year": 2015,
       "category": "TV Series",
       "rating": "E",
+      "description": "A group of adventurers sets out to climb the most treacherous peaks of the Rockies, but their journey turns into a fight for survival when a sudden snowstorm traps them. The expedition becomes a test of endurance, teamwork, and determination as they battle the elements and their own fears. With danger at every turn, they must find a way to escape. A heart-pounding adventure about the power of nature and the strength of the human spirit.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "378a"
@@ -256,6 +270,7 @@
       "year": 2017,
       "category": "Movie",
       "rating": "PG",
+      "description": "A former detective, haunted by an unsolved case, goes on a personal mission to find the killer after years of silence. As he uncovers a web of deceit, he realizes that the case is far more complicated than he ever imagined. The pursuit takes him down a dangerous path, where his own life is at risk. A gritty, intense crime thriller that explores justice, obsession, and vengeance.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "c1f5"
@@ -272,6 +287,7 @@
       "year": 2018,
       "category": "TV Series",
       "rating": "18+",
+      "description": "Set in a small town, this drama follows a group of neighbors who come together to overcome personal and collective challenges. As they face tragedies and triumphs, they discover the true meaning of community and connection. The bonds they form create an unbreakable network of support, leading to life-changing transformations. A heartfelt exploration of friendship, family, and unity.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "ecbc"
@@ -288,6 +304,7 @@
       "year": 2015,
       "category": "Movie",
       "rating": "PG",
+      "description": "A free-spirited couple decides to give up their traditional life to live on the road in their van, seeking adventure and self-discovery. Along their travels, they encounter strange people, beautiful landscapes, and the challenges of nomadic living. As they learn to adapt, their bond deepens, and they uncover secrets about themselves. A journey of love, freedom, and the pursuit of happiness.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "f2e8"
@@ -304,6 +321,7 @@
       "year": 2021,
       "category": "Movie",
       "rating": "PG",
+      "description": "A young woman inherits a vast fortune but soon discovers that her family’s wealth is linked to dark secrets. As she navigates the pressure of her new status, she uncovers a conspiracy that could destroy everything she holds dear. With danger closing in, she must decide whether to embrace her legacy or fight against it. A suspenseful tale of power, legacy, and deception.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "3362"
@@ -320,6 +338,7 @@
       "year": 2017,
       "category": "Movie",
       "rating": "18+",
+      "description": "An elite race car driver faces the biggest challenge of his career when a personal tragedy forces him to reevaluate his life. As he struggles with grief and loss, he must decide whether to continue in the high-stakes world of racing or walk away for good. Along the way, he forms unexpected friendships and confronts his own fears. A gripping drama about redemption and the pursuit of peace.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "a116"
@@ -336,6 +355,7 @@
       "year": 2017,
       "category": "Movie",
       "rating": "E",
+      "description": "A haunted estate on a remote hill is the setting for a chilling mystery, as a family moves in, unaware of the dark history that plagues the house. Strange occurrences begin to unravel the secrets buried within its walls. The family must confront their fears and uncover the truth before it consumes them. A spine-tingling tale of ghosts, family, and the past that won't stay buried.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "583a"
@@ -352,6 +372,7 @@
       "year": 2013,
       "category": "TV Series",
       "rating": "PG",
+      "description": "A dedicated emergency dispatcher receives a call from a panicked woman trapped in a dangerous situation, but things quickly spiral out of control when the line goes dead. As the dispatcher works frantically to trace the call and save her, they uncover a web of crime and deception that reaches far beyond what they initially thought. With time running out, the dispatcher must navigate the complexities of the system to prevent a tragedy. A tense and suspenseful thriller about the race against time and the hidden dangers lurking in everyday calls.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "433b"
@@ -368,6 +389,7 @@
       "year": 2017,
       "category": "Movie",
       "rating": "E",
+      "description": "A solitary man living in a small coastal town must face his painful past when a woman from his childhood returns to seek closure. As they reconnect, long-forgotten feelings resurface, forcing him to confront the choices that led to his loneliness. Their reunion becomes a journey of healing, forgiveness, and love. A touching romance about second chances and finding peace.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "5c00"
@@ -384,6 +406,7 @@
       "year": 2018,
       "category": "TV Series",
       "rating": "PG",
+      "description": "A young factory worker becomes disillusioned with the monotonous routine of his job, but a chance encounter with a mysterious woman opens his eyes to a new world. As they embark on a risky journey together, he must decide whether to pursue his new life or stay in the safety of his current existence. A compelling drama about freedom, destiny, and breaking free from the ordinary.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "caa5"
@@ -400,6 +423,7 @@
       "year": 2016,
       "category": "TV Series",
       "rating": "E",
+      "description": "A stray dog becomes the unlikely companion of a troubled young man, helping him find redemption and purpose in his life. Together, they embark on an emotional journey of healing and self-discovery, facing obstacles and forming a bond that transcends words. This heartwarming story explores the power of unconditional love and loyalty. A tribute to the transformative bond between humans and animals.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "8085"
@@ -416,6 +440,7 @@
       "year": 2020,
       "category": "TV Series",
       "rating": "PG",
+      "description": "A travelogue documentary chronicling the journey of a group of adventurers as they explore the diverse cultures and landscapes of Asia in a 24-day journey. From bustling cities to remote villages, they immerse themselves in local traditions and confront the challenges of travel. The film highlights the beauty, complexity, and unity of the continent. A visually stunning exploration of Asia's rich heritage.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "5300"
@@ -432,6 +457,7 @@
       "year": 2016,
       "category": "TV Series",
       "rating": "PG",
+      "description": "Four aspiring chefs with wildly different styles are forced to team up for a prestigious culinary competition. As they clash over methods and ideas, they must learn to work together in order to win the grand prize. Along the way, they form lasting friendships and discover the true essence of cooking. A deliciously entertaining story of food, passion, and collaboration.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "ec6d"
@@ -448,6 +474,7 @@
       "year": 2017,
       "category": "Movie",
       "rating": "18+",
+      "description": "A psychological thriller that follows a woman who, after surviving a traumatic event, starts to experience terrifying visions and nightmares. As she unravels the mystery of what’s happening to her, she discovers that the truth is more disturbing than she could have ever imagined. A tale of fear, mental unraveling, and the line between reality and illusion.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "e150"
@@ -464,6 +491,7 @@
       "year": 2018,
       "category": "TV Series",
       "rating": "18+",
+      "description": "A team of detectives revisits cold cases, determined to uncover the truth behind unsolved mysteries. As they dig deeper, they uncover connections between the cases that suggest a larger conspiracy. Each episode brings them closer to the truth, but with personal stakes rising, they begin to question everything they thought they knew. A gripping crime drama with twists and turns at every corner.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "4121"
@@ -485,6 +513,7 @@
       "year": 2024,
       "category": "Movie",
       "rating": "18+",
+      "description": "In a groundbreaking experiment, a highly intelligent bonobo is trained to write computer code, becoming the world's first primate programmer. As Bonobo develops skills that rival human programmers, a team of scientists faces ethical dilemmas about his autonomy and rights. Meanwhile, the bonobo’s growing abilities begin to draw attention from corporate and government agencies, leading to dangerous consequences. This heartwarming and thought-provoking tale explores the boundaries of intelligence, technology, and the animal-human connection.",
       "isBookmarked": true,
       "isTrending": true,
       "id": "9999"
@@ -501,6 +530,7 @@
       "year": 2017,
       "category": "Movie",
       "rating": "PG",
+      "description": "A daring space mission is launched to explore the mysteries of Saturn and its moons, but the crew quickly faces unexpected challenges. With limited resources and time running out, they must make critical decisions to complete their mission and survive. As they uncover secrets about the planet’s rings and atmosphere, they realize they are not alone. A thrilling space adventure that tests the limits of human endurance and discovery.",
       "isBookmarked": false,
       "isTrending": false,
       "id": "1f2b"

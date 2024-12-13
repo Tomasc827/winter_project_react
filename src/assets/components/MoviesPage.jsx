@@ -4,6 +4,7 @@ import IconCategoryMovie from "./formatted_svg/IconCategoryMovie";
 import IconPlay from "./formatted_svg/IconPlay";
 import SearchBar from "./SearchBar";
 import BookmarkButton from "./BookmarkButton";
+import { Outlet } from "react-router";
 
 const MoviesPage = () => {
   const { movies, setMovies, onButtonClick } = useData();
@@ -103,7 +104,7 @@ const MoviesPage = () => {
                     className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem] flex justify-center items-center
                tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg
                "
-               onClick={onButtonClick}
+               onClick={() => onButtonClick(movie.id)}
                   >
                     <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem]" type="button">
                       <span className="py-[0.56rem]">
@@ -183,6 +184,7 @@ const MoviesPage = () => {
             ))}
         </div>
       </div>
+      <Outlet/>
     </>
   );
 };
