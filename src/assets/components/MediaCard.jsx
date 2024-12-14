@@ -1,6 +1,10 @@
 import BookmarkButton from "./BookmarkButton";
+import { useData } from "./DataContext";
 import "./MediaCard.css";
 const MediaCard = (props) => {
+
+  const {onButtonClick} = useData()
+
   let categoryIcon = "src/assets/svg/icon-category-tv.svg";
 
   if (props.category == "Movie") {
@@ -11,18 +15,18 @@ const MediaCard = (props) => {
       <div className="relative group ">
         <img
           className="rounded-lg"
-          src={props.thumbnail}
+          src={`/${props.thumbnail.replace(/^\/+/, '')}`}
           alt="Media thumbnail"
         />
 
-        <div className="absolute rounded-lg bg-black left-0 top-0 w-full h-full opacity-0 group-hover:opacity-50 duration-500"></div>
+        <div className="absolute rounded-lg bg-black left-0 top-0 w-full h-full opacity-0 group-hover:opacity-50 duration-500" onClick={() => onButtonClick(props.media_id)}></div>
 
         <button className="absolute hidden group-hover:block duration-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-14">
           <div className="opacity-25 absolute rounded-full bg-white w-full h-full"></div>
           <div className="flex flex-row h-full justify-between justify-items-center text-center items-center">
             <img
               className="w-[30%] ml-3"
-              src="src/assets/svg/icon-play.svg"
+              src={`/${props.playIcon?.replace(/^\/+/, '') || 'src/assets/svg/icon-play.svg'}`}
               alt="Media play icon"
             />
             <p className="mr-8 text-white font-semibold">Play</p>
@@ -41,7 +45,7 @@ const MediaCard = (props) => {
           <span>·</span>
           <img
             className="inline"
-            src={categoryIcon}
+            src={`/${categoryIcon?.replace(/^\/+/, '')}`}
             alt="Media category icon"
           />
           <span> {props.category}</span>

@@ -6,7 +6,6 @@ import IconCategoryMovie from "./formatted_svg/IconCategoryMovie";
 import IconCategoryTV from "./formatted_svg/IconCategoryTV";
 import SearchBar from "./SearchBar";
 import { useData } from "./DataContext";
-import Description from "./cards/Description";
 import { Outlet } from "react-router";
 
 const Homepage = () => {

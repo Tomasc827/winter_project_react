@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useData } from "./DataContext";
 import IconCategoryMovie from "./formatted_svg/IconCategoryMovie";
 import IconPlay from "./formatted_svg/IconPlay";
@@ -7,25 +6,12 @@ import BookmarkButton from "./BookmarkButton";
 import { Outlet } from "react-router";
 
 const MoviesPage = () => {
-  const { movies, setMovies, onButtonClick } = useData();
-  const [searchMovies, setSearchMovies] = useState([]);
+  const { content, onButtonClick,fetchData,searchContent,setSearchContent } = useData();
+ 
 
-  const fetchData = async () => {
-    await fetch("http://localhost:5000/content")
-      .then((response) => response.json())
-      .then((data) => {
-        const filter = data.filter((media) => {
-          return media.category == "Movie";
-        });
-        setMovies(filter);
-        setSearchMovies(filter);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  };
+ 
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+
 
   return (
     <>
@@ -33,8 +19,8 @@ const MoviesPage = () => {
         <SearchBar
           placeholder="Search for movies"
           icon="src/assets/svg/icon-search.svg"
-          data={movies}
-          setSearchData={setSearchMovies}
+          data={content}
+          setSearchData={setSearchContent}
           switchViews={false} //  switch between different views when searching
           hideList={["heading1"]} // hide specific elements when searching [this only matters if switchViews is false]
           unhideList={["padding1"]}
@@ -69,7 +55,7 @@ const MoviesPage = () => {
         desktop:grid-cols-4 desktop:gap-y-8 desktop:gap-x-10 
         "
         >
-          {searchMovies
+          {searchContent
             .filter((movie) => movie.category === "Movie")
             .map((movie) => (
               <div
@@ -84,16 +70,16 @@ const MoviesPage = () => {
                   <picture>
                     <source
                       media="(min-width: 1440px)"
-                      srcSet={movie.thumbnail.regular.large}
+                      srcSet={`/${movie.thumbnail.regular.large.replace(/^\/+/, '')}`}
                       className="w-[100%] h-[100%] max-w-[50rem]"
                     />
                     <source
                       media="(min-width: 768px)"
-                      srcSet={movie.thumbnail.regular.medium}
+                      srcSet={`/${movie.thumbnail.regular.large.replace(/^\/+/, '')}`}
                       className="w-[100%] h-[100%]"
                     />
                     <img
-                      src={movie.thumbnail.regular.small}
+                      src={`/${movie.thumbnail.regular.large.replace(/^\/+/, '')}`}
                       alt={movie.title}
                       className="w-full rounded-lg h-[100%]"
 

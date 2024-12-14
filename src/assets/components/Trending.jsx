@@ -3,27 +3,12 @@ import BookmarkButton from "./BookmarkButton";
 import { useData } from "./DataContext";
 
 const TrendingMoviesCarousel = () => {
-  const [movies, setMovies] = useState([]);
-  const { onButtonClick } = useData();
 
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/content");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setMovies(data.filter((movie) => movie.isTrending));
-      } catch (error) {
-        console.error("Error fetching trending movies:", error);
-      }
-    };
+  const {content, onButtonClick,fetchData} = useData();
 
-    fetchMovies();
-  }, []);
+  const trendingContent = content.filter(media => media.isTrending)
 
-  // scrollbar on drag, hope it works
+
 
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -48,18 +33,7 @@ const TrendingMoviesCarousel = () => {
     scrollRef.current.scrollLeft = scrollLeft - walk;
   };
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/content");
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
-      setMovies(data.filter((movie) => movie.isTrending));
-    } catch (error) {
-      console.error("Error fetching trending movies:", error);
-    }
-  };
+
 
   const renderCategoryIcon = (category) => {
     if (category === "Movie") {
@@ -114,7 +88,7 @@ const TrendingMoviesCarousel = () => {
         className="flex w-full h-full cursor-grab active:cursor-grabbing overflow-x-auto disappear-scrollbar select-none"
       >
         <div className="flex phone:gap-x-[1rem] tablet:gap-x-[2.5rem] flex-nowrap w-full h-full ">
-          {movies.map((movie, index) => (
+          {trendingContent.map((movie, index) => (
             <div key={index} className="inline-block">
               <div className="relative group">
                 <picture className="object-cover rounded-lg group-hover:opacity-25 transition-opacity duration-300">
@@ -148,7 +122,7 @@ const TrendingMoviesCarousel = () => {
                       background: "rgba(255, 255, 255, 0.25)",
                     }}
                     className="flex items-center justify-center cursor-pointer select-none"
-                    onClick={onButtonClick}
+                    onClick={() => onButtonClick(movie.id)}
                   >
                     <svg
                       width="30"

@@ -4,7 +4,7 @@ import defaultImage from "../img/favicon-32x32.png";
 
 const DataContext = createContext();
 
-export const DataProviders = ({ children }) => {
+export const DataProviders = ({ children}) => {
   // All of these are exported to signup/login pages
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
@@ -31,6 +31,8 @@ export const DataProviders = ({ children }) => {
   const [loginModal, setLoginModal] = useState(false);
   //End of Navbar
   //Global exports for keeping same user and avatar after refresh, and puts them in local storage, added one for bookmarks as well
+  const location = useLocation()
+
   useEffect(() => {
     if (Object.keys(currentUser).length > 0) {
       localStorage.setItem("currentUser", JSON.stringify(currentUser));
@@ -60,34 +62,65 @@ export const DataProviders = ({ children }) => {
     }, 2000);
   };
 
-  // Homepage Exports 
+  // Centralized fetchData works across all pages
 
   const [content,setContent] = useState([]);
   const [searchContent, setSearchContent] = useState([]);
 
   const fetchData = async () => {
-    await fetch("http://localhost:5000/content")
-      .then((response) => response.json())
-      .then((data) => {
+    try { 
+      const response = await fetch("http://localhost:5000/content");
+      const data = await response.json();
+      
+      const basePath = location.pathname.split('/description')[0];
+  
+      if (basePath === "/" || basePath === "") {
         const filter = data.filter((media) => {
           return media.category === "Movie" || media.category === "TV Series";
         });
         setContent(filter);
         setSearchContent(filter);
-      });
+      }
+      else if (location.pathname === "/movies" || basePath === "/movies") {
+        const filter = data.filter((media) => {
+          return media.category === "Movie";
+        });
+        setContent(filter);
+        setSearchContent(filter);
+      }
+      else if (location.pathname === "/tvseries" || basePath === "/tvseries") {
+        const filter = data.filter((media) => {
+          return media.category === "TV Series";
+        });
+        setContent(filter);
+        setSearchContent(filter);
+      }
+      else if (location.pathname === "/bookmarked" || basePath === "/bookmarked") {
+        const filter = data.filter((media) => {
+          return media.isBookmarked;
+        });
+        setContent(filter);
+        setSearchContent(filter);
+      }
+    } catch (error) {
+      setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+    }
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [location]);
 
-
+  // Description card behaviour
   const findShowById = (id) =>{
     return content?.find((single) => single.id.toString() === id.toString())
   }
 
   // On click of play button in case not logged in
- const location = useLocation()
+ 
 
  const onButtonClick = (showId) => {
   if (!currentUser || !currentUser.id) {
@@ -116,12 +149,6 @@ export const DataProviders = ({ children }) => {
     }
   };
 
-  // Movies page
-  const [movies, setMovies] = useState([]);
-
-  // TV Series page
-  const [series, setSeries] = useState([]);
-
   return (
     <DataContext.Provider
       value={{
@@ -144,18 +171,15 @@ export const DataProviders = ({ children }) => {
         setLoginModal,
         userModal,
         setUserModal,
-        movies,
-        setMovies,
         onButtonClick,
         onBookmarkClick,
-        series,
-        setSeries,
         content,
         setContent,
         findShowById,
         fetchData,
         searchContent,
-        setSearchContent
+        setSearchContent,
+        location
       }}
     >
       {children}

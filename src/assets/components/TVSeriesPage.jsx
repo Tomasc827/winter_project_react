@@ -7,25 +7,13 @@ import BookmarkButton from "./BookmarkButton";
 import { Outlet } from "react-router";
 
 const TVSeriesPage = () => {
-  const { series, setSeries,onButtonClick } = useData();
+  const { content,onButtonClick,fetchData } = useData();
   const [searchSeries, setSearchSeries] = useState([]);
 
-  const fetchData = () => {
-    fetch("http://localhost:5000/content")
-      .then((response) => response.json())
-      .then((data) => {
-        const filter = data.filter((media) => {
-          return media.category == "TV Series";
-        });
-        setSeries(filter);
-        setSearchSeries(filter);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  };
-
   useEffect(() => {
-    fetchData();
-  }, []);
+    setSearchSeries(content)
+  },[content])
+ 
 
   return (
     <>
@@ -33,7 +21,7 @@ const TVSeriesPage = () => {
         <SearchBar
           placeholder="Search for TV series"
           icon="src/assets/svg/icon-search.svg"
-          data={series}
+          data={content}
           setSearchData={setSearchSeries}
           switchViews={false} //  switch between different views when searching
           hideList={["heading1"]} // hide specific elements when searching [this only matters if switchViews is false]
@@ -84,16 +72,16 @@ const TVSeriesPage = () => {
                   <picture>
                     <source
                       media="(min-width: 1440px)"
-                      srcSet={serie.thumbnail.regular.large}
+                      srcSet={`/${serie.thumbnail.regular.large.replace(/^\/+/, '')}`}
                       className="w-[100%] h-[100%] max-w-[50rem]"
                     />
                     <source
                       media="(min-width: 768px)"
-                      srcSet={serie.thumbnail.regular.medium}
+                      srcSet={`/${serie.thumbnail.regular.large.replace(/^\/+/, '')}`}
                       className="w-[100%] h-[100%]"
                     />
                     <img
-                      src={serie.thumbnail.regular.small}
+                      src={`/${serie.thumbnail.regular.large.replace(/^\/+/, '')}`}
                       alt={serie.title}
                       className="w-full rounded-lg h-[100%]"
                     />

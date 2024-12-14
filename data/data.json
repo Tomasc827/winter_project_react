@@ -38,7 +38,7 @@
       "category": "Movie",
       "rating": "PG",
       "description": "A group of eccentric mechanics creates outlandish custom cars for their clients, but their adventures take a chaotic turn when they unknowingly become embroiled in an international heist. As they race against time to clear their names, they use their inventive skills to outwit the criminals. Along the way, they discover unexpected allies and uncover a conspiracy. It's a fast-paced ride of laughter and danger.",
-      "isBookmarked": true,
+      "isBookmarked": false,
       "isTrending": true,
       "id": "ddd9"
     },
@@ -118,7 +118,7 @@
       "category": "Movie",
       "rating": "E",
       "description": "In a vast, untamed wilderness, a group of explorers embarks on a journey to chart the uncharted territories. They must contend with wild animals, harsh climates, and internal conflicts. But as they venture deeper, they uncover a secret that could reshape the future of the land. A gripping tale of discovery, adventure, and the cost of ambition.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "099d"
     },
@@ -135,7 +135,7 @@
       "category": "TV Series",
       "rating": "PG",
       "description": "A young woman stumbles upon a centuries-old diary, revealing the hidden story of a forgotten love affair. As she uncovers more pages, she becomes captivated by the passion and tragedy of the couple’s journey. The past begins to intersect with her present, leading to a deeper understanding of her own life. A moving tale of love, loss, and fate across generations.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "2f6c"
     },
@@ -152,7 +152,7 @@
       "category": "Movie",
       "rating": "18+",
       "description": "Set in a future where Earth's ecosystems have been ravaged by human activity, a small group of survivors discovers an untouched sanctuary. They must protect it from those who wish to exploit it, while grappling with their own survival. As tensions rise, they begin to realize that humanity’s future depends on preserving the last remnants of nature. A story of hope, conflict, and the fight for the planet’s future.",
-      "isBookmarked": true,
+      "isBookmarked": false,
       "isTrending": false,
       "id": "4b45"
     },
@@ -169,7 +169,7 @@
       "category": "Movie",
       "rating": "E",
       "description": "A daring exploration team ventures into a mythical region that was once thought to be the edge of the world. But what they discover beyond the known territories will test their limits and push them into uncharted danger. As they uncover secrets hidden from history, they are forced to confront the truth about their mission. A thrilling, high-stakes adventure into the unknown.",
-      "isBookmarked": true,
+      "isBookmarked": false,
       "isTrending": false,
       "id": "4195"
     },
@@ -185,8 +185,8 @@
       "year": 2016,
       "category": "TV Series",
       "rating": "PG",
-      "description":"In a remote village, a group of hunters are tasked with tracking down a dangerous predator terrorizing the locals. As they delve deeper into the wilderness, they discover that the true enemy is not the beast they are hunting, but something far more terrifying. Suspense and tension build as the hunters’ motives are questioned. A dark and gripping thriller of survival and betrayal.",
-      "isBookmarked": false,
+      "description": "In a remote village, a group of hunters are tasked with tracking down a dangerous predator terrorizing the locals. As they delve deeper into the wilderness, they discover that the true enemy is not the beast they are hunting, but something far more terrifying. Suspense and tension build as the hunters’ motives are questioned. A dark and gripping thriller of survival and betrayal.",
+      "isBookmarked": true,
       "isTrending": false,
       "id": "f522"
     },
@@ -514,7 +514,7 @@
       "category": "Movie",
       "rating": "18+",
       "description": "In a groundbreaking experiment, a highly intelligent bonobo is trained to write computer code, becoming the world's first primate programmer. As Bonobo develops skills that rival human programmers, a team of scientists faces ethical dilemmas about his autonomy and rights. Meanwhile, the bonobo’s growing abilities begin to draw attention from corporate and government agencies, leading to dangerous consequences. This heartwarming and thought-provoking tale explores the boundaries of intelligence, technology, and the animal-human connection.",
-      "isBookmarked": true,
+      "isBookmarked": false,
       "isTrending": true,
       "id": "9999"
     },
