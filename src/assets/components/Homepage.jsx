@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Trending from "./Trending";
 import BookmarkButton from "./BookmarkButton";
 import IconPlay from "./formatted_svg/IconPlay";
@@ -7,24 +6,37 @@ import IconCategoryTV from "./formatted_svg/IconCategoryTV";
 import SearchBar from "./SearchBar";
 import { useData } from "./DataContext";
 import { Outlet } from "react-router";
+import { useEffect } from "react";
+import Pagination from "./Pagination";
 
 const Homepage = () => {
-  const { onButtonClick,currentUser,content,searchContent,setSearchContent,fetchData } = useData();
+  const {
+    onButtonClick,
+    currentUser,
+    content,
+    searchContent,
+    setSearchContent,
+    fetchData,
+    setCurrentPage,
+    currentPage,
+    itemsPerPage
+  } = useData();
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = searchContent
+    .filter(
+      (item) => item.category === "TV Series" || item.category === "Movie"
+    )
+    .slice(indexOfFirstItem, indexOfLastItem);
+  
 
 
-  const [bookmarkedItems, setBookmarkedItems] = useState(new Set());
-
-  const toggleBookmark = (itemId) => {
-    setBookmarkedItems((prev) => {
-      const updated = new Set(prev);
-      if (updated.has(itemId)) {
-        updated.delete(itemId);
-      } else {
-        updated.add(itemId);
+    useEffect(() => {
+      if (searchContent.length !== content.length) {
+        setCurrentPage(1);
       }
-      return updated;
-    });
-  };
+    }, [searchContent]);
 
   const renderCategoryIcon = (category) => {
     if (category === "Movie") {
@@ -33,22 +45,6 @@ const Homepage = () => {
       return <IconCategoryTV />;
     }
     return null;
-  };
-
-  const renderBookmarkIcon = (itemId) => {
-    const isBookmarked = bookmarkedItems.has(itemId);
-    return (
-      <button
-        onClick={() => toggleBookmark(itemId)}
-        className="absolute top-2 right-2 text-figma-white"
-      >
-        {isBookmarked ? (
-          <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg"></svg>
-        ) : (
-          <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg"></svg>
-        )}
-      </button>
-    );
   };
 
   return (
@@ -62,7 +58,6 @@ const Homepage = () => {
         hideList={["heading5", "trendingheading", "trending1", "trending2"]}
         unhideList={["padding1"]}
       />
-      {/* <Description/> */}
       <Trending />
       <div className="text-figma-white phone:pr-4 tablet:pr-6 desktop:pr-9">
         <h1
@@ -79,7 +74,9 @@ const Homepage = () => {
           mobile:pt-[1.5rem]
           "
         >
-          {!currentUser || !currentUser.id ? "Our Recommendations" : "Recommended for you"} 
+          {!currentUser || !currentUser.id
+            ? "Our Recommendations"
+            : "Recommended for you"}
         </h1>
         <div
           id="padding1"
@@ -101,122 +98,118 @@ const Homepage = () => {
         tablet:grid-cols-3 tablet:gap-y-6 tablet:gap-x-[1.81rem]
         desktop:grid-cols-4 desktop:gap-y-8 desktop:gap-x-10"
           >
-            {searchContent
-              .filter(
-                (item) =>
-                  item.category === "TV Series" || item.category === "Movie"
-              )
-              .map((item) => (
-                <li
-                  key={item.id}
-                  className="relative rounded-lg overflow-hidden
+            {currentItems.map((item) => (
+              <li
+                key={item.id}
+                className="relative rounded-lg overflow-hidden
                 phone:w-[100%] phone:h-[100%]
                 tablet:w-[100%] tablet:h-[100%]
                 desktop:w-[100%] desktop:max-w-[50rem]  desktop:h-[100%]"
-                >
-                  <div className="relative group">
-                    <picture>
-                      <source
-                        media="(min-width: 1440px)"
-                        srcSet={item.thumbnail.regular.large}
-                        className="w-[100%] h-[100%] max-w-[50rem]"
-                      />
-                      <source
-                        media="(min-width: 768px)"
-                        srcSet={item.thumbnail.regular.medium}
-                        className="w-[100%] h-[100%]"
-                      />
-                      <img
-                        src={item.thumbnail.regular.small}
-                        alt={item.title}
-                        className="w-full rounded-lg h-[100%]"
-                      />
-                    </picture>
+              >
+                <div className="relative group">
+                  <picture>
+                    <source
+                      media="(min-width: 1440px)"
+                      srcSet={item.thumbnail.regular.large}
+                      className="w-[100%] h-[100%] max-w-[50rem]"
+                    />
+                    <source
+                      media="(min-width: 768px)"
+                      srcSet={item.thumbnail.regular.medium}
+                      className="w-[100%] h-[100%]"
+                    />
+                    <img
+                      src={item.thumbnail.regular.small}
+                      alt={item.title}
+                      className="w-full rounded-lg h-[100%]"
+                    />
+                  </picture>
 
-                    <div
-                      className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem]
-               tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg flex justify-center items-center"
-                      onClick={() => onButtonClick(item.id)}
-                    >
-                      <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem]">
-                        <span className="py-[0.56rem]">
-                          <IconPlay />
-                        </span>
-                        <span className="figma-heading-xs pt-[0.75rem] pb-[0.81rem]">
-                          Play
-                        </span>
-                      </button>
-                    </div>
-                    {renderBookmarkIcon(item.id)}
-                  </div>
-                  <BookmarkButton
-                    media_id={item.id}
-                    isBookmarked={item.isBookmarked}
-                    reloadData={fetchData}
-                  />
                   <div
-                    className="flex flex-col gap-[0.3125rem] desktop:gap-[0.3125rem] tablet:gap-[0.3125rem] phone:gap-[0.25rem] pt-2 bg-gradient-to-t to-transparent rounded-b-lg
-                "
+                    className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem]
+               tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg flex justify-center items-center"
+                    onClick={() => onButtonClick(item.id)}
                   >
-                    <div className="figma-body-s dekstop:text-[0.8125rem] tablet:text-[0.8125rem] flex items-center gap-2 desktop:gap-2 tablet:gap-2 phone:gap-[0.38rem] phone:text-[0.6875rem] phone:h-3.5 tablet:h-4 desktop:h-4">
-                      <span>{item.year}</span>
-                      <div>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="3"
-                          height="3"
-                          viewBox="0 0 3 3"
-                          fill="none"
-                        >
-                          <circle
-                            opacity="0.5"
-                            cx="1.5"
-                            cy="1.5"
-                            r="1.5"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                      <div className="flex items-center gap-[0.38rem] desktop:gap-[0.38rem] tablet:gap-[0.38rem] phone:gap-[0.25rem]">
-                        {renderCategoryIcon(item.category)}
-                        <span>{item.category}</span>
-                      </div>
-                      <div>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="3"
-                          height="3"
-                          viewBox="0 0 3 3"
-                          fill="none"
-                        >
-                          <circle
-                            opacity="0.5"
-                            cx="1.5"
-                            cy="1.5"
-                            r="1.5"
-                            fill="white"
-                          />
-                        </svg>
-                      </div>
-                      <span>{item.rating}</span>
+                    <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem]">
+                      <span className="py-[0.56rem]">
+                        <IconPlay />
+                      </span>
+                      <span className="figma-heading-xs pt-[0.75rem] pb-[0.81rem]">
+                        Play
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <BookmarkButton
+                  media_id={item.id}
+                  isBookmarked={item.isBookmarked}
+                  reloadData={fetchData}
+                />
+                <div
+                  className="flex flex-col gap-[0.3125rem] desktop:gap-[0.3125rem] tablet:gap-[0.3125rem] phone:gap-[0.25rem] pt-2 bg-gradient-to-t to-transparent rounded-b-lg
+                "
+                >
+                  <div className="figma-body-s dekstop:text-[0.8125rem] tablet:text-[0.8125rem] flex items-center gap-2 desktop:gap-2 tablet:gap-2 phone:gap-[0.38rem] phone:text-[0.6875rem] phone:h-3.5 tablet:h-4 desktop:h-4">
+                    <span>{item.year}</span>
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="3"
+                        height="3"
+                        viewBox="0 0 3 3"
+                        fill="none"
+                      >
+                        <circle
+                          opacity="0.5"
+                          cx="1.5"
+                          cy="1.5"
+                          r="1.5"
+                          fill="white"
+                        />
+                      </svg>
                     </div>
+                    <div className="flex items-center gap-[0.38rem] desktop:gap-[0.38rem] tablet:gap-[0.38rem] phone:gap-[0.25rem]">
+                      {renderCategoryIcon(item.category)}
+                      <span>{item.category}</span>
+                    </div>
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="3"
+                        height="3"
+                        viewBox="0 0 3 3"
+                        fill="none"
+                      >
+                        <circle
+                          opacity="0.5"
+                          cx="1.5"
+                          cy="1.5"
+                          r="1.5"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                    <span>{item.rating}</span>
+                  </div>
 
-                    <div
-                      className="figma-heading-xs dekstop:text-[1.125rem] tablet:text-[1.125rem]
+                  <div
+                    className="figma-heading-xs dekstop:text-[1.125rem] tablet:text-[1.125rem]
                   phone:text-[0.875rem] phone:h-[1.125rem]
                   tablet:h-[1.4375rem] desktop:h-[1.4375rem]"
-                    >
-                      {item.title}
-                    </div>
+                  >
+                    {item.title}
                   </div>
-                </li>
-              ))}
+                </div>
+              </li>
+            ))}
           </ul>
         )}
-      </div>
-      <Outlet/>
-    </div>
+        <Pagination
 
+        />
+      </div>
+      <Outlet />
+    </div>
   );
 };
 

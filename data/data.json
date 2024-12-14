@@ -59,7 +59,7 @@
       "category": "TV Series",
       "rating": "E",
       "description": "In a quest for lost civilizations, an archaeologist and her team explore ancient ruins hidden deep within uncharted jungles. They must survive perilous obstacles and rival treasure hunters as they uncover secrets that could change history. Along the way, they discover that some cities were never meant to be found. A thrilling exploration of human ambition, mystery, and survival.",
-      "isBookmarked": true,
+      "isBookmarked": false,
       "isTrending": true,
       "id": "2cd5"
     },
@@ -118,7 +118,7 @@
       "category": "Movie",
       "rating": "E",
       "description": "In a vast, untamed wilderness, a group of explorers embarks on a journey to chart the uncharted territories. They must contend with wild animals, harsh climates, and internal conflicts. But as they venture deeper, they uncover a secret that could reshape the future of the land. A gripping tale of discovery, adventure, and the cost of ambition.",
-      "isBookmarked": true,
+      "isBookmarked": false,
       "isTrending": false,
       "id": "099d"
     },
@@ -169,7 +169,7 @@
       "category": "Movie",
       "rating": "E",
       "description": "A daring exploration team ventures into a mythical region that was once thought to be the edge of the world. But what they discover beyond the known territories will test their limits and push them into uncharted danger. As they uncover secrets hidden from history, they are forced to confront the truth about their mission. A thrilling, high-stakes adventure into the unknown.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "4195"
     },
@@ -220,7 +220,7 @@
       "category": "Movie",
       "rating": "E",
       "description": "A sequel to the hit film, 'Same Answer', where the protagonist must once again confront a series of tough choices that challenge his beliefs and decisions. This time, the stakes are higher, and the consequences of his actions affect more lives. As he grapples with the truth, old alliances and enemies resurface. A thrilling continuation of morality, redemption, and personal growth.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "cd68"
     },
@@ -441,7 +441,7 @@
       "category": "TV Series",
       "rating": "PG",
       "description": "A travelogue documentary chronicling the journey of a group of adventurers as they explore the diverse cultures and landscapes of Asia in a 24-day journey. From bustling cities to remote villages, they immerse themselves in local traditions and confront the challenges of travel. The film highlights the beauty, complexity, and unity of the continent. A visually stunning exploration of Asia's rich heritage.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "5300"
     },

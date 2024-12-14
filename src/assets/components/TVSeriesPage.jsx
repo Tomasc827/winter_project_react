@@ -5,15 +5,24 @@ import IconPlay from "./formatted_svg/IconPlay";
 import SearchBar from "./SearchBar";
 import BookmarkButton from "./BookmarkButton";
 import { Outlet } from "react-router";
+import Pagination from "./Pagination";
 
 const TVSeriesPage = () => {
-  const { content,onButtonClick,fetchData } = useData();
-  const [searchSeries, setSearchSeries] = useState([]);
+  const { content,onButtonClick,fetchData,searchContent,setSearchContent,setCurrentPage,currentPage,itemsPerPage } = useData();
 
-  useEffect(() => {
-    setSearchSeries(content)
-  },[content])
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = searchContent
+    .filter(
+      (item) => item.category === "TV Series"
+    )
+    .slice(indexOfFirstItem, indexOfLastItem);
  
+    useEffect(() => {
+      if (searchContent.length !== content.length) {
+        setCurrentPage(1);
+      }
+    }, [searchContent]);
 
   return (
     <>
@@ -22,7 +31,7 @@ const TVSeriesPage = () => {
           placeholder="Search for TV series"
           icon="src/assets/svg/icon-search.svg"
           data={content}
-          setSearchData={setSearchSeries}
+          setSearchData={setSearchContent}
           switchViews={false} //  switch between different views when searching
           hideList={["heading1"]} // hide specific elements when searching [this only matters if switchViews is false]
           unhideList={["padding1"]}
@@ -57,8 +66,7 @@ const TVSeriesPage = () => {
         desktop:grid-cols-4 desktop:gap-y-8 desktop:gap-x-10
         "
         >
-          {searchSeries
-            .filter((serie) => serie.category === "TV Series")
+          {currentItems
             .map((serie) => (
               <div
                 key={serie.id}
@@ -169,6 +177,7 @@ const TVSeriesPage = () => {
               </div>
             ))}
         </div>
+        <Pagination/>
       </div>
       <Outlet/>
     </>

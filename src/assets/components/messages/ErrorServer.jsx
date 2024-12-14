@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 const ErrorServer = () => {
   const { error, setProcessing, setError } = useData();
   const [isVisible, setIsVisible] = useState(false);
+ 
 
   useEffect(() => {
     let hideTimeout;

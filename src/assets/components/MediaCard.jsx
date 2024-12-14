@@ -21,11 +21,11 @@ const MediaCard = (props) => {
 
         <div className="absolute rounded-lg bg-black left-0 top-0 w-full h-full opacity-0 group-hover:opacity-50 duration-500" onClick={() => onButtonClick(props.media_id)}></div>
 
-        <button className="absolute hidden group-hover:block duration-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-14">
+        <button className="absolute hidden group-hover:block duration-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-14" onClick={() => onButtonClick(props.media_id)}>
           <div className="opacity-25 absolute rounded-full bg-white w-full h-full"></div>
-          <div className="flex flex-row h-full justify-between justify-items-center text-center items-center">
+          <div className="flex flex-row h-full justify-between justify-items-center text-center items-center" >
             <img
-              className="w-[30%] ml-3"
+              className="w-[30%] ml-3" 
               src={`/${props.playIcon?.replace(/^\/+/, '') || 'src/assets/svg/icon-play.svg'}`}
               alt="Media play icon"
             />

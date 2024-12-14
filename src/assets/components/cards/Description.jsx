@@ -10,7 +10,7 @@ import CloseDescription from "../formatted_svg/CloseDescription";
 const Description = () => {
 
 
-const {findShowById,navigate,fetchData} = useData()
+const {findShowById,navigate,fetchData,onLoginCheck} = useData()
 
 const {showID} = useParams()
 
@@ -83,7 +83,8 @@ if (!show) {
             </button>
             <button
               className="bg-figma-red text-figma-white desktop:min-w-[45%]  tablet:min-w-[8rem] tablet:max-w-[15rem] h-[3rem] phone:min-w-[10rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
-              type="button"
+              type="button" 
+              onClick={onLoginCheck}
             >
               Watch Now
             </button>

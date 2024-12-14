@@ -29,6 +29,8 @@ export const DataProviders = ({ children}) => {
     return storageAvatar || null;
   });
   const [loginModal, setLoginModal] = useState(false);
+  const [access, setAccess] = useState(false);
+  const [accessText,setAccessText] = useState(false)
   //End of Navbar
   //Global exports for keeping same user and avatar after refresh, and puts them in local storage, added one for bookmarks as well
   const location = useLocation()
@@ -44,6 +46,10 @@ export const DataProviders = ({ children}) => {
       localStorage.setItem("avatar", avatar);
     }
   }, [avatar]);
+
+
+
+
 
   // Log Out function
 
@@ -114,29 +120,48 @@ export const DataProviders = ({ children}) => {
     fetchData();
   }, [location]);
 
+    // oh boy... pagination time, exports go here
+const [currentPage, setCurrentPage] = useState(1)
+const [prevMainPath, setPrevMainPath] = useState("");
+const itemsPerPage = 10;
   // Description card behaviour
-  const findShowById = (id) =>{
-    return content?.find((single) => single.id.toString() === id.toString())
-  }
+  const findShowById = (id) => {
+    const show = content?.find((single) => single.id.toString() === id.toString());
+    if (!show) {
+      fetchData();
+    }
+    return show;
+  };
 
-  // On click of play button in case not logged in
+  useEffect(() => {
+    const currentMainPath = location.pathname.split("/")[1]
+    if(!location.pathname.includes("description") && !currentMainPath !== prevMainPath) {
+    setCurrentPage(1)
+  setPrevMainPath(prevMainPath)}
+  }, [location.pathname]);
+
+  // Change onButtonClick now opens description, separate function to check for login state is now on "Watch Now" buttons called onLoginCheck
  
 
  const onButtonClick = (showId) => {
+    if (location.pathname === '/') {
+      navigate(`/description/${showId}`);
+    } else {
+      navigate(`${location.pathname}/description/${showId}`);
+    }
+  
+};
+
+
+const onLoginCheck = () => {
   if (!currentUser || !currentUser.id) {
     setLoginModal(true);
     setError("You must be logged in to watch");
     setTimeout(() => {
       setError("");
     }, 3000);
-  } else {
-    if (location.pathname === '/') {
-      navigate(`/description/${showId}`);
-    } else {
-      navigate(`${location.pathname}/description/${showId}`);
-    }
-  }
-};
+  } 
+}
   // On click function that checks if there is a current user and allows them to access bookmark page
 
   const onBookmarkClick = () => {
@@ -179,7 +204,15 @@ export const DataProviders = ({ children}) => {
         fetchData,
         searchContent,
         setSearchContent,
-        location
+        location,
+        access,
+        setAccess,
+        accessText,
+        setAccessText,
+        onLoginCheck, 
+        currentPage,
+        setCurrentPage,
+        itemsPerPage,
       }}
     >
       {children}

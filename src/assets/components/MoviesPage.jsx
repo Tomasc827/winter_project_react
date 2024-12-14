@@ -4,11 +4,25 @@ import IconPlay from "./formatted_svg/IconPlay";
 import SearchBar from "./SearchBar";
 import BookmarkButton from "./BookmarkButton";
 import { Outlet } from "react-router";
+import { useEffect } from "react";
+import Pagination from "./Pagination";
 
 const MoviesPage = () => {
-  const { content, onButtonClick,fetchData,searchContent,setSearchContent } = useData();
- 
+  const { content, onButtonClick,fetchData,searchContent,setSearchContent,setCurrentPage,currentPage,itemsPerPage } = useData();
 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = searchContent
+    .filter(
+      (item) => item.category === "Movie"
+    )
+    .slice(indexOfFirstItem, indexOfLastItem);
+ 
+    useEffect(() => {
+      if (searchContent.length !== content.length) {
+        setCurrentPage(1);
+      }
+    }, [searchContent]);
  
 
 
@@ -55,8 +69,7 @@ const MoviesPage = () => {
         desktop:grid-cols-4 desktop:gap-y-8 desktop:gap-x-10 
         "
         >
-          {searchContent
-            .filter((movie) => movie.category === "Movie")
+          {currentItems
             .map((movie) => (
               <div
                 key={movie.id}
@@ -169,6 +182,7 @@ const MoviesPage = () => {
               </div>
             ))}
         </div>
+        <Pagination/>
       </div>
       <Outlet/>
     </>
