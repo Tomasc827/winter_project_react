@@ -38,7 +38,7 @@
       "category": "Movie",
       "rating": "PG",
       "description": "A group of eccentric mechanics creates outlandish custom cars for their clients, but their adventures take a chaotic turn when they unknowingly become embroiled in an international heist. As they race against time to clear their names, they use their inventive skills to outwit the criminals. Along the way, they discover unexpected allies and uncover a conspiracy. It's a fast-paced ride of laughter and danger.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": true,
       "id": "ddd9"
     },
@@ -59,7 +59,7 @@
       "category": "TV Series",
       "rating": "E",
       "description": "In a quest for lost civilizations, an archaeologist and her team explore ancient ruins hidden deep within uncharted jungles. They must survive perilous obstacles and rival treasure hunters as they uncover secrets that could change history. Along the way, they discover that some cities were never meant to be found. A thrilling exploration of human ambition, mystery, and survival.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": true,
       "id": "2cd5"
     },
@@ -80,7 +80,7 @@
       "category": "Movie",
       "rating": "18+",
       "description": "Set against the backdrop of a pivotal year, this film follows the intertwined lives of several people as they navigate the social, political, and cultural shifts of the late '90s. The characters confront personal challenges, societal changes, and global tensions. As the year progresses, they are forced to reconcile their dreams with the reality of a rapidly changing world. A nostalgic yet insightful journey through a transformative time.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": true,
       "id": "77ce"
     },
@@ -101,7 +101,7 @@
       "category": "TV Series",
       "rating": "PG",
       "description": "When a crew aboard a lunar station receives a distress signal from a mysterious object on the far side of the moon, they set out to investigate. They encounter inexplicable phenomena and face an unknown force that threatens their survival. As they race against time to understand the forces at play, they must make impossible decisions to ensure their return. A chilling sci-fi thriller about isolation, mystery, and cosmic danger.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": true,
       "id": "5f4e"
     },
@@ -118,7 +118,7 @@
       "category": "Movie",
       "rating": "E",
       "description": "In a vast, untamed wilderness, a group of explorers embarks on a journey to chart the uncharted territories. They must contend with wild animals, harsh climates, and internal conflicts. But as they venture deeper, they uncover a secret that could reshape the future of the land. A gripping tale of discovery, adventure, and the cost of ambition.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "099d"
     },
@@ -152,7 +152,7 @@
       "category": "Movie",
       "rating": "18+",
       "description": "Set in a future where Earth's ecosystems have been ravaged by human activity, a small group of survivors discovers an untouched sanctuary. They must protect it from those who wish to exploit it, while grappling with their own survival. As tensions rise, they begin to realize that humanity’s future depends on preserving the last remnants of nature. A story of hope, conflict, and the fight for the planet’s future.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "4b45"
     },
@@ -169,7 +169,7 @@
       "category": "Movie",
       "rating": "E",
       "description": "A daring exploration team ventures into a mythical region that was once thought to be the edge of the world. But what they discover beyond the known territories will test their limits and push them into uncharted danger. As they uncover secrets hidden from history, they are forced to confront the truth about their mission. A thrilling, high-stakes adventure into the unknown.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "4195"
     },
@@ -203,7 +203,7 @@
       "category": "TV Series",
       "rating": "18+",
       "description": "Follows the intense world of competitive motorsports, showcasing the lives of professional drivers, mechanics, and team owners. Each episode dives into the high-stakes races, the politics behind the scenes, and the personal sacrifices of the athletes. Fast cars, fierce rivalries, and adrenaline-fueled drama fuel this action-packed series. It's a high-octane ride full of twists, speed, and excitement.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "9506"
     },
@@ -220,7 +220,7 @@
       "category": "Movie",
       "rating": "E",
       "description": "A sequel to the hit film, 'Same Answer', where the protagonist must once again confront a series of tough choices that challenge his beliefs and decisions. This time, the stakes are higher, and the consequences of his actions affect more lives. As he grapples with the truth, old alliances and enemies resurface. A thrilling continuation of morality, redemption, and personal growth.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "cd68"
     },
@@ -237,7 +237,7 @@
       "category": "TV Series",
       "rating": "PG",
       "description": "In a post-apocalyptic world, a group of survivors discovers an underground network of tunnels leading to a forgotten civilization. They must navigate this dangerous new world, facing deadly creatures and the shadows of the past. As they uncover hidden truths, they are forced to confront the dark history of their own society. A haunting tale of survival and secrets beneath the surface.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "71c1"
     },
@@ -254,7 +254,7 @@
       "category": "TV Series",
       "rating": "E",
       "description": "A group of adventurers sets out to climb the most treacherous peaks of the Rockies, but their journey turns into a fight for survival when a sudden snowstorm traps them. The expedition becomes a test of endurance, teamwork, and determination as they battle the elements and their own fears. With danger at every turn, they must find a way to escape. A heart-pounding adventure about the power of nature and the strength of the human spirit.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "378a"
     },
@@ -271,7 +271,7 @@
       "category": "Movie",
       "rating": "PG",
       "description": "A former detective, haunted by an unsolved case, goes on a personal mission to find the killer after years of silence. As he uncovers a web of deceit, he realizes that the case is far more complicated than he ever imagined. The pursuit takes him down a dangerous path, where his own life is at risk. A gritty, intense crime thriller that explores justice, obsession, and vengeance.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "c1f5"
     },
@@ -288,7 +288,7 @@
       "category": "TV Series",
       "rating": "18+",
       "description": "Set in a small town, this drama follows a group of neighbors who come together to overcome personal and collective challenges. As they face tragedies and triumphs, they discover the true meaning of community and connection. The bonds they form create an unbreakable network of support, leading to life-changing transformations. A heartfelt exploration of friendship, family, and unity.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "ecbc"
     },
@@ -305,7 +305,7 @@
       "category": "Movie",
       "rating": "PG",
       "description": "A free-spirited couple decides to give up their traditional life to live on the road in their van, seeking adventure and self-discovery. Along their travels, they encounter strange people, beautiful landscapes, and the challenges of nomadic living. As they learn to adapt, their bond deepens, and they uncover secrets about themselves. A journey of love, freedom, and the pursuit of happiness.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "f2e8"
     },
@@ -322,7 +322,7 @@
       "category": "Movie",
       "rating": "PG",
       "description": "A young woman inherits a vast fortune but soon discovers that her family’s wealth is linked to dark secrets. As she navigates the pressure of her new status, she uncovers a conspiracy that could destroy everything she holds dear. With danger closing in, she must decide whether to embrace her legacy or fight against it. A suspenseful tale of power, legacy, and deception.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "3362"
     },
@@ -373,7 +373,7 @@
       "category": "TV Series",
       "rating": "PG",
       "description": "A dedicated emergency dispatcher receives a call from a panicked woman trapped in a dangerous situation, but things quickly spiral out of control when the line goes dead. As the dispatcher works frantically to trace the call and save her, they uncover a web of crime and deception that reaches far beyond what they initially thought. With time running out, the dispatcher must navigate the complexities of the system to prevent a tragedy. A tense and suspenseful thriller about the race against time and the hidden dangers lurking in everyday calls.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "433b"
     },
@@ -407,7 +407,7 @@
       "category": "TV Series",
       "rating": "PG",
       "description": "A young factory worker becomes disillusioned with the monotonous routine of his job, but a chance encounter with a mysterious woman opens his eyes to a new world. As they embark on a risky journey together, he must decide whether to pursue his new life or stay in the safety of his current existence. A compelling drama about freedom, destiny, and breaking free from the ordinary.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "caa5"
     },
@@ -424,7 +424,7 @@
       "category": "TV Series",
       "rating": "E",
       "description": "A stray dog becomes the unlikely companion of a troubled young man, helping him find redemption and purpose in his life. Together, they embark on an emotional journey of healing and self-discovery, facing obstacles and forming a bond that transcends words. This heartwarming story explores the power of unconditional love and loyalty. A tribute to the transformative bond between humans and animals.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": false,
       "id": "8085"
     },
@@ -514,7 +514,7 @@
       "category": "Movie",
       "rating": "18+",
       "description": "In a groundbreaking experiment, a highly intelligent bonobo is trained to write computer code, becoming the world's first primate programmer. As Bonobo develops skills that rival human programmers, a team of scientists faces ethical dilemmas about his autonomy and rights. Meanwhile, the bonobo’s growing abilities begin to draw attention from corporate and government agencies, leading to dangerous consequences. This heartwarming and thought-provoking tale explores the boundaries of intelligence, technology, and the animal-human connection.",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": true,
       "id": "9999"
     },

@@ -2,10 +2,35 @@ import MediaCard from "./MediaCard";
 import SearchBar from "./SearchBar";
 import { useData } from "./DataContext";
 import { Outlet } from "react-router";
+import Pagination from "./Pagination";
+import { useEffect } from "react";
 
 const BookmarkPage = () => {
-  const {content,fetchData,searchContent,setSearchContent} = useData()
+  const {content,fetchData,searchContent,setSearchContent,setMovieCurrentPage,setTvSeriesCurrentPage, movieCurrentPage,tvSeriesCurrentPage, itemsPerPage} = useData()
 
+
+  const movieOfLastItem = movieCurrentPage * itemsPerPage;
+  const movieOfFirstItem = movieOfLastItem - itemsPerPage;
+  const currentMovies = searchContent
+    .filter(
+      (item) => item.category === "Movie"
+    )
+    .slice(movieOfFirstItem, movieOfLastItem);
+
+    const tvSeriesOfLastItem = tvSeriesCurrentPage * itemsPerPage;
+    const tvSeriesOfFirstItem = tvSeriesOfLastItem - itemsPerPage;
+    const currentTvSeries = searchContent
+      .filter(
+        (item) => item.category === "TV Series"
+      )
+      .slice(tvSeriesOfFirstItem, tvSeriesOfLastItem);  
+ 
+    useEffect(() => {
+      if (searchContent.length !== content.length) {
+        setMovieCurrentPage(1);
+        setTvSeriesCurrentPage(1)
+      }
+    }, [searchContent]);
 
   const createBookmarkCard = (media) => {
     // MediaCard takes up a lot of space, that's why we have this function
@@ -37,7 +62,7 @@ const BookmarkPage = () => {
       <div id="defaultview">
         <h1
           className={
-            searchContent.filter((media) => media.category == "Movie").length <= 0
+            currentMovies.length <= 0
               ? "hidden"
               : "figma-heading-l"
           }
@@ -47,21 +72,19 @@ const BookmarkPage = () => {
 
         <div
           className={
-            searchContent.filter((media) => media.category == "Movie").length <= 0
+            currentMovies.length <= 0
               ? "hidden"
               : "grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-10 tablet:gap-[1.8125rem] phone:gap-[0.9375rem] pt-10 pb-10"
           }
         >
-          {searchContent.map((media, index) => {
-            if (media.category == "Movie") {
-              return createBookmarkCard(media);
-            }
-          })}
+          {currentMovies.map((media) => createBookmarkCard(media))}
         </div>
+
+        <Pagination type="movies"/>
 
         <h1
           className={
-            searchContent.filter((media) => media.category == "TV Series")
+            currentTvSeries
               .length <= 0
               ? "hidden"
               : "figma-heading-l"
@@ -72,25 +95,15 @@ const BookmarkPage = () => {
 
         <div
           className={
-            searchContent.filter((media) => media.category == "TV Series")
+            currentTvSeries
               .length <= 0
               ? "hidden"
               : "grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-10 tablet:gap-[1.8125rem] phone:gap-[0.9375rem] pt-10 pb-10"
           }
         >
-          {searchContent.map((media, index) => {
-            if (media.category == "TV Series") {
-              return createBookmarkCard(media);
-            }
-          })}
+ {currentTvSeries.map((media) => createBookmarkCard(media))}
         </div>
-      </div>
-      <div id="searchview" className="hidden">
-        <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-10 tablet:gap-[1.8125rem] phone:gap-[0.9375rem] pt-10">
-          {searchContent.map((media, index) => {
-            return createBookmarkCard(media);
-          })}
-        </div>
+          <Pagination type="tvseries" />
       </div>
       <Outlet/>
     </div>

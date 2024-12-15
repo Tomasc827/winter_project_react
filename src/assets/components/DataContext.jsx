@@ -116,6 +116,8 @@ export const DataProviders = ({ children}) => {
   
     // oh boy... pagination time, exports go here
 const [currentPage, setCurrentPage] = useState(1)
+const [movieCurrentPage, setMovieCurrentPage] = useState(1) //separate tracker for bookmarked movies and below is for bookmarked tv series
+const [tvSeriesCurrentPage,setTvSeriesCurrentPage] = useState(1)
 const itemsPerPage = 10;
   // Description card behaviour
   const findShowById = (id) => {
@@ -211,6 +213,10 @@ const onLoginCheck = () => {
         currentPage,
         setCurrentPage,
         itemsPerPage,
+        tvSeriesCurrentPage,
+        setTvSeriesCurrentPage,
+        movieCurrentPage, 
+        setMovieCurrentPage
       }}
     >
       {children}
