@@ -1,13 +1,20 @@
+import { useState } from "react";
+import { useData } from "./DataContext";
+
 const SearchBar = (props) => {
   const defaultView = document.querySelector("#defaultview");
   const searchView = document.querySelector("#searchview");
   const resultMessage = document.querySelector("#resultmessage");
 
+  const {setSearching} = useData()
+
   const inputHandler = (e) => {
     const lowerCase = e.target.value.toLowerCase();
 
     if (lowerCase == "") {
+      setSearching(false)
     } else {
+      setSearching(true)
       const filteredData = props.data.filter((media) => {
         return (
           media.title.toLowerCase().includes(lowerCase) ||

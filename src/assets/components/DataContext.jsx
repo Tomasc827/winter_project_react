@@ -72,6 +72,7 @@ export const DataProviders = ({ children}) => {
 
   const [content,setContent] = useState([]);
   const [searchContent, setSearchContent] = useState([]);
+  const [searching,setSearching] = useState(false)
 
   const fetchData = async () => {
     try { 
@@ -85,28 +86,36 @@ export const DataProviders = ({ children}) => {
           return media.category === "Movie" || media.category === "TV Series";
         });
         setContent(filter);
+        if (!searching){
         setSearchContent(filter);
+        }
       }
       else if (location.pathname === "/movies" || basePath === "/movies") {
         const filter = data.filter((media) => {
           return media.category === "Movie";
         });
         setContent(filter);
-        setSearchContent(filter);
+        if (!searching){
+          setSearchContent(filter);
+          }
       }
       else if (location.pathname === "/tvseries" || basePath === "/tvseries") {
         const filter = data.filter((media) => {
           return media.category === "TV Series";
         });
         setContent(filter);
-        setSearchContent(filter);
+        if (!searching){
+          setSearchContent(filter);
+          }
       }
       else if (location.pathname === "/bookmarked" || basePath === "/bookmarked") {
         const filter = data.filter((media) => {
           return media.isBookmarked;
         });
         setContent(filter);
-        setSearchContent(filter);
+        if (!searching){
+          setSearchContent(filter);
+          }
       }
     } catch (error) {
       setError(error.message);
@@ -122,7 +131,6 @@ export const DataProviders = ({ children}) => {
 
     // oh boy... pagination time, exports go here
 const [currentPage, setCurrentPage] = useState(1)
-const [prevMainPath, setPrevMainPath] = useState("");
 const itemsPerPage = 10;
   // Description card behaviour
   const findShowById = (id) => {
@@ -132,12 +140,15 @@ const itemsPerPage = 10;
     }
     return show;
   };
-
+  const [previousMainPath,setPreviousMainPath] = useState("")
   useEffect(() => {
-    const currentMainPath = location.pathname.split("/")[1]
-    if(!location.pathname.includes("description") && !currentMainPath !== prevMainPath) {
+    const currentPath = location.pathname.split("/")[1]
+    const currentDescription = location.pathname.includes("description")
+    const previousDescription = previousMainPath.includes ("description")
+    if(currentPath !== previousMainPath && !currentDescription && !previousDescription) {
     setCurrentPage(1)
-  setPrevMainPath(prevMainPath)}
+}
+setPreviousMainPath(currentPath)
   }, [location.pathname]);
 
   // Change onButtonClick now opens description, separate function to check for login state is now on "Watch Now" buttons called onLoginCheck
@@ -213,6 +224,7 @@ const onLoginCheck = () => {
         currentPage,
         setCurrentPage,
         itemsPerPage,
+        setSearching,
       }}
     >
       {children}

@@ -17,7 +17,7 @@
       "category": "Movie",
       "rating": "PG",
       "description": " A group of astronauts embarks on a daring mission to explore a distant planet, but they soon uncover a dark secret that threatens humanity's future. As their journey takes unexpected turns, they must battle isolation, alien environments, and a powerful enemy. Tensions rise among the crew, testing their trust and survival instincts. Will they make it back home before it's too late?",
-      "isBookmarked": true,
+      "isBookmarked": false,
       "isTrending": true,
       "id": "41f8"
     },

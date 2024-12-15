@@ -7,7 +7,7 @@ import { useParams } from "react-router";
 
 const BookmarkButton = (props) => {
   const [isHovered, setIsHovered] = useState(false);
-  const {currentUser,navigate,location,setContent,setSearchContent,content} = useData()
+  const {currentUser,navigate,location,setContent,setSearchContent,content,searchContent} = useData()
   const {showID} = useParams()
 
   const bookmarkMedia = () => {
@@ -30,7 +30,11 @@ const BookmarkButton = (props) => {
             : item
         );
         setContent(updatedContent);
-        setSearchContent(updatedContent);
+        if (searchContent.length === content.length) {
+        setSearchContent(updatedContent);}
+        else {
+          setSearchContent(searchContent.map(item => item.id === props.media_id ? {...item, isBookmarked: !props.isBookmarked} : item))
+        }
       } catch (error) {
         throw new Error(error.message);
       }

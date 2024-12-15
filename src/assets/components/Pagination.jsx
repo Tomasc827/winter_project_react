@@ -19,7 +19,7 @@ const Pagination = () => {
 
     return ( 
         <>
-        <div className="flex justify-center items-center gap-[1rem] text-figma-white pt-[2rem] figma-body-m">
+        {totalItems === 0 ? null : <div className="flex justify-center items-center gap-[1rem] text-figma-white pt-[2rem] figma-body-m">
             <button 
             className={`tablet:w-[8rem] h-[3rem] phone:w-[4rem] rounded-[0.375rem] figma-body-m mb-[1.5rem] ${currentPage === 1 ? "bg-figma-greyish-blue hover:bg-figma-semi-dark-blue duration-500" : "bg-figma-red text-figma-white hover:bg-figma-white hover:text-figma-dark-blue duration-700"}`}
             onClick={() => {
@@ -52,7 +52,7 @@ const Pagination = () => {
                 Next
 
         </button>
-        </div>
+        </div>}
         </>
      );
 }
