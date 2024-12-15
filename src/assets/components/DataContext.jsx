@@ -72,51 +72,34 @@ export const DataProviders = ({ children}) => {
 
   const [content,setContent] = useState([]);
   const [searchContent, setSearchContent] = useState([]);
-  const [searching,setSearching] = useState(false)
-
+  const [initialLoad,setInitialLoad] = useState(true) // a useState to refetch data on refresh on homepage, the plague that is known as pagination is now breaking everything hence the influx of more useStates. Rather it's a combination of both pagination and searchbar being natural enemies and breaking everything.
+ 
   const fetchData = async () => {
     try { 
       const response = await fetch("http://localhost:5000/content");
       const data = await response.json();
       
-      const basePath = location.pathname.split('/description')[0];
-  
+      const currentPath = location.pathname;
+      const basePath = currentPath.split('/description')[0];
+    
+      let filteredData;
       if (basePath === "/" || basePath === "") {
-        const filter = data.filter((media) => {
-          return media.category === "Movie" || media.category === "TV Series";
-        });
-        setContent(filter);
-        if (!searching){
-        setSearchContent(filter);
-        }
+        filteredData = data.filter(media => 
+          media.category === "Movie" || media.category === "TV Series"
+        );
       }
-      else if (location.pathname === "/movies" || basePath === "/movies") {
-        const filter = data.filter((media) => {
-          return media.category === "Movie";
-        });
-        setContent(filter);
-        if (!searching){
-          setSearchContent(filter);
-          }
+      else if (basePath === "/movies") {
+        filteredData = data.filter(media => media.category === "Movie");
       }
-      else if (location.pathname === "/tvseries" || basePath === "/tvseries") {
-        const filter = data.filter((media) => {
-          return media.category === "TV Series";
-        });
-        setContent(filter);
-        if (!searching){
-          setSearchContent(filter);
-          }
+      else if (basePath === "/tvseries") {
+        filteredData = data.filter(media => media.category === "TV Series");
       }
-      else if (location.pathname === "/bookmarked" || basePath === "/bookmarked") {
-        const filter = data.filter((media) => {
-          return media.isBookmarked;
-        });
-        setContent(filter);
-        if (!searching){
-          setSearchContent(filter);
-          }
+      else if (basePath === "/bookmarked") {
+        filteredData = data.filter(media => media.isBookmarked);
       }
+  
+      setContent(filteredData);
+      setSearchContent(filteredData);
     } catch (error) {
       setError(error.message);
       setTimeout(() => {
@@ -124,11 +107,13 @@ export const DataProviders = ({ children}) => {
       }, 3000);
     }
   };
-
   useEffect(() => {
-    fetchData();
-  }, [location]);
-
+    if (initialLoad) {
+      fetchData()
+      setInitialLoad(false)
+    }
+  },[])
+  
     // oh boy... pagination time, exports go here
 const [currentPage, setCurrentPage] = useState(1)
 const itemsPerPage = 10;
@@ -142,11 +127,13 @@ const itemsPerPage = 10;
   };
   const [previousMainPath,setPreviousMainPath] = useState("")
   useEffect(() => {
-    const currentPath = location.pathname.split("/")[1]
+    const currentPath = location.pathname.split("/")[1] || "/"
     const currentDescription = location.pathname.includes("description")
     const previousDescription = previousMainPath.includes ("description")
     if(currentPath !== previousMainPath && !currentDescription && !previousDescription) {
     setCurrentPage(1)
+    setSearchContent(content)
+    fetchData()
 }
 setPreviousMainPath(currentPath)
   }, [location.pathname]);
@@ -224,7 +211,6 @@ const onLoginCheck = () => {
         currentPage,
         setCurrentPage,
         itemsPerPage,
-        setSearching,
       }}
     >
       {children}

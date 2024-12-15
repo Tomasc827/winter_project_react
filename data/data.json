@@ -17,7 +17,7 @@
       "category": "Movie",
       "rating": "PG",
       "description": " A group of astronauts embarks on a daring mission to explore a distant planet, but they soon uncover a dark secret that threatens humanity's future. As their journey takes unexpected turns, they must battle isolation, alien environments, and a powerful enemy. Tensions rise among the crew, testing their trust and survival instincts. Will they make it back home before it's too late?",
-      "isBookmarked": false,
+      "isBookmarked": true,
       "isTrending": true,
       "id": "41f8"
     },
@@ -169,7 +169,7 @@
       "category": "Movie",
       "rating": "E",
       "description": "A daring exploration team ventures into a mythical region that was once thought to be the edge of the world. But what they discover beyond the known territories will test their limits and push them into uncharted danger. As they uncover secrets hidden from history, they are forced to confront the truth about their mission. A thrilling, high-stakes adventure into the unknown.",
-      "isBookmarked": true,
+      "isBookmarked": false,
       "isTrending": false,
       "id": "4195"
     },
@@ -220,7 +220,7 @@
       "category": "Movie",
       "rating": "E",
       "description": "A sequel to the hit film, 'Same Answer', where the protagonist must once again confront a series of tough choices that challenge his beliefs and decisions. This time, the stakes are higher, and the consequences of his actions affect more lives. As he grapples with the truth, old alliances and enemies resurface. A thrilling continuation of morality, redemption, and personal growth.",
-      "isBookmarked": true,
+      "isBookmarked": false,
       "isTrending": false,
       "id": "cd68"
     },
