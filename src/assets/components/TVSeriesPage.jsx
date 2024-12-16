@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Card from "./workspaceTVSeries/Card.jsx";
+import Card from "./workspaceTVShows/Card.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./workspaceTVSeries/CardContainer.css";
+import "./workspaceTVShows/CardContainer.css";
 import darkSide from "./photo.jpg/dark-side.jpg";
 import theDiary from "./photo.jpg/thediary1.jpg";
 import autosport from "./photo.jpg/autosport.jpg";
@@ -16,7 +16,7 @@ import rockies from "./photo.jpg/rockies.jpg";
 import TheTastyTour from "./photo.jpg/TheTastyTour.jpg";
 import tour from "./photo.jpg/tour.jpg";
 import undiscovered from "./photo.jpg/undiscovered.jpg";
-import SearchBar from "./workspaceTVSeries/SearchBar.jsx";
+import SearchBar from "./workspaceTVShows/SearchBar.jsx";
 
 const initialCards = [
   { image: darkSide, title: "Dark Side of the Moon", details: "2018 • 📺TV Series • PG" },

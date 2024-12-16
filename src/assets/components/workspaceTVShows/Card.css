@@ -4,13 +4,13 @@
   border-radius: 8px;
   overflow: hidden;
   background-color: #11141e;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
 }
 
 .show-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 0px 20px #000e3a;
-  background-color: #1b2130;
+  /* transform: scale(1.05); */
+  /* box-shadow: 0px 0px 20px #000e3a; */
+  /* background-color: #1b2130; */
 }
 
 .show-card-image {
@@ -25,12 +25,12 @@
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
-  transition: transform 0.3s ease;
+  /* transition: transform 0.3s ease; */
 }
 
-.show-card:hover .show-card-img {
+/* .show-card:hover .show-card-img {
   transform: scale(1.1);
-}
+} */
 
 .play-overlay {
   position: absolute;
@@ -99,6 +99,7 @@
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
+  cursor: pointer;
 }
 
 .show-card-details {
@@ -109,6 +110,7 @@
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
+  cursor: pointer;
 }
 
 .show-card-bookmark {
@@ -135,12 +137,12 @@
 }
 
 .show-card-bookmark.active img {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 @media (max-width: 1440px) {
   .show-card {
-    max-width: 230px;
+    max-width: 235px;
     max-height: auto;
     align-items: center;
   }
@@ -152,12 +154,12 @@
 
   .show-card-image img {
     max-width: 220px;
-    max-height: auto;
+    max-height: 140px;
   }
 
   .show-card-bookmark {
     top: 10px;
-    right: 10px;
+    right: 22px;
   }
 
   .show-card-content {
@@ -169,15 +171,14 @@
 }
 
 @media (max-width: 750px) {
-  
   .show-card {
-    width: 181px;
-    height: auto;
+    width: 170px;
+    height: 170px;
     margin: 0 0 0 13%;
   }
 
   .show-card-image {
-    width: 110%;
+    width: 164px;
     height: 110px;
     overflow: hidden;
     border-radius: 8px;
@@ -195,7 +196,7 @@
 
   .show-card-bookmark {
     top: 8px;
-    right: 8px;
+    right: 13px;
   }
 
   .show-card-bookmark img {
@@ -209,7 +210,7 @@
   }
 
   .show-card-title {
-    font-size: 0.9rem;
+    font-size: 0.35cm;
     margin-bottom: 3px;
     margin-top: 2mm;
     font-family: "Outfit", sans-serif;
@@ -219,6 +220,7 @@
   }
 
   .show-card-details {
+    font-size: 0.325cm;
     height: 14px;
   }
 }
