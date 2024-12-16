@@ -23,6 +23,12 @@
     },
     {
       "title": "Bottom Gear",
+      "year": 2021,
+      "category": "Movie",
+      "rating": "PG",
+      "description": "A group of eccentric mechanics creates outlandish custom cars for their clients, but their adventures take a chaotic turn when they unknowingly become embroiled in an international heist. As they race against time to clear their names, they use their inventive skills to outwit the criminals. Along the way, they discover unexpected allies and uncover a conspiracy. It's a fast-paced ride of laughter and danger.",
+      "isTrending": true,
+      "isBookmarked": true,
       "thumbnail": {
         "trending": {
           "small": "../src/assets/img/thumbnails/bottom-gear/trending/small.jpg",
@@ -34,16 +40,16 @@
           "large": "../src/assets/img/thumbnails/bottom-gear/regular/large.jpg"
         }
       },
-      "year": 2021,
-      "category": "Movie",
-      "rating": "PG",
-      "description": "A group of eccentric mechanics creates outlandish custom cars for their clients, but their adventures take a chaotic turn when they unknowingly become embroiled in an international heist. As they race against time to clear their names, they use their inventive skills to outwit the criminals. Along the way, they discover unexpected allies and uncover a conspiracy. It's a fast-paced ride of laughter and danger.",
-      "isBookmarked": true,
-      "isTrending": true,
       "id": "ddd9"
     },
     {
       "title": "Undiscovered Cities",
+      "year": "2017",
+      "category": "TV Series",
+      "rating": "E",
+      "description": "In a quest for lost civilizations, an archaeologist and her team explore ancient ruins hidden deep within uncharted jungles. They must survive perilous obstacles and rival treasure hunters as they uncover secrets that could change history. Along the way, they discover that some cities were never meant to be found. A thrilling exploration of human ambition, mystery, and survival.",
+      "isTrending": true,
+      "isBookmarked": true,
       "thumbnail": {
         "trending": {
           "small": "../src/assets/img/thumbnails/undiscovered-cities/trending/small.jpg",
@@ -55,17 +61,11 @@
           "large": "../src/assets/img/thumbnails/undiscovered-cities/regular/large.jpg"
         }
       },
-      "year": 2019,
-      "category": "TV Series",
-      "rating": "E",
-      "description": "In a quest for lost civilizations, an archaeologist and her team explore ancient ruins hidden deep within uncharted jungles. They must survive perilous obstacles and rival treasure hunters as they uncover secrets that could change history. Along the way, they discover that some cities were never meant to be found. A thrilling exploration of human ambition, mystery, and survival.",
-      "isBookmarked": true,
-      "isTrending": true,
       "id": "2cd5"
     },
     {
       "title": "1998",
-      "year": 2021,
+      "year": "2022",
       "category": "Movie",
       "rating": "18+",
       "description": "Set against the backdrop of a pivotal year, this film follows the intertwined lives of several people as they navigate the social, political, and cultural shifts of the late '90s. The characters confront personal challenges, societal changes, and global tensions. As the year progresses, they are forced to reconcile their dreams with the reality of a rapidly changing world. A nostalgic yet insightful journey through a transformative time.",
@@ -298,19 +298,23 @@
     },
     {
       "title": "Van Life",
+      "year": 2015,
+      "category": "Movie",
+      "rating": "PG",
+      "description": "A free-spirited couple decides to give up their traditional life to live on the road in their van, seeking adventure and self-discovery. Along their travels, they encounter strange people, beautiful landscapes, and the challenges of nomadic living. As they learn to adapt, their bond deepens, and they uncover secrets about themselves. A journey of love, freedom, and the pursuit of happiness.",
+      "isTrending": false,
+      "isBookmarked": true,
       "thumbnail": {
+        "trending": {
+          "small": "",
+          "large": ""
+        },
         "regular": {
           "small": "../src/assets/img/thumbnails/van-life/regular/small.jpg",
           "medium": "../src/assets/img/thumbnails/van-life/regular/medium.jpg",
           "large": "../src/assets/img/thumbnails/van-life/regular/large.jpg"
         }
       },
-      "year": 2015,
-      "category": "Movie",
-      "rating": "PG",
-      "description": "A free-spirited couple decides to give up their traditional life to live on the road in their van, seeking adventure and self-discovery. Along their travels, they encounter strange people, beautiful landscapes, and the challenges of nomadic living. As they learn to adapt, their bond deepens, and they uncover secrets about themselves. A journey of love, freedom, and the pursuit of happiness.",
-      "isBookmarked": true,
-      "isTrending": false,
       "id": "f2e8"
     },
     {
@@ -349,19 +353,23 @@
     },
     {
       "title": "Whispering Hill",
+      "year": 2017,
+      "category": "Movie",
+      "rating": "E",
+      "description": "A haunted estate on a remote hill is the setting for a chilling mystery, as a family moves in, unaware of the dark history that plagues the house. Strange occurrences begin to unravel the secrets buried within its walls. The family must confront their fears and uncover the truth before it consumes them. A spine-tingling tale of ghosts, family, and the past that won't stay buried.",
+      "isTrending": false,
+      "isBookmarked": false,
       "thumbnail": {
+        "trending": {
+          "small": "",
+          "large": ""
+        },
         "regular": {
           "small": "../src/assets/img/thumbnails/whispering-hill/regular/small.jpg",
           "medium": "../src/assets/img/thumbnails/whispering-hill/regular/medium.jpg",
           "large": "../src/assets/img/thumbnails/whispering-hill/regular/large.jpg"
         }
       },
-      "year": 2017,
-      "category": "Movie",
-      "rating": "E",
-      "description": "A haunted estate on a remote hill is the setting for a chilling mystery, as a family moves in, unaware of the dark history that plagues the house. Strange occurrences begin to unravel the secrets buried within its walls. The family must confront their fears and uncover the truth before it consumes them. A spine-tingling tale of ghosts, family, and the past that won't stay buried.",
-      "isBookmarked": false,
-      "isTrending": false,
       "id": "583a"
     },
     {
@@ -383,19 +391,23 @@
     },
     {
       "title": "Lone Heart",
+      "year": 2017,
+      "category": "Movie",
+      "rating": "E",
+      "description": "A solitary man living in a small coastal town must face his painful past when a woman from his childhood returns to seek closure. As they reconnect, long-forgotten feelings resurface, forcing him to confront the choices that led to his loneliness. Their reunion becomes a journey of healing, forgiveness, and love. A touching romance about second chances and finding peace.",
+      "isTrending": false,
+      "isBookmarked": false,
       "thumbnail": {
+        "trending": {
+          "small": "",
+          "large": ""
+        },
         "regular": {
           "small": "../src/assets/img/thumbnails/lone-heart/regular/small.jpg",
           "medium": "../src/assets/img/thumbnails/lone-heart/regular/medium.jpg",
           "large": "../src/assets/img/thumbnails/lone-heart/regular/large.jpg"
         }
       },
-      "year": 2017,
-      "category": "Movie",
-      "rating": "E",
-      "description": "A solitary man living in a small coastal town must face his painful past when a woman from his childhood returns to seek closure. As they reconnect, long-forgotten feelings resurface, forcing him to confront the choices that led to his loneliness. Their reunion becomes a journey of healing, forgiveness, and love. A touching romance about second chances and finding peace.",
-      "isBookmarked": false,
-      "isTrending": false,
       "id": "5c00"
     },
     {
