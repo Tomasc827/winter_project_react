@@ -10,6 +10,7 @@ import LoginModal from "./avatar_modals/LoginModal";
 import UserModal from "./avatar_modals/UserModal";
 import SignUpSuccess from "./messages/SignUpSuccess";
 import ErrorServer from "./messages/ErrorServer";
+import AccessNavbar from "./messages/AccessNavbar";
 
 const Navbar = () => {
   const [screen, setScreen] = useState(window.innerWidth);
@@ -31,6 +32,7 @@ const Navbar = () => {
     currentUser,
     userModal,
     setUserModal,
+    accessText
   } = useData();
 
   const openModal = () => {
@@ -92,9 +94,15 @@ const Navbar = () => {
           <div className={`desktop:pt-[2.21rem] desktop:ps-[1.99rem] desktop:pe-[2.01rem] desktop:pb-[4.69rem] tablet:ps-[1.5rem] tablet:pt-[1.5rem] tablet:pb-[1.4rem]  phone:py-[1.13rem] phone:ps-[1rem] ${!currentUser || !currentUser.id ? "phone:pe-[3.5rem] tablet:pe-[15.06rem]": "tablet:pe-[13.56rem]"}`}>
             {screen >= 768 ? <Logo /> : <LogoMobile />}
           </div>
-          <div className={`desktop:w-[1.25rem] desktop:h-[12.5rem] desktop:ps-0 desktop:pt-0 tablet:ps-0 desktop:mb-[34.5rem] tablet:w-[10.8075] tablet:h-[1.25rem] tablet:pt-[1.69rem] tablet:pb-[1.56rem]   phone:py-[1.25rem] phone:pe-[5.03rem] ${!currentUser || !currentUser.id ? "phone:ps-[3rem] phone:pe-[3.53rem] tablet:pe-[12.07rem]": "phone:ps-[5rem] phone:pe-[5.03rem] tablet:pe-[14.07rem]"}`}>
+          <div className={`relative desktop:w-[1.25rem] desktop:h-[12.5rem] desktop:ps-0 desktop:pt-0 tablet:ps-0 desktop:mb-[34.5rem] tablet:w-[10.8075] tablet:h-[1.25rem] tablet:pt-[1.69rem] tablet:pb-[1.56rem]   phone:py-[1.25rem] ${!currentUser || !currentUser.id ? "phone:ps-[3rem] phone:pe-[3.53rem] tablet:pe-[12.07rem]": "phone:ps-[5rem] phone:pe-[5.03rem] tablet:pe-[14.07rem]"}`}>
             {screen >= 1440 ? (
-              <NavbarSvg />
+              <>
+              <div>
+                <NavbarSvg /> 
+              </div>
+              {accessText === "Homepage" ? <div className="z-30 absolute top-[-8%] left-[40%]"><AccessNavbar/></div>
+              : accessText === "TV Series" ? <div className="z-30 absolute top-[53%] left-[40%]"><AccessNavbar/></div> : accessText === "Movies" ? <div className="z-30 absolute top-[23%] left-[40%]"><AccessNavbar/></div> : <div className="z-30 absolute top-[83%] left-[40%]"><AccessNavbar/></div>}
+              </>
             ) : screen >= 768 ? (
               <NavbarHorizontal />
             ) : (
@@ -107,7 +115,7 @@ const Navbar = () => {
           >
             {avatar ? (
               <img
-                className={`desktop:w-[2.5rem] desktop:h-[2.5rem]  tablet:w-[2rem] tablet:h-[2rem] desktop:rounded-[2.5rem] tablet:rounded-[2rem] phone:me-[4rem] border border-figma-white phone:w-[1.5rem] phone:h-[1.5rem] phone:rounded-[1.5rem]`}
+                className={`desktop:w-[2.5rem] desktop:h-[2.5rem]  tablet:w-[2rem] tablet:h-[2rem] desktop:rounded-[2.5rem] tablet:rounded-[2rem]  border border-figma-white phone:w-[1.5rem] phone:h-[1.5rem] phone:rounded-[1.5rem]`}
                 src={avatar}
                 alt="avatar"
               ></img>

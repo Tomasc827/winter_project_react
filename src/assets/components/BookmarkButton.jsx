@@ -3,23 +3,38 @@ import IconBookmarkFull from "./formatted_svg/IconBookmarkFull";
 import IconBookmarkEmpty from "./formatted_svg/IconBookmarkEmpty";
 import { useState } from "react";
 import { useData } from "./DataContext";
+import { useParams } from "react-router";
 
 const BookmarkButton = (props) => {
   const [isHovered, setIsHovered] = useState(false);
-  const {currentUser} = useData()
+  const {currentUser,navigate,location,setContent,setSearchContent,content,searchContent} = useData()
+  const {showID} = useParams()
 
   const bookmarkMedia = () => {
     const setBookmark = async () => {
       try {
 
-
+        if (props.isBookmarked === true && location.pathname === `/bookmarked/description/${showID}`) {
+          navigate(-1)
+        }
         const response = await axios.patch(
           `http://localhost:5000/content/${props.media_id}`,
+
           {
             isBookmarked: !props.isBookmarked,
           }
         );
-        props.reloadData();
+        const updatedContent = content.map(item => 
+          item.id === props.media_id 
+            ? { ...item, isBookmarked: !props.isBookmarked }
+            : item
+        );
+        setContent(updatedContent);
+        if (searchContent.length === content.length) {
+        setSearchContent(updatedContent);}
+        else {
+          setSearchContent(searchContent.map(item => item.id === props.media_id ? {...item, isBookmarked: !props.isBookmarked} : item))
+        }
       } catch (error) {
         throw new Error(error.message);
       }

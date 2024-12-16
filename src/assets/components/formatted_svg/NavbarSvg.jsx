@@ -2,7 +2,7 @@ import { NavLink } from "react-router";
 import { useData } from "../DataContext";
 
 const NavbarSvg = () => {
-  const { currentUser, onBookmarkClick } = useData();
+  const { currentUser, setAccess, setAccessText } = useData();
 
   return (
     <>
@@ -12,7 +12,7 @@ const NavbarSvg = () => {
         viewBox="0 0 20 200"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="desktop:ms-[2.38rem] desktop:me-[2.37rem]"
+        className="desktop:ms-[2.38rem] desktop:me-[2.37rem] relative"
       >
         <NavLink
           to="/"
@@ -21,8 +21,15 @@ const NavbarSvg = () => {
           })}
         >
           {" "}
-          <g className="group">
-            <rect x="0" y="0" width="20" height="20" fill="transparent" />
+          <g
+            className="group"
+            onMouseEnter={() => {
+              setAccess(true);
+              setAccessText("Homepage");
+            }}
+            onMouseLeave={() => setAccess(false)}
+          >
+            <rect x="0" y="0" width="48" height="24" fill="transparent" />
             <path
               className="group-hover:fill-figma-red duration-500"
               fillRule="evenodd"
@@ -38,8 +45,15 @@ const NavbarSvg = () => {
           })}
         >
           {" "}
-          <g className="group">
-            <rect x="0" y="124.481" width="20" height="16" fill="transparent" />
+          <g
+            className="group"
+            onMouseEnter={() => {
+              setAccess(true);
+               setAccessText("TV Series");
+             }}
+             onMouseLeave={() => setAccess(false)}
+          >
+            <rect x="0" y="124.481" width="48" height="16" fill="transparent" />
             <path
               className="group-hover:fill-figma-red duration-500"
               fillRule="evenodd"
@@ -55,7 +69,14 @@ const NavbarSvg = () => {
           })}
         >
           {" "}
-          <g className="group">
+          <g
+            className="group"
+            onMouseEnter={() => {
+              setAccess(true);
+               setAccessText("Movies");
+             }}
+            onMouseLeave={() => setAccess(false)}
+          >
             <rect x="0" y="60" width="20" height="20" fill="transparent" />
             <path
               className="group-hover:fill-figma-red duration-500"
@@ -72,7 +93,14 @@ const NavbarSvg = () => {
               fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",
             })}
           >
-            <g className="group">
+            <g
+              className="group"
+              onMouseEnter={() => {
+                 setAccess(true);
+                 setAccessText("Bookmarks");
+               }}
+               onMouseLeave={() => setAccess(false)}
+            >
               <rect x="0" y="180" width="20" height="20" fill="transparent" />
               <path
                 className="group-hover:fill-figma-red duration-500"

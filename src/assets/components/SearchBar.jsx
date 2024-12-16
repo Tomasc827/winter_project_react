@@ -88,7 +88,7 @@ const SearchBar = (props) => {
     "
       >
         <img
-          src={props.icon}
+          src={`/${props.icon?.replace(/^\/+/, '')}`}
           alt="Search bar icon"
           className="phone:w-[1.5rem] tablet:w-[2rem] desktop:w-[2rem]"
         />

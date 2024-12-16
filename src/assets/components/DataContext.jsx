@@ -1,10 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate} from "react-router";
 import defaultImage from "../img/favicon-32x32.png";
 
 const DataContext = createContext();
 
-export const DataProviders = ({ children }) => {
+export const DataProviders = ({ children}) => {
   // All of these are exported to signup/login pages
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
@@ -29,8 +29,12 @@ export const DataProviders = ({ children }) => {
     return storageAvatar || null;
   });
   const [loginModal, setLoginModal] = useState(false);
+  const [access, setAccess] = useState(false);
+  const [accessText,setAccessText] = useState(false)
   //End of Navbar
   //Global exports for keeping same user and avatar after refresh, and puts them in local storage, added one for bookmarks as well
+  const location = useLocation()
+
   useEffect(() => {
     if (Object.keys(currentUser).length > 0) {
       localStorage.setItem("currentUser", JSON.stringify(currentUser));
@@ -42,6 +46,10 @@ export const DataProviders = ({ children }) => {
       localStorage.setItem("avatar", avatar);
     }
   }, [avatar]);
+
+
+
+
 
   // Log Out function
 
@@ -60,16 +68,100 @@ export const DataProviders = ({ children }) => {
     }, 2000);
   };
 
-  // On click of play button in case not logged in
-  const onButtonClick = () => {
-    if (!currentUser || !currentUser.id) {
-      setLoginModal(true);
-      setError("You must be logged in to watch");
+  // Centralized fetchData works across all pages
+
+  const [content,setContent] = useState([]);
+  const [searchContent, setSearchContent] = useState([]);
+  const [initialLoad,setInitialLoad] = useState(true) // a useState to refetch data on refresh on homepage, the plague that is known as pagination is now breaking everything hence the influx of more useStates. Rather it's a combination of both pagination and searchbar being natural enemies and breaking everything.
+ 
+  const fetchData = async () => {
+    try { 
+      const response = await fetch("http://localhost:5000/content");
+      const data = await response.json();
+      
+      const currentPath = location.pathname;
+      const basePath = currentPath.split('/description')[0];
+    
+      let filteredData;
+      if (basePath === "/" || basePath === "") {
+        filteredData = data.filter(media => 
+          media.category === "Movie" || media.category === "TV Series"
+        );
+      }
+      else if (basePath === "/movies") {
+        filteredData = data.filter(media => media.category === "Movie");
+      }
+      else if (basePath === "/tvseries") {
+        filteredData = data.filter(media => media.category === "TV Series");
+      }
+      else if (basePath === "/bookmarked") {
+        filteredData = data.filter(media => media.isBookmarked);
+      }
+  
+      setContent(filteredData);
+      setSearchContent(filteredData);
+    } catch (error) {
+      setError(error.message);
       setTimeout(() => {
         setError("");
       }, 3000);
     }
   };
+  useEffect(() => {
+    if (initialLoad) {
+      fetchData()
+      setInitialLoad(false)
+    }
+  },[])
+  
+    // oh boy... pagination time, exports go here
+const [currentPage, setCurrentPage] = useState(1)
+const [movieCurrentPage, setMovieCurrentPage] = useState(1) //separate tracker for bookmarked movies and below is for bookmarked tv series
+const [tvSeriesCurrentPage,setTvSeriesCurrentPage] = useState(1)
+const itemsPerPage = 10;
+  // Description card behaviour
+  const findShowById = (id) => {
+    const show = content?.find((single) => single.id.toString() === id.toString());
+    if (!show) {
+      fetchData();
+    }
+    return show;
+  };
+  const [previousMainPath,setPreviousMainPath] = useState("")
+  useEffect(() => {
+    const currentPath = location.pathname.split("/")[1] || "/"
+    const currentDescription = location.pathname.includes("description")
+    const previousDescription = previousMainPath.includes ("description")
+    if(currentPath !== previousMainPath && !currentDescription && !previousDescription) {
+    setCurrentPage(1)
+    setSearchContent(content)
+    fetchData()
+}
+setPreviousMainPath(currentPath)
+  }, [location.pathname]);
+
+  // Change onButtonClick now opens description, separate function to check for login state is now on "Watch Now" buttons called onLoginCheck
+ 
+
+ const onButtonClick = (showId) => {
+    if (location.pathname === '/') {
+      navigate(`/description/${showId}`);
+    } else {
+      navigate(`${location.pathname}/description/${showId}`);
+    }
+  
+};
+
+
+const onLoginCheck = () => {
+  if (!currentUser || !currentUser.id) {
+    setLoginModal(true);
+    setError("You must be logged in to watch");
+    setTimeout(() => {
+      setError("");
+    }, 3000);
+  } 
+}
   // On click function that checks if there is a current user and allows them to access bookmark page
 
   const onBookmarkClick = () => {
@@ -81,12 +173,6 @@ export const DataProviders = ({ children }) => {
       }, 3000);
     }
   };
-
-  // Movies page
-  const [movies, setMovies] = useState([]);
-
-  // TV Series page
-  const [series, setSeries] = useState([]);
 
   return (
     <DataContext.Provider
@@ -110,12 +196,27 @@ export const DataProviders = ({ children }) => {
         setLoginModal,
         userModal,
         setUserModal,
-        movies,
-        setMovies,
         onButtonClick,
         onBookmarkClick,
-        series,
-        setSeries,
+        content,
+        setContent,
+        findShowById,
+        fetchData,
+        searchContent,
+        setSearchContent,
+        location,
+        access,
+        setAccess,
+        accessText,
+        setAccessText,
+        onLoginCheck, 
+        currentPage,
+        setCurrentPage,
+        itemsPerPage,
+        tvSeriesCurrentPage,
+        setTvSeriesCurrentPage,
+        movieCurrentPage, 
+        setMovieCurrentPage
       }}
     >
       {children}

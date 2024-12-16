@@ -1,30 +1,31 @@
-import { useEffect, useState } from "react";
 import { useData } from "./DataContext";
 import IconCategoryMovie from "./formatted_svg/IconCategoryMovie";
 import IconPlay from "./formatted_svg/IconPlay";
 import SearchBar from "./SearchBar";
 import BookmarkButton from "./BookmarkButton";
+import { Outlet } from "react-router";
+import { useEffect } from "react";
+import Pagination from "./Pagination";
 
 const MoviesPage = () => {
-  const { movies, setMovies, onButtonClick } = useData();
-  const [searchMovies, setSearchMovies] = useState([]);
+  const { content, onButtonClick,fetchData,searchContent,setSearchContent,setCurrentPage,currentPage,itemsPerPage } = useData();
 
-  const fetchData = async () => {
-    await fetch("http://localhost:5000/content")
-      .then((response) => response.json())
-      .then((data) => {
-        const filter = data.filter((media) => {
-          return media.category == "Movie";
-        });
-        setMovies(filter);
-        setSearchMovies(filter);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  };
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = searchContent
+    .filter(
+      (item) => item.category === "Movie"
+    )
+    .slice(indexOfFirstItem, indexOfLastItem);
+ 
+    useEffect(() => {
+      if (searchContent.length !== content.length) {
+        setCurrentPage(1);
+      }
+    }, [searchContent]);
+ 
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+
 
   return (
     <>
@@ -32,8 +33,8 @@ const MoviesPage = () => {
         <SearchBar
           placeholder="Search for movies"
           icon="src/assets/svg/icon-search.svg"
-          data={movies}
-          setSearchData={setSearchMovies}
+          data={content}
+          setSearchData={setSearchContent}
           switchViews={false} //  switch between different views when searching
           hideList={["heading1"]} // hide specific elements when searching [this only matters if switchViews is false]
           unhideList={["padding1"]}
@@ -68,8 +69,7 @@ const MoviesPage = () => {
         desktop:grid-cols-4 desktop:gap-y-8 desktop:gap-x-10 
         "
         >
-          {searchMovies
-            .filter((movie) => movie.category === "Movie")
+          {currentItems
             .map((movie) => (
               <div
                 key={movie.id}
@@ -83,16 +83,16 @@ const MoviesPage = () => {
                   <picture>
                     <source
                       media="(min-width: 1440px)"
-                      srcSet={movie.thumbnail.regular.large}
+                      srcSet={`/${movie.thumbnail.regular.large.replace(/^\/+/, '')}`}
                       className="w-[100%] h-[100%] max-w-[50rem]"
                     />
                     <source
                       media="(min-width: 768px)"
-                      srcSet={movie.thumbnail.regular.medium}
+                      srcSet={`/${movie.thumbnail.regular.large.replace(/^\/+/, '')}`}
                       className="w-[100%] h-[100%]"
                     />
                     <img
-                      src={movie.thumbnail.regular.small}
+                      src={`/${movie.thumbnail.regular.large.replace(/^\/+/, '')}`}
                       alt={movie.title}
                       className="w-full rounded-lg h-[100%]"
 
@@ -103,7 +103,7 @@ const MoviesPage = () => {
                     className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem] flex justify-center items-center
                tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg
                "
-               onClick={onButtonClick}
+               onClick={() => onButtonClick(movie.id)}
                   >
                     <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem]" type="button">
                       <span className="py-[0.56rem]">
@@ -182,7 +182,9 @@ const MoviesPage = () => {
               </div>
             ))}
         </div>
+        <Pagination/>
       </div>
+      <Outlet/>
     </>
   );
 };
