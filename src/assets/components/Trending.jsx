@@ -1,15 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import BookmarkButton from "./BookmarkButton";
 import { useData } from "./DataContext";
-import IconPlay from "./formatted_svg/IconPlay";
 
 const TrendingMoviesCarousel = () => {
+  const { content, onButtonClick, fetchData } = useData();
 
-  const {content, onButtonClick,fetchData} = useData();
-
-  const trendingContent = content.filter(media => media.isTrending)
-
-
+  const trendingContent = content.filter((media) => media.isTrending);
 
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -33,8 +29,6 @@ const TrendingMoviesCarousel = () => {
     const walk = (x - startX) * 2; //multiply by 2 for faster scroll
     scrollRef.current.scrollLeft = scrollLeft - walk;
   };
-
-
 
   const renderCategoryIcon = (category) => {
     if (category === "Movie") {
@@ -68,8 +62,8 @@ const TrendingMoviesCarousel = () => {
         className="figma-heading-l
           desktop:text-[2rem] tablet:text-[2rem] phone:text-[1.25rem]
           pb-[1.5rem]
-          phone:pb-[1.5rem]
-          tablet:pb-[1.5rem]
+          phone:pb-[1.5rem] phone:figma-heading-xs
+          tablet:pb-[1.5rem] 
           desktop:pb-[1.56rem]
           
           "
@@ -84,7 +78,7 @@ const TrendingMoviesCarousel = () => {
         onMouseLeave={stopDragging}
         onMouseMove={onDrag}
         style={{
-          scrollBehavior: 'smooth'
+          scrollBehavior: "smooth",
         }}
         className="flex w-full h-full cursor-grab active:cursor-grabbing overflow-x-auto disappear-scrollbar select-none"
       >
@@ -92,7 +86,7 @@ const TrendingMoviesCarousel = () => {
           {trendingContent.map((movie, index) => (
             <div key={index} className="inline-block">
               <div className="relative group">
-                <picture>
+                <picture className="object-cover rounded-lg group-hover:opacity-25 transition-opacity duration-300">
                   <source
                     media="(min-width: 1440px)"
                     srcSet={movie.thumbnail.trending.large}
@@ -114,42 +108,37 @@ const TrendingMoviesCarousel = () => {
                   />
                 </picture>
 
-                <div
-                    className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem] flex justify-center items-center
-               tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg
-               "
-               onClick={() => onButtonClick(movie.id)}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div
+                    style={{
+                      width: "7.3125rem",
+                      height: "3rem",
+                      borderRadius: "1.78125rem",
+                      background: "rgba(255, 255, 255, 0.25)",
+                    }}
+                    className="flex items-center justify-center cursor-pointer select-none"
+                    onClick={() => onButtonClick(movie.id)}
                   >
-                    <div className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem] w-[117px] h-12" type="button">
-                      <span className="py-[0.56rem]">
-                        <IconPlay />
-                      </span>
-                      <span className="figma-heading-xs pt-[0.75rem] pb-[0.81rem] h-[1.4375rem]">
-                        Play
-                      </span>
-                    </div>
+                    <svg
+                      width="30"
+                      height="30"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15 0C6.713 0 0 6.713 0 15c0 8.288 6.713 15 15 15 8.288 0 15-6.712 15-15 0-8.287-6.712-15-15-15Zm-3 21V8l9 6.5-9 6.5Z"
+                        fill="#FFF"
+                      />
+                    </svg>
+                    <span className="text-white ml-2">Play</span>
                   </div>
-
+                </div>
                 <BookmarkButton
                   media_id={movie.id}
                   isBookmarked={movie.isBookmarked}
                   reloadData={fetchData}
                 />
-
-                <div className="absolute bottom-0 left-0 right-0 bg-opacity-50 rounded-b-lg 
-                pl-[1rem] pb-[1rem]
-                phone:pl-[1rem] phone:pb-[1rem]
-                tablet:pl-[1.5rem] tablet:pb-[1.5rem]
-                desktop:pl-[1.5rem] desktop:pb-[1.5rem]">
-
-                  <div className="figma-body-m flex items-center gap-2
-                  dekstop:text-[0.9375rem] tablet:text-[0.9375rem] phone:text-[0.75rem]
-                  phone:h-[0.9375rem] tablet:h-[1.1875rem] desktop:h-[1.1875rem]
-                  pb-[0.1875rem]
-                  tablet:pb-[0.1875rem]
-                  desktop:pb-[0.1875rem]
-                  phone:pb-[0.25rem]
-                  ">
+                <div className="figma-heading-l absolute bottom-0 left-0 right-0 bg-opacity-50 text-figma-white p-[1.8rem] rounded-b-lg">
+                  <div className=" text-sm space-x-[0.1rem] figma-body-m dekstop:text-[0.8125rem] tablet:text-[0.9375rem] flex items-center gap-[0.125rem] desktop:gap-[0.4rem] p-[0.8rem] tablet:gap-[0.1rem] phone:gap-[0.3rem] phone:text-[0.75rem] phone:h-3.5 tablet:h-4 desktop:h-4">
                     <span>{movie.year}</span>
                     <div>
                       <svg
@@ -168,33 +157,35 @@ const TrendingMoviesCarousel = () => {
                         />
                       </svg>
                     </div>
-                    <span className="flex items-center gap-[0.38rem]">
+                    <span className="flex items-center gap-[0.38rem] desktop:gap-[0.rem] tablet:gap-[0.38rem] phone:gap-[0.25rem]">
                       {renderCategoryIcon(movie.category)}
-                      <span>{movie.category}</span>
+                      <span className="flex items-center gap-[0.5rem]">
+                        {movie.category}
+                      </span>
+                      <div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="3"
+                          height="3"
+                          viewBox="0 0 3 3"
+                          fill="none"
+                        >
+                          <circle
+                            opacity="0.5"
+                            cx="1.5"
+                            cy="1.5"
+                            r="1.5"
+                            fill="white"
+                          />
+                        </svg>
+                      </div>
                     </span>
-                    <div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="3"
-                        height="3"
-                        viewBox="0 0 3 3"
-                        fill="none"
-                      >
-                        <circle
-                          opacity="0.5"
-                          cx="1.5"
-                          cy="1.5"
-                          r="1.5"
-                          fill="white"
-                        />
-                      </svg>
-                    </div>
                     <span>{movie.rating}</span>
                   </div>
                   <h3
-                    className="figma-heading-s
-                    dekstop:text-[1.5rem] tablet:text-[1.5rem] phone:text-[0.9375rem]
-                    phone:h-[1.1875rem] tablet:h-[1.875rem] desktop:h-[1.875rem]"
+                    className="figma-heading-s dekstop:text-[1.125rem] tablet:text-[1.5rem]
+                  phone:text-[0.875rem] phone:h-[1.125rem] phone:p-[0.3rem] phone:figma-body-m
+                  tablet:h-[1.4375rem] desktop:h-[1.4375rem] text-figma-w"
                   >
                     {movie.title}
                   </h3>

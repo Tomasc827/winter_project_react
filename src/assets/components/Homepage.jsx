@@ -130,23 +130,21 @@ const Homepage = () => {
                tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg flex justify-center items-center"
                     onClick={() => onButtonClick(item.id)}
                   >
-                    <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem] w-[117px] h-12">
+                    <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem]">
                       <span className="py-[0.56rem]">
                         <IconPlay />
                       </span>
-                      <span className="figma-heading-xs pt-[0.75rem] pb-[0.81rem] h-[1.4375rem]">
+                      <span className="figma-heading-xs pt-[0.75rem] pb-[0.81rem]">
                         Play
                       </span>
                     </button>
                   </div>
                 </div>
-
                 <BookmarkButton
                   media_id={item.id}
                   isBookmarked={item.isBookmarked}
                   reloadData={fetchData}
                 />
-                
                 <div
                   className="flex flex-col gap-[0.3125rem] desktop:gap-[0.3125rem] tablet:gap-[0.3125rem] phone:gap-[0.25rem] pt-2 bg-gradient-to-t to-transparent rounded-b-lg
                 "
@@ -170,7 +168,7 @@ const Homepage = () => {
                         />
                       </svg>
                     </div>
-                    <div className="flex items-center gap-[0.38rem] desktop:gap-[0.38rem] tablet:gap-[0.38rem] phone:gap-[0.25rem]">
+                    <div className="flex items-center gap-[0.38rem] desktop:gap-[0.rem] tablet:gap-[0.38rem] phone:gap-[0.25rem]">
                       {renderCategoryIcon(item.category)}
                       <span>{item.category}</span>
                     </div>
