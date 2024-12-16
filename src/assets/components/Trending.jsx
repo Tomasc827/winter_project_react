@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import BookmarkButton from "./BookmarkButton";
 import { useData } from "./DataContext";
+import IconPlay from "./formatted_svg/IconPlay";
 
 const TrendingMoviesCarousel = () => {
 
@@ -91,7 +92,7 @@ const TrendingMoviesCarousel = () => {
           {trendingContent.map((movie, index) => (
             <div key={index} className="inline-block">
               <div className="relative group">
-                <picture className="object-cover rounded-lg group-hover:opacity-25 transition-opacity duration-300">
+                <picture>
                   <source
                     media="(min-width: 1440px)"
                     srcSet={movie.thumbnail.trending.large}
@@ -113,48 +114,87 @@ const TrendingMoviesCarousel = () => {
                   />
                 </picture>
 
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div
-                    style={{
-                      width: "7.3125rem",
-                      height: "3rem",
-                      borderRadius: "1.78125rem",
-                      background: "rgba(255, 255, 255, 0.25)",
-                    }}
-                    className="flex items-center justify-center cursor-pointer select-none"
-                    onClick={() => onButtonClick(movie.id)}
+                <div
+                    className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem] flex justify-center items-center
+               tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg
+               "
+               onClick={() => onButtonClick(movie.id)}
                   >
-                    <svg
-                      width="30"
-                      height="30"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M15 0C6.713 0 0 6.713 0 15c0 8.288 6.713 15 15 15 8.288 0 15-6.712 15-15 0-8.287-6.712-15-15-15Zm-3 21V8l9 6.5-9 6.5Z"
-                        fill="#FFF"
-                      />
-                    </svg>
-                    <span className="text-white ml-2">Play</span>
+                    <div className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem] w-[117px] h-12" type="button">
+                      <span className="py-[0.56rem]">
+                        <IconPlay />
+                      </span>
+                      <span className="figma-heading-xs pt-[0.75rem] pb-[0.81rem] h-[1.4375rem]">
+                        Play
+                      </span>
+                    </div>
                   </div>
-                </div>
+
                 <BookmarkButton
                   media_id={movie.id}
                   isBookmarked={movie.isBookmarked}
                   reloadData={fetchData}
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-opacity-50 text-figma-white p-4 rounded-b-lg">
-                  <div className=" text-sm space-x-2 figma-body-s dekstop:text-[0.8125rem] tablet:text-[0.8125rem] flex items-center gap-2 desktop:gap-2 tablet:gap-2 phone:gap-[0.38rem] phone:text-[0.6875rem] phone:h-3.5 tablet:h-4 desktop:h-4">
+
+                <div className="absolute bottom-0 left-0 right-0 bg-opacity-50 rounded-b-lg 
+                pl-[1rem] pb-[1rem]
+                phone:pl-[1rem] phone:pb-[1rem]
+                tablet:pl-[1.5rem] tablet:pb-[1.5rem]
+                desktop:pl-[1.5rem] desktop:pb-[1.5rem]">
+
+                  <div className="figma-body-m flex items-center gap-2
+                  dekstop:text-[0.9375rem] tablet:text-[0.9375rem] phone:text-[0.75rem]
+                  phone:h-[0.9375rem] tablet:h-[1.1875rem] desktop:h-[1.1875rem]
+                  pb-[0.1875rem]
+                  tablet:pb-[0.1875rem]
+                  desktop:pb-[0.1875rem]
+                  phone:pb-[0.25rem]
+                  ">
                     <span>{movie.year}</span>
-                    <span className="flex items-center space-x-1">
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="3"
+                        height="3"
+                        viewBox="0 0 3 3"
+                        fill="none"
+                      >
+                        <circle
+                          opacity="0.5"
+                          cx="1.5"
+                          cy="1.5"
+                          r="1.5"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                    <span className="flex items-center gap-[0.38rem]">
                       {renderCategoryIcon(movie.category)}
                       <span>{movie.category}</span>
                     </span>
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="3"
+                        height="3"
+                        viewBox="0 0 3 3"
+                        fill="none"
+                      >
+                        <circle
+                          opacity="0.5"
+                          cx="1.5"
+                          cy="1.5"
+                          r="1.5"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
                     <span>{movie.rating}</span>
                   </div>
                   <h3
-                    className="figma-heading-xs dekstop:text-[1.125rem] tablet:text-[1.125rem]
-                  phone:text-[0.875rem] phone:h-[1.125rem]
-                  tablet:h-[1.4375rem] desktop:h-[1.4375rem] text-figma-w"
+                    className="figma-heading-s
+                    dekstop:text-[1.5rem] tablet:text-[1.5rem] phone:text-[0.9375rem]
+                    phone:h-[1.1875rem] tablet:h-[1.875rem] desktop:h-[1.875rem]"
                   >
                     {movie.title}
                   </h3>

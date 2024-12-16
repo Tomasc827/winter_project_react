@@ -105,11 +105,11 @@ const MoviesPage = () => {
                "
                onClick={() => onButtonClick(movie.id)}
                   >
-                    <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem]" type="button">
+                    <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem] w-[117px] h-12" type="button">
                       <span className="py-[0.56rem]">
                         <IconPlay />
                       </span>
-                      <span className="figma-heading-xs pt-[0.75rem] pb-[0.81rem]">
+                      <span className="figma-heading-xs pt-[0.75rem] pb-[0.81rem] h-[1.4375rem]">
                         Play
                       </span>
                     </button>
