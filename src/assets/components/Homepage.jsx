@@ -8,6 +8,7 @@ import { useData } from "./DataContext";
 import { Outlet } from "react-router";
 import { useEffect } from "react";
 import Pagination from "./Pagination";
+import SettingsSVG from "./formatted_svg/SettingsSVG";
 
 const Homepage = () => {
   const {
@@ -19,7 +20,8 @@ const Homepage = () => {
     fetchData,
     setCurrentPage,
     currentPage,
-    itemsPerPage
+    itemsPerPage,
+    onAdminClick,
   } = useData();
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -84,9 +86,8 @@ const Homepage = () => {
           pb-[1.5rem]
           phone:pb-[1.5rem]
           tablet:pb-[1.5rem]
-          desktop:pb-[2.38rem]"
+          desktop:pb-[2.38rem] relative"
         ></div>
-
         {content.length === 0 ? (
           <p className="text-center text-gray-500">Loading data...</p>
         ) : searchContent.length === 0 ? (
@@ -124,7 +125,6 @@ const Homepage = () => {
                       className="w-full rounded-lg h-[100%]"
                     />
                   </picture>
-
                   <div
                     className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem]
                tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg flex justify-center items-center"
@@ -147,6 +147,9 @@ const Homepage = () => {
                   reloadData={fetchData}
                 />
                 
+                {currentUser.role === "Admin" ? <div onClick={() => onAdminClick(item.id)}>
+                <SettingsSVG/>
+                </div> : null}
                 <div
                   className="flex flex-col gap-[0.3125rem] desktop:gap-[0.3125rem] tablet:gap-[0.3125rem] phone:gap-[0.25rem] pt-2 bg-gradient-to-t to-transparent rounded-b-lg
                 "

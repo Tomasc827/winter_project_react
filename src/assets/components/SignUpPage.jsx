@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { useData } from "./DataContext";
 import Logo from "./formatted_svg/Logo";
 import ErrorServer from "./messages/ErrorServer";
-import { useState } from "react";
 import { postData } from "../helpers/post";
 import SignUpSuccess from "./messages/SignUpSuccess";
 import EmailInput from "./inputs/EmailInput";
@@ -36,7 +35,9 @@ const SignUpPage = () => {
       const encodedData = {
         ...userData,
         password: encodedPassword(userData.password),
+        role: "User"
       };
+
       const response = await postData({
         ...encodedData,
         avatar: "/avatar.jpg",

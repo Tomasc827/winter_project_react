@@ -9,16 +9,22 @@ export const loginUser = async (loginData) => {
 
     const user = users.find(
       (u) =>
-        u.email === loginData.email && u.password === btoa(loginData.password)
+        u.email === loginData.email && u.password === btoa(loginData.password) && u.role === "User"
     );
 
-    if (!user) {
+    const admin = users.find((u) => u.email === loginData.email && u.password === btoa(loginData.password) && u.role === "Admin")
+
+
+    if(admin) {
+      return  admin
+    } else if (user) {
+    return  user
+    } else {
       throw new Error("Invalid email or password");
     }
 
-    return user;
+
   } catch (error) {
-    if (error.message === "Invalid email or password") throw Error;
+  throw new Error(error.message || "Unable to connect to server")
   }
-  throw new Error("Unable to connect to server")
 };

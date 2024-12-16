@@ -10,7 +10,6 @@ const Pagination = ({type}) => {
     setMovieCurrentPage,
     tvSeriesCurrentPage,
     setTvSeriesCurrentPage,
-    location,
   } = useData();
 
   const findCurrentPage = () => {
@@ -32,10 +31,37 @@ const totalItems = type === "movies"
 : searchContent.length
 
 
-  const pageNumbers = [];
+const pageNumbers = [];
 
-  for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
-    pageNumbers.push(i);
+for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+  pageNumbers.push(i);
+}
+
+  const getPageNumbers = () => {
+    const totalPages = Math.ceil(totalItems / itemsPerPage)
+    const current = findCurrentPage()
+    let pages = []
+
+    if (totalPages <= 5) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i)
+      }
+    }  else {
+    pages.push(1)
+   if (current > 3) {
+    pages.push("...")
+   }  
+   const start = Math.max(2, current - 1)
+   const end = Math.min (totalPages - 1, current + 1)
+   for (let i = start; i <= end; i++) {
+    pages.push(i)
+   }
+   if (current < totalPages -2) {
+    pages.push("...")
+   }
+   pages.push(totalPages)
+  }
+  return pages
   }
 
   const page = findCurrentPage()
@@ -59,19 +85,21 @@ const totalItems = type === "movies"
             Previous
           </button>
 
-          {pageNumbers.map((number) => (
+          {getPageNumbers().map((number,index) => (
             <button
               className={`tablet:min-w-[3rem] phone:min-w-[2rem]  h-[3rem]  rounded-[0.375rem] figma-body-m mb-[1.5rem] ${
-                page === number
+                number === "..."
+                  ? "border-none bg-transparent"
+                  : page === number
                   ? "bg-figma-greyish-blue hover:bg-figma-semi-dark-blue duration-500"
                   : "bg-figma-red text-figma-white hover:bg-figma-white hover:shadow-lg hover:shadow-white hover:text-figma-dark-blue duration-700"
               }`}
-              key={number}
+              key={index}
               onClick={() => {
                 setPage(number);
                 window.scrollTo( { top: type === "tvseries" ? 1000 : 0, behavior: "smooth" });
               }}
-              disabled={page === number}
+              disabled={page === number || number === "..."}
             >
               {number}
             </button>

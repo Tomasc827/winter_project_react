@@ -32,7 +32,9 @@ const Navbar = () => {
     currentUser,
     userModal,
     setUserModal,
-    accessText
+    accessText,
+    setAccess,
+    setAccessText,
   } = useData();
 
   const openModal = () => {
@@ -53,18 +55,22 @@ const Navbar = () => {
 
   return (
     <>
-    <ErrorServer/>
-    <SignUpSuccess />
+      <ErrorServer />
+      <SignUpSuccess />
       <div className="relative">
         {loginModal && !currentUser?.id && (
           <div
             className="fixed bg-black bg-opacity-50 z-50 inset-0 flex justify-center items-center"
             onClick={() => closeModal()}
           >
-            <div onClick={(e) => e.stopPropagation()}
-                      className={`rounded-lg shadow-lg transform transition-all duration-700 ease-in-out ${
-                        loginModal ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
-                      }`}>
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className={`rounded-lg shadow-lg transform transition-all duration-700 ease-in-out ${
+                loginModal
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-full opacity-0"
+              }`}
+            >
               <LoginModal />
             </div>
           </div>
@@ -91,17 +97,48 @@ const Navbar = () => {
               : ""
           }`}
         >
-          <div className={`desktop:pt-[2.21rem] desktop:ps-[1.99rem] desktop:pe-[2.01rem] desktop:pb-[4.69rem] tablet:ps-[1.5rem] tablet:pt-[1.5rem] tablet:pb-[1.4rem]  phone:py-[1.13rem] phone:ps-[1rem] ${!currentUser || !currentUser.id ? "phone:pe-[3.5rem] tablet:pe-[15.06rem]": "tablet:pe-[13.56rem]"}`}>
+          <div
+            className={`desktop:pt-[2.21rem] desktop:ps-[1.99rem] desktop:pe-[2.01rem] desktop:pb-[4.69rem] tablet:ps-[1.5rem] tablet:pt-[1.5rem] tablet:pb-[1.4rem]  phone:py-[1.13rem] phone:ps-[1rem] ${
+              !currentUser || !currentUser.id
+                ? "phone:pe-[3.5rem] tablet:pe-[15.06rem]"
+                : "tablet:pe-[13.56rem]"
+            }`}
+          >
             {screen >= 768 ? <Logo /> : <LogoMobile />}
           </div>
-          <div className={`relative desktop:w-[1.25rem] desktop:h-[12.5rem] desktop:ps-0 desktop:pt-0 tablet:ps-0 desktop:mb-[34.5rem] tablet:w-[10.8075] tablet:h-[1.25rem] tablet:pt-[1.69rem] tablet:pb-[1.56rem]   phone:py-[1.25rem] ${!currentUser || !currentUser.id ? "phone:ps-[3rem] phone:pe-[3.53rem] tablet:pe-[12.07rem]": "phone:ps-[5rem] phone:pe-[5.03rem] tablet:pe-[14.07rem]"}`}>
+          <div
+            className={`relative desktop:w-[1.25rem] desktop:h-[12.5rem] desktop:ps-0 desktop:pt-0 tablet:ps-0 desktop:mb-[34.5rem] tablet:w-[10.8075] tablet:h-[1.25rem] tablet:pt-[1.69rem] tablet:pb-[1.56rem]   phone:py-[1.25rem] ${
+              !currentUser || !currentUser.id
+                ? "phone:ps-[3rem] phone:pe-[3.53rem] tablet:pe-[12.07rem]"
+                : "phone:ps-[5rem] phone:pe-[5.03rem] tablet:pe-[14.07rem]"
+            }`}
+          >
             {screen >= 1440 ? (
               <>
-              <div>
-                <NavbarSvg /> 
-              </div>
-              {accessText === "Homepage" ? <div className="z-30 absolute top-[-8%] left-[40%]"><AccessNavbar/></div>
-              : accessText === "TV Series" ? <div className="z-30 absolute top-[53%] left-[40%]"><AccessNavbar/></div> : accessText === "Movies" ? <div className="z-30 absolute top-[23%] left-[40%]"><AccessNavbar/></div> : <div className="z-30 absolute top-[83%] left-[40%]"><AccessNavbar/></div>}
+                <div>
+                  <NavbarSvg />
+                </div>
+                {accessText === "Homepage" ? (
+                  <div className="z-30 absolute top-[-8%] left-[40%]">
+                    <AccessNavbar />
+                  </div>
+                ) : accessText === "TV Series" ? (
+                  <div className="z-30 absolute top-[53%] left-[40%]">
+                    <AccessNavbar />
+                  </div>
+                ) : accessText === "Movies" ? (
+                  <div className="z-30 absolute top-[23%] left-[40%]">
+                    <AccessNavbar />
+                  </div>
+                ) : accessText === "Bookmarks" ? (
+                  <div className="z-30 absolute top-[83%] left-[40%]">
+                    <AccessNavbar />
+                  </div>
+                ) : (
+                  <div className="z-30 absolute top-[374%] left-[40%]">
+                    <AccessNavbar />
+                  </div>
+                )}
               </>
             ) : screen >= 768 ? (
               <NavbarHorizontal />
@@ -118,12 +155,22 @@ const Navbar = () => {
                 className={`desktop:w-[2.5rem] desktop:h-[2.5rem]  tablet:w-[2rem] tablet:h-[2rem] desktop:rounded-[2.5rem] tablet:rounded-[2rem]  border border-figma-white phone:w-[1.5rem] phone:h-[1.5rem] phone:rounded-[1.5rem]`}
                 src={avatar}
                 alt="avatar"
+                onMouseEnter={() => {
+                  setAccess(true);
+                  setAccessText("Profile");
+                }}
+                onMouseLeave={() => setAccess(false)}
               ></img>
             ) : (
               <img
                 className="desktop:w-[2.5rem] tablet:w-[2rem] tablet:h-[2rem] desktop:h-[2.5rem] desktop:rounded-[2.5rem] tablet:rounded-[2rem] border border-figma-white phone:w-[1.5rem] phone:h-[1.5rem] phone:rounded-[1.5rem]"
                 src={defaultImage}
                 alt="avatar"
+                onMouseEnter={() => {
+                  setAccess(true);
+                  setAccessText("Profile");
+                }}
+                onMouseLeave={() => setAccess(false)}
               ></img>
             )}
           </div>

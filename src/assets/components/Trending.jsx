@@ -2,10 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import BookmarkButton from "./BookmarkButton";
 import { useData } from "./DataContext";
 import IconPlay from "./formatted_svg/IconPlay";
+import SettingsSVG from "./formatted_svg/SettingsSVG";
 
 const TrendingMoviesCarousel = () => {
 
-  const {content, onButtonClick,fetchData} = useData();
+  const {content, onButtonClick,fetchData,currentUser,onAdminClick} = useData();
 
   const trendingContent = content.filter(media => media.isTrending)
 
@@ -135,6 +136,10 @@ const TrendingMoviesCarousel = () => {
                   isBookmarked={movie.isBookmarked}
                   reloadData={fetchData}
                 />
+
+{currentUser.role === "Admin" ? <div onClick={() => onAdminClick(movie.id)}>
+                <SettingsSVG/>
+                </div> : null}
 
                 <div className="absolute bottom-0 left-0 right-0 bg-opacity-50 rounded-b-lg 
                 pl-[1rem] pb-[1rem]
