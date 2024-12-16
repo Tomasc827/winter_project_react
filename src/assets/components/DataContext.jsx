@@ -76,7 +76,7 @@ export const DataProviders = ({ children}) => {
       const data = await response.json();
       
       const currentPath = location.pathname;
-      const basePath = currentPath.split('/description')[0];
+      const basePath = currentPath.split('/description')[0].split("/admin")[0]
     
       let filteredData;
       if (basePath === "/" || basePath === "") {
@@ -117,6 +117,7 @@ const [tvSeriesCurrentPage,setTvSeriesCurrentPage] = useState(1)
 const itemsPerPage = 12;
   // Description card behaviour
   const findShowById = (id) => {
+    if (!content) return null
     const show = content?.find((single) => single.id.toString() === id.toString());
     if (!show) {
       fetchData();
@@ -128,8 +129,8 @@ const itemsPerPage = 12;
   const [previousMainPath,setPreviousMainPath] = useState("")
   useEffect(() => {
     const currentPath = location.pathname.split("/")[1] || "/"
-    const currentDescription = location.pathname.includes("description","admin")
-    const previousDescription = previousMainPath.includes ("description","admin")
+    const currentDescription = location.pathname.includes("description") || location.pathname.includes("admin")
+    const previousDescription = previousMainPath.includes ("description") || previousMainPath.includes("admin")
     if(currentPath !== previousMainPath && !currentDescription && !previousDescription) {
     setCurrentPage(1)
     setSearchContent(content)

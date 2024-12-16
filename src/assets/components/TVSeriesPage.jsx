@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { useData } from "./DataContext";
 import IconCategoryTV from "./formatted_svg/IconCategoryTV";
 import IconPlay from "./formatted_svg/IconPlay";
@@ -9,7 +9,7 @@ import Pagination from "./Pagination";
 import SettingsSVG from "./formatted_svg/SettingsSVG";
 
 const TVSeriesPage = () => {
-  const { content,onButtonClick,fetchData,searchContent,setSearchContent,setCurrentPage,currentPage,itemsPerPage,currentUser } = useData();
+  const { content,onButtonClick,fetchData,searchContent,setSearchContent,setCurrentPage,currentPage,itemsPerPage,currentUser,onAdminClick } = useData();
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -118,7 +118,7 @@ const TVSeriesPage = () => {
                   reloadData={fetchData}
                 />
 
-              {currentUser.role === "Admin" ? <div>
+                {currentUser.role === "Admin" ? <div onClick={() => onAdminClick(serie.id)}>
                 <SettingsSVG/>
                 </div> : null}
 

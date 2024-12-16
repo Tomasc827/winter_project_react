@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState,useRef } from "react";
 import BookmarkButton from "./BookmarkButton";
 import { useData } from "./DataContext";
 import IconPlay from "./formatted_svg/IconPlay";

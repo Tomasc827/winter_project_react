@@ -9,7 +9,7 @@ import Pagination from "./Pagination";
 import SettingsSVG from "./formatted_svg/SettingsSVG";
 
 const MoviesPage = () => {
-  const { content, onButtonClick,fetchData,searchContent,setSearchContent,setCurrentPage,currentPage,itemsPerPage,currentUser } = useData();
+  const { content, onButtonClick,fetchData,searchContent,setSearchContent,setCurrentPage,currentPage,itemsPerPage,currentUser,onAdminClick } = useData();
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -123,7 +123,7 @@ const MoviesPage = () => {
                   reloadData={fetchData}
                 />
 
-                {currentUser.role === "Admin" ? <div>
+                {currentUser.role === "Admin" ? <div onClick={() => onAdminClick(movie.id)}>
                 <SettingsSVG/>
                 </div> : null}
 

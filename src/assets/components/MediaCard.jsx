@@ -4,7 +4,7 @@ import SettingsSVG from "./formatted_svg/SettingsSVG";
 import "./MediaCard.css";
 const MediaCard = (props) => {
 
-  const {onButtonClick,currentUser} = useData()
+  const {onButtonClick,currentUser,onAdminClick} = useData()
 
   let categoryIcon = "src/assets/svg/icon-category-tv.svg";
 
@@ -14,9 +14,9 @@ const MediaCard = (props) => {
   return (
     <div>
       <div className="relative">
-      {currentUser.role === "Admin" ? <div>
-                  <SettingsSVG/>
-                  </div> : null}
+      {currentUser.role === "Admin" ? <div onClick={() => onAdminClick(props.media_id)}>
+                <SettingsSVG/>
+                </div> : null}
         <div className="relative group ">
           <img
             className="rounded-lg"
