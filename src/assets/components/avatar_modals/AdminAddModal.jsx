@@ -42,12 +42,7 @@ const AdminAddModal = () => {
       const response = await postContentData({
         ...data,
         isBookmarked: false,
-        thumbnail: {
-            trending: {
-              small: data.thumbnail.trending.small === "" || "../src/assets/img/thumbnails/default/trending/small.webp",
-              large: data.thumbnail.trending.large === "" || "../src/assets/img/thumbnails/default/trending/large.webp"
-            },
-          }
+        date: new Date(),
       });
 
       if (response){

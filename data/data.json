@@ -8182,6 +8182,23 @@
       "isTrending": "true",
       "description": "dsfg;fogsko;snbfnigsgifsigjsfgd",
       "isBookmarked": false
+    },
+    {
+      "id": "07b3",
+      "title": "Bottom Gear 11",
+      "thumbnail": {
+        "trending": {
+          "small": "../src/assets/img/thumbnails/default/trending/small.webp",
+          "large": "../src/assets/img/thumbnails/default/trending/large.webp"
+        }
+      },
+      "year": "2222",
+      "category": "Movie",
+      "rating": "18+",
+      "isTrending": "true",
+      "description": "hshghgfghdfghdgfh",
+      "isBookmarked": false,
+      "date": "2024-12-17T11:36:04.669Z"
     }
   ],
   "users": [
