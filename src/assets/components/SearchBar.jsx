@@ -6,10 +6,14 @@ const SearchBar = (props) => {
   const inputHandler = (e) => {
     const lowerCase = e.target.value.toLowerCase();
 
-    // search syntax year: category: rating:
+    const isNumber = (str) => {
+      return /^[0-9]+$/.test(str);
+    };
 
-    if (lowerCase.length < 3) {
-      return;
+    if (!isNumber(lowerCase)) {
+      if (lowerCase.length < 3) {
+        return;
+      }
     }
 
     let filteredData = props.data.filter((media) => {
