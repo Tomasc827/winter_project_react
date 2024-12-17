@@ -73,7 +73,7 @@ for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
           <button
             className={`tablet:w-[8rem] h-[3rem] phone:w-[4rem] rounded-[0.375rem] figma-body-m mb-[1.5rem] ${
               page === 1
-                ? "bg-figma-greyish-blue hover:bg-figma-semi-dark-blue duration-500"
+                ? "bg-figma-greyish-blue hover:bg-figma-white hover:shadow-lg hover:shadow-white hover:text-figma-dark-blue duration-500"
                 : "bg-figma-red text-figma-white hover:bg-figma-white hover:shadow-lg hover:shadow-white hover:text-figma-dark-blue duration-700"
             }`}
             onClick={() => {
@@ -91,7 +91,7 @@ for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
                 number === "..."
                   ? "border-none bg-transparent"
                   : page === number
-                  ? "bg-figma-greyish-blue hover:bg-figma-semi-dark-blue duration-500"
+                  ? "bg-figma-greyish-blue hover:bg-figma-white hover:shadow-lg hover:shadow-white hover:text-figma-dark-blue duration-500"
                   : "bg-figma-red text-figma-white hover:bg-figma-white hover:shadow-lg hover:shadow-white hover:text-figma-dark-blue duration-700"
               }`}
               key={index}
@@ -107,7 +107,7 @@ for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
           <button
             className={`tablet:w-[8rem] h-[3rem] phone:w-[4rem] rounded-[0.375rem] figma-body-m mb-[1.5rem] ${
               page === pageNumbers.length
-                ? "bg-figma-greyish-blue hover:bg-figma-semi-dark-blue duration-500"
+                ? "bg-figma-greyish-blue hover:bg-figma-white hover:shadow-lg hover:shadow-white hover:text-figma-dark-blue duration-500"
                 : "bg-figma-red text-figma-white hover:bg-figma-white hover:shadow-lg hover:shadow-white hover:text-figma-dark-blue duration-700"
             }`}
             onClick={() => {
