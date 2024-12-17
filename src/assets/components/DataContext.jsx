@@ -9,6 +9,7 @@ export const DataProviders = ({ children }) => {
   // All of these are exported to signup/login pages
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   // Exports for messages/animations
   const [processing, setProcessing] = useState(false);
   const [success, setSuccess] = useState("");
@@ -192,7 +193,7 @@ export const DataProviders = ({ children }) => {
       const currentPath = location.pathname;
       const basePath = currentPath.split("/description")[0].split("/admin")[0];
 
-      let filteredData;
+      let filteredData = contentWithRatings
       if (basePath === "/" || basePath === "") {
         filteredData = contentWithRatings.filter(
           (media) =>
@@ -213,12 +214,13 @@ export const DataProviders = ({ children }) => {
       setContent(filteredData);
       setSearchContent(filteredData);
     } catch (error) {
+      console.error('Error fetching data:', error);
       setError(error.message);
       setTimeout(() => {
         setError("");
       }, 3000);
     }
-  };
+}
 
   // this use effect is there to fetch data on page refresh, because homepage doesn't like to do it by itself. Is now updated to also include fetchratings, Promise is there to wait for both of those to resolve, though more or less they work just fine even without it, but good practice and all that.
 
@@ -308,6 +310,13 @@ export const DataProviders = ({ children }) => {
     }
   };
 
+  const onLoginSuccess = async (user) => {
+    setCurrentUser(user);
+    setAvatar(user.avatar);
+    await fetchData();
+    setSuccess("Login successful");
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -332,11 +341,11 @@ export const DataProviders = ({ children }) => {
         setUserModal,
         onButtonClick,
         onBookmarkClick,
-        content,
+        content: content || [],
         setContent,
         findShowById,
         fetchData,
-        searchContent,
+        searchContent: searchContent || [],
         setSearchContent,
         location,
         access,
@@ -359,6 +368,9 @@ export const DataProviders = ({ children }) => {
         ratings,
         submitRating,
         fetchRatings,
+        isLoading,
+        setIsLoading,
+        onLoginSuccess
       }}
     >
       {children}

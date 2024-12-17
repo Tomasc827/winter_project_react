@@ -34,6 +34,7 @@ const SignUpPage = () => {
       const { confirmPassword, ...userData } = data;
       const encodedData = {
         ...userData,
+        email: data.email.toLowerCase(),
         password: encodedPassword(userData.password),
         role: "User"
       };

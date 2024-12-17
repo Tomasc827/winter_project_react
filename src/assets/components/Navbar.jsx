@@ -129,7 +129,7 @@ const Navbar = () => {
             {screen >= 768 ? <Logo /> : <LogoMobile />}
           </div>
           <div
-            className={`relative desktop:w-[1.25rem] desktop:h-[12.5rem] desktop:pe-0 desktop:ps-0 desktop:pt-0 tablet:ps-0 desktop:mb-[34.5rem] tablet:w-[10.8075] tablet:h-[1.25rem] tablet:pt-[1.69rem] tablet:pb-[1.56rem]   phone:py-[1.25rem] ${
+            className={`relative desktop:w-[1.25rem] desktop:h-[12.5rem] desktop:pe-[8rem]  desktop:ps-0 desktop:pt-0 tablet:ps-0 desktop:mb-[34.5rem] tablet:w-[10.8075] tablet:h-[1.25rem] tablet:pt-[1.69rem] tablet:pb-[1.56rem]   phone:py-[1.25rem] ${
               !currentUser || !currentUser.id
                 ? "phone:ps-[3rem] phone:pe-[3.53rem] tablet:pe-[12.07rem]"
                 : "phone:ps-[5rem] phone:pe-[5.03rem] tablet:pe-[14.07rem]"
@@ -141,32 +141,32 @@ const Navbar = () => {
                     <NavbarSvg />
                   </div>
                   {access && accessText === "Homepage" && (
-                    <div className="z-30 absolute top-[-8%] left-[40%]">
+                    <div className="z-30 absolute top-[-8%] left-[60%]">
                       <AccessNavbar />
                     </div>
                   )}
-                  {access && accessText === "TV Series" && (
-                    <div className="z-30 absolute top-[53%] left-[40%]">
+                  {access && accessText === "Series" && (
+                    <div className="z-30 absolute top-[53%] left-[60%]">
                       <AccessNavbar />
                     </div>
                   )}
                   {access && accessText === "Movies" && (
-                    <div className="z-30 absolute top-[23%] left-[40%]">
+                    <div className="z-30 absolute top-[23%] left-[60%]">
                       <AccessNavbar />
                     </div>
                   )}
                   {access && accessText === "Bookmarks" && (
-                    <div className="z-30 absolute top-[83%] left-[40%]">
+                    <div className="z-30 absolute top-[83%] left-[60%]">
                       <AccessNavbar />
                     </div>
                   )}
                   {access && accessText === "Profile" && (
-                    <div className="z-30 absolute top-[374%] left-[40%]">
+                    <div className="z-30 absolute top-[374%] left-[60%]">
                       <AccessNavbar />
                     </div>
                   )}
                   {access && accessText === "Add New" && (
-                    <div className="z-30 absolute top-[343%] left-[40%]">
+                    <div className="z-30 absolute top-[343%] left-[60%]">
                       <AccessNavbar />
                     </div>
                   )}

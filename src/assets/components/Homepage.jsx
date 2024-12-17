@@ -28,12 +28,10 @@ const Homepage = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = searchContent
-    .filter(
+   ? searchContent.filter(
       (item) => item.category === "TV Series" || item.category === "Movie"
     )
-    .slice(indexOfFirstItem, indexOfLastItem);
-  
-
+    .slice(indexOfFirstItem, indexOfLastItem) : []
 
     useEffect(() => {
       if (searchContent.length !== content.length) {
@@ -61,6 +59,7 @@ const Homepage = () => {
         hideList={["heading5", "trendingheading", "trending1", "trending2"]}
         unhideList={["padding1"]}
       />
+      
       <Trending />
       <div className="text-figma-white phone:pr-4 tablet:pr-6 desktop:pr-9">
         <h1
