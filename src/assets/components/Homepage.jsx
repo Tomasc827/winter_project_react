@@ -95,7 +95,7 @@ const Homepage = () => {
           <ul
             className="grid grid-cols-2 justify-center
         phone:grid-cols-2 phone:gap-y-[1rem] phone:gap-x-[0.94rem]
-        tablet:grid-cols-3 tablet:gap-y-6 tablet:gap-x-[1.81rem]
+        tablet:grid-cols-3 tablet:gap-y-6 tablet:gap-x-[2rem] tablet:py-[0.3rem]
         desktop:grid-cols-4 desktop:gap-y-8 desktop:gap-x-10"
           >
             {currentItems.map((item) => (

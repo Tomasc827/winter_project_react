@@ -59,10 +59,11 @@ const TrendingMoviesCarousel = () => {
     <div id="trending1" className="text-figma-white">
       <h1
         id="trendingheading"
-        className="figma-heading-l
-          desktop:text-[2rem] tablet:text-[2rem] phone:text-[1.25rem]
+        className="
+          desktop:text-[2rem] figma-heading-l
+          tablet:text-[2rem] phone:text-[1.25rem] figma-heading-l
           pb-[1.5rem]
-          phone:pb-[1.5rem] phone:figma-heading-xs
+          phone:pb-[1.5rem] p-[0.1rem]  phone:figma-heading-xs
           tablet:pb-[1.5rem] 
           desktop:pb-[1.56rem]
           
@@ -138,7 +139,7 @@ const TrendingMoviesCarousel = () => {
                   reloadData={fetchData}
                 />
                 <div className="figma-heading-l absolute bottom-0 left-0 right-0 bg-opacity-50 text-figma-white p-[1.8rem] rounded-b-lg">
-                  <div className=" text-sm space-x-[0.1rem] figma-body-m dekstop:text-[0.8125rem] tablet:text-[0.9375rem] flex items-center gap-[0.125rem] desktop:gap-[0.4rem] p-[0.8rem] tablet:gap-[0.1rem] phone:gap-[0.3rem] phone:text-[0.75rem] phone:h-3.5 tablet:h-4 desktop:h-4">
+                  <div className=" text-sm space-x-[0.1rem] figma-body-m dekstop:text-[0.8125rem] tablet:text-[0.9375rem] flex items-center gap-[0.125rem] desktop:gap-[0.4rem] p-[0.8rem] tablet:gap-[0.1rem] phone:gap-[0.3rem] phone:text-[0.75rem] phone:h-0.5 phone:p-[0.1rem]  tablet:h-4 desktop:h-4">
                     <span>{movie.year}</span>
                     <div>
                       <svg
