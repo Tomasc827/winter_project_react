@@ -21,7 +21,8 @@ export const DataProviders = ({ children}) => {
     return btoa(password);
     // End of signup/login page
   };
-
+  //Delete modal
+  const [deleteModal, setDeleteModal] = useState(false);
   //Navbar exports
   const [userModal, setUserModal] = useState(false);
   const [avatar, setAvatar] = useState(() => {
@@ -31,6 +32,7 @@ export const DataProviders = ({ children}) => {
   const [loginModal, setLoginModal] = useState(false);
   const [access, setAccess] = useState(false);
   const [accessText,setAccessText] = useState(false)
+  const [adminAdd, setAdminAdd] = useState(false) // admin add new content modal useState
   //End of Navbar
   //Global exports for keeping same user and avatar after refresh, and puts them in local storage, added one for bookmarks as well
   const location = useLocation()
@@ -63,8 +65,8 @@ export const DataProviders = ({ children}) => {
       setSuccess("");
     }, 2000);
   };
-
   // Centralized fetchData works across all pages
+
 
   const [content,setContent] = useState([]);
   const [searchContent, setSearchContent] = useState([]);
@@ -225,7 +227,11 @@ const onLoginCheck = () => {
         setTvSeriesCurrentPage,
         movieCurrentPage, 
         setMovieCurrentPage,
-        onAdminClick
+        onAdminClick,
+        adminAdd,
+        setAdminAdd,
+        deleteModal,
+        setDeleteModal,
       }}
     >
       {children}

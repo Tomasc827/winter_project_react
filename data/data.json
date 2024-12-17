@@ -23,9 +23,9 @@
     },
     {
       "title": "Bottom Gear",
-      "year": 2021,
-      "category": "Movie",
-      "rating": "PG",
+      "year": "2023",
+      "category": "TV Series",
+      "rating": "18+",
       "description": "A group of eccentric mechanics creates outlandish custom cars for their clients, but their adventures take a chaotic turn when they unknowingly become embroiled in an international heist. As they race against time to clear their names, they use their inventive skills to outwit the criminals. Along the way, they discover unexpected allies and uncover a conspiracy. It's a fast-paced ride of laughter and danger.",
       "isTrending": true,
       "isBookmarked": true,
@@ -196,36 +196,38 @@
     },
     {
       "title": "Autosport the Series",
+      "year": 2016,
+      "category": "TV Series",
+      "rating": "18+",
+      "description": "Follows the intense world of competitive motorsports, showcasing the lives of professional drivers, mechanics, and team owners. Each episode dives into the high-stakes races, the politics behind the scenes, and the personal sacrifices of the athletes. Fast cars, fierce rivalries, and adrenaline-fueled drama fuel this action-packed series. It's a high-octane ride full of twists, speed, and excitement.",
+      "isTrending": false,
+      "isBookmarked": true,
       "thumbnail": {
+        "trending": {
+          "small": "",
+          "large": ""
+        },
         "regular": {
           "small": "../src/assets/img/thumbnails/autosport-the-series/regular/small.jpg",
           "medium": "../src/assets/img/thumbnails/autosport-the-series/regular/medium.jpg",
           "large": "../src/assets/img/thumbnails/autosport-the-series/regular/large.jpg"
         }
       },
-      "year": 2016,
-      "category": "TV Series",
-      "rating": "18+",
-      "description": "Follows the intense world of competitive motorsports, showcasing the lives of professional drivers, mechanics, and team owners. Each episode dives into the high-stakes races, the politics behind the scenes, and the personal sacrifices of the athletes. Fast cars, fierce rivalries, and adrenaline-fueled drama fuel this action-packed series. It's a high-octane ride full of twists, speed, and excitement.",
-      "isBookmarked": true,
-      "isTrending": false,
       "id": "9506"
     },
     {
       "title": "Same Answer 2",
       "thumbnail": {
+        "trending": {
+          "small": "",
+          "large": ""
+        },
         "regular": {
           "small": "../src/assets/img/thumbnails/same-answer-2/regular/small.jpg",
           "medium": "../src/assets/img/thumbnails/same-answer-2/regular/medium.jpg",
           "large": "../src/assets/img/thumbnails/same-answer-2/regular/large.jpg"
         }
       },
-      "year": 2017,
-      "category": "Movie",
-      "rating": "E",
-      "description": "A sequel to the hit film, 'Same Answer', where the protagonist must once again confront a series of tough choices that challenge his beliefs and decisions. This time, the stakes are higher, and the consequences of his actions affect more lives. As he grapples with the truth, old alliances and enemies resurface. A thrilling continuation of morality, redemption, and personal growth.",
-      "isBookmarked": true,
-      "isTrending": false,
       "id": "cd68"
     },
     {
@@ -554,28 +556,6 @@
       "description": "In a groundbreaking experiment, a highly intelligent bonobo is trained to write computer code, becoming the world's first primate programmer. As Bonobo develops skills that rival human programmers, a team of scientists faces ethical dilemmas about his autonomy and rights. Meanwhile, the bonobo’s growing abilities begin to draw attention from corporate and government agencies, leading to dangerous consequences. This heartwarming and thought-provoking tale explores the boundaries of intelligence, technology, and the animal-human connection.",
       "isBookmarked": true,
       "isTrending": true,
-      "id": "1e26"
-    },
-    {
-      "title": "Bonobo the Programmer",
-      "thumbnail": {
-        "regular": {
-          "small": "../src/assets/img/thumbnails/bonobo/regular/small.jpeg",
-          "medium": "../src/assets/img/thumbnails/bonobo/regular/medium.jpeg",
-          "large": "../src/assets/img/thumbnails/bonobo/regular/large.jpeg"
-        },
-        "trending": {
-          "small": "../src/assets/img/thumbnails/bonobo/trending/small.jpeg",
-          "medium": "../src/assets/img/thumbnails/bonobo/trending/medium.jpeg",
-          "large": "../src/assets/img/thumbnails/bonobo/trending/large.jpeg"
-        }
-      },
-      "year": 2024,
-      "category": "Movie",
-      "rating": "18+",
-      "description": "In a groundbreaking experiment, a highly intelligent bonobo is trained to write computer code, becoming the world's first primate programmer. As Bonobo develops skills that rival human programmers, a team of scientists faces ethical dilemmas about his autonomy and rights. Meanwhile, the bonobo’s growing abilities begin to draw attention from corporate and government agencies, leading to dangerous consequences. This heartwarming and thought-provoking tale explores the boundaries of intelligence, technology, and the animal-human connection.",
-      "isBookmarked": true,
-      "isTrending": true,
       "id": "0215"
     },
     {
@@ -664,28 +644,6 @@
       "description": "In a groundbreaking experiment, a highly intelligent bonobo is trained to write computer code, becoming the world's first primate programmer. As Bonobo develops skills that rival human programmers, a team of scientists faces ethical dilemmas about his autonomy and rights. Meanwhile, the bonobo’s growing abilities begin to draw attention from corporate and government agencies, leading to dangerous consequences. This heartwarming and thought-provoking tale explores the boundaries of intelligence, technology, and the animal-human connection.",
       "isBookmarked": true,
       "isTrending": true,
-      "id": "f56c"
-    },
-    {
-      "title": "Bonobo the Programmer",
-      "thumbnail": {
-        "regular": {
-          "small": "../src/assets/img/thumbnails/bonobo/regular/small.jpeg",
-          "medium": "../src/assets/img/thumbnails/bonobo/regular/medium.jpeg",
-          "large": "../src/assets/img/thumbnails/bonobo/regular/large.jpeg"
-        },
-        "trending": {
-          "small": "../src/assets/img/thumbnails/bonobo/trending/small.jpeg",
-          "medium": "../src/assets/img/thumbnails/bonobo/trending/medium.jpeg",
-          "large": "../src/assets/img/thumbnails/bonobo/trending/large.jpeg"
-        }
-      },
-      "year": 2024,
-      "category": "Movie",
-      "rating": "18+",
-      "description": "In a groundbreaking experiment, a highly intelligent bonobo is trained to write computer code, becoming the world's first primate programmer. As Bonobo develops skills that rival human programmers, a team of scientists faces ethical dilemmas about his autonomy and rights. Meanwhile, the bonobo’s growing abilities begin to draw attention from corporate and government agencies, leading to dangerous consequences. This heartwarming and thought-provoking tale explores the boundaries of intelligence, technology, and the animal-human connection.",
-      "isBookmarked": true,
-      "isTrending": true,
       "id": "c57b"
     },
     {
@@ -731,28 +689,6 @@
       "isBookmarked": true,
       "isTrending": true,
       "id": "2328"
-    },
-    {
-      "title": "Bonobo the Programmer",
-      "thumbnail": {
-        "regular": {
-          "small": "../src/assets/img/thumbnails/bonobo/regular/small.jpeg",
-          "medium": "../src/assets/img/thumbnails/bonobo/regular/medium.jpeg",
-          "large": "../src/assets/img/thumbnails/bonobo/regular/large.jpeg"
-        },
-        "trending": {
-          "small": "../src/assets/img/thumbnails/bonobo/trending/small.jpeg",
-          "medium": "../src/assets/img/thumbnails/bonobo/trending/medium.jpeg",
-          "large": "../src/assets/img/thumbnails/bonobo/trending/large.jpeg"
-        }
-      },
-      "year": 2024,
-      "category": "Movie",
-      "rating": "18+",
-      "description": "In a groundbreaking experiment, a highly intelligent bonobo is trained to write computer code, becoming the world's first primate programmer. As Bonobo develops skills that rival human programmers, a team of scientists faces ethical dilemmas about his autonomy and rights. Meanwhile, the bonobo’s growing abilities begin to draw attention from corporate and government agencies, leading to dangerous consequences. This heartwarming and thought-provoking tale explores the boundaries of intelligence, technology, and the animal-human connection.",
-      "isBookmarked": true,
-      "isTrending": true,
-      "id": "d67d"
     },
     {
       "title": "Bonobo the Programmer",
@@ -8082,24 +8018,23 @@
     },
     {
       "title": "Bonobo the Programmer",
+      "year": 2024,
+      "category": "Movie",
+      "rating": "18+",
+      "description": "a",
+      "isTrending": true,
+      "isBookmarked": true,
       "thumbnail": {
+        "trending": {
+          "small": "../src/assets/img/thumbnails/bonobo/trending/small.jpeg",
+          "large": "../src/assets/img/thumbnails/bonobo/trending/large.jpeg"
+        },
         "regular": {
           "small": "../src/assets/img/thumbnails/bonobo/regular/small.jpeg",
           "medium": "../src/assets/img/thumbnails/bonobo/regular/medium.jpeg",
           "large": "../src/assets/img/thumbnails/bonobo/regular/large.jpeg"
-        },
-        "trending": {
-          "small": "../src/assets/img/thumbnails/bonobo/trending/small.jpeg",
-          "medium": "../src/assets/img/thumbnails/bonobo/trending/medium.jpeg",
-          "large": "../src/assets/img/thumbnails/bonobo/trending/large.jpeg"
         }
       },
-      "year": 2024,
-      "category": "Movie",
-      "rating": "18+",
-      "description": "In a groundbreaking experiment, a highly intelligent bonobo is trained to write computer code, becoming the world's first primate programmer. As Bonobo develops skills that rival human programmers, a team of scientists faces ethical dilemmas about his autonomy and rights. Meanwhile, the bonobo’s growing abilities begin to draw attention from corporate and government agencies, leading to dangerous consequences. This heartwarming and thought-provoking tale explores the boundaries of intelligence, technology, and the animal-human connection.",
-      "isBookmarked": true,
-      "isTrending": true,
       "id": "6fad"
     },
     {
@@ -8184,6 +8119,69 @@
       "isBookmarked": false,
       "isTrending": false,
       "id": "1f2b"
+    },
+    {
+      "id": "e0cb",
+      "title": "Bottom Gear 2",
+      "thumbnail": {
+        "regular": {
+          "small": "../src/assets/img/thumbnails/beyond-earth/regular/small.jpg",
+          "medium": "../src/assets/img/thumbnails/beyond-earth/regular/medium.jpg",
+          "large": "../src/assets/img/thumbnails/beyond-earth/regular/large.jpg"
+        },
+        "trending": {
+          "small": "../src/assets/img/thumbnails/beyond-earth/trending/small.jpg",
+          "large": "../src/assets/img/thumbnails/beyond-earth/trending/large.jpg"
+        }
+      },
+      "year": "2030",
+      "category": "Movie",
+      "rating": "E",
+      "isTrending": "true",
+      "description": "A group of eccentric mechanics creates outlandish custom cars for their clients, but their adventures take a chaotic turn when they unknowingly become embroiled in an international heist. As they race against time to clear their names, they use their inventive skills to outwit the criminals. Along the way, they discover unexpected allies and uncover a conspiracy. It's a fast-paced ride of laughter and danger. Nice",
+      "isBookmarked": false
+    },
+    {
+      "id": "7f93",
+      "title": "Bottom Gear 3",
+      "thumbnail": {
+        "regular": {
+          "small": "../src/assets/img/thumbnails/beyond-earth/regular/small.jpg",
+          "medium": "../src/assets/img/thumbnails/beyond-earth/regular/medium.jpg",
+          "large": "../src/assets/img/thumbnails/beyond-earth/regular/large.jpg"
+        },
+        "trending": {
+          "small": "../src/assets/img/thumbnails/beyond-earth/trending/small.jpg",
+          "large": "../src/assets/img/thumbnails/beyond-earth/trending/large.jpg"
+        }
+      },
+      "year": "2222",
+      "category": "Movie",
+      "rating": "18+",
+      "isTrending": "true",
+      "description": "Something Something",
+      "isBookmarked": false
+    },
+    {
+      "id": "26aa",
+      "title": "Bottom Gear 4",
+      "thumbnail": {
+        "regular": {
+          "small": "../src/assets/img/thumbnails/beyond-earth/regular/small.jpg",
+          "medium": "../src/assets/img/thumbnails/beyond-earth/regular/medium.jpg",
+          "large": "../src/assets/img/thumbnails/beyond-earth/regular/large.jpg"
+        },
+        "trending": {
+          "small": "../src/assets/img/thumbnails/beyond-earth/trending/small.jpg",
+          "large": "../src/assets/img/thumbnails/beyond-earth/trending/large.jpg"
+        }
+      },
+      "year": "2222",
+      "category": "Movie",
+      "rating": "18+",
+      "isTrending": "true",
+      "description": "dsfg;fogsko;snbfnigsgifsigjsfgd",
+      "isBookmarked": false
     }
   ],
   "users": [

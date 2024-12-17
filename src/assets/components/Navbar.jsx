@@ -11,6 +11,7 @@ import UserModal from "./avatar_modals/UserModal";
 import SignUpSuccess from "./messages/SignUpSuccess";
 import ErrorServer from "./messages/ErrorServer";
 import AccessNavbar from "./messages/AccessNavbar";
+import AdminAddModal from "./avatar_modals/AdminAddModal";
 
 const Navbar = () => {
   const [screen, setScreen] = useState(window.innerWidth);
@@ -35,6 +36,8 @@ const Navbar = () => {
     accessText,
     setAccess,
     setAccessText,
+    adminAdd,
+    setAdminAdd,
   } = useData();
 
   const openModal = () => {
@@ -48,6 +51,7 @@ const Navbar = () => {
   const closeModal = () => {
     setUserModal(false);
     setLoginModal(false);
+    setAdminAdd(false)
   };
 
   const isTablet = screen < 1440 && screen > 768;
@@ -58,6 +62,23 @@ const Navbar = () => {
       <ErrorServer />
       <SignUpSuccess />
       <div className="relative">
+      {adminAdd && (
+          <div
+            className="fixed bg-black bg-opacity-50 z-50 inset-0 flex justify-center items-center"
+            onClick={() => closeModal()}
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className={`rounded-lg shadow-lg transform transition-all duration-700 ease-in-out ${
+                adminAdd
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-full opacity-0"
+              }`}
+            >
+              <AdminAddModal />
+            </div>
+          </div>
+        )}
         {loginModal && !currentUser?.id && (
           <div
             className="fixed bg-black bg-opacity-50 z-50 inset-0 flex justify-center items-center"
@@ -134,8 +155,12 @@ const Navbar = () => {
                   <div className="z-30 absolute top-[83%] left-[40%]">
                     <AccessNavbar />
                   </div>
-                ) : (
+                ) : accessText === "Profile" ? (
                   <div className="z-30 absolute top-[374%] left-[40%]">
+                    <AccessNavbar />
+                  </div>
+                ) : (
+                  <div className="z-30 absolute top-[343%] left-[40%]">
                     <AccessNavbar />
                   </div>
                 )}
@@ -146,6 +171,22 @@ const Navbar = () => {
               <NavbarMobile />
             )}
           </div>
+          {currentUser.role === "Admin" && (
+            <div className="absolute desktop:bottom-[10%] desktop:left-[32%] desktop:top-[84.8%] tablet:right-[10%] tablet:top-[8%] phone:right-[15%] phone:bottom-[20%]">
+              <button
+                type="button"
+                className="tablet:text-5xl phone:text-4xl text-figma-white rounded-full font-bold hover:text-blue-500 duration-500"
+                onClick={() => setAdminAdd(true)}
+                onMouseEnter={() => {
+                  setAccess(true);
+                  setAccessText("Add New");
+                }}
+                onMouseLeave={() => setAccess(false)}
+              >
+                +
+              </button>
+            </div>
+          )}
           <div
             className="desktop:mx-[1.75rem] desktop:mt-0 desktop:mb-0 tablet:mt-[1.31rem] tablet:mb-[1.19] tablet:me-[1rem] phone:my-[1rem] cursor-pointer"
             onClick={() => openModal()}
