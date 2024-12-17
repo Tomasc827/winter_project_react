@@ -38,12 +38,46 @@ const AdminAddModal = () => {
   const onSubmit = async (data) => {
     try {
       if (error) return;
+
+      const newContent = {
+        title: data.title,
+        year: data.year,
+        category: data.category,
+        rating: data.rating,
+        description: data.description,
+        isTrending: data.isTrending === "true",
+        isBookmarked: false,
+        date: new Date(),
+        thumbnail: {
+          regular: {
+            small: data.thumbnail.regular.small,
+            medium: data.thumbnail.regular.medium,
+            large: data.thumbnail.regular.large
+          }
+        }
+      }
+
+      if (data.isTrending === "true") {
+        if (data.thumbnail.trending?.small && data.thumbnail.trending?.large) {
+          newContent.thumbnail.trending = {
+            small: data.thumbnail.trending.small,
+            large: data.thumbnail.trending.large
+          }
+        } else {
+          newContent.thumbnail.trending = {
+            small: data.thumbnail.regular.small,
+            large: data.thumbnail.regular.large
+          }
+        }
+      }
  
       const response = await postContentData({
         ...data,
         isBookmarked: false,
         date: new Date(),
+        
       });
+      
 
       if (response){
         await fetchData()

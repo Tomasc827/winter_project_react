@@ -16,7 +16,6 @@ import DescriptionTextArea from "../inputs/inputs_admin_update/DescriptionTextar
 import RadioInput from "../inputs/inputs_admin_update/RadioInput";
 import DeleteSVG from "../formatted_svg/DeleteSVG";
 import DeleteModal from "./DeleteModal";
-import { deleteData } from "../../helpers/delete";
 
 const AdminUpdateModal = () => {
   const {
@@ -62,7 +61,7 @@ const AdminUpdateModal = () => {
       setValue("description", description);
       setValue("isTrending",isTrending.toString())
       setValue("isBookmarked",isBookmarked)
-      if (show.thumbnail.trending) {
+      if (isTrending && show.thumbnail.trending) {
         setValue("thumbnail.trending.small", show.thumbnail.trending.small);
         setValue("thumbnail.trending.large", show.thumbnail.trending.large);
       }
@@ -94,10 +93,6 @@ const AdminUpdateModal = () => {
         isTrending: data.isTrending === "true",
         isBookmarked: data.isBookmarked,
         thumbnail: {
-          trending: {
-            small: data.thumbnail.trending.small,
-            large: data.thumbnail.trending.large
-          },
           regular: {
             small: data.thumbnail.regular.small,
             medium: data.thumbnail.regular.medium,
@@ -107,10 +102,17 @@ const AdminUpdateModal = () => {
       };
 
       if (data.isTrending === "true") {
-        updateContent.thumbnail.trending = {
-          small: data.thumbnail.trending?.small || show.thumbnail.trending?.small,
-          large: data.thumbnail.trending?.large || show.thumbnail.trending?.large
-        };}
+        if( show.thumbnail.trending) {
+          updateContent.thumbnail.trending = {
+            small: data.thumbnail.trending?.small || show.thumbnail.trending?.small,
+            large: data.thumbnail.trending?.large || show.thumbnail.trending?.large
+          };}
+        } else {
+          updateContent.thumbnail.trending = {
+            small: data.thumbnail.trending?.small || show.thumbnail.regular.small,
+            large: data.thumbnail.trending?.large || show.thumbnail.regular.large
+          }
+        }
 
       const updatedContent = await patchContentData(show.id, updateContent);
 

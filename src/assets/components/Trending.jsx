@@ -3,12 +3,19 @@ import BookmarkButton from "./BookmarkButton";
 import { useData } from "./DataContext";
 import IconPlay from "./formatted_svg/IconPlay";
 import SettingsSVG from "./formatted_svg/SettingsSVG";
+import RatingsButton from "./RatingsButton";
 
 const TrendingMoviesCarousel = () => {
 
   const {content, onButtonClick,fetchData,currentUser,onAdminClick} = useData();
 
-  const trendingContent = content.filter(media => media.isTrending)
+  const trendingContent = Array.isArray(content) 
+  ? content.filter(media => 
+      media.isTrending && 
+      media.thumbnail?.trending?.small && 
+      media.thumbnail?.trending?.large
+    )
+  : [];
 
 
 
@@ -61,6 +68,10 @@ const TrendingMoviesCarousel = () => {
     }
     return null;
   };
+
+
+  if (trendingContent.length === 0) {
+    return null; }
 
   return (
     <div id="trending1" className="text-figma-white">
@@ -203,6 +214,12 @@ const TrendingMoviesCarousel = () => {
                   >
                     {movie.title}
                   </h3>
+                  <RatingsButton 
+                    contentId={movie.id}
+                    averageRating={movie.averageRating}
+                    totalRatings={movie.totalRatings}
+                    userRating={movie.userRating}
+                    />
                 </div>
               </div>
             </div>

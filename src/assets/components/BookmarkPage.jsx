@@ -45,6 +45,10 @@ const BookmarkPage = () => {
         media_id={media.id}
         isBookmarked={media.isBookmarked}
         reloadData={fetchData}
+        id={media.id} 
+        averageRating={media.averageRating}
+        totalRatings={media.totalRatings}
+        userRating={media.userRating}
       />
     );
   };

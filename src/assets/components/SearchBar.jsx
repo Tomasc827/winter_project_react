@@ -3,6 +3,7 @@ const SearchBar = (props) => {
   const searchView = document.querySelector("#searchview");
   const resultMessage = document.querySelector("#resultmessage");
 
+
   const inputHandler = (e) => {
     const lowerCase = e.target.value.toLowerCase();
 

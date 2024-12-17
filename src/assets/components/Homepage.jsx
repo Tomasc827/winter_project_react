@@ -9,6 +9,7 @@ import { Outlet } from "react-router";
 import { useEffect } from "react";
 import Pagination from "./Pagination";
 import SettingsSVG from "./formatted_svg/SettingsSVG";
+import RatingsButton from "./RatingsButton";
 
 const Homepage = () => {
   const {
@@ -202,8 +203,15 @@ const Homepage = () => {
                   phone:text-[0.875rem] phone:h-[1.125rem]
                   tablet:h-[1.4375rem] desktop:h-[1.4375rem]"
                   >
+                    
                     {item.title}
                   </div>
+                  <RatingsButton 
+                    contentId={item.id}
+                    averageRating={item.averageRating}
+                    totalRatings={item.totalRatings}
+                    userRating={item.userRating}
+                    />
                 </div>
               </li>
             ))}
