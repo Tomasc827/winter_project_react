@@ -6,51 +6,65 @@ const SearchBar = (props) => {
   const inputHandler = (e) => {
     const lowerCase = e.target.value.toLowerCase();
 
-    if (lowerCase == "") {
-    } else {
-      const filteredData = props.data.filter((media) => {
-        return (
-          media.title.toLowerCase().includes(lowerCase) ||
-          String(media.year).toLowerCase().includes(lowerCase) ||
-          media.category.toLowerCase().includes(lowerCase) ||
-          media.rating.toLowerCase().includes(lowerCase)
-        );
+    // search syntax year: category: rating:
+
+    let filteredData = props.data.filter((media) => {
+      return media.title.toLowerCase().includes(lowerCase);
+    });
+
+    if (lowerCase.slice(0, 5) == "year:") {
+      filteredData = props.data.filter((media) => {
+        return String(media.year)
+          .toLowerCase()
+          .includes(lowerCase.slice(5, lowerCase.length));
       });
-
-      if (searchView != null && defaultView != null && props.switchViews) {
-        defaultView.style.display = "none";
-        searchView.style.display = "block";
-      } else if (props.switchViews == false) {
-        if (props.hideList != null) {
-          props.hideList.map((element) => {
-            document.getElementById(element).style.display = "none";
-          });
-        }
-        if (props.unhideList != null) {
-          props.unhideList.map((element) => {
-            document.getElementById(element).style.display = "block";
-          });
-        }
-      }
-
-      let resultword = "results";
-
-      if (filteredData.length == 1) {
-        resultword = "result";
-      }
-
-      console.log(filteredData);
-
-      resultMessage.innerText =
-        "Found " +
-        String(filteredData.length) +
-        " " +
-        resultword +
-        " for ‘" +
-        e.target.value +
-        "’";
-      props.setSearchData(filteredData);
+    } else if (lowerCase.slice(0, 9) == "category:") {
+      filteredData = props.data.filter((media) => {
+        return media.category
+          .toLowerCase()
+          .includes(lowerCase.slice(9, lowerCase.length));
+      });
+    } else if (lowerCase.slice(0, 7) == "rating:") {
+      filteredData = props.data.filter((media) => {
+        return media.rating
+          .toLowerCase()
+          .includes(lowerCase.slice(7, lowerCase.length));
+      });
     }
+
+    if (searchView != null && defaultView != null && props.switchViews) {
+      defaultView.style.display = "none";
+      searchView.style.display = "block";
+    } else if (props.switchViews == false) {
+      if (props.hideList != null) {
+        props.hideList.map((element) => {
+          document.getElementById(element).style.display = "none";
+        });
+      }
+      if (props.unhideList != null) {
+        props.unhideList.map((element) => {
+          document.getElementById(element).style.display = "block";
+        });
+      }
+    }
+
+    let resultword = "results";
+
+    if (filteredData.length == 1) {
+      resultword = "result";
+    }
+
+    console.log(filteredData);
+
+    resultMessage.innerText =
+      "Found " +
+      String(filteredData.length) +
+      " " +
+      resultword +
+      " for ‘" +
+      e.target.value +
+      "’";
+    props.setSearchData(filteredData);
   };
 
   const autoClear = (e) => {
@@ -88,7 +102,7 @@ const SearchBar = (props) => {
     "
       >
         <img
-          src={`/${props.icon?.replace(/^\/+/, '')}`}
+          src={`/${props.icon?.replace(/^\/+/, "")}`}
           alt="Search bar icon"
           className="phone:w-[1.5rem] tablet:w-[2rem] desktop:w-[2rem]"
         />
