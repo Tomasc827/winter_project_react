@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { useData } from "./DataContext";
 import IconCategoryTV from "./formatted_svg/IconCategoryTV";
 import IconPlay from "./formatted_svg/IconPlay";
@@ -6,9 +6,10 @@ import SearchBar from "./SearchBar";
 import BookmarkButton from "./BookmarkButton";
 import { Outlet } from "react-router";
 import Pagination from "./Pagination";
+import SettingsSVG from "./formatted_svg/SettingsSVG";
 
 const TVSeriesPage = () => {
-  const { content,onButtonClick,fetchData,searchContent,setSearchContent,setCurrentPage,currentPage,itemsPerPage } = useData();
+  const { content,onButtonClick,fetchData,searchContent,setSearchContent,setCurrentPage,currentPage,itemsPerPage,currentUser,onAdminClick } = useData();
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -116,6 +117,10 @@ const TVSeriesPage = () => {
                   isBookmarked={serie.isBookmarked}
                   reloadData={fetchData}
                 />
+
+                {currentUser.role === "Admin" ? <div onClick={() => onAdminClick(serie.id)}>
+                <SettingsSVG/>
+                </div> : null}
 
                 <div
                   className="flex flex-col gap-[0.3125rem] desktop:gap-[0.3125rem] tablet:gap-[0.3125rem] phone:gap-[0.25rem] pt-2 bg-gradient-to-t to-transparent rounded-b-lg

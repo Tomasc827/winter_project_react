@@ -14,39 +14,81 @@ import NotFound from "./assets/components/NotFound.jsx";
 import ProtectedRoute from "./assets/components/ProtectedRoute.jsx";
 import Forbidden from "./assets/components/Forbidden.jsx";
 import Description from "./assets/components/cards/Description.jsx";
+import AdminUpdateModal from "./assets/components/avatar_modals/AdminUpdateModal.jsx";
 
 createRoot(document.getElementById("root")).render(
-<StrictMode>
-  <BrowserRouter>
-    <DataProviders>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="/" element={<Homepage />}>
-            <Route path="/description/:showID" element={<Description/>} />
+  <StrictMode>
+    <BrowserRouter>
+      <DataProviders>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route path="/" element={<Homepage />}>
+              <Route path="/description/:showID" element={<Description />} />
+              <Route
+                path="/admin/:showID"
+                element={
+                  <ProtectedRoute>
+                    <AdminUpdateModal />
+                  </ProtectedRoute>
+                }
+              ></Route>
+            </Route>
+            <Route path="/movies" element={<MoviesPage />}>
+              <Route
+                path="/movies/description/:showID"
+                element={<Description />}
+              />
+              <Route
+                path="/movies/admin/:showID"
+                element={
+                  <ProtectedRoute>
+                    <AdminUpdateModal />
+                  </ProtectedRoute>
+                }
+              ></Route>
+            </Route>
+            <Route path="/tvseries" element={<TVSeriesPage />}>
+              <Route
+                path="/tvseries/description/:showID"
+                element={<Description />}
+              />
+              <Route
+                path="/tvseries/admin/:showID"
+                element={
+                  <ProtectedRoute>
+                    <AdminUpdateModal />
+                  </ProtectedRoute>
+                }
+              ></Route>
+            </Route>
+            <Route
+              path="/bookmarked"
+              element={
+                <ProtectedRoute>
+                  <BookmarkPage />
+                </ProtectedRoute>
+              }
+            >
+              <Route
+                path="/bookmarked/description/:showID"
+                element={<Description />}
+              />
+              <Route
+                path="/bookmarked/admin/:showID"
+                element={
+                  <ProtectedRoute>
+                    <AdminUpdateModal />
+                  </ProtectedRoute>
+                }
+              ></Route>
+            </Route>
           </Route>
-          <Route path="/movies" element={<MoviesPage />}>
-            <Route path="/movies/description/:showID" element={<Description/>} />
-          </Route>
-          <Route path="/tvseries" element={<TVSeriesPage />}>
-            <Route path="/tvseries/description/:showID" element={<Description/>} />
-          </Route>
-          <Route
-            path="/bookmarked"
-            element={
-              <ProtectedRoute>
-                <BookmarkPage />
-              </ProtectedRoute>
-            }
-          >
-            <Route path="/bookmarked/description/:showID" element={<Description/>} />
-          </Route>
-        </Route>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="*" element={<NotFound />} />
-        <Route path="/forbidden" element={<Forbidden />} />
-      </Routes>
-    </DataProviders>
-  </BrowserRouter>
-</StrictMode>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/forbidden" element={<Forbidden />} />
+        </Routes>
+      </DataProviders>
+    </BrowserRouter>
+  </StrictMode>
 );

@@ -47,10 +47,6 @@ export const DataProviders = ({ children}) => {
     }
   }, [avatar]);
 
-
-
-
-
   // Log Out function
 
   const logout = async ()  => {
@@ -80,7 +76,7 @@ export const DataProviders = ({ children}) => {
       const data = await response.json();
       
       const currentPath = location.pathname;
-      const basePath = currentPath.split('/description')[0];
+      const basePath = currentPath.split('/description')[0].split("/admin")[0]
     
       let filteredData;
       if (basePath === "/" || basePath === "") {
@@ -118,20 +114,23 @@ export const DataProviders = ({ children}) => {
 const [currentPage, setCurrentPage] = useState(1)
 const [movieCurrentPage, setMovieCurrentPage] = useState(1) //separate tracker for bookmarked movies and below is for bookmarked tv series
 const [tvSeriesCurrentPage,setTvSeriesCurrentPage] = useState(1)
-const itemsPerPage = 10;
+const itemsPerPage = 12;
   // Description card behaviour
   const findShowById = (id) => {
+    if (!content) return null
     const show = content?.find((single) => single.id.toString() === id.toString());
     if (!show) {
       fetchData();
     }
     return show;
   };
+
+  // new fetch data mechanism, now fetches data based on routes 
   const [previousMainPath,setPreviousMainPath] = useState("")
   useEffect(() => {
     const currentPath = location.pathname.split("/")[1] || "/"
-    const currentDescription = location.pathname.includes("description")
-    const previousDescription = previousMainPath.includes ("description")
+    const currentDescription = location.pathname.includes("description") || location.pathname.includes("admin")
+    const previousDescription = previousMainPath.includes ("description") || previousMainPath.includes("admin")
     if(currentPath !== previousMainPath && !currentDescription && !previousDescription) {
     setCurrentPage(1)
     setSearchContent(content)
@@ -149,8 +148,17 @@ setPreviousMainPath(currentPath)
     } else {
       navigate(`${location.pathname}/description/${showId}`);
     }
+
+    // Separate onClick for admin, this one links to the update page
   
 };
+const onAdminClick = (showId) => {
+  if (location.pathname === '/') {
+    navigate(`/admin/${showId}`);
+  } else {
+    navigate(`${location.pathname}/admin/${showId}`);
+  }
+}
 
 
 const onLoginCheck = () => {
@@ -216,7 +224,8 @@ const onLoginCheck = () => {
         tvSeriesCurrentPage,
         setTvSeriesCurrentPage,
         movieCurrentPage, 
-        setMovieCurrentPage
+        setMovieCurrentPage,
+        onAdminClick
       }}
     >
       {children}
