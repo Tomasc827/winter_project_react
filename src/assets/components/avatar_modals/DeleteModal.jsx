@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { deleteData } from "../../helpers/delete";
 import { useData } from "../DataContext";
+import { useEffect } from "react";
 
 const DeleteModal = ({show}) => {
 
@@ -11,19 +12,22 @@ const DeleteModal = ({show}) => {
         try {
           const deletedData = await deleteData(show.id)
           if (deletedData) {
-            await fetchData()
             setSuccess(`${show.title} has been successfully deleted`)
+            setDeleteModal(false)
+            navigate(-1)
+            setTimeout(() => {
+              fetchData()
+            },100)
             setTimeout(() => {
               setSuccess("");
               setDeleteModal(false)
-              navigate(-1)
             }, 1500);
             
         } else {
-          throw new Error("No data received from update");
+          throw new Error("No data received from delete");
         }
       } catch (error) {
-        setError(error.message || "Failed to update content");
+        setError(error.message || "Failed to delete content");
         setTimeout(() => {
           setError("");
         }, 3000);

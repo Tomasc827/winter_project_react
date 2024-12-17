@@ -34,10 +34,12 @@ const AdminUpdateModal = () => {
   const show = findShowById(showID)
 
   useEffect(() => {
+    
+
     if (!show) {
       fetchData();
     }
-  }, [showID,show,fetchData]);
+  }, [showID]);
 
   const {
     register,

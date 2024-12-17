@@ -38,6 +38,7 @@ const Navbar = () => {
     setAccessText,
     adminAdd,
     setAdminAdd,
+    access,
   } = useData();
 
   const openModal = () => {
@@ -51,7 +52,7 @@ const Navbar = () => {
   const closeModal = () => {
     setUserModal(false);
     setLoginModal(false);
-    setAdminAdd(false)
+    setAdminAdd(false);
   };
 
   const isTablet = screen < 1440 && screen > 768;
@@ -62,7 +63,7 @@ const Navbar = () => {
       <ErrorServer />
       <SignUpSuccess />
       <div className="relative">
-      {adminAdd && (
+        {adminAdd && (
           <div
             className="fixed bg-black bg-opacity-50 z-50 inset-0 flex justify-center items-center"
             onClick={() => closeModal()}
@@ -128,7 +129,7 @@ const Navbar = () => {
             {screen >= 768 ? <Logo /> : <LogoMobile />}
           </div>
           <div
-            className={`relative desktop:w-[1.25rem] desktop:h-[12.5rem] desktop:ps-0 desktop:pt-0 tablet:ps-0 desktop:mb-[34.5rem] tablet:w-[10.8075] tablet:h-[1.25rem] tablet:pt-[1.69rem] tablet:pb-[1.56rem]   phone:py-[1.25rem] ${
+            className={`relative desktop:w-[1.25rem] desktop:h-[12.5rem] desktop:pe-0 desktop:ps-0 desktop:pt-0 tablet:ps-0 desktop:mb-[34.5rem] tablet:w-[10.8075] tablet:h-[1.25rem] tablet:pt-[1.69rem] tablet:pb-[1.56rem]   phone:py-[1.25rem] ${
               !currentUser || !currentUser.id
                 ? "phone:ps-[3rem] phone:pe-[3.53rem] tablet:pe-[12.07rem]"
                 : "phone:ps-[5rem] phone:pe-[5.03rem] tablet:pe-[14.07rem]"
@@ -136,35 +137,40 @@ const Navbar = () => {
           >
             {screen >= 1440 ? (
               <>
-                <div>
-                  <NavbarSvg />
-                </div>
-                {accessText === "Homepage" ? (
-                  <div className="z-30 absolute top-[-8%] left-[40%]">
-                    <AccessNavbar />
+                  <div className="relative">
+                    <NavbarSvg />
                   </div>
-                ) : accessText === "TV Series" ? (
-                  <div className="z-30 absolute top-[53%] left-[40%]">
-                    <AccessNavbar />
-                  </div>
-                ) : accessText === "Movies" ? (
-                  <div className="z-30 absolute top-[23%] left-[40%]">
-                    <AccessNavbar />
-                  </div>
-                ) : accessText === "Bookmarks" ? (
-                  <div className="z-30 absolute top-[83%] left-[40%]">
-                    <AccessNavbar />
-                  </div>
-                ) : accessText === "Profile" ? (
-                  <div className="z-30 absolute top-[374%] left-[40%]">
-                    <AccessNavbar />
-                  </div>
-                ) : (
-                  <div className="z-30 absolute top-[343%] left-[40%]">
-                    <AccessNavbar />
-                  </div>
-                )}
-              </>
+                  {access && accessText === "Homepage" && (
+                    <div className="z-30 absolute top-[-8%] left-[40%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                  {access && accessText === "TV Series" && (
+                    <div className="z-30 absolute top-[53%] left-[40%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                  {access && accessText === "Movies" && (
+                    <div className="z-30 absolute top-[23%] left-[40%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                  {access && accessText === "Bookmarks" && (
+                    <div className="z-30 absolute top-[83%] left-[40%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                  {access && accessText === "Profile" && (
+                    <div className="z-30 absolute top-[374%] left-[40%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                  {access && accessText === "Add New" && (
+                    <div className="z-30 absolute top-[343%] left-[40%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                </>
             ) : screen >= 768 ? (
               <NavbarHorizontal />
             ) : (
