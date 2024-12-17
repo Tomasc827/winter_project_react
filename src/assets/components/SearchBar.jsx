@@ -8,27 +8,31 @@ const SearchBar = (props) => {
 
     // search syntax year: category: rating:
 
+    if (lowerCase.length < 3) {
+      return;
+    }
+
     let filteredData = props.data.filter((media) => {
       return media.title.toLowerCase().includes(lowerCase);
     });
 
     if (lowerCase.slice(0, 5) == "year:") {
       filteredData = props.data.filter((media) => {
-        return String(media.year)
-          .toLowerCase()
-          .includes(lowerCase.slice(5, lowerCase.length));
+        const result = lowerCase.slice(5, lowerCase.length);
+        if (result == "") return;
+        return String(media.year).toLowerCase().includes(result);
       });
     } else if (lowerCase.slice(0, 9) == "category:") {
       filteredData = props.data.filter((media) => {
-        return media.category
-          .toLowerCase()
-          .includes(lowerCase.slice(9, lowerCase.length));
+        const result = lowerCase.slice(9, lowerCase.length);
+        if (result == "") return;
+        return media.category.toLowerCase().includes(result);
       });
     } else if (lowerCase.slice(0, 7) == "rating:") {
       filteredData = props.data.filter((media) => {
-        return media.rating
-          .toLowerCase()
-          .includes(lowerCase.slice(7, lowerCase.length));
+        const result = lowerCase.slice(7, lowerCase.length);
+        if (result == "") return;
+        return media.rating.toLowerCase().includes(result);
       });
     }
 
