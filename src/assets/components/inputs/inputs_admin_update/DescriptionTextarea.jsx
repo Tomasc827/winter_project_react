@@ -19,7 +19,8 @@ const DescriptionTextArea = ({ register, errors }) => {
             required: "Can't be empty",
             pattern: {
               value:
-                /^(?!.*[\u0300-\u036f\u1ab0-\u1aff\u1dc0-\u1dff\u20d0-\u20ff\u0483-\u0489\ufe20-\ufe2f])(?!.*[<>])(?!.*\s{2,})[A-Za-z0-9\s.,!?'"\-();]{1,500}$/,
+        /.{1,1000}$/,
+                // /^(?!.*[\u0300-\u036f\u1ab0-\u1aff\u1dc0-\u1dff\u20d0-\u20ff\u0483-\u0489\ufe20-\ufe2f])(?!.*[<>])(?!.*\s{2,})[A-Za-z0-9\s.,!?'"\-();]{1,1000}$/</>
 
               message: "Invalid description",
             },

@@ -141,7 +141,7 @@ const SearchBar = (props) => {
           maxLength={25}
         />
       </label>
-      <h1 id="resultmessage" className="figma-heading-l"></h1>
+      <h2 id="resultmessage" className="figma-heading-l"></h2>
     </>
   );
 };

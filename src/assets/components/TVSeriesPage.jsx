@@ -178,7 +178,7 @@ const TVSeriesPage = () => {
                     className="figma-heading-xs dekstop:text-[1.125rem] tablet:text-[1.125rem] phone:text-[0.875rem] phone:h-[1.125rem]
                   tablet:h-[1.4375rem] desktop:h-[1.4375rem]"
                   >
-                    {serie.title}
+                    {serie.title.length > 23 ? `${serie.title.slice(0, 23)}...` : serie.title}
                   </div>
                   <RatingsButton 
                     contentId={serie.id}

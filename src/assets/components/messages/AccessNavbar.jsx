@@ -37,16 +37,27 @@ const AccessNavbar = () => {
         className={`
           text-figma-white 
           figma-heading-s
+          desktop:text-2xl
+          tablet:text-xl
+          phone:text-[0.9rem]
+          tablet:leading-[1rem]
           bg-figma-dark-blue 
-          px-4
+          desktop:px-4
           py-2 
+          desktop:text-left
+          tablet:text-center
+          tablet:px-3
           rounded-full
           transition-all 
           duration-500 
           ease-in-out
           select-none
+          pointer-events-none
           absolute
-          ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}
+          ${isVisible ? 
+            "opacity-100 phone:translate-y-0 Desktop:translate-y-0" : 
+            "opacity-0 phone:-translate-y-4 Desktop:-translate-y-0"
+          }
         `}
       >
         {accessText}

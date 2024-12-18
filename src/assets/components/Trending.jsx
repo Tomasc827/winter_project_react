@@ -213,7 +213,7 @@ const TrendingMoviesCarousel = () => {
                     dekstop:text-[1.5rem] tablet:text-[1.5rem] phone:text-[0.9375rem]
                     phone:h-[1.1875rem] tablet:h-[1.875rem] desktop:h-[1.875rem]"
                   >
-                    {movie.title}
+                   {movie.title.length > 23 ? `${movie.title.slice(0, 23)}...` : movie.title}
                   </h3>
                   <RatingsButton 
                     contentId={movie.id}
