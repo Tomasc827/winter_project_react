@@ -1,4 +1,4 @@
-import { useState,useRef } from "react";
+import { useState,useRef, useEffect } from "react";
 import BookmarkButton from "./BookmarkButton";
 import { useData } from "./DataContext";
 import IconPlay from "./formatted_svg/IconPlay";
@@ -17,12 +17,12 @@ const TrendingMoviesCarousel = () => {
     )
   : [];
 
-
-
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const scrollRef = useRef(null);
+
+  const autoScrollTimeout = useRef(0)
 
   const startDragging = (e) => {
     setIsDragging(true);
@@ -40,11 +40,20 @@ const TrendingMoviesCarousel = () => {
     const x = e.pageX - scrollRef.current.offsetLeft;
     const walk = (x - startX) * 2; 
     scrollRef.current.scrollLeft = scrollLeft - walk;
+    autoScrollTimeout.current = Date.now() + 5000
   };
 
-  const autoScroll = (e) => {
-
+  const onScroll = (e) => {
+    autoScrollTimeout.current = Date.now() + 5000
   }
+
+  useEffect(() => {
+    let t = setInterval(() => {
+      if (isDragging) return;
+      if (Date.now() < autoScrollTimeout.current) return;
+      scrollRef.current.scrollLeft = scrollRef.current.scrollLeft + 2000;
+    }, 5000);
+  }, [])
 
   const renderCategoryIcon = (category) => {
     if (category === "Movie") {
@@ -93,11 +102,11 @@ const TrendingMoviesCarousel = () => {
       <div
         id="trending2"
         ref={scrollRef}
-        onLoad={autoScroll}
         onMouseDown={startDragging}
         onMouseUp={stopDragging}
         onMouseLeave={stopDragging}
         onMouseMove={onDrag}
+        onScroll={onScroll}
         style={{
           scrollBehavior: 'smooth'
         }}
