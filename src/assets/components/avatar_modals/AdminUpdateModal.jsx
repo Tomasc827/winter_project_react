@@ -14,6 +14,8 @@ import CategorySelect from "../inputs/inputs_admin_update/CategorySelect";
 import AgeRatingSelect from "../inputs/inputs_admin_update/AgeRatingSelect";
 import DescriptionTextArea from "../inputs/inputs_admin_update/DescriptionTextarea";
 import RadioInput from "../inputs/inputs_admin_update/RadioInput";
+import DeleteSVG from "../formatted_svg/DeleteSVG";
+import DeleteModal from "./DeleteModal";
 
 const AdminUpdateModal = () => {
   const {
@@ -22,6 +24,8 @@ const AdminUpdateModal = () => {
     fetchData,
     setError,
     setSuccess,
+    deleteModal,
+    setDeleteModal,
   } = useData();
 
 
@@ -30,10 +34,12 @@ const AdminUpdateModal = () => {
   const show = findShowById(showID)
 
   useEffect(() => {
+    
+
     if (!show) {
       fetchData();
     }
-  }, [showID,show,fetchData]);
+  }, [showID]);
 
   const {
     register,
@@ -57,7 +63,7 @@ const AdminUpdateModal = () => {
       setValue("description", description);
       setValue("isTrending",isTrending.toString())
       setValue("isBookmarked",isBookmarked)
-      if (show.thumbnail.trending) {
+      if (isTrending && show.thumbnail.trending) {
         setValue("thumbnail.trending.small", show.thumbnail.trending.small);
         setValue("thumbnail.trending.large", show.thumbnail.trending.large);
       }
@@ -89,10 +95,6 @@ const AdminUpdateModal = () => {
         isTrending: data.isTrending === "true",
         isBookmarked: data.isBookmarked,
         thumbnail: {
-          trending: {
-            small: data.thumbnail.trending.small,
-            large: data.thumbnail.trending.large
-          },
           regular: {
             small: data.thumbnail.regular.small,
             medium: data.thumbnail.regular.medium,
@@ -102,10 +104,17 @@ const AdminUpdateModal = () => {
       };
 
       if (data.isTrending === "true") {
-        updateContent.thumbnail.trending = {
-          small: data.thumbnail.trending?.small || show.thumbnail.trending?.small,
-          large: data.thumbnail.trending?.large || show.thumbnail.trending?.large
-        };}
+        if( show.thumbnail.trending) {
+          updateContent.thumbnail.trending = {
+            small: data.thumbnail.trending?.small || show.thumbnail.trending?.small,
+            large: data.thumbnail.trending?.large || show.thumbnail.trending?.large
+          };}
+        } else {
+          updateContent.thumbnail.trending = {
+            small: data.thumbnail.trending?.small || show.thumbnail.regular.small,
+            large: data.thumbnail.trending?.large || show.thumbnail.regular.large
+          }
+        }
 
       const updatedContent = await patchContentData(show.id, updateContent);
 
@@ -127,9 +136,30 @@ const AdminUpdateModal = () => {
     }
   };
 
+
+
   return (
     <>
+          {deleteModal && (
+          <div
+            className="fixed bg-black bg-opacity-50 z-50 inset-0 flex justify-center items-center"
+            onClick={() => setDeleteModal(false)}
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className={`rounded-lg shadow-lg transform transition-all duration-700 ease-in-out ${
+                deleteModal
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-full opacity-0"
+              }`}
+            >
+              <DeleteModal show={show}
+              handleSubmit={handleSubmit} />
+            </div>
+          </div>
+        )}
       {show && (
+
         <div className="relative">
           <div
             className="fixed inset-0 bg-black z-40 bg-opacity-50 flex justify-center items-center "
@@ -146,6 +176,7 @@ const AdminUpdateModal = () => {
                   alt={show.title}
                   className="Desktop:min-w-[40rem] tablet:min-w-[30rem] phone:min-w-[20rem] w-[30vw] h-auto object-contain rounded-t-3xl border-2 "
                 ></img>
+                <div className="absolute z-10 top-[2rem] left-[2rem]"><DeleteSVG/></div>
               </div>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <TitleInput register={register} errors={errors} />

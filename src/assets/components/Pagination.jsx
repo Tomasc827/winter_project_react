@@ -78,7 +78,6 @@ for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
             }`}
             onClick={() => {
               setPage(page - 1);
-              window.scrollTo( { top: type === "tvseries" ? 1000 : 0, behavior: "smooth" });
             }}
             disabled={page === 1}
           >
@@ -97,7 +96,6 @@ for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
               key={index}
               onClick={() => {
                 setPage(number);
-                window.scrollTo( { top: type === "tvseries" ? 1000 : 0, behavior: "smooth" });
               }}
               disabled={page === number || number === "..."}
             >
@@ -112,7 +110,6 @@ for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
             }`}
             onClick={() => {
               setPage(page + 1);
-              window.scrollTo( { top: type === "tvseries" ? 1000 : 0, behavior: "smooth" });
             }}
             disabled={page === pageNumbers.length}
           >

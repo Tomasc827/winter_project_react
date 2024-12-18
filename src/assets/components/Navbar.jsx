@@ -11,6 +11,7 @@ import UserModal from "./avatar_modals/UserModal";
 import SignUpSuccess from "./messages/SignUpSuccess";
 import ErrorServer from "./messages/ErrorServer";
 import AccessNavbar from "./messages/AccessNavbar";
+import AdminAddModal from "./avatar_modals/AdminAddModal";
 
 const Navbar = () => {
   const [screen, setScreen] = useState(window.innerWidth);
@@ -35,6 +36,9 @@ const Navbar = () => {
     accessText,
     setAccess,
     setAccessText,
+    adminAdd,
+    setAdminAdd,
+    access,
   } = useData();
 
   const openModal = () => {
@@ -48,6 +52,7 @@ const Navbar = () => {
   const closeModal = () => {
     setUserModal(false);
     setLoginModal(false);
+    setAdminAdd(false);
   };
 
   const isTablet = screen < 1440 && screen > 768;
@@ -58,6 +63,23 @@ const Navbar = () => {
       <ErrorServer />
       <SignUpSuccess />
       <div className="relative">
+        {adminAdd && (
+          <div
+            className="fixed bg-black bg-opacity-50 z-50 inset-0 flex justify-center items-center"
+            onClick={() => closeModal()}
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className={`rounded-lg shadow-lg transform transition-all duration-700 ease-in-out ${
+                adminAdd
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-full opacity-0"
+              }`}
+            >
+              <AdminAddModal />
+            </div>
+          </div>
+        )}
         {loginModal && !currentUser?.id && (
           <div
             className="fixed bg-black bg-opacity-50 z-50 inset-0 flex justify-center items-center"
@@ -107,7 +129,7 @@ const Navbar = () => {
             {screen >= 768 ? <Logo /> : <LogoMobile />}
           </div>
           <div
-            className={`relative desktop:w-[1.25rem] desktop:h-[12.5rem] desktop:ps-0 desktop:pt-0 tablet:ps-0 desktop:mb-[34.5rem] tablet:w-[10.8075] tablet:h-[1.25rem] tablet:pt-[1.69rem] tablet:pb-[1.56rem]   phone:py-[1.25rem] ${
+            className={`relative desktop:w-[1.25rem] desktop:h-[12.5rem] desktop:pe-[8rem]  desktop:ps-0 desktop:pt-0 tablet:ps-0 desktop:mb-[34.5rem] tablet:w-[10.8075] tablet:h-[1.25rem] tablet:pt-[1.69rem] tablet:pb-[1.56rem]   phone:py-[1.25rem] ${
               !currentUser || !currentUser.id
                 ? "phone:ps-[3rem] phone:pe-[3.53rem] tablet:pe-[12.07rem]"
                 : "phone:ps-[5rem] phone:pe-[5.03rem] tablet:pe-[14.07rem]"
@@ -115,37 +137,62 @@ const Navbar = () => {
           >
             {screen >= 1440 ? (
               <>
-                <div>
-                  <NavbarSvg />
-                </div>
-                {accessText === "Homepage" ? (
-                  <div className="z-30 absolute top-[-8%] left-[40%]">
-                    <AccessNavbar />
+                  <div className="relative">
+                    <NavbarSvg />
                   </div>
-                ) : accessText === "TV Series" ? (
-                  <div className="z-30 absolute top-[53%] left-[40%]">
-                    <AccessNavbar />
-                  </div>
-                ) : accessText === "Movies" ? (
-                  <div className="z-30 absolute top-[23%] left-[40%]">
-                    <AccessNavbar />
-                  </div>
-                ) : accessText === "Bookmarks" ? (
-                  <div className="z-30 absolute top-[83%] left-[40%]">
-                    <AccessNavbar />
-                  </div>
-                ) : (
-                  <div className="z-30 absolute top-[374%] left-[40%]">
-                    <AccessNavbar />
-                  </div>
-                )}
-              </>
+                  {access && accessText === "Homepage" && (
+                    <div className="z-30 absolute top-[-8%] left-[60%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                  {access && accessText === "Series" && (
+                    <div className="z-30 absolute top-[53%] left-[60%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                  {access && accessText === "Movies" && (
+                    <div className="z-30 absolute top-[23%] left-[60%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                  {access && accessText === "Bookmarks" && (
+                    <div className="z-30 absolute top-[83%] left-[60%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                  {access && accessText === "Profile" && (
+                    <div className="z-30 absolute top-[374%] left-[60%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                  {access && accessText === "Add New" && (
+                    <div className="z-30 absolute top-[343%] left-[60%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                </>
             ) : screen >= 768 ? (
               <NavbarHorizontal />
             ) : (
               <NavbarMobile />
             )}
           </div>
+          {currentUser.role === "Admin" && (
+            <div className="absolute desktop:left-[38%] desktop:top-[84.8%] tablet:right-[10%] tablet:top-[13%] phone:right-[15%] phone:bottom-[17%]">
+              <button
+                type="button"
+                className="tablet:text-5xl phone:text-4xl text-figma-white rounded-full font-bold hover:text-blue-500 duration-500"
+                onClick={() => setAdminAdd(true)}
+                onMouseEnter={() => {
+                  setAccess(true);
+                  setAccessText("Add New");
+                }}
+                onMouseLeave={() => setAccess(false)}
+              >
+                +
+              </button>
+            </div>
+          )}
           <div
             className="desktop:mx-[1.75rem] desktop:mt-0 desktop:mb-0 tablet:mt-[1.31rem] tablet:mb-[1.19] tablet:me-[1rem] phone:my-[1rem] cursor-pointer"
             onClick={() => openModal()}

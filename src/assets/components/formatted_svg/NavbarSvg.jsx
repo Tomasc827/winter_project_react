@@ -49,7 +49,7 @@ const NavbarSvg = () => {
             className="group"
             onMouseEnter={() => {
               setAccess(true);
-               setAccessText("TV Series");
+               setAccessText("Series");
              }}
              onMouseLeave={() => setAccess(false)}
           >

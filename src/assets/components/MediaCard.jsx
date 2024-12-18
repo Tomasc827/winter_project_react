@@ -2,6 +2,7 @@ import BookmarkButton from "./BookmarkButton";
 import { useData } from "./DataContext";
 import SettingsSVG from "./formatted_svg/SettingsSVG";
 import "./MediaCard.css";
+import RatingsButton from "./RatingsButton";
 const MediaCard = (props) => {
 
   const {onButtonClick,currentUser,onAdminClick} = useData()
@@ -57,6 +58,12 @@ const MediaCard = (props) => {
         </div>
         <h1 className="figma-heading-xs pt-1">{props.title}</h1>
       </div>
+      <RatingsButton 
+                    contentId={props.id}
+                    averageRating={props.averageRating}
+                    totalRatings={props.totalRatings}
+                    userRating={props.userRating}
+                    />
     </div>
   );
 };
