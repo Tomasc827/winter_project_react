@@ -84,6 +84,7 @@ const SignUpPage = () => {
               className="bg-figma-red phone: text-figma-white tablet:w-[21rem] h-[3rem] phone:w-[17.4375rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
               type="submit"
               value="submit"
+              aria-label="Submit Information"
               disabled={error !== "" || success !== ""}
             >
               Create an account
@@ -91,6 +92,8 @@ const SignUpPage = () => {
             <p className="figma-body-m text-figma-white tablet:ps-[3.81rem] phone:ps-[2.19rem]">
               Already have an account?
               <span
+                aria-label="Login Page"
+                aria-description="Already have an account, press here to take you to login"
                 className="ps-[0.5rem] text-figma-red cursor-pointer"
                 onClick={() => navigate("/login")}
               >

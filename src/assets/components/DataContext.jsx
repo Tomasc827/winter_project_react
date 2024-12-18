@@ -139,6 +139,7 @@ export const DataProviders = ({ children }) => {
     setLoginModal(false);
     await Promise.resolve();
     navigate("/");
+    window.location.reload();
     setSuccess("Successfully logged out");
     setTimeout(() => {
       setSuccess("");

@@ -28,14 +28,11 @@ const AdminUpdateModal = () => {
     setDeleteModal,
   } = useData();
 
-
   const { showID } = useParams();
 
   const show = findShowById(showID);
 
   useEffect(() => {
-    
-
     if (!show) {
       fetchData();
     }
@@ -68,8 +65,8 @@ const AdminUpdateModal = () => {
       setValue("category", category);
       setValue("rating", rating);
       setValue("description", description);
-      setValue("isTrending",isTrending.toString())
-      setValue("isBookmarked",isBookmarked)
+      setValue("isTrending", isTrending.toString());
+      setValue("isBookmarked", isBookmarked);
       if (isTrending && show.thumbnail.trending) {
         setValue("thumbnail.trending.small", show.thumbnail.trending.small);
         setValue("thumbnail.trending.large", show.thumbnail.trending.large);
@@ -111,17 +108,20 @@ const AdminUpdateModal = () => {
       };
 
       if (data.isTrending === "true") {
-        if( show.thumbnail.trending) {
+        if (show.thumbnail.trending) {
           updateContent.thumbnail.trending = {
-            small: data.thumbnail.trending?.small || show.thumbnail.trending?.small,
-            large: data.thumbnail.trending?.large || show.thumbnail.trending?.large
-          };}
-        } else {
-          updateContent.thumbnail.trending = {
-            small: data.thumbnail.trending?.small || show.thumbnail.regular.small,
-            large: data.thumbnail.trending?.large || show.thumbnail.regular.large
-          }
+            small:
+              data.thumbnail.trending?.small || show.thumbnail.trending?.small,
+            large:
+              data.thumbnail.trending?.large || show.thumbnail.trending?.large,
+          };
         }
+      } else {
+        updateContent.thumbnail.trending = {
+          small: data.thumbnail.trending?.small || show.thumbnail.regular.small,
+          large: data.thumbnail.trending?.large || show.thumbnail.regular.large,
+        };
+      }
 
       const updatedContent = await patchContentData(show.id, updateContent);
 
@@ -143,30 +143,26 @@ const AdminUpdateModal = () => {
     }
   };
 
-
-
   return (
     <>
-          {deleteModal && (
+      {deleteModal && (
+        <div
+          className="fixed bg-black bg-opacity-50 z-50 inset-0 flex justify-center items-center"
+          onClick={() => setDeleteModal(false)}
+        >
           <div
-            className="fixed bg-black bg-opacity-50 z-50 inset-0 flex justify-center items-center"
-            onClick={() => setDeleteModal(false)}
+            onClick={(e) => e.stopPropagation()}
+            className={`rounded-lg shadow-lg transform transition-all duration-700 ease-in-out ${
+              deleteModal
+                ? "translate-y-0 opacity-100"
+                : "translate-y-full opacity-0"
+            }`}
           >
-            <div
-              onClick={(e) => e.stopPropagation()}
-              className={`rounded-lg shadow-lg transform transition-all duration-700 ease-in-out ${
-                deleteModal
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-full opacity-0"
-              }`}
-            >
-              <DeleteModal show={show}
-              handleSubmit={handleSubmit} />
-            </div>
+            <DeleteModal show={show} handleSubmit={handleSubmit} />
           </div>
-        )}
+        </div>
+      )}
       {show && (
-
         <div className="relative">
           <div
             className="fixed inset-0 bg-black z-40 bg-opacity-50 flex justify-center items-center"
@@ -183,7 +179,9 @@ const AdminUpdateModal = () => {
                   alt={show.title}
                   className="w-full h-auto object-contain rounded-t-3xl border-2 "
                 ></img>
-                <div className="absolute z-10 top-[2rem] left-[2rem]"><DeleteSVG/></div>
+                <div className="absolute z-10 top-[2rem] left-[2rem]">
+                  <DeleteSVG />
+                </div>
               </div>
 
               <form
@@ -216,6 +214,7 @@ const AdminUpdateModal = () => {
                 <div className="flex flex-col text-center desktop:min-w-[30rem] tablet:min-w-[30rem] phone:min-w-[20rem] px-[2rem] figma-body-m border-x-2 border-b-2 rounded-b-3xl w-full">
                   <div className="flex pt-[3rem] justify-between px-[3rem] gap-x-[3rem] tablet:flex-row phone:flex-col-reverse">
                     <button
+                      aria-label="Cancel"
                       className="bg-figma-red text-figma-white desktop:min-w-[45%]  tablet:min-w-[40%] tablet:max-w-[15rem] h-[3rem] phone:min-w-[10rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
                       type="button"
                       onClick={() => navigate(-1)}
@@ -223,6 +222,8 @@ const AdminUpdateModal = () => {
                       Cancel
                     </button>
                     <button
+                      aria-label="Update"
+                      aria-description="Confirm that you want to update the show"
                       className="bg-figma-red text-figma-white desktop:min-w-[45%]  tablet:min-w-[40%] tablet:max-w-[15rem] h-[3rem] phone:min-w-[10rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
                       type="submit"
                     >

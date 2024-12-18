@@ -8,6 +8,9 @@ const EmailInput = ({register, errors}) => {
     return ( 
         <div className="relative">
         <input
+                  aria-label="Email"
+                  aria-description="Enter your email here, it must meet standard email format"
+                  aria-required="true"
           className={`tablet:w-[21rem] h-[2.3125rem] phone:w-[17.4375rem] input-login-style mb-[1.5rem] text-white figma-body-m focus:border-b-2 caret-figma-red ${
             errors.email
               ? "focus:border-figma-red border-figma-red"

@@ -14,6 +14,8 @@ const {setDeleteModal} = useData()
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={() => setDeleteModal(true)}
+        aria-label="Delete"
+        aria-description="Press this to delete a show"
         fill={isHovered === false ? "transparent" : "#FC7474"}
         stroke="currentColor"
         viewBox="0 0 24 24"

@@ -180,6 +180,8 @@ const Navbar = () => {
           {currentUser.role === "Admin" && (
             <div className="absolute desktop:left-[38%] desktop:top-[84.8%] tablet:right-[10%] tablet:top-[13%] phone:right-[15%] phone:bottom-[17%]">
               <button
+                aria-label="Add New Show"
+                aria-description="Click here to add a new show"
                 type="button"
                 className="tablet:text-5xl phone:text-4xl text-figma-white rounded-full font-bold hover:text-blue-500 duration-500"
                 onClick={() => setAdminAdd(true)}

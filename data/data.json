@@ -8098,6 +8098,13 @@
       "password": "U29tZXRoaW5nOSE=",
       "role": "User",
       "avatar": "/avatar.jpg"
+    },
+    {
+      "id": "c9ce",
+      "email": "something5@email.com",
+      "password": "U29tZXRoaW5nOSE=",
+      "role": "Admin",
+      "avatar": "/avatar.jpg"
     }
   ],
   "ratings": [
@@ -8162,6 +8169,27 @@
       "rating": 5,
       "timestamp": "2024-12-17T17:23:25.212Z",
       "id": "b381"
+    },
+    {
+      "id": "6af1",
+      "userId": "20ff",
+      "contentId": "f522",
+      "rating": 5,
+      "timestamp": "2024-12-18T08:18:42.650Z"
+    },
+    {
+      "id": "91e1",
+      "userId": "20ff",
+      "contentId": "2cd5",
+      "rating": 5,
+      "timestamp": "2024-12-18T08:19:15.850Z"
+    },
+    {
+      "id": "c74b",
+      "userId": "20ff",
+      "contentId": "668c",
+      "rating": 1,
+      "timestamp": "2024-12-18T08:19:25.491Z"
     }
   ]
 }

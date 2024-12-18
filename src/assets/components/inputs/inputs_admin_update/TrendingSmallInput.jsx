@@ -1,8 +1,11 @@
-const TrendingSmallInput = ({register,errors}) => {
-    return ( 
-        <>
-                <div className="relative">
+const TrendingSmallInput = ({ register, errors }) => {
+  return (
+    <>
+      <div className="relative">
         <input
+          aria-label="Trending small image"
+          aria-description="Please provide a trending small image for phone screen size"
+          aria-required="true"
           className={`desktop:w-[40rem] tablet:w-[35rem] h-[2.3125rem] phone:w-[17.4375rem] input-login-style mb-[1.5rem] text-white figma-body-m focus:border-b-2 caret-figma-red ${
             errors?.thumbnail?.trending?.small
               ? "focus:border-figma-red border-figma-red"
@@ -15,9 +18,7 @@ const TrendingSmallInput = ({register,errors}) => {
             required: "Can't be empty",
             pattern: {
               value:
-              /^(?!.*[\u0300-\u036f\u1ab0-\u1aff\u1dc0-\u1dff\u20d0-\u20ff\u0483-\u0489\ufe20-\ufe2f])(?:\.{0,2}\/)?(?:[\w-]+\/)*[\w-]+\.(?:jpg|jpeg|png|webp)$/i,
-
-
+                /^(?!.*[\u0300-\u036f\u1ab0-\u1aff\u1dc0-\u1dff\u20d0-\u20ff\u0483-\u0489\ufe20-\ufe2f])(?:\.{0,2}\/)?(?:[\w-]+\/)*[\w-]+\.(?:jpg|jpeg|png|webp)$/i,
 
               message: "Invalid path format",
             },
@@ -30,8 +31,8 @@ const TrendingSmallInput = ({register,errors}) => {
           </p>
         )}
       </div>
-        </>
-     );
-}
- 
+    </>
+  );
+};
+
 export default TrendingSmallInput;

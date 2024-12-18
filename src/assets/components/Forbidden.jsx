@@ -14,6 +14,8 @@ const Forbidden = () => {
           You don't have permission to this page
         </p>
         <Link
+        aria-label="Back to homepage"
+        aria-description="You are in forbidden page, press on the button to take you back to homepage"
           to="/"
           className="flex justify-center items-center bg-figma-red text-figma-white tablet:w-[21rem] h-[3rem] phone:w-[17.4375rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] mb-[1.5rem]"
         >

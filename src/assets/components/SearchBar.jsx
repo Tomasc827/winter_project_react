@@ -116,6 +116,8 @@ const SearchBar = (props) => {
           className="phone:w-[1.5rem] tablet:w-[2rem] desktop:w-[2rem]"
         />
         <input
+        aria-label="Search bar"
+        aria-description="Type here to search through shows"
           type="text"
           className="figma-heading-m p-0 bg-transparent border-0 focus:shadow-[0_1px_0_0] focus:shadow-figma-greyish-blue focus:ring-0 focus:border-figma-greyish-blue
             phone:text-[1rem]
