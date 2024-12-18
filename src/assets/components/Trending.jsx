@@ -23,6 +23,7 @@ const TrendingMoviesCarousel = () => {
   const scrollRef = useRef(null);
 
   const autoScrollTimeout = useRef(0)
+  const autoScrollTime = 5000 
 
   const startDragging = (e) => {
     setIsDragging(true);
@@ -40,11 +41,11 @@ const TrendingMoviesCarousel = () => {
     const x = e.pageX - scrollRef.current.offsetLeft;
     const walk = (x - startX) * 2; 
     scrollRef.current.scrollLeft = scrollLeft - walk;
-    autoScrollTimeout.current = Date.now() + 5000
+    autoScrollTimeout.current = Date.now() + autoScrollTime
   };
 
   const onScroll = (e) => {
-    autoScrollTimeout.current = Date.now() + 5000
+    autoScrollTimeout.current = Date.now() + autoScrollTime
   }
 
   useEffect(() => {
@@ -52,7 +53,7 @@ const TrendingMoviesCarousel = () => {
       if (isDragging) return;
       if (Date.now() < autoScrollTimeout.current) return;
       scrollRef.current.scrollLeft = scrollRef.current.scrollLeft + 2000;
-    }, 5000);
+    }, autoScrollTime);
   }, [])
 
   const renderCategoryIcon = (category) => {
