@@ -9,6 +9,7 @@ import { Outlet } from "react-router";
 import { useEffect } from "react";
 import Pagination from "./Pagination";
 import SettingsSVG from "./formatted_svg/SettingsSVG";
+import RatingsButton from "./RatingsButton";
 
 const Homepage = () => {
   const {
@@ -27,12 +28,10 @@ const Homepage = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = searchContent
-    .filter(
+   ? searchContent.filter(
       (item) => item.category === "TV Series" || item.category === "Movie"
     )
-    .slice(indexOfFirstItem, indexOfLastItem);
-  
-
+    .slice(indexOfFirstItem, indexOfLastItem) : []
 
     useEffect(() => {
       if (searchContent.length !== content.length) {
@@ -60,6 +59,7 @@ const Homepage = () => {
         hideList={["heading5", "trendingheading", "trending1", "trending2"]}
         unhideList={["padding1"]}
       />
+      
       <Trending />
       <div className="text-figma-white phone:pr-4 tablet:pr-6 desktop:pr-9">
         <h1
@@ -202,8 +202,15 @@ const Homepage = () => {
                   phone:text-[0.875rem] phone:h-[1.125rem]
                   tablet:h-[1.4375rem] desktop:h-[1.4375rem]"
                   >
+                    
                     {item.title}
                   </div>
+                  <RatingsButton 
+                    contentId={item.id}
+                    averageRating={item.averageRating}
+                    totalRatings={item.totalRatings}
+                    userRating={item.userRating}
+                    />
                 </div>
               </li>
             ))}

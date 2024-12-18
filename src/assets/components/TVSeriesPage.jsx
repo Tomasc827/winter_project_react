@@ -7,6 +7,7 @@ import BookmarkButton from "./BookmarkButton";
 import { Outlet } from "react-router";
 import Pagination from "./Pagination";
 import SettingsSVG from "./formatted_svg/SettingsSVG";
+import RatingsButton from "./RatingsButton";
 
 const TVSeriesPage = () => {
   const { content,onButtonClick,fetchData,searchContent,setSearchContent,setCurrentPage,currentPage,itemsPerPage,currentUser,onAdminClick } = useData();
@@ -178,6 +179,12 @@ const TVSeriesPage = () => {
                   >
                     {serie.title}
                   </div>
+                  <RatingsButton 
+                    contentId={serie.id}
+                    averageRating={serie.averageRating}
+                    totalRatings={serie.totalRatings}
+                    userRating={serie.userRating}
+                    />
                 </div>
               </div>
             ))}

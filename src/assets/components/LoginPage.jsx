@@ -16,6 +16,8 @@ const LoginPage = () => {
     processing,
     setCurrentUser,
     setAvatar,
+    fetchData,
+    fetchRatings,
   } = useData();
 
   const {
@@ -28,12 +30,18 @@ const LoginPage = () => {
     if (error || processing) return;
 
     try {
-      const user = await loginUser(data);
+      const caseInsensitive = {
+        ...data,
+        email: data.email.toLowerCase()
+      };
+      const user = await loginUser(caseInsensitive);
       setCurrentUser(user);
       setAvatar(user.avatar);
+      
+      await Promise.all([fetchData(), fetchRatings()]);
+      navigate("/");
       setSuccess("Login successful");
       setTimeout(() => {
-        navigate("/");
         setSuccess("");
       }, 2500);
     } catch (error) {

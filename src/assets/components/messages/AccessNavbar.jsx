@@ -36,15 +36,16 @@ const AccessNavbar = () => {
       <p
         className={`
           text-figma-white 
-          figma-heading-m 
+          figma-heading-s
           bg-figma-dark-blue 
-          px-4 
+          px-4
           py-2 
           rounded-full
           transition-all 
           duration-500 
           ease-in-out
           select-none
+          absolute
           ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}
         `}
       >

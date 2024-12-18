@@ -7,6 +7,7 @@ import { Outlet } from "react-router";
 import { useEffect } from "react";
 import Pagination from "./Pagination";
 import SettingsSVG from "./formatted_svg/SettingsSVG";
+import RatingsButton from "./RatingsButton";
 
 const MoviesPage = () => {
   const { content, onButtonClick,fetchData,searchContent,setSearchContent,setCurrentPage,currentPage,itemsPerPage,currentUser,onAdminClick } = useData();
@@ -183,6 +184,12 @@ const MoviesPage = () => {
                   >
                     {movie.title}
                   </div>
+                  <RatingsButton 
+                    contentId={movie.id}
+                    averageRating={movie.averageRating}
+                    totalRatings={movie.totalRatings}
+                    userRating={movie.userRating}
+                    />
                 </div>
               </div>
             ))}

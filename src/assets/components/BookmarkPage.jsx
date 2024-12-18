@@ -45,12 +45,16 @@ const BookmarkPage = () => {
         media_id={media.id}
         isBookmarked={media.isBookmarked}
         reloadData={fetchData}
+        id={media.id} 
+        averageRating={media.averageRating}
+        totalRatings={media.totalRatings}
+        userRating={media.userRating}
       />
     );
   };
 
   return (
-    <div className="w-fit pb-12 desktop:pl-40 desktop:pr-[2rem] tablet:px-12 phone:px-12 text-figma-white">
+    <div className="w-fit bg-figma-dark-blue pb-12 desktop:pl-[164px] desktop:pr-[36px] tablet:px-[25px] phone:px-[16px] text-figma-white">
       <SearchBar
         placeholder="Search for bookmarked shows"
         icon="src/assets/svg/icon-search.svg"
@@ -74,7 +78,7 @@ const BookmarkPage = () => {
           className={
             currentMovies.length <= 0
               ? "hidden"
-              : "grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-10 tablet:gap-[1.8125rem] phone:gap-[0.9375rem] pt-10 pb-10"
+              : "grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-x-[40px] desktop:gap-y-[32px] tablet:gap-x-[30px] tablet:gap-y-[24px] phone:gap-x-[15px] phone:gap-y-[16px] pt-10 pb-10"
           }
         >
           {currentMovies.map((media) => createBookmarkCard(media))}
@@ -98,7 +102,7 @@ const BookmarkPage = () => {
             currentTvSeries
               .length <= 0
               ? "hidden"
-              : "grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-10 tablet:gap-[1.8125rem] phone:gap-[0.9375rem] pt-10 pb-10"
+              : "grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-x-[40px] desktop:gap-y-[32px] tablet:gap-x-[30px] tablet:gap-y-[24px] phone:gap-x-[15px] phone:gap-y-[16px] pt-10 pb-10"
           }
         >
  {currentTvSeries.map((media) => createBookmarkCard(media))}

@@ -46,7 +46,7 @@ input::-webkit-input-placeholder {
 .figma-heading-s {
   font-family: Outfit;
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal; 
   line-height: 1.2;    
 }
@@ -54,7 +54,7 @@ input::-webkit-input-placeholder {
 .figma-heading-xs {
   font-family: Outfit;
   font-size: 1.125rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal; 
   line-height: 1.2;    
 }
@@ -63,7 +63,6 @@ input::-webkit-input-placeholder {
   font-family: Outfit;
   font-size: 0.9375rem;
   font-weight: 300;
-  opacity: 0.75;
   font-style: normal; 
   line-height: 1.2;    
 }
@@ -71,8 +70,7 @@ input::-webkit-input-placeholder {
 .figma-body-s {
   font-family: Outfit;
   font-size: 0.8125rem;
-  font-weight: 200;
-  opacity: 0.75;
+  font-weight: 300;
   font-style: normal; 
 line-height: 1.2;    
 }
