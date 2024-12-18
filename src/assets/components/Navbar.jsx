@@ -166,15 +166,84 @@ const Navbar = () => {
                     </div>
                   )}
                   {access && accessText === "Add New" && (
-                    <div className="z-30 absolute top-[343%] left-[60%]">
+                    <div className="z-30 absolute top-[335%] left-[60%]">
                       <AccessNavbar />
                     </div>
                   )}
                 </>
             ) : screen >= 768 ? (
-              <NavbarHorizontal />
+              <>
+                  <div className="relative">
+                    <NavbarHorizontal />
+                  </div>
+                  {access && accessText === "Homepage" && (
+                    <div className="z-30 absolute bottom-[-25%] left-[-13%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                  {access && accessText === "Series" && (
+                    <div className="z-30 absolute bottom-[-25%] left-[19%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                  {access && accessText === "Movies" && (
+                    <div className="z-30 absolute bottom-[-25%] left-[5%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                  {access && accessText === "Bookmarks" && (
+                    <div className="z-30 absolute bottom-[-25%] left-[25%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                  {access && accessText === "Profile" && (
+                    <div className="z-30 absolute bottom-[-25%] left-[94%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                  {access && accessText === "Add New" && (
+                    <div className="z-30 absolute bottom-[-25%] left-[82%]">
+                      <AccessNavbar />
+                    </div>
+                  )}
+                </>
+              
             ) : (
-              <NavbarMobile />
+              <>
+              <div className="relative">
+                <NavbarMobile />
+              </div>
+              {access && accessText === "Homepage" && (
+                <div className="z-30 absolute bottom-[10%] left-[18%]">
+                  <AccessNavbar />
+                </div>
+              )}
+              {access && accessText === "Series" && (
+                <div className="z-30 absolute bottom-[10%] left-[51%]">
+                  <AccessNavbar />
+                </div>
+              )}
+              {access && accessText === "Movies" && (
+                <div className="z-30 absolute bottom-[10%] left-[36%]">
+                  <AccessNavbar />
+                </div>
+              )}
+              {access && accessText === "Bookmarks" && (
+                <div className="z-30 absolute bottom-[10%] left-[58%]">
+                  <AccessNavbar />
+                </div>
+              )}
+              {access && accessText === "Profile" && (
+                <div className="z-30 absolute bottom-[10%] left-[98%]">
+                  <AccessNavbar />
+                </div>
+              )}
+              {access && accessText === "Add New" && (
+                <div className="z-30 absolute bottom-[10%] left-[85%]">
+                  <AccessNavbar />
+                </div>
+              )}
+            </>
             )}
           </div>
           {currentUser.role === "Admin" && (

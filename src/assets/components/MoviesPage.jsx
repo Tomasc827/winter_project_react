@@ -183,7 +183,7 @@ const MoviesPage = () => {
                     className="figma-heading-xs dekstop:text-[1.125rem] tablet:text-[1.125rem] phone:text-[0.875rem] phone:h-[1.125rem]
                   tablet:h-[1.4375rem] desktop:h-[1.4375rem]"
                   >
-                    {movie.title}
+                    {movie.title.length > 23 ? `${movie.title.slice(0, 23)}...` : movie.title}
                   </div>
                   <RatingsButton 
                     contentId={movie.id}
