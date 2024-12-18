@@ -37,9 +37,9 @@ const Description = ({handleClose}) => {
           <div className="relative">
             <div className="fixed inset-0 bg-black z-40 bg-opacity-50 flex justify-center items-center">
               <div
-                className="Desktop:min-w-[40rem] tablet:min-w-[30rem] phone:min-w-[20rem] w-[30vw] "
+                className="desktop:min-w-[40rem] tablet:min-w-[30rem] phone:min-w-[20rem] w-[30vw] "
               >
-                <div className="bg-figma-semi-dark-blue text-figma-white rounded-t-3xl rounded-b-3xl rounded shadow-2xl shadow-figma-red">
+                <div className="bg-figma-semi-dark-blue text-figma-white rounded-t-3xl rounded-b-3xl rounded shadow-2xl shadow-figma-red ">
                   <div className="relative">
                     <img
                       src={
@@ -48,7 +48,7 @@ const Description = ({handleClose}) => {
                           : `/${show.thumbnail.regular.large}`
                       }
                       alt={show.title}
-                      className="Desktop:min-w-[40rem] tablet:min-w-[30rem] phone:min-w-[20rem] w-[30vw] h-auto object-contain rounded-t-3xl border-2 "
+                      className="desktop:min-w-[40rem] tablet:min-w-[30rem] phone:min-w-[20rem] w-[30vw] h-auto object-contain rounded-t-3xl border-2 "
                     ></img>
                     <div className="absolute top-2 left-20">
                       <BookmarkButton
@@ -64,8 +64,8 @@ const Description = ({handleClose}) => {
                   <p className="text-center figma-heading-l border-x-2 pt-[1rem]">
                     {show.title}
                   </p>
-                  <div className="grid grid-cols-3 place-items-center desktop:px-[3rem] tablet:px-[2rem]  phone:px-[1rem] figma-heading-m pt-[1rem] pb-[1rem] border-x-2 w-[30vw] Desktop:min-w-[40rem] tablet:min-w-[30rem]  phone:min-w-[20rem]">
-                    <div className="flex flex-col text-center ">
+                  <div className="grid grid-cols-3 place-items-center desktop:px-[3rem] tablet:px-[2rem]  phone:px-[1rem] figma-heading-m pt-[1rem] pb-[1rem] border-x-2 w-[30vw] desktop:w-[40rem] tablet:min-w-[30rem]  phone:min-w-[20rem]">
+                    <div className="flex flex-col text-center desktop:min-w-[40rem] tablet:min-w-[30rem] phone:min-w-[20rem] w-[30vw] ">
                       <p className="figma-body-s  phone:text-[0.5em]">
                         Release Year:
                       </p>
@@ -91,9 +91,9 @@ const Description = ({handleClose}) => {
                       userRating={show.userRating}
                     />
                   </div>
-                  <div className="flex flex-col text-center desktop:min-w-[30rem] tablet:min-w-[30rem]  phone:min-w-[20rem] w-[30vw] px-[2rem] figma-body-m border-x-2 border-b-2 rounded-b-3xl">
+                  <div className="flex flex-col text-center desktop:w-[40rem] tablet:min-w-[30rem]  phone:min-w-[20rem] w-[30vw] px-[2rem] figma-body-m border-x-2 border-b-2 rounded-b-3xl">
                     <p>Synopsis:</p>
-                    <p>{show.description}</p>
+                    <p className="">{show.description}</p>
                     <div className="flex pt-[3rem] justify-between px-[3rem] gap-x-[3rem] tablet:flex-row phone:flex-col-reverse">
                       <button
                         aria-label="Cancel"
