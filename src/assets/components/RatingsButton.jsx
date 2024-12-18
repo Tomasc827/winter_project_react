@@ -23,6 +23,8 @@ const RatingsButton = ({contentId, averageRating, totalRatings, userRating}) => 
             <div className="flex gap-1">
             {[1,2,3,4,5].map((star) => (
                 <button
+                aria-label="Rating"
+                aria-description="Rating is from 1 to 5 stars"
                 key={star}
                 onClick={() => {
                 handleRating(star)

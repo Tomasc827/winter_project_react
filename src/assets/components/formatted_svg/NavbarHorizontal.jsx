@@ -14,6 +14,7 @@ const NavbarHorizontal = () => {
         xmlns="http://www.w3.org/2000/svg"
       >
         <NavLink
+        aria-label="Homepage"
           to="/"
           style={({ isActive, isPending }) => ({
             fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",
@@ -30,6 +31,7 @@ const NavbarHorizontal = () => {
           </g>
         </NavLink>
         <NavLink
+        aria-label="TV Series Page"
           to="/tvseries"
           style={({ isActive, isPending }) => ({
             fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",
@@ -46,6 +48,7 @@ const NavbarHorizontal = () => {
           </g>
         </NavLink>
         <NavLink
+        aria-label="Movies Page"
           to="/movies"
           style={({ isActive, isPending }) => ({
             fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",
@@ -64,6 +67,7 @@ const NavbarHorizontal = () => {
         {!currentUser || !currentUser.id ||
 (
           <NavLink
+          aria-label="Bookmarks Page"
             to="/bookmarked"
             style={({ isActive, isPending }) => ({
               fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",

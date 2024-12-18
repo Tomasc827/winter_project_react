@@ -15,6 +15,7 @@ const NavbarSvg = () => {
         className="desktop:ms-[2.38rem] desktop:me-[2.37rem] relative"
       >
         <NavLink
+        aria-label="Homepage"
           to="/"
           style={({ isActive, isPending }) => ({
             fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",
@@ -39,6 +40,7 @@ const NavbarSvg = () => {
           </g>
         </NavLink>
         <NavLink
+        aria-label="TV series page"
           to="/tvseries"
           style={({ isActive, isPending }) => ({
             fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",
@@ -63,6 +65,7 @@ const NavbarSvg = () => {
           </g>
         </NavLink>
         <NavLink
+        aria-label="Movies page"
           to="/movies"
           style={({ isActive, isPending }) => ({
             fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",
@@ -88,6 +91,7 @@ const NavbarSvg = () => {
         </NavLink>
         {!currentUser || !currentUser.id || (
           <NavLink
+          aria-label="Bookmarks page"
             to="/bookmarked"
             style={({ isActive, isPending }) => ({
               fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",

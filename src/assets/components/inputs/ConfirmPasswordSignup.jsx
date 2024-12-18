@@ -6,6 +6,9 @@ const ConfirmPasswordSignup = ({register,errors,watch}) => {
 
         <div className="relative">
         <input
+                  aria-label="Confirm Password"
+                  aria-description="You must confirm your password and it must match with the first input"
+                  aria-required="true"
           className={`tablet:w-[21rem] h-[2.3125rem] caret-figma-red phone:w-[17.4375rem] input-login-style tablet:mb-[1.5rem] text-white figma-body-m focus:border-b-2 phone:mb-[2.5rem]   ${
             errors.confirmPassword
               ? "focus:border-figma-red border-figma-red"

@@ -44,6 +44,8 @@ const BookmarkButton = (props) => {
   return (
     <>
    {!currentUser || !currentUser.id ? null : <button
+      aria-label="Bookmark"
+      aria-description="Press this to bookmark a show"
       onClick={bookmarkMedia}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

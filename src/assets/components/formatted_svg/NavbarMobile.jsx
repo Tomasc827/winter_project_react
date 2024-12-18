@@ -14,6 +14,7 @@ const NavbarMobile = () => {
         xmlns="http://www.w3.org/2000/svg"
       >
         <NavLink
+        aria-label="Homepage"
           to="/"
           style={({ isActive, isPending }) => ({
             fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",
@@ -30,6 +31,7 @@ const NavbarMobile = () => {
           </g>
         </NavLink>
         <NavLink
+        aria-label="Tv series page"
           to="/tvseries"
           style={({ isActive, isPending }) => ({
             fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",
@@ -46,6 +48,7 @@ const NavbarMobile = () => {
           </g>
         </NavLink>
         <NavLink
+        aria-label="Movies page"
           to="/movies"
           style={({ isActive, isPending }) => ({
             fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",
@@ -63,6 +66,7 @@ const NavbarMobile = () => {
         </NavLink>
         {!currentUser || !currentUser.id || (
           <NavLink
+            aria-label="Bookmarks page"
             to="/bookmarked"
             style={({ isActive, isPending }) => ({
               fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",

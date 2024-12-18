@@ -8,6 +8,8 @@ const [isHovered,setIsHovered] = useState(false)
   return (
     <>
       <svg
+        aria-label="Admin Settings"
+        aria-description="Admin settings that allow modification of the show"
         xmlns="http://www.w3.org/2000/svg"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}

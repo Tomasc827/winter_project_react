@@ -11,6 +11,8 @@ const NotFound = () => {
           Page Not Found
         </p>
         <Link
+        aria-label="Homepage"
+        aria-description="Page not found, click here to go back to the homepage"
           to="/"
           className="flex justify-center items-center bg-figma-red text-figma-white tablet:w-[21rem] h-[3rem] phone:w-[17.4375rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] mb-[1.5rem]"
         >
