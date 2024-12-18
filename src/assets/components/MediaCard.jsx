@@ -56,7 +56,7 @@ const MediaCard = (props) => {
           <span>·</span>
           <span> {props.rating}</span>
         </div>
-        <h1 className="figma-heading-xs pt-1">{props.title}</h1>
+        <h1 className="figma-heading-xs pt-2 pb-1">{props.title}</h1>
       </div>
       <RatingsButton 
                     contentId={props.id}

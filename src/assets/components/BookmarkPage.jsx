@@ -78,7 +78,7 @@ const BookmarkPage = () => {
           className={
             currentMovies.length <= 0
               ? "hidden"
-              : "grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-x-[40px] desktop:gap-y-[32px] tablet:gap-x-[30px] tablet:gap-y-[24px] phone:gap-x-[15px] phone:gap-y-[16px] pt-10 pb-10"
+              : "grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-x-[40px] desktop:gap-y-[32px] tablet:gap-x-[30px] tablet:gap-y-[24px] phone:gap-x-[15px] phone:gap-y-[16px] pt-[38px] pb-[38px]"
           }
         >
           {currentMovies.map((media) => createBookmarkCard(media))}
@@ -102,7 +102,7 @@ const BookmarkPage = () => {
             currentTvSeries
               .length <= 0
               ? "hidden"
-              : "grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-x-[40px] desktop:gap-y-[32px] tablet:gap-x-[30px] tablet:gap-y-[24px] phone:gap-x-[15px] phone:gap-y-[16px] pt-10 pb-10"
+              : "grid desktop:grid-cols-4 tablet:grid-cols-3 phone:grid-cols-2 desktop:gap-x-[40px] desktop:gap-y-[32px] tablet:gap-x-[30px] tablet:gap-y-[24px] phone:gap-x-[15px] phone:gap-y-[16px] pt-[38px] pb-[38px]"
           }
         >
  {currentTvSeries.map((media) => createBookmarkCard(media))}
