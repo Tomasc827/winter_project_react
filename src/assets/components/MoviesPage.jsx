@@ -136,7 +136,7 @@ const MoviesPage = () => {
                     className="figma-body-s dekstop:text-[0.8125rem] tablet:text-[0.8125rem] flex items-center gap-2 desktop:gap-2 tablet:gap-2 phone:gap-[0.38rem] phone:text-[0.6875rem] phone:h-3.5 tablet:h-4 desktop:h-4 
                   "
                   >
-                    <span>{movie.year}</span>
+                    <span className="opacity-75">{movie.year}</span>
                     <div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +146,7 @@ const MoviesPage = () => {
                         fill="none"
                       >
                         <circle
-                          opacity="0.5"
+                          opacity="0.75"
                           cx="1.5"
                           cy="1.5"
                           r="1.5"
@@ -156,7 +156,7 @@ const MoviesPage = () => {
                     </div>
                     <div className="flex items-center gap-[0.38rem] desktop:gap-[0.38rem] tablet:gap-[0.38rem] phone:gap-[0.25rem]">
                       <IconCategoryMovie />
-                      <span>{movie.category}</span>
+                      <span className="opacity-75">{movie.category}</span>
                     </div>
                     <div>
                       <svg
@@ -167,7 +167,7 @@ const MoviesPage = () => {
                         fill="none"
                       >
                         <circle
-                          opacity="0.5"
+                          opacity="0.75"
                           cx="1.5"
                           cy="1.5"
                           r="1.5"
@@ -175,7 +175,7 @@ const MoviesPage = () => {
                         />
                       </svg>
                     </div>
-                    <span>{movie.rating}</span>
+                    <span className="opacity-75">{movie.rating}</span>
                   </div>
 
                   <div

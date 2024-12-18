@@ -42,7 +42,9 @@ const TrendingMoviesCarousel = () => {
     scrollRef.current.scrollLeft = scrollLeft - walk;
   };
 
+  const autoScroll = (e) => {
 
+  }
 
   const renderCategoryIcon = (category) => {
     if (category === "Movie") {
@@ -91,6 +93,7 @@ const TrendingMoviesCarousel = () => {
       <div
         id="trending2"
         ref={scrollRef}
+        onLoad={autoScroll}
         onMouseDown={startDragging}
         onMouseUp={stopDragging}
         onMouseLeave={stopDragging}
@@ -166,7 +169,7 @@ const TrendingMoviesCarousel = () => {
                   desktop:pb-[0.1875rem]
                   phone:pb-[0.25rem]
                   ">
-                    <span>{movie.year}</span>
+                    <span className="opacity-75">{movie.year}</span>
                     <div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +179,7 @@ const TrendingMoviesCarousel = () => {
                         fill="none"
                       >
                         <circle
-                          opacity="0.5"
+                          opacity="0.75"
                           cx="1.5"
                           cy="1.5"
                           r="1.5"
@@ -186,7 +189,7 @@ const TrendingMoviesCarousel = () => {
                     </div>
                     <span className="flex items-center gap-[0.38rem]">
                       {renderCategoryIcon(movie.category)}
-                      <span>{movie.category}</span>
+                      <span className="opacity-75">{movie.category}</span>
                     </span>
                     <div>
                       <svg
@@ -197,7 +200,7 @@ const TrendingMoviesCarousel = () => {
                         fill="none"
                       >
                         <circle
-                          opacity="0.5"
+                          opacity="0.75"
                           cx="1.5"
                           cy="1.5"
                           r="1.5"
@@ -205,7 +208,7 @@ const TrendingMoviesCarousel = () => {
                         />
                       </svg>
                     </div>
-                    <span>{movie.rating}</span>
+                    <span className="opacity-75">{movie.rating}</span>
                   </div>
                   <h3
                     className="figma-heading-s
