@@ -12,6 +12,7 @@ import SignUpSuccess from "./messages/SignUpSuccess";
 import ErrorServer from "./messages/ErrorServer";
 import AccessNavbar from "./messages/AccessNavbar";
 import AdminAddModal from "./avatar_modals/AdminAddModal";
+import AnimationModal from "./messages/AnimationModal";
 
 const Navbar = () => {
   const [screen, setScreen] = useState(window.innerWidth);
@@ -63,50 +64,15 @@ const Navbar = () => {
       <ErrorServer />
       <SignUpSuccess />
       <div className="relative">
-        {adminAdd && (
-          <div
-            className="fixed bg-black bg-opacity-50 z-50 inset-0 flex justify-center items-center"
-            onClick={() => closeModal()}
-          >
-            <div
-              onClick={(e) => e.stopPropagation()}
-              className={`rounded-lg shadow-lg transform transition-all duration-700 ease-in-out ${
-                adminAdd
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-full opacity-0"
-              }`}
-            >
+          <AnimationModal onOpen={adminAdd && currentUser?.role === "Admin"} onClose={closeModal}>
               <AdminAddModal />
-            </div>
-          </div>
-        )}
-        {loginModal && !currentUser?.id && (
-          <div
-            className="fixed bg-black bg-opacity-50 z-50 inset-0 flex justify-center items-center"
-            onClick={() => closeModal()}
-          >
-            <div
-              onClick={(e) => e.stopPropagation()}
-              className={`rounded-lg shadow-lg transform transition-all duration-700 ease-in-out ${
-                loginModal
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-full opacity-0"
-              }`}
-            >
+              </AnimationModal>
+            <AnimationModal onOpen={loginModal && !currentUser?.id} onClose={closeModal}>
               <LoginModal />
-            </div>
-          </div>
-        )}
-        {userModal && currentUser && currentUser.id && (
-          <div
-            className="fixed bg-black bg-opacity-50 z-50 inset-0 flex justify-center items-center"
-            onClick={() => closeModal()}
-          >
-            <div onClick={(e) => e.stopPropagation()}>
+              </AnimationModal>
+              <AnimationModal onOpen={userModal && currentUser?.id} onClose={closeModal}>
               <UserModal />
-            </div>
-          </div>
-        )}
+              </AnimationModal>
         <div
           className={`fixed z-30 bg-figma-semi-dark-blue desktop:top-[2rem] desktop:left-[2rem] desktop:w-[6rem] desktop:h-[60rem] tablet:w-[44.9375rem] tablet:h-[4.5rem] tablet:rounded-[0.625rem] desktop:rounded-[1.25rem] flex desktop:flex-col tablet:left-[1.56rem] tablet:right-[1.5rem] tablet:top-[1.44rem] phone:w-[23.4375rem] phone:h-[3.5rem]
                     ${

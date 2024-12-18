@@ -16,6 +16,9 @@ import DescriptionTextArea from "../inputs/inputs_admin_update/DescriptionTextar
 import RadioInput from "../inputs/inputs_admin_update/RadioInput";
 import DeleteSVG from "../formatted_svg/DeleteSVG";
 import DeleteModal from "./DeleteModal";
+import AnimationRouteModal from "../messages/AnimationRouteModal";
+import AnimationModal from "../messages/AnimationModal";
+import CloseDescription from "../formatted_svg/CloseDescription";
 
 const AdminUpdateModal = () => {
   const {
@@ -145,96 +148,98 @@ const AdminUpdateModal = () => {
 
   return (
     <>
-      {deleteModal && (
-        <div
-          className="fixed bg-black bg-opacity-50 z-50 inset-0 flex justify-center items-center"
-          onClick={() => setDeleteModal(false)}
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className={`rounded-lg shadow-lg transform transition-all duration-700 ease-in-out ${
-              deleteModal
-                ? "translate-y-0 opacity-100"
-                : "translate-y-full opacity-0"
-            }`}
-          >
-            <DeleteModal show={show} handleSubmit={handleSubmit} />
-          </div>
-        </div>
-      )}
+      <AnimationModal onOpen={deleteModal} onClose={() => setDeleteModal(false)}>
+        <DeleteModal show={show} handleSubmit={handleSubmit} />
+      </AnimationModal>
       {show && (
-        <div className="relative">
-          <div
-            className="fixed inset-0 bg-black z-40 bg-opacity-50 flex justify-center items-center"
-            onClick={handleBackgroundClick}
-          >
-            <div className=" bg-figma-semi-dark-blue text-figma-white rounded-t-3xl rounded-b-3xl rounded shadow-xl shadow-figma-red w-full max-w-3xl p-6 relative max-h-[90vh] overflow-y-auto">
-              <div className="relative pb-6">
-                <img
-                  src={
-                    show.thumbnail.regular.large.startsWith("/")
-                      ? show.thumbnail.regular.large
-                      : `/${show.thumbnail.regular.large}`
-                  }
-                  alt={show.title}
-                  className="w-full h-auto object-contain rounded-t-3xl border-2 "
-                ></img>
-                <div className="absolute z-10 top-[2rem] left-[2rem]">
-                  <DeleteSVG />
+        <AnimationRouteModal>
+          {({ onClose }) => (
+            <div className="w-full max-w-3xl mx-auto p-6">
+              <div className="bg-figma-semi-dark-blue text-figma-white rounded-t-3xl rounded-b-3xl shadow-xl shadow-figma-red relative max-h-[90vh] overflow-y-auto">
+                <div className="relative pb-6">
+                  <img
+                    src={
+                      show.thumbnail.regular.large.startsWith("/")
+                        ? show.thumbnail.regular.large
+                        : `/${show.thumbnail.regular.large}`
+                    }
+                    alt={show.title}
+                    className="w-full h-auto object-contain rounded-t-3xl border-2"
+                  />
+                  <button 
+                    className="absolute z-10 top-[2rem] left-[2rem]"
+                    onClick={() => setDeleteModal(true)}
+                  >
+                    <DeleteSVG />
+                  </button>
+                  <button 
+                    className="absolute z-10 top-[2rem] right-[2rem]"
+                    onClick={onClose}
+                  >
+                    <CloseDescription />
+                  </button>
                 </div>
-              </div>
 
-              <form
-                onSubmit={handleSubmit(onSubmit)}
-                className="flex flex-col items-center gap-2"
-              >
-                Title:
-                <TitleInput register={register} errors={errors} />
-                {watch("isTrending") === "true" && (
-                  <div className="text-center">
-                    <div className="pb-2">"Trending" images:</div>
-                    <TrendingSmallInput register={register} errors={errors} />
-                    <TrendingLargeInput register={register} errors={errors} />
+                <form
+                  onSubmit={handleSubmit(onSubmit)}
+                  className="flex flex-col items-center gap-2 px-6"
+                >
+                  <div className="w-full">
+                    <div className="text-center mb-2">Title:</div>
+                    <TitleInput register={register} errors={errors} />
+                    
+                    {watch("isTrending") === "true" && (
+                      <div className="text-center">
+                        <div className="pb-2">Trending images:</div>
+                        <TrendingSmallInput register={register} errors={errors} />
+                        <TrendingLargeInput register={register} errors={errors} />
+                      </div>
+                    )}
+                    
+                    <div className="text-center mt-4">Images:</div>
+                    <RegularSmallInput register={register} errors={errors} />
+                    <RegularMediumInput register={register} errors={errors} />
+                    <RegularLargeInput register={register} errors={errors} />
+                    
+                    <div className="text-center mt-4">Year:</div>
+                    <YearInput register={register} errors={errors} />
+                    
+                    <div className="text-center mt-4">Category:</div>
+                    <CategorySelect register={register} errors={errors} />
+                    
+                    <div className="text-center mt-4">Age rating:</div>
+                    <AgeRatingSelect register={register} errors={errors} />
+                    
+                    <div className="text-center mt-4">Status:</div>
+                    <RadioInput register={register} errors={errors} watch={watch} />
+                    
+                    <div className="text-center mt-4">Description:</div>
+                    <DescriptionTextArea register={register} errors={errors} />
                   </div>
-                )}
-                Images:
-                <RegularSmallInput register={register} errors={errors} />
-                <RegularMediumInput register={register} errors={errors} />
-                <RegularLargeInput register={register} errors={errors} />
-                Year:
-                <YearInput register={register} errors={errors} />
-                Category:
-                <CategorySelect register={register} errors={errors} />
-                Age rating:
-                <AgeRatingSelect register={register} errors={errors} />
-                Status:
-                <RadioInput register={register} errors={errors} watch={watch} />
-                Description:
-                <DescriptionTextArea register={register} errors={errors} />
-                <div className="flex flex-col text-center desktop:min-w-[30rem] tablet:min-w-[30rem] phone:min-w-[20rem] px-[2rem] figma-body-m border-x-2 border-b-2 rounded-b-3xl w-full">
-                  <div className="flex pt-[3rem] justify-between px-[3rem] gap-x-[3rem] tablet:flex-row phone:flex-col-reverse">
+
+                  <div className="flex justify-between w-full gap-4 mt-8 mb-6">
                     <button
                       aria-label="Cancel"
-                      className="bg-figma-red text-figma-white desktop:min-w-[45%]  tablet:min-w-[40%] tablet:max-w-[15rem] h-[3rem] phone:min-w-[10rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
+                      className="bg-figma-red text-figma-white flex-1 h-12 hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m"
                       type="button"
-                      onClick={() => navigate(-1)}
+                      onClick={onClose}
                     >
                       Cancel
                     </button>
                     <button
                       aria-label="Update"
                       aria-description="Confirm that you want to update the show"
-                      className="bg-figma-red text-figma-white desktop:min-w-[45%]  tablet:min-w-[40%] tablet:max-w-[15rem] h-[3rem] phone:min-w-[10rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
+                      className="bg-figma-red text-figma-white flex-1 h-12 hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m"
                       type="submit"
                     >
                       Update
                     </button>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
-          </div>
-        </div>
+          )}
+        </AnimationRouteModal>
       )}
     </>
   );
