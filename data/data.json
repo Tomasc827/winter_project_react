@@ -8207,6 +8207,13 @@
       "password": "U29tZXRoaW5nOSE=",
       "role": "User",
       "avatar": "/avatar.jpg"
+    },
+    {
+      "id": "5b97",
+      "email": "email@email.com",
+      "password": "QWExMjM0NSE=",
+      "role": "Admin",
+      "avatar": "/avatar.jpg"
     }
   ]
 }
