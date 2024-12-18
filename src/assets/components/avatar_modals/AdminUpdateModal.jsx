@@ -31,7 +31,7 @@ const AdminUpdateModal = () => {
 
   const { showID } = useParams();
 
-  const show = findShowById(showID)
+  const show = findShowById(showID);
 
   useEffect(() => {
     
@@ -47,16 +47,23 @@ const AdminUpdateModal = () => {
     handleSubmit,
     setValue,
     watch,
-} = useForm()
-
+  } = useForm();
 
   useEffect(() => {
     if (show) {
-      const { title,year,category,rating,description,isTrending,isBookmarked } = show;
+      const {
+        title,
+        year,
+        category,
+        rating,
+        description,
+        isTrending,
+        isBookmarked,
+      } = show;
       setValue("title", title);
-      setValue("thumbnail.regular.small",show.thumbnail.regular.small)
-      setValue("thumbnail.regular.medium",show.thumbnail.regular.medium)
-      setValue("thumbnail.regular.large",show.thumbnail.regular.large)
+      setValue("thumbnail.regular.small", show.thumbnail.regular.small);
+      setValue("thumbnail.regular.medium", show.thumbnail.regular.medium);
+      setValue("thumbnail.regular.large", show.thumbnail.regular.large);
       setValue("year", year);
       setValue("category", category);
       setValue("rating", rating);
@@ -98,9 +105,9 @@ const AdminUpdateModal = () => {
           regular: {
             small: data.thumbnail.regular.small,
             medium: data.thumbnail.regular.medium,
-            large: data.thumbnail.regular.large
-          }
-        }
+            large: data.thumbnail.regular.large,
+          },
+        },
       };
 
       if (data.isTrending === "true") {
@@ -123,7 +130,7 @@ const AdminUpdateModal = () => {
         setSuccess("Details have been successfully updated");
         setTimeout(() => {
           setSuccess("");
-          navigate(-1)
+          navigate(-1);
         }, 1500);
       } else {
         throw new Error("No data received from update");
@@ -162,11 +169,11 @@ const AdminUpdateModal = () => {
 
         <div className="relative">
           <div
-            className="fixed inset-0 bg-black z-40 bg-opacity-50 flex justify-center items-center "
+            className="fixed inset-0 bg-black z-40 bg-opacity-50 flex justify-center items-center"
             onClick={handleBackgroundClick}
           >
-            <div className="bg-figma-semi-dark-blue text-figma-white rounded-t-3xl rounded-b-3xl rounded shadow-2xl shadow-figma-red">
-              <div className="relative">
+            <div className=" bg-figma-semi-dark-blue text-figma-white rounded-t-3xl rounded-b-3xl rounded shadow-xl shadow-figma-red w-full max-w-3xl p-6 relative max-h-[90vh] overflow-y-auto">
+              <div className="relative pb-6">
                 <img
                   src={
                     show.thumbnail.regular.large.startsWith("/")
@@ -174,38 +181,49 @@ const AdminUpdateModal = () => {
                       : `/${show.thumbnail.regular.large}`
                   }
                   alt={show.title}
-                  className="Desktop:min-w-[40rem] tablet:min-w-[30rem] phone:min-w-[20rem] w-[30vw] h-auto object-contain rounded-t-3xl border-2 "
+                  className="w-full h-auto object-contain rounded-t-3xl border-2 "
                 ></img>
                 <div className="absolute z-10 top-[2rem] left-[2rem]"><DeleteSVG/></div>
               </div>
-              <form onSubmit={handleSubmit(onSubmit)}>
+
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="flex flex-col items-center gap-2"
+              >
+                Title:
                 <TitleInput register={register} errors={errors} />
-                  {watch ("isTrending") === "true" &&
-                  <div>
-                <TrendingSmallInput register={register} errors={errors} />
-                <TrendingLargeInput register={register} errors={errors} />
-                </div>
-                  }
-  
+                {watch("isTrending") === "true" && (
+                  <div className="text-center">
+                    <div className="pb-2">"Trending" images:</div>
+                    <TrendingSmallInput register={register} errors={errors} />
+                    <TrendingLargeInput register={register} errors={errors} />
+                  </div>
+                )}
+                Images:
                 <RegularSmallInput register={register} errors={errors} />
                 <RegularMediumInput register={register} errors={errors} />
                 <RegularLargeInput register={register} errors={errors} />
+                Year:
                 <YearInput register={register} errors={errors} />
+                Category:
                 <CategorySelect register={register} errors={errors} />
+                Age rating:
                 <AgeRatingSelect register={register} errors={errors} />
+                Status:
                 <RadioInput register={register} errors={errors} watch={watch} />
+                Description:
                 <DescriptionTextArea register={register} errors={errors} />
-                <div className="flex flex-col text-center desktop:min-w-[30rem] tablet:min-w-[30rem]  phone:min-w-[20rem] w-[30vw] px-[2rem] figma-body-m border-x-2 border-b-2 rounded-b-3xl">
+                <div className="flex flex-col text-center desktop:min-w-[30rem] tablet:min-w-[30rem] phone:min-w-[20rem] px-[2rem] figma-body-m border-x-2 border-b-2 rounded-b-3xl w-full">
                   <div className="flex pt-[3rem] justify-between px-[3rem] gap-x-[3rem] tablet:flex-row phone:flex-col-reverse">
                     <button
-                      className="bg-figma-red text-figma-white desktop:min-w-[45%]  tablet:min-w-[8rem] tablet:max-w-[15rem] h-[3rem] phone:min-w-[10rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
+                      className="bg-figma-red text-figma-white desktop:min-w-[45%]  tablet:min-w-[40%] tablet:max-w-[15rem] h-[3rem] phone:min-w-[10rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
                       type="button"
                       onClick={() => navigate(-1)}
                     >
                       Cancel
                     </button>
                     <button
-                      className="bg-figma-red text-figma-white desktop:min-w-[45%]  tablet:min-w-[8rem] tablet:max-w-[15rem] h-[3rem] phone:min-w-[10rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
+                      className="bg-figma-red text-figma-white desktop:min-w-[45%]  tablet:min-w-[40%] tablet:max-w-[15rem] h-[3rem] phone:min-w-[10rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
                       type="submit"
                     >
                       Update
