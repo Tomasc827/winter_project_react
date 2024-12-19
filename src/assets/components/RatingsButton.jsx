@@ -19,7 +19,7 @@ const RatingsButton = ({contentId, averageRating, totalRatings, userRating,showI
       };
     return ( 
         <>
-        <div className={`flex items-start flex-col  gap-1 ${location.pathname === `/description/${showID}` ? "items-center" : "items-start "}`}>
+        <div className={`flex items-start flex-col pointer-events-auto gap-1 ${location.pathname === `/description/${showID}` ? "items-center" : "items-start "}`}>
             <div className={`flex gap-1`}>
             {[1,2,3,4,5].map((star) => (
                 <button
