@@ -102,7 +102,7 @@ const SearchBar = (props) => {
   };
 
   return (
-    <>
+    <section>
       <label
         className="flex items-center
     phone:pb-[1.5rem] phone:pt-[5rem] phone:gap-4
@@ -110,14 +110,16 @@ const SearchBar = (props) => {
     desktop:pb-[2.12rem] desktop:pt-16 desktop:gap-6
     "
       >
-        <img
-          src={`/${props.icon?.replace(/^\/+/, "")}`}
-          alt="Search bar icon"
-          className="phone:w-[1.5rem] tablet:w-[2rem] desktop:w-[2rem]"
-        />
+        <figure>
+          <img
+            src={`/${props.icon?.replace(/^\/+/, "")}`}
+            alt="Search bar icon"
+            className="phone:w-[1.5rem] tablet:w-[2rem] desktop:w-[2rem]"
+          />
+        </figure>
         <input
-        aria-label="Search bar"
-        aria-description="Type here to search through shows"
+          aria-label="Search bar"
+          aria-description="Type here to search through shows"
           type="text"
           className="figma-heading-m p-0 bg-transparent border-0 focus:shadow-[0_1px_0_0] focus:shadow-figma-greyish-blue focus:ring-0 focus:border-figma-greyish-blue
             phone:text-[1rem]
@@ -142,7 +144,7 @@ const SearchBar = (props) => {
         />
       </label>
       <h2 id="resultmessage" className="figma-heading-l"></h2>
-    </>
+    </section>
   );
 };
 

@@ -100,10 +100,11 @@ const TrendingMoviesCarousel = () => {
     return null; }
 
   return (
-    <div id="trending1" className="text-figma-white">
-      <h1
-        id="trendingheading"
-        className="figma-heading-l
+    <section id="trending1" className="text-figma-white">
+      <header>
+        <h1
+          id="trendingheading"
+          className="figma-heading-l
           desktop:text-[2rem] tablet:text-[2rem] phone:text-[1.25rem]
           pb-[1.5rem]
           phone:pb-[1.5rem]
@@ -111,9 +112,10 @@ const TrendingMoviesCarousel = () => {
           desktop:pb-[1.56rem]
           
           "
-      >
-        Trending
-      </h1>
+        >
+          Trending
+        </h1>
+      </header>
       <div
         id="trending2"
         ref={scrollRef}
@@ -123,7 +125,7 @@ const TrendingMoviesCarousel = () => {
         onMouseMove={onDrag}
         onScroll={onScroll}
         style={{
-          scrollBehavior: 'smooth'
+          scrollBehavior: "smooth",
         }}
         className="flex w-full h-full cursor-grab active:cursor-grabbing overflow-x-auto disappear-scrollbar select-none"
       >
@@ -155,20 +157,23 @@ const TrendingMoviesCarousel = () => {
 
                 <div
                   aria-label="Trending Show Play"
-                    className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem] flex justify-center items-center
+                  className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem] flex justify-center items-center
                tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg
                "
-               onClick={() => onButtonClick(movie.id)}
+                  onClick={() => onButtonClick(movie.id)}
+                >
+                  <div
+                    className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem] w-[117px] h-12"
+                    type="button"
                   >
-                    <div className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem] w-[117px] h-12" type="button">
-                      <span className="py-[0.56rem]">
-                        <IconPlay />
-                      </span>
-                      <span className="figma-heading-xs pt-[0.75rem] pb-[0.81rem] h-[1.4375rem]">
-                        Play
-                      </span>
-                    </div>
+                    <span className="py-[0.56rem]">
+                      <IconPlay />
+                    </span>
+                    <span className="figma-heading-xs pt-[0.75rem] pb-[0.81rem] h-[1.4375rem]">
+                      Play
+                    </span>
                   </div>
+                </div>
 
                 <BookmarkButton
                   media_id={movie.id}
@@ -176,24 +181,32 @@ const TrendingMoviesCarousel = () => {
                   reloadData={fetchData}
                 />
 
-{currentUser.role === "Admin" ? <div aria-label="Admin Settings" onClick={() => onAdminClick(movie.id)}>
-                <SettingsSVG/>
-                </div> : null}
+                {currentUser.role === "Admin" ? (
+                  <div
+                    aria-label="Admin Settings"
+                    onClick={() => onAdminClick(movie.id)}
+                  >
+                    <SettingsSVG />
+                  </div>
+                ) : null}
 
-                <div className="absolute bottom-0 left-0 right-0 bg-opacity-50 rounded-b-lg 
+                <div
+                  className="absolute bottom-0 left-0 right-0 bg-opacity-50 rounded-b-lg 
                 pl-[1rem] pb-[1rem]
                 phone:pl-[1rem] phone:pb-[1rem]
                 tablet:pl-[1.5rem] tablet:pb-[1.5rem]
-                desktop:pl-[1.5rem] desktop:pb-[1.5rem]">
-
-                  <div className="figma-body-m flex items-center gap-2
+                desktop:pl-[1.5rem] desktop:pb-[1.5rem]"
+                >
+                  <div
+                    className="figma-body-m flex items-center gap-2
                   dekstop:text-[0.9375rem] tablet:text-[0.9375rem] phone:text-[0.75rem]
                   phone:h-[0.9375rem] tablet:h-[1.1875rem] desktop:h-[1.1875rem]
                   pb-[0.1875rem]
                   tablet:pb-[0.1875rem]
                   desktop:pb-[0.1875rem]
                   phone:pb-[0.25rem]
-                  ">
+                  "
+                  >
                     <span className="opacity-75">{movie.year}</span>
                     <div>
                       <svg
@@ -240,21 +253,23 @@ const TrendingMoviesCarousel = () => {
                     dekstop:text-[1.5rem] tablet:text-[1.5rem] phone:text-[0.9375rem]
                     phone:h-[1.1875rem] tablet:h-[1.875rem] desktop:h-[1.875rem]"
                   >
-                   {movie.title.length > 23 ? `${movie.title.slice(0, 23)}...` : movie.title}
+                    {movie.title.length > 23
+                      ? `${movie.title.slice(0, 23)}...`
+                      : movie.title}
                   </h3>
-                  <RatingsButton 
+                  <RatingsButton
                     contentId={movie.id}
                     averageRating={movie.averageRating}
                     totalRatings={movie.totalRatings}
                     userRating={movie.userRating}
-                    />
+                  />
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

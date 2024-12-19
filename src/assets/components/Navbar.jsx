@@ -63,7 +63,7 @@ const Navbar = () => {
     <>
       <ErrorServer />
       <SignUpSuccess />
-      <div className="relative">
+      <header className="relative">
           <AnimationModal onOpen={adminAdd && currentUser?.role === "Admin"} onClose={closeModal}>
               <AdminAddModal />
               </AnimationModal>
@@ -73,7 +73,7 @@ const Navbar = () => {
               <AnimationModal onOpen={userModal && currentUser?.id} onClose={closeModal}>
               <UserModal />
               </AnimationModal>
-        <div
+        <nav
           className={`fixed z-30 bg-figma-semi-dark-blue desktop:top-[2rem] desktop:left-[2rem] desktop:w-[6rem] desktop:h-[60rem] tablet:w-[44.9375rem] tablet:h-[4.5rem] tablet:rounded-[0.625rem] desktop:rounded-[1.25rem] flex desktop:flex-col tablet:left-[1.56rem] tablet:right-[1.5rem] tablet:top-[1.44rem] phone:w-[23.4375rem] phone:h-[3.5rem]
                     ${
                       isTablet
@@ -230,7 +230,7 @@ const Navbar = () => {
               </button>
             </div>
           )}
-          <div
+          <section
             className="desktop:mx-[1.75rem] desktop:mt-0 desktop:mb-0 tablet:mt-[1.31rem] tablet:mb-[1.19] tablet:me-[1rem] phone:my-[1rem] cursor-pointer"
             onClick={() => openModal()}
           >
@@ -257,9 +257,9 @@ const Navbar = () => {
                 onMouseLeave={() => setAccess(false)}
               ></img>
             )}
-          </div>
-        </div>
-      </div>
+          </section>
+        </nav>
+      </header>
     </>
   );
 };

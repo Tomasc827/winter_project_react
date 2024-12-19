@@ -69,7 +69,7 @@ for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
   return (
     <>
       {totalItems < 12 ? null : (
-        <div className="flex justify-center items-center gap-[1rem] text-figma-white pt-[2rem] figma-body-m">
+        <footer className="flex justify-center items-center gap-[1rem] text-figma-white pt-[2rem] figma-body-m">
           <button
           aria-label="Previous page"
             className={`tablet:w-[8rem] h-[3rem] phone:w-[4rem] rounded-[0.375rem] figma-body-m mb-[1.5rem] ${
@@ -118,7 +118,7 @@ for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
           >
             Next
           </button>
-        </div>
+        </footer>
       )}
     </>
   );
