@@ -28,28 +28,28 @@ const Homepage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
     const timer = setTimeout(() => {
-      setIsLoading(false)
-    },500)
-    return () => clearTimeout(timer)
-  },[content])
-
-
+      setIsLoading(false);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [content]);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = searchContent
-   ? searchContent.filter(
-      (item) => item.category === "TV Series" || item.category === "Movie"
-    )
-    .slice(indexOfFirstItem, indexOfLastItem) : []
+    ? searchContent
+        .filter(
+          (item) => item.category === "TV Series" || item.category === "Movie"
+        )
+        .slice(indexOfFirstItem, indexOfLastItem)
+    : [];
 
-    useEffect(() => {
-      if (searchContent.length !== content.length) {
-        setCurrentPage(1);
-      }
-    }, [searchContent]);
+  useEffect(() => {
+    if (searchContent.length !== content.length) {
+      setCurrentPage(1);
+    }
+  }, [searchContent]);
 
   const renderCategoryIcon = (category) => {
     if (category === "Movie") {
@@ -62,7 +62,7 @@ const Homepage = () => {
 
   return (
     <div className="text-figma-white phone:pl-4 tablet:pl-6 desktop:pl-[10.25rem] pb-[3.5rem]">
-      {isLoading && <LoadingSpinner/>}
+      {isLoading && <LoadingSpinner />}
       <SearchBar
         placeholder="Search for movies or TV series"
         icon="src/assets/svg/icon-search.svg"
@@ -72,7 +72,7 @@ const Homepage = () => {
         hideList={["heading5", "trendingheading", "trending1", "trending2"]}
         unhideList={["padding1"]}
       />
-      
+
       <Trending />
       <div className="text-figma-white phone:pr-4 tablet:pr-6 desktop:pr-9">
         <h1
@@ -137,14 +137,17 @@ const Homepage = () => {
                       alt={item.title}
                       className="w-full rounded-lg h-[100%]"
                     />
-                    
                   </picture>
                   <div
                     className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem]
                tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg flex justify-center items-center"
-                    aria-label="Show" onClick={() => onButtonClick(item.id)}
+                    aria-label="Show"
+                    onClick={() => onButtonClick(item.id)}
                   >
-                    <button aria-label="Play" className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem] w-[117px] h-12">
+                    <button
+                      aria-label="Play"
+                      className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem] w-[117px] h-12"
+                    >
                       <span className="py-[0.56rem]">
                         <IconPlay />
                       </span>
@@ -160,10 +163,12 @@ const Homepage = () => {
                   isBookmarked={item.isBookmarked}
                   reloadData={fetchData}
                 />
-                
-                {currentUser.role === "Admin" ? <div onClick={() => onAdminClick(item.id)}>
-                <SettingsSVG/>
-                </div> : null}
+
+                {currentUser.role === "Admin" ? (
+                  <div onClick={() => onAdminClick(item.id)}>
+                    <SettingsSVG />
+                  </div>
+                ) : null}
                 <div
                   className="flex flex-col gap-[0.3125rem] desktop:gap-[0.3125rem] tablet:gap-[0.3125rem] phone:gap-[0.25rem] pt-2 bg-gradient-to-t to-transparent rounded-b-lg
                 "
@@ -191,7 +196,7 @@ const Homepage = () => {
                       {renderCategoryIcon(item.category)}
                       <span className="opacity-75">{item.category}</span>
                     </div>
-                    
+
                     <div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -217,24 +222,22 @@ const Homepage = () => {
                   phone:text-[0.875rem] phone:h-[1.125rem]
                   tablet:h-[1.4375rem] desktop:h-[1.4375rem]"
                   >
-            
-                    
-            {item.title.length > 23 ? `${item.title.slice(0, 23)}...` : item.title}
+                    {item.title.length > 23
+                      ? `${item.title.slice(0, 23)}...`
+                      : item.title}
                   </div>
-                  <RatingsButton 
+                  <RatingsButton
                     contentId={item.id}
                     averageRating={item.averageRating}
                     totalRatings={item.totalRatings}
                     userRating={item.userRating}
-                    />
+                  />
                 </div>
               </li>
             ))}
           </ul>
         )}
-        <Pagination
-
-        />
+        <Pagination />
       </div>
       <Outlet />
     </div>

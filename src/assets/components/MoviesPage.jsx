@@ -10,24 +10,30 @@ import SettingsSVG from "./formatted_svg/SettingsSVG";
 import RatingsButton from "./RatingsButton";
 
 const MoviesPage = () => {
-  const { content, onButtonClick,fetchData,searchContent,setSearchContent,setCurrentPage,currentPage,itemsPerPage,currentUser,onAdminClick } = useData();
+  const {
+    content,
+    onButtonClick,
+    fetchData,
+    searchContent,
+    setSearchContent,
+    setCurrentPage,
+    currentPage,
+    itemsPerPage,
+    currentUser,
+    onAdminClick,
+  } = useData();
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = searchContent
-    .filter(
-      (item) => item.category === "Movie"
-    )
+    .filter((item) => item.category === "Movie")
     .slice(indexOfFirstItem, indexOfLastItem);
- 
-    useEffect(() => {
-      if (searchContent.length !== content.length) {
-        setCurrentPage(1);
-      }
-    }, [searchContent]);
- 
 
-
+  useEffect(() => {
+    if (searchContent.length !== content.length) {
+      setCurrentPage(1);
+    }
+  }, [searchContent]);
 
   return (
     <>
@@ -71,133 +77,151 @@ const MoviesPage = () => {
         desktop:grid-cols-4 desktop:gap-y-8 desktop:gap-x-10 
         "
         >
-          {currentItems
-            .map((movie) => (
-              <div
-                key={movie.id}
-                className="relative rounded-lg overflow-hidden
+          {currentItems.map((movie) => (
+            <div
+              key={movie.id}
+              className="relative rounded-lg overflow-hidden
                 phone:w-[100%] phone:h-[100%]
                 tablet:w-[100%] tablet:h-[100%]
                 desktop:w-[100%] desktop:max-w-[50rem]  desktop:h-[100%]
                 "
-              >
-                <div className="group relative">
-                  <picture>
-                    <source
-                      media="(min-width: 1440px)"
-                      srcSet={`/${movie.thumbnail.regular.large.replace(/^\/+/, '')}`}
-                      className="w-[100%] h-[100%] max-w-[50rem]"
-                    />
-                    <source
-                      media="(min-width: 768px)"
-                      srcSet={`/${movie.thumbnail.regular.large.replace(/^\/+/, '')}`}
-                      className="w-[100%] h-[100%]"
-                    />
-                    <img
-                      src={`/${movie.thumbnail.regular.large.replace(/^\/+/, '')}`}
-                      alt={movie.title}
-                      className="w-full rounded-lg h-[100%]"
-
-                    />
-                  </picture>
-
-                  <div
-                    aria-label="Movie"
-                    className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem] flex justify-center items-center
-               tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg
-               "
-               onClick={() => onButtonClick(movie.id)}
-                  >
-                    <button aria-label="Play" className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem] w-[117px] h-12" type="button">
-                      <span className="py-[0.56rem]">
-                        <IconPlay />
-                      </span>
-                      <span className="figma-heading-xs pt-[0.75rem] pb-[0.81rem] h-[1.4375rem]">
-                        Play
-                      </span>
-                    </button>
-                  </div>
-                </div>
-
-                <BookmarkButton
-                  media_id={movie.id}
-                  isBookmarked={movie.isBookmarked}
-                  reloadData={fetchData}
-                />
-
-                {currentUser.role === "Admin" ? <div aria-label="Admin settings" onClick={() => onAdminClick(movie.id)}>
-                <SettingsSVG/>
-                </div> : null}
+            >
+              <div className="group relative">
+                <picture>
+                  <source
+                    media="(min-width: 1440px)"
+                    srcSet={`/${movie.thumbnail.regular.large.replace(
+                      /^\/+/,
+                      ""
+                    )}`}
+                    className="w-[100%] h-[100%] max-w-[50rem]"
+                  />
+                  <source
+                    media="(min-width: 768px)"
+                    srcSet={`/${movie.thumbnail.regular.large.replace(
+                      /^\/+/,
+                      ""
+                    )}`}
+                    className="w-[100%] h-[100%]"
+                  />
+                  <img
+                    src={`/${movie.thumbnail.regular.large.replace(
+                      /^\/+/,
+                      ""
+                    )}`}
+                    alt={movie.title}
+                    className="w-full rounded-lg h-[100%]"
+                  />
+                </picture>
 
                 <div
-                  className="flex flex-col gap-[0.3125rem] desktop:gap-[0.3125rem] tablet:gap-[0.3125rem] phone:gap-[0.25rem] pt-2 bg-gradient-to-t to-transparent rounded-b-lg
-                "
+                  aria-label="Movie"
+                  className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem] flex justify-center items-center
+               tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg
+               "
+                  onClick={() => onButtonClick(movie.id)}
                 >
-                  <div
-                    className="figma-body-s dekstop:text-[0.8125rem] tablet:text-[0.8125rem] flex items-center gap-2 desktop:gap-2 tablet:gap-2 phone:gap-[0.38rem] phone:text-[0.6875rem] phone:h-3.5 tablet:h-4 desktop:h-4 
-                  "
+                  <button
+                    aria-label="Play"
+                    className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem] w-[117px] h-12"
+                    type="button"
                   >
-                    <span className="opacity-75">{movie.year}</span>
-                    <div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="3"
-                        height="3"
-                        viewBox="0 0 3 3"
-                        fill="none"
-                      >
-                        <circle
-                          opacity="0.75"
-                          cx="1.5"
-                          cy="1.5"
-                          r="1.5"
-                          fill="white"
-                        />
-                      </svg>
-                    </div>
-                    <div className="flex items-center gap-[0.38rem] desktop:gap-[0.38rem] tablet:gap-[0.38rem] phone:gap-[0.25rem]">
-                      <IconCategoryMovie />
-                      <span className="opacity-75">{movie.category}</span>
-                    </div>
-                    <div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="3"
-                        height="3"
-                        viewBox="0 0 3 3"
-                        fill="none"
-                      >
-                        <circle
-                          opacity="0.75"
-                          cx="1.5"
-                          cy="1.5"
-                          r="1.5"
-                          fill="white"
-                        />
-                      </svg>
-                    </div>
-                    <span className="opacity-75">{movie.rating}</span>
-                  </div>
-
-                  <div
-                    className="figma-heading-xs dekstop:text-[1.125rem] tablet:text-[1.125rem] phone:text-[0.875rem] phone:h-[1.125rem]
-                  tablet:h-[1.4375rem] desktop:h-[1.4375rem]"
-                  >
-                    {movie.title.length > 23 ? `${movie.title.slice(0, 23)}...` : movie.title}
-                  </div>
-                  <RatingsButton 
-                    contentId={movie.id}
-                    averageRating={movie.averageRating}
-                    totalRatings={movie.totalRatings}
-                    userRating={movie.userRating}
-                    />
+                    <span className="py-[0.56rem]">
+                      <IconPlay />
+                    </span>
+                    <span className="figma-heading-xs pt-[0.75rem] pb-[0.81rem] h-[1.4375rem]">
+                      Play
+                    </span>
+                  </button>
                 </div>
               </div>
-            ))}
+
+              <BookmarkButton
+                media_id={movie.id}
+                isBookmarked={movie.isBookmarked}
+                reloadData={fetchData}
+              />
+
+              {currentUser.role === "Admin" ? (
+                <div
+                  aria-label="Admin settings"
+                  onClick={() => onAdminClick(movie.id)}
+                >
+                  <SettingsSVG />
+                </div>
+              ) : null}
+
+              <div
+                className="flex flex-col gap-[0.3125rem] desktop:gap-[0.3125rem] tablet:gap-[0.3125rem] phone:gap-[0.25rem] pt-2 bg-gradient-to-t to-transparent rounded-b-lg
+                "
+              >
+                <div
+                  className="figma-body-s dekstop:text-[0.8125rem] tablet:text-[0.8125rem] flex items-center gap-2 desktop:gap-2 tablet:gap-2 phone:gap-[0.38rem] phone:text-[0.6875rem] phone:h-3.5 tablet:h-4 desktop:h-4 
+                  "
+                >
+                  <span className="opacity-75">{movie.year}</span>
+                  <div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="3"
+                      height="3"
+                      viewBox="0 0 3 3"
+                      fill="none"
+                    >
+                      <circle
+                        opacity="0.75"
+                        cx="1.5"
+                        cy="1.5"
+                        r="1.5"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
+                  <div className="flex items-center gap-[0.38rem] desktop:gap-[0.38rem] tablet:gap-[0.38rem] phone:gap-[0.25rem]">
+                    <IconCategoryMovie />
+                    <span className="opacity-75">{movie.category}</span>
+                  </div>
+                  <div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="3"
+                      height="3"
+                      viewBox="0 0 3 3"
+                      fill="none"
+                    >
+                      <circle
+                        opacity="0.75"
+                        cx="1.5"
+                        cy="1.5"
+                        r="1.5"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
+                  <span className="opacity-75">{movie.rating}</span>
+                </div>
+
+                <div
+                  className="figma-heading-xs dekstop:text-[1.125rem] tablet:text-[1.125rem] phone:text-[0.875rem] phone:h-[1.125rem]
+                  tablet:h-[1.4375rem] desktop:h-[1.4375rem]"
+                >
+                  {movie.title.length > 23
+                    ? `${movie.title.slice(0, 23)}...`
+                    : movie.title}
+                </div>
+                <RatingsButton
+                  contentId={movie.id}
+                  averageRating={movie.averageRating}
+                  totalRatings={movie.totalRatings}
+                  userRating={movie.userRating}
+                />
+              </div>
+            </div>
+          ))}
         </div>
-        <Pagination/>
+        <Pagination />
       </div>
-      <Outlet/>
+      <Outlet />
     </>
   );
 };
