@@ -132,7 +132,7 @@ const TVSeriesPage = () => {
                     className="figma-body-s dekstop:text-[0.8125rem] tablet:text-[0.8125rem] flex items-center gap-2 desktop:gap-2 tablet:gap-2 phone:gap-[0.38rem] phone:text-[0.6875rem] phone:h-3.5 tablet:h-4 desktop:h-4
                   "
                   >
-                    <span>{serie.year}</span>
+                    <span className="opacity-75">{serie.year}</span>
                     <div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +142,7 @@ const TVSeriesPage = () => {
                         fill="none"
                       >
                         <circle
-                          opacity="0.5"
+                          opacity="0.75"
                           cx="1.5"
                           cy="1.5"
                           r="1.5"
@@ -152,7 +152,7 @@ const TVSeriesPage = () => {
                     </div>
                     <div className="flex items-center gap-[0.38rem] desktop:gap-[0.38rem] tablet:gap-[0.38rem] phone:gap-[0.25rem]">
                       <IconCategoryTV />
-                      <span>{serie.category}</span>
+                      <span className="opacity-75">{serie.category}</span>
                     </div>
                     <div>
                       <svg
@@ -163,7 +163,7 @@ const TVSeriesPage = () => {
                         fill="none"
                       >
                         <circle
-                          opacity="0.5"
+                          opacity="0.75"
                           cx="1.5"
                           cy="1.5"
                           r="1.5"
@@ -171,7 +171,7 @@ const TVSeriesPage = () => {
                         />
                       </svg>
                     </div>
-                    <span>{serie.rating}</span>
+                    <span className="opacity-75">{serie.rating}</span>
                   </div>
 
                   <div

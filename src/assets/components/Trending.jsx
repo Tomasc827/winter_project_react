@@ -1,4 +1,4 @@
-import { useState,useRef } from "react";
+import { useState,useRef, useEffect } from "react";
 import BookmarkButton from "./BookmarkButton";
 import { useData } from "./DataContext";
 import IconPlay from "./formatted_svg/IconPlay";
@@ -17,12 +17,15 @@ const TrendingMoviesCarousel = () => {
     )
   : [];
 
-
-
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const scrollRef = useRef(null);
+
+  const autoScrollTimeout = useRef(0)
+  const oldScrollLeft = useRef(0)
+  const autoScrollTime = 5000
+  let initScroll = false
 
   const startDragging = (e) => {
     setIsDragging(true);
@@ -40,9 +43,32 @@ const TrendingMoviesCarousel = () => {
     const x = e.pageX - scrollRef.current.offsetLeft;
     const walk = (x - startX) * 2; 
     scrollRef.current.scrollLeft = scrollLeft - walk;
+    autoScrollTimeout.current = Date.now() + autoScrollTime
   };
 
+  const onScroll = (e) => {
+    autoScrollTimeout.current = Date.now() + autoScrollTime
+  }
 
+  useEffect(() => {
+    if (initScroll) return
+    initScroll = true
+    let t = setInterval(() => {
+      if (isDragging) return;
+      if (Date.now() < autoScrollTimeout.current) return;
+
+      let scrollAmount = window.innerWidth
+
+      scrollRef.current.scrollLeft = scrollRef.current.scrollLeft + scrollAmount;
+
+      if (scrollRef.current.scrollLeft == oldScrollLeft.current && scrollRef.current.scrollLeft > 0) {
+        scrollRef.current.scrollLeft = 0
+      }
+    
+      oldScrollLeft.current = scrollRef.current.scrollLeft
+
+    }, autoScrollTime);
+  }, [])
 
   const renderCategoryIcon = (category) => {
     if (category === "Movie") {
@@ -95,6 +121,7 @@ const TrendingMoviesCarousel = () => {
         onMouseUp={stopDragging}
         onMouseLeave={stopDragging}
         onMouseMove={onDrag}
+        onScroll={onScroll}
         style={{
           scrollBehavior: 'smooth'
         }}
@@ -167,7 +194,7 @@ const TrendingMoviesCarousel = () => {
                   desktop:pb-[0.1875rem]
                   phone:pb-[0.25rem]
                   ">
-                    <span>{movie.year}</span>
+                    <span className="opacity-75">{movie.year}</span>
                     <div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -177,7 +204,7 @@ const TrendingMoviesCarousel = () => {
                         fill="none"
                       >
                         <circle
-                          opacity="0.5"
+                          opacity="0.75"
                           cx="1.5"
                           cy="1.5"
                           r="1.5"
@@ -187,7 +214,7 @@ const TrendingMoviesCarousel = () => {
                     </div>
                     <span className="flex items-center gap-[0.38rem]">
                       {renderCategoryIcon(movie.category)}
-                      <span>{movie.category}</span>
+                      <span className="opacity-75">{movie.category}</span>
                     </span>
                     <div>
                       <svg
@@ -198,7 +225,7 @@ const TrendingMoviesCarousel = () => {
                         fill="none"
                       >
                         <circle
-                          opacity="0.5"
+                          opacity="0.75"
                           cx="1.5"
                           cy="1.5"
                           r="1.5"
@@ -206,7 +233,7 @@ const TrendingMoviesCarousel = () => {
                         />
                       </svg>
                     </div>
-                    <span>{movie.rating}</span>
+                    <span className="opacity-75">{movie.rating}</span>
                   </div>
                   <h3
                     className="figma-heading-s
