@@ -1327,6 +1327,13 @@
       "password": "U29tZXRoaW5nOSE=",
       "role": "Admin",
       "avatar": "/avatar.jpg"
+    },
+    {
+      "id": "a5f1",
+      "email": "email@email.com",
+      "password": "QWExMjM0NSE=",
+      "role": "Admin",
+      "avatar": "/avatar.jpg"
     }
   ],
   "ratings": [
