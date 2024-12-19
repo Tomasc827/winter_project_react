@@ -56,6 +56,7 @@ const TrendingMoviesCarousel = () => {
     let t = setInterval(() => {
       if (isDragging) return;
       if (Date.now() < autoScrollTimeout.current) return;
+      if (!scrollRef.current) return
 
       let scrollAmount = window.innerWidth
 
