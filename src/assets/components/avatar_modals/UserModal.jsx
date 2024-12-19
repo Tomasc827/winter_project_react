@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import {getAllData} from "../../helpers/get"
 import CloseModalSVG from "../formatted_svg/CloseModalSVG";
 
+
 const UserModal = () => {
   const {
     currentUser,
@@ -143,6 +144,7 @@ const UserModal = () => {
   }, [currentUser, reset, setValue]);
 
   return (
+    <>
     <div className="">
       <div className="phone:flex phone:justify-center">
           <div className="tablet:min-w-[25rem] tablet:min-h-[23.3125rem] bg-figma-semi-dark-blue rounded-[1.25rem] tablet:p-[2rem] phone:p-[1.5rem] phone:flex phone:flex-col phone:min-w-[20.4375rem] phone:min-h-[22.8125rem]">
@@ -216,6 +218,7 @@ const UserModal = () => {
           </div>
       </div>
     </div>
+    </>
   );
 };
 

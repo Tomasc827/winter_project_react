@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import Pagination from "./Pagination";
 import SettingsSVG from "./formatted_svg/SettingsSVG";
 import RatingsButton from "./RatingsButton";
+import LoadingSpinner from "./messages/LoadingSpinner";
 
 const Homepage = () => {
   const {
@@ -24,16 +25,16 @@ const Homepage = () => {
     itemsPerPage,
     onAdminClick,
   } = useData();
-  const [screen, setScreen] = useState(window.innerWidth);
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
-    const resize = () => {
-      setScreen(window.innerWidth);
-    };
-    window.addEventListener("resize", resize);
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
+    setIsLoading(true)
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    },500)
+    return () => clearTimeout(timer)
+  },[content])
+
 
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -61,6 +62,7 @@ const Homepage = () => {
 
   return (
     <div className="text-figma-white phone:pl-4 tablet:pl-6 desktop:pl-[10.25rem] pb-[3.5rem]">
+      {isLoading && <LoadingSpinner/>}
       <SearchBar
         placeholder="Search for movies or TV series"
         icon="src/assets/svg/icon-search.svg"

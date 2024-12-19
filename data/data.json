@@ -325,19 +325,23 @@
     },
     {
       "title": "The Heiress",
+      "year": 2021,
+      "category": "Movie",
+      "rating": "PG",
+      "description": "A young woman inherits a vast fortune but soon discovers that her family’s wealth is linked to dark secrets. As she navigates the pressure of her new status, she uncovers a conspiracy that could destroy everything she holds dear. With danger closing in, she must decide whether to embrace her legacy or fight against it. A suspenseful tale of power, legacy, and deception.",
+      "isTrending": true,
+      "isBookmarked": true,
       "thumbnail": {
         "regular": {
           "small": "../src/assets/img/thumbnails/the-heiress/regular/small.jpg",
           "medium": "../src/assets/img/thumbnails/the-heiress/regular/medium.jpg",
           "large": "../src/assets/img/thumbnails/the-heiress/regular/large.jpg"
+        },
+        "trending": {
+          "small": "../src/assets/img/thumbnails/the-heiress/regular/large.jpg",
+          "large": "../src/assets/img/thumbnails/the-heiress/regular/large.jpg"
         }
       },
-      "year": 2021,
-      "category": "Movie",
-      "rating": "PG",
-      "description": "A young woman inherits a vast fortune but soon discovers that her family’s wealth is linked to dark secrets. As she navigates the pressure of her new status, she uncovers a conspiracy that could destroy everything she holds dear. With danger closing in, she must decide whether to embrace her legacy or fight against it. A suspenseful tale of power, legacy, and deception.",
-      "isBookmarked": true,
-      "isTrending": true,
       "id": "3362"
     },
     {
@@ -1385,7 +1389,7 @@
       "userId": "fc57",
       "contentId": "3362",
       "rating": 5,
-      "timestamp": "2024-12-18T13:09:36.089Z",
+      "timestamp": "2024-12-18T17:11:28.329Z",
       "id": "b381"
     },
     {
@@ -1408,6 +1412,13 @@
       "contentId": "668c",
       "rating": 1,
       "timestamp": "2024-12-18T08:19:25.491Z"
+    },
+    {
+      "userId": "fc57",
+      "contentId": "2cd5",
+      "rating": 5,
+      "timestamp": "2024-12-18T17:09:31.345Z",
+      "id": "1cdc"
     }
   ]
 }
