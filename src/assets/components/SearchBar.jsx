@@ -110,13 +110,11 @@ const SearchBar = (props) => {
     desktop:pb-[2.12rem] desktop:pt-16 desktop:gap-6
     "
       >
-        <figure>
           <img
             src={`/${props.icon?.replace(/^\/+/, "")}`}
             alt="Search bar icon"
             className="phone:w-[1.5rem] tablet:w-[2rem] desktop:w-[2rem]"
           />
-        </figure>
         <input
           aria-label="Search bar"
           aria-description="Type here to search through shows"
