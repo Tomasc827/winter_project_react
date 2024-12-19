@@ -181,7 +181,7 @@ const TrendingMoviesCarousel = () => {
                 <SettingsSVG/>
                 </div> : null}
 
-                <div className="absolute bottom-0 left-0 right-0 bg-opacity-50 rounded-b-lg 
+                <div className="absolute bottom-0 left-0 right-0 pointer-events-none bg-opacity-50 rounded-b-lg 
                 pl-[1rem] pb-[1rem]
                 phone:pl-[1rem] phone:pb-[1rem]
                 tablet:pl-[1.5rem] tablet:pb-[1.5rem]

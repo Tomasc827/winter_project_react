@@ -56,7 +56,7 @@ const MediaCard = (props) => {
           <span className="opacity-75">·</span>
           <span className="opacity-75"> {props.rating}</span>
         </div>
-        <h1 className="figma-heading-xs pt-1">{props.title.length > 23 ? `${props.title.slice(0, 23)}...` : props.title}</h1>
+        <h1 className="figma-heading-xs pt-1 pb-1">{props.title.length > 23 ? `${props.title.slice(0, 23)}...` : props.title}</h1>
       </div>
       <RatingsButton 
                     contentId={props.id}
