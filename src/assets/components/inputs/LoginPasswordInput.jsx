@@ -3,6 +3,9 @@ const LoginPasswordInput = ({ register, errors }) => {
     <>
       <div className="relative">
         <input
+                  aria-label="Login"
+                  aria-description="Enter your password here so you could login into your account"
+                  aria-required="true"
           className={`tablet:w-[21rem] h-[2.3125rem] phone:w-[17.4375rem] input-login-style mb-[2.5rem] text-white figma-body-m focus:border-b-2 caret-figma-red  ${
             errors.password
               ? "focus:border-figma-red border-figma-red"

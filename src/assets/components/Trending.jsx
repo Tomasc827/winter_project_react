@@ -154,6 +154,7 @@ const TrendingMoviesCarousel = () => {
                 </picture>
 
                 <div
+                  aria-label="Trending Show Play"
                     className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem] flex justify-center items-center
                tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg
                "
@@ -175,7 +176,7 @@ const TrendingMoviesCarousel = () => {
                   reloadData={fetchData}
                 />
 
-{currentUser.role === "Admin" ? <div onClick={() => onAdminClick(movie.id)}>
+{currentUser.role === "Admin" ? <div aria-label="Admin Settings" onClick={() => onAdminClick(movie.id)}>
                 <SettingsSVG/>
                 </div> : null}
 
@@ -239,7 +240,7 @@ const TrendingMoviesCarousel = () => {
                     dekstop:text-[1.5rem] tablet:text-[1.5rem] phone:text-[0.9375rem]
                     phone:h-[1.1875rem] tablet:h-[1.875rem] desktop:h-[1.875rem]"
                   >
-                    {movie.title}
+                   {movie.title.length > 23 ? `${movie.title.slice(0, 23)}...` : movie.title}
                   </h3>
                   <RatingsButton 
                     contentId={movie.id}

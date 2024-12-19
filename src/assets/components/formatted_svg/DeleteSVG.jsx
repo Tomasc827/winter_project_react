@@ -14,11 +14,13 @@ const {setDeleteModal} = useData()
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={() => setDeleteModal(true)}
-        fill={isHovered === false ? "transparent" : "#FC7474"}
+        aria-label="Delete"
+        aria-description="Press this to delete a show"
+        fill={isHovered === false ? "black" : "#FC7474"}
         stroke="currentColor"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
-        className="size-14  hover:fill-figma-red duration-700 border-2 rounded-full p-1 cursor-pointer hover:border-figma-red"
+        className="size-14  hover:fill-figma-red duration-700 border-2 border-black rounded-full p-1 cursor-pointer hover:border-figma-red"
       >
         <path
           strokeLinecap="round"

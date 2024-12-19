@@ -6,7 +6,7 @@ import IconCategoryTV from "./formatted_svg/IconCategoryTV";
 import SearchBar from "./SearchBar";
 import { useData } from "./DataContext";
 import { Outlet } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "./Pagination";
 import SettingsSVG from "./formatted_svg/SettingsSVG";
 import RatingsButton from "./RatingsButton";
@@ -24,6 +24,17 @@ const Homepage = () => {
     itemsPerPage,
     onAdminClick,
   } = useData();
+  const [screen, setScreen] = useState(window.innerWidth);
+  useEffect(() => {
+    const resize = () => {
+      setScreen(window.innerWidth);
+    };
+    window.addEventListener("resize", resize);
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -124,13 +135,14 @@ const Homepage = () => {
                       alt={item.title}
                       className="w-full rounded-lg h-[100%]"
                     />
+                    
                   </picture>
                   <div
                     className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem]
                tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg flex justify-center items-center"
-                    onClick={() => onButtonClick(item.id)}
+                    aria-label="Show" onClick={() => onButtonClick(item.id)}
                   >
-                    <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem] w-[117px] h-12">
+                    <button aria-label="Play" className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem] w-[117px] h-12">
                       <span className="py-[0.56rem]">
                         <IconPlay />
                       </span>
@@ -177,6 +189,7 @@ const Homepage = () => {
                       {renderCategoryIcon(item.category)}
                       <span className="opacity-75">{item.category}</span>
                     </div>
+                    
                     <div>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -202,8 +215,9 @@ const Homepage = () => {
                   phone:text-[0.875rem] phone:h-[1.125rem]
                   tablet:h-[1.4375rem] desktop:h-[1.4375rem]"
                   >
+            
                     
-                    {item.title}
+            {item.title.length > 23 ? `${item.title.slice(0, 23)}...` : item.title}
                   </div>
                   <RatingsButton 
                     contentId={item.id}

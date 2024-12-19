@@ -98,11 +98,12 @@ const TVSeriesPage = () => {
                   </picture>
 
                   <div
+                  aria-label="TV Series"
                     className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 duration-200 transition-opacity desktop:pl-[4.81rem] desktop:pr-[5.37rem] desktop:py-[3.94rem]
                tablet:pl-[3rem] tablet:pr-[4rem] tablet:py-[3rem] phone:pl-[1.5rem] phone:pr-[2.5rem] phone:py-[2rem] rounded-lg flex justify-center items-center
                " onClick={() => onButtonClick(serie.id)}
                   >
-                    <button className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem] w-[117px] h-12">
+                    <button aria-label="Play Button" className="flex desktop:gap-[1.19rem] bg-white bg-opacity-25 rounded-[1.78125rem] pl-[0.56rem] pr-[1.5rem] tablet:gap-[0.935rem] phone:gap-[0.698rem] w-[117px] h-12">
                       <span className="py-[0.56rem]">
                         <IconPlay />
                       </span>
@@ -177,7 +178,7 @@ const TVSeriesPage = () => {
                     className="figma-heading-xs dekstop:text-[1.125rem] tablet:text-[1.125rem] phone:text-[0.875rem] phone:h-[1.125rem]
                   tablet:h-[1.4375rem] desktop:h-[1.4375rem]"
                   >
-                    {serie.title}
+                    {serie.title.length > 23 ? `${serie.title.slice(0, 23)}...` : serie.title}
                   </div>
                   <RatingsButton 
                     contentId={serie.id}

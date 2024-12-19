@@ -1,9 +1,9 @@
 import { Star } from "lucide-react";
 import { useData } from "./DataContext";
 
-const RatingsButton = ({contentId, averageRating, totalRatings, userRating}) => {
+const RatingsButton = ({contentId, averageRating, totalRatings, userRating,showID}) => {
     
-    const {submitRating, currentUser,setError,setLoginModal} = useData()
+    const {submitRating, currentUser,setError,setLoginModal,location} = useData()
 
     const handleRating = async (rating) => {
         await submitRating(contentId,rating)
@@ -19,10 +19,12 @@ const RatingsButton = ({contentId, averageRating, totalRatings, userRating}) => 
       };
     return ( 
         <>
-        <div className="flex flex-col items-start gap-1">
-            <div className="flex gap-1">
+        <div className={`flex items-start flex-col  gap-1 ${location.pathname === `/description/${showID}` ? "items-center" : "items-start "}`}>
+            <div className={`flex gap-1`}>
             {[1,2,3,4,5].map((star) => (
                 <button
+                aria-label="Rating"
+                aria-description="Rating is from 1 to 5 stars"
                 key={star}
                 onClick={() => {
                 handleRating(star)

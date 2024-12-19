@@ -56,6 +56,7 @@ const LoginModal = () => {
             <LoginPasswordInput register={register} errors={errors} />
             <div className="relative"></div>
             <button
+              aria-label="Login"
               className="bg-figma-red text-figma-white tablet:w-[21rem] h-[3rem] phone:w-[17.4375rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
               type="submit"
               value="submit"
@@ -65,6 +66,8 @@ const LoginModal = () => {
             <p className="figma-body-m text-figma-white  tablet:ps-[3.75rem] phone:ps-[2.19rem]">
               Don't have an account?
               <span
+                aria-label="Signup Page"
+                aria-description="Click here if you do not have an account to sign up"
                 className="ps-[0.5rem] text-figma-red cursor-pointer"
                 onClick={() => navigate("/signup")}
               >

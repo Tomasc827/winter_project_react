@@ -71,6 +71,7 @@ for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
       {totalItems < 12 ? null : (
         <div className="flex justify-center items-center gap-[1rem] text-figma-white pt-[2rem] figma-body-m">
           <button
+          aria-label="Previous page"
             className={`tablet:w-[8rem] h-[3rem] phone:w-[4rem] rounded-[0.375rem] figma-body-m mb-[1.5rem] ${
               page === 1
                 ? "bg-figma-greyish-blue hover:bg-figma-white hover:shadow-lg hover:shadow-white hover:text-figma-dark-blue duration-500"
@@ -86,6 +87,7 @@ for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
 
           {getPageNumbers().map((number,index) => (
             <button
+            aria-label = "Page number"
               className={`tablet:min-w-[3rem] phone:min-w-[2rem]  h-[3rem]  rounded-[0.375rem] figma-body-m mb-[1.5rem] ${
                 number === "..."
                   ? "border-none bg-transparent"
@@ -103,6 +105,7 @@ for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
             </button>
           ))}
           <button
+          aria-label="Next Page"
             className={`tablet:w-[8rem] h-[3rem] phone:w-[4rem] rounded-[0.375rem] figma-body-m mb-[1.5rem] ${
               page === pageNumbers.length
                 ? "bg-figma-greyish-blue hover:bg-figma-white hover:shadow-lg hover:shadow-white hover:text-figma-dark-blue duration-500"

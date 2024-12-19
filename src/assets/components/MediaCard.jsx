@@ -25,7 +25,7 @@ const MediaCard = (props) => {
             alt="Media thumbnail"
           />
           <div className="absolute rounded-lg bg-black left-0 top-0 w-full h-full opacity-0 group-hover:opacity-50 duration-500" onClick={() => onButtonClick(props.media_id)}></div>
-          <button className="absolute hidden group-hover:block duration-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-14" onClick={() => onButtonClick(props.media_id)}>
+          <button aria-label="Bookmarked Show" className="absolute hidden group-hover:block duration-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-14" onClick={() => onButtonClick(props.media_id)}>
             <div className="opacity-25 absolute rounded-full bg-white w-full h-full"></div>
             <div className="flex flex-row h-full justify-between justify-items-center text-center items-center" >
               <img
@@ -56,7 +56,7 @@ const MediaCard = (props) => {
           <span className="opacity-75">·</span>
           <span className="opacity-75"> {props.rating}</span>
         </div>
-        <h1 className="figma-heading-xs pt-[0.35rem] pb-1">{props.title}</h1>
+        <h1 className="figma-heading-xs pt-1">{props.title.length > 23 ? `${props.title.slice(0, 23)}...` : props.title}</h1>
       </div>
       <RatingsButton 
                     contentId={props.id}

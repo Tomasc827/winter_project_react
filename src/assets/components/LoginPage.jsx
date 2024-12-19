@@ -67,6 +67,8 @@ const LoginPage = () => {
             <LoginPasswordInput register={register} errors={errors} />
             <div className="relative"></div>
             <button
+            aria-label="Submit"
+            aria-description="Press this to login into to your account"
               className="bg-figma-red text-figma-white tablet:w-[21rem] h-[3rem] phone:w-[17.4375rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
               type="submit"
               value="submit"
@@ -76,6 +78,8 @@ const LoginPage = () => {
             <p className="figma-body-m text-figma-white  tablet:ps-[3.75rem] phone:ps-[2rem]">
               Don't have an account?
               <span
+              aria-label="Signup"
+              aria-description="Press here to signup if you do not already have an account"
                 className="ps-[0.5rem] text-figma-red cursor-pointer"
                 onClick={() => navigate("/signup")}
               >

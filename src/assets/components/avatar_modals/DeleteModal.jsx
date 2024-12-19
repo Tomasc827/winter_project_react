@@ -45,7 +45,7 @@ const DeleteModal = ({show}) => {
             <h2 className="figma-heading-l text-white pb-[2.5rem] tablet:w-[25rem] text-center">Are you sure you want to delete {show.title}?</h2>
             </div>
             <div className="relative flex justify-center gap-5">
-            <button
+            <button aria-label="Cancel"
                       className="bg-figma-red text-figma-white desktop:min-w-[45%]  tablet:min-w-[8rem] tablet:max-w-[15rem] h-[3rem] phone:min-w-[10rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
                       type="button"
                       onClick={() => setDeleteModal(false)}
@@ -53,6 +53,8 @@ const DeleteModal = ({show}) => {
                       Cancel
                     </button>
                     <button
+                      aria-label="Delete"
+                      aria-description="Confirm that you want to delete the selected show"
                       className="bg-figma-red text-figma-white desktop:min-w-[45%]  tablet:min-w-[8rem] tablet:max-w-[15rem] h-[3rem] phone:min-w-[10rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
                       type="submit"
                     >

@@ -60,11 +60,13 @@ const BookmarkPage = () => {
         icon="src/assets/svg/icon-search.svg"
         data={content}
         setSearchData={setSearchContent}
-        switchViews={true} //  switch between different views when searching
+        switchViews={false} //  switch between different views when searching
+        hideList={["bookmarkedMovies","bookmarkedSeries"]}
       />
 
-      <div id="defaultview">
+      <div>
         <h1
+        id="bookmarkedMovies"
           className={
             currentMovies.length <= 0
               ? "hidden"
@@ -86,7 +88,8 @@ const BookmarkPage = () => {
 
         <Pagination type="movies"/>
 
-        <h1
+<h1
+id="bookmarkedSeries"
           className={
             currentTvSeries
               .length <= 0

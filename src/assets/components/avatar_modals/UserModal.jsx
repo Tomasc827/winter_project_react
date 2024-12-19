@@ -165,12 +165,16 @@ const UserModal = () => {
               <p className="figma-body-s pb-[0.3rem]">Current avatar url:</p>
               <AvatarInput register={register} errors={errors} />
               <button
+                aria-label="Update"
+                aria-description="Click here to update your existing details"
                 className="bg-figma-red text-figma-white tablet:w-[21rem] h-[3rem] phone:w-[17.4375rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
                 type="submit"
               >
                 Update
               </button>
               <button
+              aria-label="Password Settings"
+              aria-description="Click here to open a password menu, where you can change your password"
                 className="block bg-figma-red text-figma-white tablet:w-[21rem] h-[3rem] phone:w-[17.4375rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
                 onClick={() => setPasswordModal((prev) => !prev)}
                 type="button"
@@ -191,6 +195,8 @@ const UserModal = () => {
                   watch={watch}
                 />
                 <button
+                aria-label="Change Password"
+                aria-description="Click here to change your password after filling out inputs"
                   className="bg-figma-red text-figma-white tablet:w-[21rem] h-[3rem] phone:w-[17.4375rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
                   type="submit"
                 >
@@ -199,6 +205,8 @@ const UserModal = () => {
               </form>
             )}
             <button
+              aria-label="Logout"
+              aria-description="Press here to logout out of your current account"
               className="bg-figma-red text-figma-white tablet:w-[21rem] h-[3rem] phone:w-[17.4375rem] hover:bg-figma-white hover:text-figma-dark-blue duration-700 rounded-[0.375rem] figma-body-m mb-[1.5rem]"
               onClick={() => logout()}
               type="button"

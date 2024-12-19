@@ -8,6 +8,8 @@ const [isHovered,setIsHovered] = useState(false)
   return (
     <>
       <svg
+        aria-label="Admin Settings"
+        aria-description="Admin settings that allow modification of the show"
         xmlns="http://www.w3.org/2000/svg"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -15,8 +17,8 @@ const [isHovered,setIsHovered] = useState(false)
         stroke={isHovered === false ? "currentColor" : "#0593FA"}
         viewBox="0 0 24 24"
         strokeWidth={1.5}
-        className={`size-10 bg-[#10131d] p-1 bg-opacity-50 rounded-full cursor-pointer           transition-all 
-          ease-in-out duration-500 absolute top-[1rem] left-[1rem] z-20` }
+        className={`tablet:size-10 phone:size-6 bg-[#10131d] p-1 bg-opacity-50 rounded-full cursor-pointer           transition-all 
+          ease-in-out duration-500 absolute tablet:top-[1rem] tablet:left-[1rem] phone:top-[0.5rem] phone:left-[0.5rem] z-20` }
       >
         <path
           strokeLinecap="round"

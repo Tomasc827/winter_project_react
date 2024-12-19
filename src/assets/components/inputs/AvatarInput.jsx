@@ -3,6 +3,9 @@ const AvatarInput = ({register, errors}) => {
     return ( 
         <div className="relative">
         <input
+          aria-label="Avatar"
+          aria-description="Please provide a url of an avatar that you would like"
+          aria-required="false"
           className={`tablet:w-[21rem] h-[2.3125rem] phone:w-[17.4375rem] input-login-style mb-[1.5rem] text-white figma-body-m focus:border-b-2 caret-figma-red ${
             errors.avatar
               ? "focus:border-figma-red border-figma-red"

@@ -2,7 +2,7 @@ import { NavLink } from "react-router";
 import { useData } from "../DataContext";
 
 const NavbarMobile = () => {
-  const { currentUser, onBookmarkClick } = useData();
+  const { currentUser, setAccess, setAccessText } = useData();
 
   return (
     <>
@@ -14,12 +14,20 @@ const NavbarMobile = () => {
         xmlns="http://www.w3.org/2000/svg"
       >
         <NavLink
+          aria-label="Homepage"
           to="/"
           style={({ isActive, isPending }) => ({
             fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",
           })}
         >
-          <g className="group">
+          <g
+            className="group"
+            onMouseEnter={() => {
+              setAccess(true);
+              setAccessText("Homepage");
+            }}
+            onMouseLeave={() => setAccess(false)}
+          >
             <rect x="0" y="0" width="20" height="20" fill="transparent" />
             <path
               className="group-hover:fill-figma-red duration-500"
@@ -30,12 +38,20 @@ const NavbarMobile = () => {
           </g>
         </NavLink>
         <NavLink
+          aria-label="Tv series page"
           to="/tvseries"
           style={({ isActive, isPending }) => ({
             fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",
           })}
         >
-          <g className="group">
+          <g
+            className="group"
+            onMouseEnter={() => {
+              setAccess(true);
+              setAccessText("Series");
+            }}
+            onMouseLeave={() => setAccess(false)}
+          >
             <rect x="77" y="0" width="20" height="20" fill="transparent" />
             <path
               className="group-hover:fill-figma-red duration-500"
@@ -46,12 +62,20 @@ const NavbarMobile = () => {
           </g>
         </NavLink>
         <NavLink
+          aria-label="Movies page"
           to="/movies"
           style={({ isActive, isPending }) => ({
             fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",
           })}
         >
-          <g className="group">
+          <g
+            className="group"
+            onMouseEnter={() => {
+              setAccess(true);
+              setAccessText("Movies");
+            }}
+            onMouseLeave={() => setAccess(false)}
+          >
             <rect x="0" y="60" width="20" height="20" fill="transparent" />
             <path
               className="group-hover:fill-figma-red duration-500"
@@ -63,12 +87,20 @@ const NavbarMobile = () => {
         </NavLink>
         {!currentUser || !currentUser.id || (
           <NavLink
+            aria-label="Bookmarks page"
             to="/bookmarked"
             style={({ isActive, isPending }) => ({
               fill: isPending ? "#5A698F" : isActive ? "white" : "#5A698F",
             })}
           >
-            <g className="group">
+            <g
+              className="group"
+              onMouseEnter={() => {
+                setAccess(true);
+                setAccessText("Bookmarks");
+              }}
+              onMouseLeave={() => setAccess(false)}
+            >
               <rect x="0" y="180" width="20" height="20" fill="transparent" />
               <path
                 className="group-hover:fill-figma-red duration-500"
